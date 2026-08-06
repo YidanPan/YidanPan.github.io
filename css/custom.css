@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Inter, "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+/* 首页 Hero 标题 */
+.index-header h1,
+.banner-title {
+    font-size: 72px;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+}
+
+/* Hero 副标题 */
+.banner-subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #86868b;
+}
+
+/* 首页整体间距 */
+.index-header {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+  /* 卡片圆角 */
+  .card, 
+  .index-card:hover {
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.08);
+}
+
+  /* 按钮圆角 */
+  .btn {
+    border-radius:999px;
+    padding:12px 28px;
+    font-weight:500;
+}
+
+  /* 导航栏 */
+  .navbar {
+    backdrop-filter: blur(20px);
+    background:
+    rgba(255,255,255,0.72);
+
+    border-bottom:
+    1px solid rgba(0,0,0,0.05);
+  }
+
+    /* 卡片悬浮上移 */
+  .card, .index-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover, .index-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+/*正文宽度*/
+.post-content {
+  max-width:760px;
+  margin:auto;
+}
+
+/* 选中文本样式 */
+::selection {
+    background:#1d1d1f;
+    color:white;
+}
+
+.home-intro {
+
+    text-align:center;
+
+    padding-top:120px;
+
+    padding-bottom:120px;
+
+}
+
+
+.home-intro h1 {
+
+    font-size:72px;
+
+    font-weight:600;
+
+    letter-spacing:-0.06em;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.home-intro h2 {
+
+    font-size:32px;
+
+    font-weight:400;
+
+    color:#86868b;
+
+}
+
+
+
+.home-intro p {
+
+    font-size:20px;
+
+    color:#86868b;
+
+    max-width:600px;
+
+    margin:30px auto;
+
+}
+
+
+
+.buttons a {
+
+    display:inline-block;
+
+    padding:12px 30px;
+
+    margin:10px;
+
+    border-radius:999px;
+
+    background:#1d1d1f;
+
+    color:white;
+
+}
+
+.hero {
+
+    min-height:80vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:100px 40px;
+
+}
+
+
+
+.hero-text {
+
+    width:45%;
+
+}
+
+
+
+.hero-text h1 {
+
+    font-size:72px;
+
+    line-height:1.05;
+
+    font-weight:700;
+
+    color:#111;
+
+}
+
+
+
+.hero-text h1 span {
+
+    font-weight:800;
+
+}
+
+
+
+.subtitle {
+
+    font-size:28px;
+
+    color:#555;
+
+}
+
+
+
+.description {
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    color:#888;
+
+    line-height:1.6;
+
+}
+
+
+
+.buttons a {
+
+
+    display:inline-block;
+
+    margin-top:40px;
+
+    margin-right:15px;
+
+    padding:14px 30px;
+
+    border-radius:30px;
+
+    background:#111;
+
+    color:white;
+
+}
+
+
+
+.hero-image img {
+    width:420px;
+    height:520px;
+    object-fit:cover;
+    border-radius:30px;
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.15);
+}
+
+.index-banner,
+.banner,
+.index-header {
+display:none!important;
+}

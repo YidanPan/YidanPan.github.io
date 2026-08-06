@@ -1,0 +1,1178 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="pwn导论 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/CTF/pwn%E5%AF%BC%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>pwn导论 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="pwn导论 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/">← CTF</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">计算机专业课</span>
+      <h1>pwn导论</h1>
+      <span class="notes-source-path">CTF/pwn导论.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260709141412.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260709141412.png"></p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260709143730.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260709143730.png"></p>
+<ul>
+<li>data和bss：存放全局变量等</li>
+</ul>
+<p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260709144129.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260709144129.png"></p>
+<h1 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h1><ul>
+<li>本质就是恶意数据<br>把数据当做代码指令来执行达到攻击效果</li>
+<li>cyclic( ) :自动生成指定字节数的字符串</li>
+<li>asm（）：</li>
+</ul>
+<h1 id="沙箱"><a href="#沙箱" class="headerlink" title="沙箱"></a>沙箱</h1><ul>
+<li>定义：限制程序行为的安全机制</li>
+<li>system call<ul>
+<li>sysread：读取输入</li>
+<li>syswrite:往文件中写入</li>
+</ul>
+</li>
+<li>利用系统调用号去绕过</li>
+</ul>
+<h2 id="异构下的函数栈祯"><a href="#异构下的函数栈祯" class="headerlink" title="异构下的函数栈祯"></a>异构下的函数栈祯</h2><p>异构指的是os架构不同</p>
+<p>函数序言尾声<br>不同架构不同函数的分布不同<br>x86架构之下是可以往下栈溢出，arm64的返回地址是在栈顶，所以往下溢出是无法实现栈溢出的效果</p>
+<h2 id="nocrash例子"><a href="#nocrash例子" class="headerlink" title="nocrash例子"></a>nocrash例子</h2><pre><code>from pwn import *
+
+  
+
+io = remote(&quot;challenge.ctf.domain&quot;, 10001) #创建一个io变量用来远程连接
+
+  
+
+log.info(&quot;Sending payload to trigger SIGFPE...&quot;) #告诉你脚本已经运行到“准备发送触发浮点异常 Payload”的阶段。 就是告诉你脚本已经运行到这一行了
+
+  
+
+io.recvuntil(b&quot;Input your decimal number: &quot;)
+
+io.sendline(b&quot;5&quot;)
+
+  
+
+io.recvuntil(b&quot;What do you want to turn it into: &quot;)
+
+io.sendline(b&quot;0&quot;)
+
+  
+
+log.success(&quot;Exploit sent! Switching to interactive mode to get Shell...&quot;)
+
+io.interactive()
+</code></pre>
+<p>一些重要函数的使用：</p>
+<ul>
+<li>sendline( )：数据发送函数 发送数据然后返回一个回车</li>
+<li>interactive()：通道切换函数 就是负责我本地的电脑和远程对方的服务器连接起来 </li>
+<li><code>system(&quot;/bin/sh&quot;);</code>程序就会<strong>在服务器后台启动一个系统终端</strong> &#x2F;bin&#x2F;sh就是linux系统下的shell</li>
+<li>recvuntil()：能够同步服务器状态，直到收到想要的值才会往下走，能够让进程统一</li>
+</ul>
+<p>任何 C 语言程序想要在 Linux 上运行（比如调用 <code>printf</code>, <code>read</code>, <code>strcmp</code>），都必须动态链接到 Linux 系统的标准 C 库。这个库在 Linux 里就是 <strong><code>libc.so.6</code></strong></p>
+<ul>
+<li>ASLR：地址空间分布随机化（这就导致每次运行同一个程序但是变量的地址并不是唯一的）<br>但是变量之间的相对位置是恒定不变的，唯一通过相对偏移量来计算基地址</li>
+</ul>
+<h2 id="Ret2Libc-逻辑"><a href="#Ret2Libc-逻辑" class="headerlink" title="Ret2Libc 逻辑"></a>Ret2Libc 逻辑</h2><p>【第一阶段：抓取锚点】<br>溢出栈空间 ──&gt; 强行调用 puts(puts@got) ──&gt; 程序在屏幕上打印出 puts 的实时内存地址（捕获当前坐标）</p>
+<p>【第二阶段：按图索骥】<br>实时 puts 地址 — 库文件中的固定偏移 &#x3D; 这一刻的 Libc 内存基地址（推算出整栋建筑的地基坐标）<br>Libc 内存基地址 + 库文件中 system 的固定偏移 &#x3D; 这一刻 system 的精准绝对地址（算出风景区的实时坐标！）</p>
+<p>【第三阶段：垂直打击】<br>程序重回开头 ──&gt; 第二次溢出栈空间 ──&gt; 把刚刚算出来的 system 真实地址拍在 Saved RIP 上 ──&gt; Get Shell！</p>
+<p>执行 <code>system(&quot;/bin/sh&quot;)</code> 这行代码，在汇编层面其实是两步动作：</p>
+<ol>
+<li><p>CPU 把 <code>&quot;/bin/sh&quot;</code> 这串字符在内存里的<strong>绝对地址</strong>塞进 <code>RDI</code> 寄存器。</p>
+</li>
+<li><p>CPU 跳转到 <code>system</code> 函数的<strong>绝对地址</strong>开始执行。</p>
+</li>
+</ol>
+<p>变量的内存布局都是从低地址向高地址分布，低地址在上，高地址在下层<br>c语言中读%s的时候都是读到字符串中有&#x2F;x00才会停止，所以输入如果一直没有结束程序就会一直读入</p>
+<h2 id="汇编入门"><a href="#汇编入门" class="headerlink" title="汇编入门"></a>汇编入门</h2><h3 id="shellcode是什么"><a href="#shellcode是什么" class="headerlink" title="shellcode是什么"></a>shellcode是什么</h3><p><strong>Shellcode</strong> 是一段<strong>可以直接被 CPU 执行的机器码（Machine Code）</strong>，最初用于让程序启动一个 Shell（如 <code>/bin/sh</code> 或 <code>cmd.exe</code>），因此得名 <strong>Shell + Code</strong> shellcode是一串可以直接放进内存里运行的字节。是汇编语言经过编译之后的机器码。汇编是一种文本语言，shellcode是一种机器语言。所以shellcode就是01串</p>
+<p>可以做什么：</p>
+<ul>
+<li>启动 <code>/bin/sh</code> shell控制权</li>
+<li>读取 flag 文件</li>
+<li>建立反向连接（Reverse Shell）</li>
+<li>下载并执行其他程序</li>
+<li>修改内存</li>
+<li>绕过权限检查</li>
+<li>调用任意系统调用（syscall）</li>
+</ul>
+<p>一组关系图：<br>        C语言<br>          │<br>      编译器(gcc)<br>          │<br>      x86汇编语言  ←── 你现在正在学<br>          │<br>      汇编器(nasm&#x2F;as)<br>          │<br>      机器码(byte)<br>          │<br> ┌────────┴────────┐<br> │                                         │<br>ELF程序                          Shellcode<br>两者最终都是机器码，只是用途不同：</p>
+<ul>
+<li><strong>ELF 程序</strong>：有文件头、链接信息，由操作系统加载运行。elf只是一种文件格式，但elf程序不仅有机器码还有其他链接信息等内容，但只有机器码是给cpu执行的，其余是给寄存器调试器等内容看的。</li>
+<li><strong>Shellcode</strong>：只有纯机器码，没有 ELF 头，可以直接复制到内存并跳转执行。shellcode只有机器码<br>cpu执行的是机器码<br>ret返回（return）<br>shellcode是一小段可执行的01串机器码，只是人们为了表示方便写成十六进制。内存中电脑都是按照字节来存储的，一个字节是八位，所以两个十六进制字符刚好就是一个字节。</li>
+</ul>
+<h3 id="寄存器相关"><a href="#寄存器相关" class="headerlink" title="寄存器相关"></a>寄存器相关</h3><p>调用约定：参数统一必须放在哪个位置，返回值放在哪里</p>
+<p>Linux x86-64 的规则：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>放哪里</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第1个</td>
+<td>rdi</td>
+</tr>
+<tr>
+<td>第2个</td>
+<td>rsi</td>
+</tr>
+<tr>
+<td>第3个</td>
+<td>rdx</td>
+</tr>
+<tr>
+<td>第4个</td>
+<td>rcx</td>
+</tr>
+<tr>
+<td>第5个</td>
+<td>r8</td>
+</tr>
+<tr>
+<td>第6个</td>
+<td>r9</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>通用寄存器</th>
+<th>作用（传统）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EAX</td>
+<td>Accumulator（累加器）</td>
+</tr>
+<tr>
+<td>EBX</td>
+<td>Base（基址）</td>
+</tr>
+<tr>
+<td>ECX</td>
+<td>Counter（计数器）</td>
+</tr>
+<tr>
+<td>EDX</td>
+<td>Data（数据）</td>
+</tr>
+<tr>
+<td>ESI</td>
+<td>Source Index（源变址）</td>
+</tr>
+<tr>
+<td>EDI</td>
+<td>Destination Index（目的变址）</td>
+</tr>
+<tr>
+<td>EBP</td>
+<td>Base Pointer（栈帧）</td>
+</tr>
+<tr>
+<td>ESP</td>
+<td>Stack Pointer（栈顶）</td>
+</tr>
+<tr>
+<td><strong>E</strong> 表示 <strong>Extended</strong>（32位扩展）</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>32位</th>
+<th>64位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EAX</td>
+<td>RAX</td>
+</tr>
+<tr>
+<td>EBX</td>
+<td>RBX</td>
+</tr>
+<tr>
+<td>ECX</td>
+<td>RCX</td>
+</tr>
+<tr>
+<td>EDX</td>
+<td>RDX</td>
+</tr>
+<tr>
+<td>ESI</td>
+<td>RSI</td>
+</tr>
+<tr>
+<td>EDI</td>
+<td>RDI</td>
+</tr>
+<tr>
+<td>EBP</td>
+<td>RBP</td>
+</tr>
+<tr>
+<td>ESP</td>
+<td>RSP</td>
+</tr>
+<tr>
+<td>r是register</td>
+<td></td>
+</tr>
+<tr>
+<td>rax是返回值寄存器，r是代表64位，rax的低32位是eax</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>代表寄存器</th>
+<th>主要作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>数据&#x2F;计算</strong></td>
+<td><code>RAX</code>、<code>RBX</code>、<code>RCX</code>、<code>RDX</code></td>
+<td>存放数据、参与运算，<code>RAX</code>通常用于返回值</td>
+</tr>
+<tr>
+<td><strong>函数参数</strong></td>
+<td><code>RDI</code>、<code>RSI</code>、<code>RDX</code>、<code>RCX</code>、<code>R8</code>、<code>R9</code></td>
+<td>Linux x86-64 调用约定中前六个参数所在的位置</td>
+</tr>
+<tr>
+<td><strong>栈相关</strong></td>
+<td><code>RSP</code>、<code>RBP</code></td>
+<td><code>RSP</code>指向栈顶，<code>RBP</code>常作为栈帧基址（虽然优化后不一定使用）</td>
+</tr>
+<tr>
+<td><strong>指令执行</strong></td>
+<td><code>RIP</code></td>
+<td>指向下一条将要执行的指令（程序计数器）</td>
+</tr>
+</tbody></table>
+<p>pwn题主要就是知道怎么接收参数，怎么返回结果、怎么调用系统内核（syscall）</p>
+<p><strong>setvbuf 关闭缓冲</strong>是为了让 pwntools 这类工具能实时读到输出，不至于数据卡在缓冲区里。alarm(60) 意味着你要在 60 秒内完成所有交互，否则进程被 SIGALRM 杀死。<br>对应代码如下：</p>
+<pre><code>void prepare()
+{
+    setvbuf(stdin, 0LL, 2, 0LL);//关闭stdin缓冲
+    setvbuf(stdout, 0LL, 2, 0LL);//关闭sidout缓冲
+    alarm(60);//60s缓冲
+}
+</code></pre>
+<h3 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h3><p>CPU 在执行你的代码时，有些事自己做不了——比如读文件、写屏幕、启动新程序。这些事必须请求操作系统帮忙。<br>**系统调用（System Call）理解为 Linux 内核提供给程序的一组”服务”**。</p>
+<ul>
+<li>请求操作系统帮忙的机制就叫<strong>系统调用</strong>，简称 syscall。</li>
+<li>系统调用不是一种语言，是一种服务。但是汇编语言就是一种编程语言（低级语言）<br>所以系统调用就是cpu让操作系统来帮忙干事情</li>
+</ul>
+<p>Linux 给每个服务编了号：</p>
+<p>  ┌──────┬─────────────────────────────────────┐<br>  │ 编号 │                服务                 │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 0    │ read — 读数据                       │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 1    │ write — 写数据                      │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 2    │ open — 打开文件                     │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 59   │ execve — 启动新程序（比如 &#x2F;bin&#x2F;sh） │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 60   │ exit — 退出程序                     │<br>  └──────┴─────────────────────────────────────┘</p>
+<p>  调用的方式：<br>  asm<br>  mov  eax, 2       ; 告诉操作系统：我要服务编号2（open）<br>  ; 参数放在 rdi, rsi, rdx 里<br>  syscall           ; 提交申请！<br>  ; 返回值在 rax 里</p>
+<p>Linux常用系统调用</p>
+<table>
+<thead>
+<tr>
+<th>系统调用</th>
+<th align="right">x86-64 编号</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>read</code></td>
+<td align="right">0</td>
+<td>从文件、终端或网络读取数据</td>
+</tr>
+<tr>
+<td><code>write</code></td>
+<td align="right">1</td>
+<td>向文件、终端或网络写数据</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td align="right">2</td>
+<td>打开文件（现代程序更常用 <code>openat</code>）</td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td align="right">3</td>
+<td>关闭文件</td>
+</tr>
+<tr>
+<td><code>mmap</code></td>
+<td align="right">9</td>
+<td>申请一块新的内存（可读可写可执行）</td>
+</tr>
+<tr>
+<td><code>mprotect</code></td>
+<td align="right">10</td>
+<td>修改内存权限（如改成可执行）</td>
+</tr>
+<tr>
+<td><code>munmap</code></td>
+<td align="right">11</td>
+<td>释放内存</td>
+</tr>
+<tr>
+<td><code>brk</code></td>
+<td align="right">12</td>
+<td>调整程序堆空间</td>
+</tr>
+<tr>
+<td><code>fork</code></td>
+<td align="right">57</td>
+<td>复制当前进程，创建一个几乎一模一样的子进程</td>
+</tr>
+<tr>
+<td><code>execve</code></td>
+<td align="right">59</td>
+<td>用另一个程序替换当前进程</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td align="right">60</td>
+<td>结束当前进程</td>
+</tr>
+<tr>
+<td><code>kill</code></td>
+<td align="right">62</td>
+<td>向进程发送信号</td>
+</tr>
+<tr>
+<td><code>uname</code></td>
+<td align="right">63</td>
+<td>获取系统信息</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>PID</strong>（Process ID）就是进程的身份证号。fork（）会返回PID值。所以不同进程就可以通过返回值来确定。</li>
+</ul>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260711220738.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260711220738.png"><br>换一张图片<br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260711220804.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260711220804.png"><br>CPU 能直接碰到的：<br>    ├── 寄存器（自己的草稿纸）<br>    └── 内存（办公桌上的文件）内存是插在主板上的，cpu通过地址去访问</p>
+<p>CPU 认识的操作（约 200 种）：<br>  数据搬运类：<br>    mov  把数从 A 搬到 B        mov eax, edi     “把 edi 的值抄到 eax”<br>    push 把数压到栈顶           push rax         “把 rax 存到栈上”<br>    pop  从栈顶取回来           pop rax          “从栈上取回 rax”<br>    lea  算地址                 lea eax, [rdi+rsi]  “算个地址存到 eax”</p>
+<p>  运算类：<br>    add  加    sub  减    and  与<br>    or   或    xor  异或  test 测试</p>
+<p>  跳转类：<br>    jmp  无条件跳               jmp label        “跳到 label 去”<br>    je   相等则跳               je  label        “上一步结果相等就跳”<br>    jne  不等则跳               jne label        “不等就跳”<br>    ret  从函数返回             ret              “返回到调用者”</p>
+<p>  特殊类：<br>    syscall  呼叫操作系统       syscall          “帮帮忙！”</p>
+<p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260711221129.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260711221129.png"></p>
+<ul>
+<li>cpu：只能干自己内部的事情，比如是寄存器上快速存储数据，计算器上快速计算的功能，调用内存一些压栈操作</li>
+<li>操作系统：可以调用各种不同的硬件，可以读取硬盘上的内容，显示文字，启动程序，分配内存，网络通信各种cpu无法做的事情</li>
+</ul>
+<h3 id="Seccomp沙箱"><a href="#Seccomp沙箱" class="headerlink" title="Seccomp沙箱"></a>Seccomp沙箱</h3><ul>
+<li>是什么：Secure Computing Mode 在执行你的代码之前，先设了一道安检门。</li>
+</ul>
+<p> ; 先在栈上构造字符串 “flag\0”<br>  xor  edx, edx               ; edx &#x3D; 0<br>  push rdx                    ; 压 8 字节的 0 到栈上（字符串结尾的 \0）<br>  mov  rax, 0x67616c66        ; 这串数字就是 “flag” 四个字符的编码<br>  push rax                    ; 压入栈，rsp 现在指向 “flag\0”<br>  mov  rdi, rsp               ; rdi &#x3D; 字符串地址<br>  xor  esi, esi               ; rsi &#x3D; 0（O_RDONLY &#x3D; 只读）<br>  mov  eax, 2                 ; syscall 编号 2 &#x3D; open<br>  syscall                     ; 执行！rax &#x3D; 文件描述符 fd</p>
+<p>  0x67616c66 怎么来的？</p>
+<p>  每个字符对应一个 ASCII 码：</p>
+<p>  ┌──────┬───────┬──────────┐<br>  │ 字符 │ ASCII │ 十六进制 │<br>  ├──────┼───────┼──────────┤<br>  │ f    │ 102   │ 0x66     │<br>  ├──────┼───────┼──────────┤<br>  │ l    │ 108   │ 0x6c     │<br>  ├──────┼───────┼──────────┤<br>  │ a    │ 97    │ 0x61     │<br>  ├──────┼───────┼──────────┤<br>  │ g    │ 103   │ 0x67     │<br>  └──────┴───────┴──────────┘</p>
+<p>  x86-64 是小端序（低位字节在低地址），内存中顺序是 66 6c 61 67，拼成数字是 0x67616c66。</p>
+<p>objdump：反汇编（直接在wsl命令行中可以执行，程序小可以直接这么分析）</p>
+<h3 id="可见字符shellcode"><a href="#可见字符shellcode" class="headerlink" title="可见字符shellcode"></a>可见字符shellcode</h3><p>这里的可见字符是指ASCII编码下的可见字符，字节是有一个区间的。</p>
+<p>可以说是我们本意是想写一段汇编语言去执行功能，但是经过汇编器翻译成机器码之后，用十六进制表示的字节不一定是落在ASCII码可见字符编码区间之内，这样的对应关系不同。</p>
+<h3 id="AE64"><a href="#AE64" class="headerlink" title="AE64"></a>AE64</h3><p>AE64 是一个把普通 x86-64 Shellcode 自动转换成”只包含可打印 ASCII 字节”的编码器（Encoder）。<br>它的名字可以理解为：</p>
+<ul>
+<li><strong>A</strong> &#x3D; ASCII</li>
+<li><strong>E</strong> &#x3D; Encoder（编码器）</li>
+<li><strong>64</strong> &#x3D; x86-64 架构<br>AE64 就是一个编码器（Encoder），把原始 Shellcode 编码成只包含可打印 ASCII 字符的 Shellcode；等程序开始执行后，再由解码器（Decoder）恢复成原来的机器码继续执行。</li>
+</ul>
+<h2 id="第-1-步：创建项目-打开-Ghidra-后：-1-File-→-New-Project-2-选-Non-Shared-Project-3-设置项目路径，随便选一个目录（比如桌面）-4-项目名填-Alpha，点-Finish"><a href="#第-1-步：创建项目-打开-Ghidra-后：-1-File-→-New-Project-2-选-Non-Shared-Project-3-设置项目路径，随便选一个目录（比如桌面）-4-项目名填-Alpha，点-Finish" class="headerlink" title="第 1 步：创建项目  打开 Ghidra 后：  1. File → New Project  2. 选 Non-Shared Project  3. 设置项目路径，随便选一个目录（比如桌面）  4. 项目名填 Alpha，点 Finish"></a>第 1 步：创建项目<br>  打开 Ghidra 后：<br>  1. File → New Project<br>  2. 选 Non-Shared Project<br>  3. 设置项目路径，随便选一个目录（比如桌面）<br>  4. 项目名填 Alpha，点 Finish</h2><h2 id="第-2-步：导入-alpha-二进制-1-File-→-Import-File-2-选中-alpha-二进制文件：-C-Users-admin-Desktop-CTF-pwn导论-materials-materials-Alpha-attachment-alpha-3-弹窗里-Format-默认就是-ELF，不用改，直接点-OK-4-然后会问你要不要分析-→-点-Yes-5-分析选项弹窗-→-默认全勾就行，点-Analyze"><a href="#第-2-步：导入-alpha-二进制-1-File-→-Import-File-2-选中-alpha-二进制文件：-C-Users-admin-Desktop-CTF-pwn导论-materials-materials-Alpha-attachment-alpha-3-弹窗里-Format-默认就是-ELF，不用改，直接点-OK-4-然后会问你要不要分析-→-点-Yes-5-分析选项弹窗-→-默认全勾就行，点-Analyze" class="headerlink" title="  第 2 步：导入 alpha 二进制  1. File → Import File  2. 选中 alpha 二进制文件：  C:\Users\admin\Desktop\CTF\pwn导论_materials\materials\Alpha\attachment\alpha  3. 弹窗里 Format 默认就是 ELF，不用改，直接点 OK  4. 然后会问你要不要分析 → 点 Yes  5. 分析选项弹窗 → 默认全勾就行，点 Analyze"></a>  第 2 步：导入 alpha 二进制<br>  1. File → Import File<br>  2. 选中 alpha 二进制文件：<br>  C:\Users\admin\Desktop\CTF\pwn导论_materials\materials\Alpha\attachment\alpha<br>  3. 弹窗里 Format 默认就是 ELF，不用改，直接点 OK<br>  4. 然后会问你要不要分析 → 点 Yes<br>  5. 分析选项弹窗 → 默认全勾就行，点 Analyze</h2><p>  第 3 步：找到关键函数</p>
+<p>  分析完左边 Symbol Tree 面板里找 main 函数（通常在 Functions 文件夹下）。双击 main，右边会显示两种视图：</p>
+<ul>
+<li>上半部分：反汇编（机器码 + 汇编指令）</li>
+<li>下半部分：Decompile 伪代码（类似 C 语言）</li>
+</ul>
+<p>  伪代码更容易读，大部分分析看它就够了。</p>
+<hr>
+<p>  第 4 步：找 seccomp 规则<br>  在 Decompile 窗口里找这几个函数调用之一：<br>  seccomp(…)<br>  prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, …)</p>
+<p>  Ghidra 里可能显示得不直观。更直接的办法：在函数列表里搜 seccomp 或者找 prctl 的交叉引用。</p>
+<p>  更暴力的方法：你知道 seccomp 的 syscall 号是 157（__NR_seccomp），在反汇编里搜 mov eax, 157：</p>
+<ul>
+<li>在反汇编窗口右键 → Search → For Instruction Patterns</li>
+<li>或者直接用快捷键 Ctrl+F 搜 0x9d（157 的十六进制）</li>
+</ul>
+<h2 id="找到-seccomp-调用的地方，往上翻几行能看到-prctl-或-seccomp-的参数，其中第一个参数指向-BPF-规则结构体。点上那个结构体地址就能看到被禁的-syscall-编号。"><a href="#找到-seccomp-调用的地方，往上翻几行能看到-prctl-或-seccomp-的参数，其中第一个参数指向-BPF-规则结构体。点上那个结构体地址就能看到被禁的-syscall-编号。" class="headerlink" title="  找到 seccomp 调用的地方，往上翻几行能看到 prctl 或 seccomp 的参数，其中第一个参数指向 BPF 规则结构体。点上那个结构体地址就能看到被禁的 syscall 编号。"></a>  找到 seccomp 调用的地方，往上翻几行能看到 prctl 或 seccomp 的参数，其中第一个参数指向 BPF 规则结构体。点上那个结构体地址就能看到被禁的 syscall 编号。</h2><p>  第 5 步：找字符过滤逻辑</p>
+<p>  在 main 的伪代码里找一段明显的比较逻辑：</p>
+<p>  &#x2F;&#x2F; Ghidra 伪代码大概长这样<br>  if ((byte &lt; 0x21) || (byte &gt; 0x7e)) {<br>      &#x2F;&#x2F; reject<br>  }<br>  在反汇编里对应的是类似这样的指令：<br>  asm<br>  cmp al, 0x21<br>  jl  reject_label<br>  cmp al, 0x7e<br>  jg  reject_label</p>
+<h2 id="关键词搜也行：Ctrl-F-搜-0x21-或者-0x7e"><a href="#关键词搜也行：Ctrl-F-搜-0x21-或者-0x7e" class="headerlink" title="  关键词搜也行：Ctrl+F 搜 0x21 或者 0x7e
+  "></a>  关键词搜也行：Ctrl+F 搜 0x21 或者 0x7e
+  </h2><p>  第 6 步：找 call rax（shellcode 入口）<br>  在 main 反汇编里找 call rax 指令。<br>  call rax<br>  这句告诉你 shellcode 加载在 RAX 指向的内存。记下这个寄存器——后面 AE64 编码时需要这个信息。<br>  你也可能看到 jmp rax，效果一样。</p>
+<p><strong>checksec</strong> &#x3D; 给程序做一个”安全体检”，看看有哪些防护措施开启了。<br>NX（No eXecute）</p>
+<h3 id="PIE（Position-Independent-Executable）"><a href="#PIE（Position-Independent-Executable）" class="headerlink" title="PIE（Position Independent Executable）"></a>PIE（Position Independent Executable）</h3><p><strong>PIE</strong>（Position Independent Executable）就是让程序本身支持地址随机化（ASLR），使程序代码每次运行时都加载到不同的基地址。</p>
+<p>ASLR 全称：</p>
+<blockquote>
+<p><strong>Address Space Layout Randomization（地址空间布局随机化）</strong> 这是操作系统安全控制的一种方式</p>
+</blockquote>
+<p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260712224215.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260712224215.png"></p>
+<h3 id="Canary（栈保护）"><a href="#Canary（栈保护）" class="headerlink" title="Canary（栈保护）"></a>Canary（栈保护）</h3><p><strong>栈保护</strong>就是在缓冲区和返回地址之间放一个”哨兵”，防止缓冲区溢出覆盖返回地址。</p>
+<ul>
+<li>栈长什么样？（高地址在上，低地址在下）：<br>  高地址<br>  ┌──────────────────┐<br>  │ 返回地址 (RIP)    │ ← ret 会跳到这里<br>  ├──────────────────┤<br>  │ 保存的 RBP        │<br>  ├──────────────────┤<br>  │ buf[16]          │ ← gets() 往这里写<br>  └──────────────────┘<br>  低地址</li>
+</ul>
+<blockquote>
+<pre><code>没有 Canary
+
+buf
+↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+┌──────────────┐
+│ 返回地址      │ ← 可以被覆盖
+├──────────────┤
+│ buf          │
+└──────────────┘
+</code></pre>
+</blockquote>
+<ul>
+<li>RBP：RBP（Base Pointer，基址指针）就是”当前函数栈帧的固定参考点”。在函数执行期间通常保持不变，编译器通过 <code>rbp-偏移量</code> 来访问局部变量，因此它是<strong>固定参考点</strong></li>
+<li>RSP：指向当前栈顶（一直在变。）</li>
+<li>程序在计算一个地址，地址 &#x3D; ((MRND % 8) + 32) × 4096</li>
+</ul>
+<pre><code>push rbp
+mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
+</code></pre>
+<ul>
+<li>栈保护如何解决（在buf和返回地址之间放一个随机数）：其实保护的是返回地址<br>  高地址<br>  ┌──────────────────┐<br>  │ 返回地址          │<br>  ├──────────────────┤<br>  │ Canary           │ ← ★ 新增<br>  ├──────────────────┤<br>  │ buf[16]          │<br>  └──────────────────┘<br>  低地址</li>
+<li>原理：<br>  在buf和返回地址之间加一个随机数（地址），进入函数的时候先保存canary，如果有人写过头了就是把canary部分也写上了，那么最终程序结束的时候就可以报栈溢出。</li>
+<li>函数在栈上的数据总体来说是从高地址向低地址增长（压入）的，所以push的时候rsp会减小，pop的时候rsp会增大。</li>
+<li>NX:不可执行保护。能写的内存不能执行，能执行的内存不能写。平时的栈、全局变量区是可写的但是是不可执行的。</li>
+<li></li>
+<li></li>
+</ul>
+<h3 id="函数内容补充"><a href="#函数内容补充" class="headerlink" title="函数内容补充"></a>函数内容补充</h3><ul>
+<li><strong><code>gets()</code></strong> 会从标准输入（键盘）读取字符，直到遇到<strong>换行符</strong>为止，但它完全不知道目标缓冲区有多大，因此极易造成缓冲区溢出（Buffer Overflow）。</li>
+<li><code>read()</code> 用于从一个文件（或设备）中读取数据到内存。<ul>
+<li>ssize_t read(int fd, void $*$buf, size_t count); </li>
+<li>fd:从哪里开始读 fd&#x3D;0代表标准输入</li>
+<li>buf：读取后放到哪里</li>
+<li>count：读多少个字节</li>
+</ul>
+</li>
+<li><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260712230519.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260712230519.png"></li>
+<li>环境变量：变量名–函数 （差不多可以理解为文本替换）</li>
+<li>字符串结束都是&#x2F;0</li>
+<li><code>getenv()</code> 返回的是字符串，<code>sscanf()</code> 负责把字符串变成整数。去掉末尾的&#x2F;0</li>
+<li>Linux：<strong>一页（Page）就是 4096 Byte（0x1000）</strong> 因为在 Linux 操作系统中，内存管理是以页（Page）为单位的，一页的大小刚好就是 <strong>4096 字节</strong>（也就是十六进制的 <code>0x1000</code>）。<code>mmap</code> 申请内存时，起始地址必须是 4096 的倍数（也就是<strong>对齐到页边界</strong>）。</li>
+<li>函数开辟空间是向低地址开辟，<strong>栈向下长</strong>，决定了“后进栈的函数（局部变量）”处于比“先进栈的数据（返回地址）”更低的地址。但是在每一块区域填入数据的时候是向上填入的。<br>【高地址】 ↑<br>    │  …<br>    ├────────────────────────────┤<br>    │  返回地址 (main 函数的 ret) │  ← 你的终极目标<br>    ├────────────────────────────┤<br>    │  旧的 RBP 值                │<br>    ├────────────────────────────┤<br>    │  局部变量 &#x2F; 其他数据         │<br>    ├────────────────────────────┤<br>    │  buf$[63]$                   │  ▲<br>    │  …                       │  │  gets() 写入的方向<br>    │  buf$[1]$                    │  │ (从低地址往高地址填)<br>    │  buf$[0]$                    │  │<br>    ├────────────────────────────┤<br>    │  (栈顶剩余的16字节空闲)       │</li>
+</ul>
+<p>【低地址】 └────────────────────────────┘  ← RSP 此时指向这里</p>
+<ul>
+<li><code>ret</code> 指令在硬件层面的本质工作就是：<blockquote>
+<p>“从当前的 <strong>RSP（栈顶）</strong> 弹出 8 个字节，扔进 <strong>RIP（指令寄存器）</strong> 里，然后 CPU 接下来就去执行 RIP 指向的地址。”</p>
+</blockquote>
+</li>
+<li>栈的增长方向是从高地址向低地址增长，但是数据写入方向是从低地址向高地址写入，栈的增长方向是指经历不同函数会依次开辟栈，这样的增长方向是向低地址增长的。</li>
+</ul>
+<h3 id="libc-start-main"><a href="#libc-start-main" class="headerlink" title="__libc_start_main"></a>__libc_start_main</h3><p>在我们的认知里，<code>main</code> 函数是程序的起点。但实际上，在 Linux 系统中，<code>main</code> 并不是第一个执行的函数。</p>
+<p>当程序启动时，操作系统首先会调用 C 语言运行库（glibc）的初始化函数，即 <code>__libc_start_main</code>。这个函数做完准备工作后，再去调用你的 <code>main</code> 函数：</p>
+<p>$$\text{__libc_start_main} \longrightarrow \text{调用} \longrightarrow \text{main()}$$</p>
+<p>因此，**<code>__libc_start_main</code> 是 <code>main</code> 的“爸爸”（调用者）**。</p>
+<h3 id="valgrind"><a href="#valgrind" class="headerlink" title="valgrind"></a>valgrind</h3><p>它是一个<strong>用于内存调试、内存泄漏检测以及性能分析的开源工具套件</strong>。</p>
+<ul>
+<li>Valgrind 的核心能力 (Memcheck)<br>  Valgrind 包含多个工具，其中最常用、也是默认运行的子工具叫 <strong>Memcheck</strong>。它可以精准检测出以下致命的 C&#x2F;C++ 内存错误：<ol>
+<li><p>**内存泄漏 (Memory Leak)**：比如我们刚才代码里 <code>malloc</code> 了心跳包但忘记 <code>free</code> 的问题。Valgrind 会在程序结束时生成一份详细的“泄漏报告”，告诉你泄漏了多少字节。</p>
+</li>
+<li><p>**使用未初始化的内存 (Uninitialized Values)**：比如刚才代码里的 <code>err</code> 和 <code>written</code> 变量。如果程序的分支逻辑基于这些垃圾值进行判断，Valgrind 会立刻报出 <code>Conditional jump or move depends on uninitialised value(s)</code> 的警告。</p>
+</li>
+<li><p>**越界读写 (Out-of-bounds Read&#x2F;Write)**：比如那个类似“心脏滴血”的漏洞（读取超过实际分配大小的堆内存），或者栈溢出。</p>
+</li>
+<li><p>**释放后使用 (Use-After-Free, UAF)**：使用了已经被 <code>free</code> 掉的指针。</p>
+</li>
+<li><p>**重复释放 (Double Free)**：对同一个指针 <code>free</code> 两次引发的崩溃。</p>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

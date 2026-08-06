@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Misc导论 编解码和流量取证 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/CTF/Misc%E5%AF%BC%E8%AE%BA%20%E7%BC%96%E8%A7%A3%E7%A0%81%E5%92%8C%E6%B5%81%E9%87%8F%E5%8F%96%E8%AF%81/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Misc导论 编解码和流量取证 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Misc导论 编解码和流量取证 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/">← CTF</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">计算机专业课</span>
+      <h1>Misc导论 编解码和流量取证</h1>
+      <span class="notes-source-path">CTF/Misc导论 编解码和流量取证.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><p>misc就是一些杂项，包括隐写、取证、各种杂项</p>
+<h1 id="编解码基础"><a href="#编解码基础" class="headerlink" title="编解码基础"></a>编解码基础</h1><p>关于图片解码 可以使用指令strings &lt;文件名&gt;<br>一个非常常用的编解码工具：cyberchef<br>一些01串经过一些特定规则转换，计算机通过字符编码规则将01串转换为可见字符</p>
+<ul>
+<li>编解码：通过一些特定规则来加密解密</li>
+<li>加解密：通过加入一个key来加密</li>
+<li>哈希：可以加密但不可解<br>三种都是在01串之间的转换</li>
+</ul>
+<p>一些编码规则：</p>
+<ul>
+<li>ASCII：一些可见字符和机器语言（01串）之间的映射关系。一共128项，8位01来表示</li>
+<li>Latin-1：扩展了ASCII，一共256项</li>
+<li>UNICODE：类似 UTF-8（兼容ASCII，不完全兼容Latin-1）、UCS、UTF-16这种</li>
+<li>摩尔斯电码：字符跟字符之间的映射</li>
+</ul>
+<p>乱码产生原因就是编码规则和解码规则不同导致的，但是可以通过ASCII编码再用Latin-1解码结果依然正确</p>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>用平面划分，17个平面，每个平面2字节</p>
+<ul>
+<li>UCS</li>
+<li>UTF：<ul>
+<li>UTF-8：变长编码</li>
+<li>UTF-16</li>
+</ul>
+</li>
+</ul>
+<h2 id="base系列"><a href="#base系列" class="headerlink" title="base系列"></a>base系列</h2><p>01串跟01串转换</p>
+<ul>
+<li>base16：十六进制来表示字节流</li>
+<li>base32：5bit一组，长度必须是5的倍数，不足用&#x3D;补齐</li>
+<li>base64：6bit一组，按照字符表映射<br>字节流-&gt;整数-&gt; n进制-&gt;查表</li>
+</ul>
+<h1 id="流量取证"><a href="#流量取证" class="headerlink" title="流量取证"></a>流量取证</h1><p>通过网络分析在shack上找到目标的流量包，分析数据包来获得flag，有点暴力破解的意思，也挺ticky</p>
+<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><p>最终传输的仍然是二进制数据<br>捕获这些数据就可以分析得到正在进行的通信内容<br>流量取证就是拿到这些数据包进行分析</p>
+<p>网络流量传输有五层：应用层、表示层、会话层、<br>tcp三次握手、http协议、icmp协议（ping）<br>http和tcp基本都是连在一起的</p>
+<p>工具：</p>
+<ul>
+<li>wireshack：直接抓包拿到数据包 过滤器</li>
+</ul>
+<h3 id="HTTP流量分析"><a href="#HTTP流量分析" class="headerlink" title="HTTP流量分析"></a>HTTP流量分析</h3><p>protocol可以统计所有情况</p>
+<p>http请求方法有GET、post等</p>
+<p>extension后缀</p>
+<h3 id="UDP协议分析"><a href="#UDP协议分析" class="headerlink" title="UDP协议分析"></a>UDP协议分析</h3><ul>
+<li>DNS：域名系统，通过dns查询到ip，然后发送请求，在浏览器端可以渲染出来</li>
+</ul>
+<h1 id="Lua"><a href="#Lua" class="headerlink" title="Lua"></a>Lua</h1><p><code>.lua</code> 文件就是 <strong>Lua 脚本语言的源代码文件</strong>。它本质上是普通文本，记录的是 Lua 代码，可以直接用文本编辑器查看和修改。Lua 因为体积小、速度快、易于嵌入，广泛用于游戏开发、软件扩展、自动化脚本以及 CTF 和逆向工程中。如果你在逆向一个程序时看到很多 <code>.lua</code> 文件，通常意味着程序把业务逻辑或脚本放在 Lua 中，而不是全部编译进 C&#x2F;C++ 可执行文件里。</p>
+<h1 id="Base64编码"><a href="#Base64编码" class="headerlink" title="Base64编码"></a>Base64编码</h1><p>base64只是一种编码规则，不是加密手段。它是负责把任意二进制字符串转化为可打印的64个字符。大小写的26个字母加上是个数字加上+ &#x2F;，共64个。还有一个特殊字符&#x3D;，它是当做补位符号，用来对齐的符号。<br>它是每6bit处理，但是一般转化为ASCII码是为8位，这种转化后如果不是6的倍数，就在后面补0凑成6的倍数，多余用&#x3D;补位。</p>
+<h1 id="计算机网络问题"><a href="#计算机网络问题" class="headerlink" title="计算机网络问题"></a>计算机网络问题</h1><h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p>既然服务器永远是个扑克脸（既不报错，也不改变提示文字），黑客发出的恶意探测代码就像石沉大海，完全得不到任何<strong>视觉上</strong>的反馈。</p>
+<p>在这个系统面前，黑客仿佛是个“盲人”，完全看不到数据库内部执行的结果，这就叫“盲注（Blind Injection）”。</p>
+<h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>在这个局限下，攻击者利用了数据库自带的休眠函数 <code>SLEEP(0.8)</code>，对数据库下达了一个带有条件判断（布尔值 True &#x2F; False）的指令。把 Payload 翻译成大白话，就是黑客在对数据库说：</p>
+<blockquote>
+<p>“数据库，如果你藏着的那个 Flag 的第一个字母 ASCII 码大于 79，你就给我去睡 0.8 秒钟，醒了再把网页发给我；如果不大于 79，你就立刻把网页发给我。”<br>这时候，<strong>“时间”就成了 True 和 False 的唯一载体：</strong></p>
+</blockquote>
+<ul>
+<li><strong>情况 A（假 &#x2F; False）：</strong> 如果字母 ASCII 码不大于 79，数据库立刻执行完毕。黑客看到网页瞬间（例如 0.05 秒）就加载出来了。虽然页面上还是那句熟悉的 <code>Invalid credentials</code>，但黑客通过时间立刻明白：<strong>刚才猜错了。</strong></li>
+<li><strong>情况 B（真 &#x2F; True）：</strong> 如果字母 ASCII 码真的大于 79，数据库就会乖乖去睡 0.8 秒。黑客发包后掐着秒表，发现等了将近 1 秒钟网页才弹出来。虽然页面上依旧写着 <code>Invalid credentials</code>，但黑客心里清楚：<strong>刚才猜对了。</strong></li>
+</ul>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>SQL（Structured Query Language，结构化查询语言）是专门用于与关系型数据库进行“沟通”的标准编程语言。<br>SQL 的应用几乎涵盖了所有涉及数据存储的系统（如网站用户信息、银行账户明细、电商订单记录等）。它主要用于执行以下四种基本操作，在业界常被称为 CRUD：主要进行创建，读取，删除，更新操作。无论是 MySQL、PostgreSQL、SQL Server 还是 Oracle，它们都遵循基本的 SQL 标准。也就是一种指挥数据库做什么操作的指令语句。</p>
+<ul>
+<li>MySQL：MySQL 是一种<strong>关系型数据库管理系统 (RDBMS)<strong>，它是目前全球范围内使用最广泛的开源数据库系统。</strong>SQL (Structured Query Language)</strong> 是与 MySQL 交互的语言，全称为“结构化查询语言”。通过编写简单的 SQL 语句，你可以对数据进行“增删改查”（CRUD）。</li>
+</ul>
+<h1 id="XAMPP"><a href="#XAMPP" class="headerlink" title="XAMPP"></a>XAMPP</h1><p><strong>XAMPP</strong> 是一个非常经典且功能强大的<strong>免费集成开发环境包</strong>，它的名字其实就是它所包含软件的缩写，直观地展示了它能为你提供什么：</p>
+<ul>
+<li><p><strong>X</strong>：代表**跨平台 (Cross-platform)**，意味着它可以在 Windows、Linux 和 macOS 上运行。</p>
+</li>
+<li><p><strong>A</strong>：代表 <strong>Apache</strong>，这是目前全球使用量最大的 Web 服务器软件（负责接收你的网页请求并返回内容）。</p>
+</li>
+<li><p><strong>M</strong>：代表 <strong>MariaDB</strong>，这是 MySQL 的一个开源分支，也是目前绝大多数 PHP 项目的首选数据库。</p>
+</li>
+<li><p><strong>P</strong>：代表 <strong>PHP</strong>，也就是我们之前提到的脚本语言。</p>
+</li>
+<li><p><strong>P</strong>：代表 <strong>Perl</strong>，一种较老但功能强大的脚本语言（现在用得较少，但在 XAMPP 里依然内置）。</p>
+</li>
+</ul>
+<h1 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h1><p>Apache（全称：<strong>Apache HTTP Server</strong>）是世界上最著名的开源 Web 服务器软件之一。你可以把它理解为<strong>互联网上的一位“大管家”</strong>，专门负责处理用户从浏览器发出的网页请求。</p>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

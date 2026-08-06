@@ -1,0 +1,726 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mathematical Induction · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/math/Discrete%20Math/Chapter%205/Mathematical%20Induction/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Mathematical Induction · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Mathematical Induction · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/">← 离散数学</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">数学</span>
+      <h1>Mathematical Induction</h1>
+      <span class="notes-source-path">math/Discrete Math/Chapter 5/Mathematical Induction.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Mathematical induction is used to prove propositions of the form “nP(n), where the domain of discourse is the set of positive integers. </p>
+<h1 id="prove-step"><a href="#prove-step" class="headerlink" title="prove step"></a>prove step</h1><blockquote>
+<p>[!note] 基本步骤</p>
+<ul>
+<li>Basis step： Establish P(1)</li>
+<li>Inductive step： Prove that $P(k) \to P(k+1)$ for $k \ge 1$<br>      Conclusion:  $\forall n P(n)$ , where the domain  is the set of positive integers</li>
+</ul>
+</blockquote>
+<p>$$ (P(1) ∧ \forall k(P(k) \to P(k+1))) \to \forall n P(n) $$</p>
+<h1 id="well-ordering-良序集"><a href="#well-ordering-良序集" class="headerlink" title="well-ordering 良序集"></a>well-ordering 良序集</h1><ul>
+<li><h2 id="define："><a href="#define：" class="headerlink" title="define："></a>define：</h2>  The validity of mathematical induction follows from the well-ordering property for the set of positive integers.<br>  A set S is well ordered  <strong>if every nonempty subset of S has a least element.</strong></li>
+<li><h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2></li>
+</ul>
+<p>证明数学归纳法的正确性：</p>
+<blockquote>
+<p>[!note]<br>Assume that there is at least one positive integer for which P(n) is false.<br>S: the set of positive integer for which P(n) is false.<br>Then S is nonempty.<br>By the well-ordering property, S has a least element, which will be denoted by m.<br>Then $m&gt;1$, m-1 is a positive integer. m-1 is not in S. So P(m -1) is true.<br>Since the implication $P(m-1)\to P(m )$ is also true, P(m) must be true.<br>By contradiction, $\forall nP(n)$ </p>
+</blockquote>
+<h1 id="数学归纳法证明例子"><a href="#数学归纳法证明例子" class="headerlink" title="数学归纳法证明例子"></a>数学归纳法证明例子</h1><h2 id="example"><a href="#example" class="headerlink" title="example"></a>example</h2><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260402203216.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260402203216.png"></p>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

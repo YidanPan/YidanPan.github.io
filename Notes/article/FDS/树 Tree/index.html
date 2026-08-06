@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="树 Tree · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/FDS/%E6%A0%91%20Tree/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>树 Tree · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="树 Tree · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/">← FDS &amp; LeetCode</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">计算机专业课</span>
+      <h1>树 Tree</h1>
+      <span class="notes-source-path">FDS/树 Tree.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><blockquote>
+<p>[!note] 核心知识</p>
+<ul>
+<li>树的表示法：first-child-next-sibling</li>
+<li>二叉树</li>
+<li>性质</li>
+<li>树的遍历：前、中、后、层</li>
+<li>线索二叉树</li>
+<li>应用：文件系统、表达式树</li>
+<li><strong>二叉搜索树</strong></li>
+<li>各种操作，重点是插入和删除</li>
+</ul>
+</blockquote>
+<h1 id="1-基本知识"><a href="#1-基本知识" class="headerlink" title="1.基本知识"></a>1.基本知识</h1><h2 id="1-1-定义：它是一组节点，可以为空，如果不为空："><a href="#1-1-定义：它是一组节点，可以为空，如果不为空：" class="headerlink" title="1.1.定义：它是一组节点，可以为空，如果不为空："></a>1.1.定义：它是一组节点，可以为空，如果不为空：</h2><ul>
+<li>包含 1 个<strong>根节点 (root)</strong> r</li>
+<li>有 0 个或多个<strong>子树 (subtrees)</strong> $T1,…,Tk​$，每个子树的根节点都和 r 通过一条<strong>边 (edge)</strong> 连接<blockquote>
+<p>[!tip] 注：</p>
+<ul>
+<li>子树之间不会相互连接，因此每个节点都是某个子树的根节点</li>
+<li>对于一棵有 N 个节点的树，它有 N−1条边</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="1-2-基本术语"><a href="#1-2-基本术语" class="headerlink" title="1.2.基本术语"></a>1.2.基本术语</h2><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3E8ca644fd0951bef54e9586b63eaf22af.jpg%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="8ca644fd0951bef54e9586b63eaf22af.jpg"></p>
+<p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3E64b701f9be8d52bd2d15f5820180ad42.jpg%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="64b701f9be8d52bd2d15f5820180ad42.jpg"></p>
+<h2 id="1-3-性质"><a href="#1-3-性质" class="headerlink" title="1.3.性质"></a>1.3.性质</h2><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3E62e6faea69617e42625b6d3a19c79d0e.jpg%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="62e6faea69617e42625b6d3a19c79d0e.jpg"><br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3E7e8ac77b83df7612541df1a19e427c71.jpg%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="7e8ac77b83df7612541df1a19e427c71.jpg"></p>
+<blockquote>
+<p>[!note] 个人心得：</p>
+<ul>
+<li>对于概念搞明白深度、高度两个概念。深度是从根节点开始算的层数（根节点的深度为0）；高度是从叶节点开始算的（叶节点的深度为0）（那两个公式算是特例）</li>
+<li>区分好度为m的树和m叉树（度为m说明至少有一个节点的度为m；m叉树是一开始在构建树的时候设计好了度为m，但经过删除插入等操作之后它的度不一定是m，甚至可以为空树）</li>
+<li>任何一棵树都可以转化成二叉树</li>
+<li>树都可以用一个一维数组来表示（每个位置可以存储当前节点的父节点的index）</li>
+</ul>
+</blockquote>
+<h1 id="2-Binary-Tree-二叉树"><a href="#2-Binary-Tree-二叉树" class="headerlink" title="2.Binary Tree 二叉树"></a>2.Binary Tree 二叉树</h1><h2 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1.基本概念"></a>2.1.基本概念</h2><p>**二叉树 (binary tree)**：每个节点拥有不超过两个孩子的树（最大度为2的树）<br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331153752.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331153752.png"><br>补充：一般树（左图）的后序遍历 &#x3D; 由上述方法得到的二叉树（右图）的中序遍历</p>
+<h2 id="2-2-Tree-Traversals"><a href="#2-2-Tree-Traversals" class="headerlink" title="2.2.Tree Traversals"></a>2.2.Tree Traversals</h2><p>**树的遍历 (tree traversals)**：对树的每个节点都访问一次，时间复杂度为 $O(N)$</p>
+<h3 id="2-2-1-前序遍历-preorder-traversal"><a href="#2-2-1-前序遍历-preorder-traversal" class="headerlink" title="2.2.1. 前序遍历 (preorder traversal)"></a>2.2.1. 前序遍历 (preorder traversal)</h3><pre><code class="c">void preorder(tree_ptr tree)
+{
+    if (tree)
+    {
+        visit(tree);//visit=printf
+        for (each child C of tree)
+            preorder(C);
+    }
+}
+</code></pre>
+<h3 id="2-2-2-后序遍历-postorder-traversal"><a href="#2-2-2-后序遍历-postorder-traversal" class="headerlink" title="2.2.2. 后序遍历 (postorder traversal)"></a>2.2.2. 后序遍历 (postorder traversal)</h3><pre><code class="c">void postorder(tree_ptr tree)
+{
+    if (tree)
+    {
+        for (each child C of tree)
+            postorder(C);
+        visit(tree);
+    }
+}
+</code></pre>
+<h3 id="2-2-3-层序遍历-levelorder-traversal"><a href="#2-2-3-层序遍历-levelorder-traversal" class="headerlink" title="2.2.3.层序遍历 (levelorder traversal)"></a>2.2.3.层序遍历 (levelorder traversal)</h3><pre><code class="c">void levelorder(tree_ptr tree)
+{
+    enqueue(tree);
+    while (queue is not empty)
+    {
+        visit(T = dequeue());
+        for (each child C of T)
+            enqueue(C);
+    }
+}
+</code></pre>
+<h3 id="2-2-4-中序遍历-inorder-traversal"><a href="#2-2-4-中序遍历-inorder-traversal" class="headerlink" title="2.2.4.中序遍历 (inorder traversal)"></a>2.2.4.中序遍历 (inorder traversal)</h3><pre><code class="c">// Recursion
+void inorder(tree_ptr tree)
+{
+    if (tree)
+    {
+        inorder(tree-&gt;Left);
+        visit(tree-&gt;Element);
+        inorder(tree-&gt;Right);
+    }
+}
+
+// Iteration(using stack)
+void iter_inorder(tree_ptr tree)
+{
+    Stack S = CreateStack(MAX_SIZE);
+    for (;;)
+    {
+        for (; tree; tree = tree-&gt;left)
+            Push(tree, S);
+        tree = Top(S);
+        Pop(S);
+        if (!tree)
+            break;
+        visit(tree-&gt;Element);
+        tree = tree-&gt;Right;
+    }
+}
+</code></pre>
+<blockquote>
+<p>[!note] 总结点：</p>
+<ul>
+<li>知道&#x3D;&#x3D;前序或者后序遍历 + 中序遍历&#x3D;&#x3D;，可以确定唯一的一棵树</li>
+<li>知道前序遍历 + 后序遍历，一般情况下无法确定树的形状</li>
+</ul>
+</blockquote>
+<h2 id="2-3-Threaded-Tree-线索二叉树"><a href="#2-3-Threaded-Tree-线索二叉树" class="headerlink" title="2.3. Threaded Tree 线索二叉树"></a>2.3. Threaded Tree 线索二叉树</h2><p>**线索二叉树 (threaded binary trees)**很好地利用了闲置的节点，具体规则如下：</p>
+<ul>
+<li>如果 <code>Tree-&gt;Left</code> 为空，将它指向<strong>中序</strong>遍历中的<strong>前一个节点</strong></li>
+<li>如果 <code>Tree-&gt;Right</code> 为空，将它指向<strong>中序</strong>遍历中的<strong>后一个节点</strong></li>
+<li>有一个<strong>头节点</strong>(dummy node)，使得_最左边_和_最右边_孩子分别指向这个节点的左右孩子</li>
+</ul>
+<h2 id="2-4-Special-tree"><a href="#2-4-Special-tree" class="headerlink" title="2.4 Special tree"></a>2.4 Special tree</h2><h3 id="2-4-1-skewed-tree-斜二叉树"><a href="#2-4-1-skewed-tree-斜二叉树" class="headerlink" title="2.4.1 skewed tree 斜二叉树"></a>2.4.1 skewed tree 斜二叉树</h3><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331182642.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331182642.png"></p>
+<h3 id="2-4-2-comlete-binary-tree-完全二叉树"><a href="#2-4-2-comlete-binary-tree-完全二叉树" class="headerlink" title="2.4.2 comlete binary tree 完全二叉树"></a>2.4.2 comlete binary tree 完全二叉树</h3><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331182727.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331182727.png"></p>
+<h2 id="2-5-性质"><a href="#2-5-性质" class="headerlink" title="2.5 性质"></a>2.5 性质</h2><ul>
+<li>第 $i$层 $(i≥1)$ 最多拥有 $2i−1$ 个节点；深度为 $k$ 的二叉树最多有 $2^{k+1}−1$个节点 ($k≥1$)</li>
+<li>对于非空的二叉树，$n_0&#x3D;n_2+1$，其中 $n_0$是叶子节点个数，$n_2$​ 是度为 2 的节点个数<blockquote>
+<p>[!note] 推论：</p>
+<ul>
+<li>推论1：对于一棵完全二叉树，易知 $n_1&#x3D;0$ 或 $1$。由 $n_0&#x3D;n_2+1$ 知 :</li>
+<li>完全二叉树有奇数个节点时，$n_1&#x3D;0$</li>
+<li>完全二叉树有偶数个节点时，$n_1&#x3D;1$</li>
+<li>推论2：$n$ 叉树的叶子节点个数与 $n_1$​ 无关，且$n_0&#x3D;\sum_{i&#x3D;2}^{n}(i-1)n_i+1$</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-Binary-Search-Tree"><a href="#3-Binary-Search-Tree" class="headerlink" title="3.Binary Search Tree"></a>3.Binary Search Tree</h2><h3 id="3-1-Definition"><a href="#3-1-Definition" class="headerlink" title="3.1.Definition"></a>3.1.Definition</h3><ul>
+<li>A binary search tree is a binary tree.  It may be empty.  If it is not empty, it satisfies the following properties:<br>(1)  Every node has a key which is an integer, and the keys are distinct.<br>(2)  The keys in a nonempty left subtree must be smaller than the key in the root of the subtree.<br>(3)  The keys in a nonempty right subtree must be larger than the key in the root of the subtree.<br>(4)  The left and right subtrees are also binary search trees.</li>
+</ul>
+<h2 id="3-2-代码实现"><a href="#3-2-代码实现" class="headerlink" title="3.2.代码实现"></a>3.2.代码实现</h2><h3 id="3-2-1-Find"><a href="#3-2-1-Find" class="headerlink" title="3.2.1 Find"></a>3.2.1 Find</h3><ul>
+<li><p>递归版本<br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331201107.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331201107.png"></p>
+</li>
+<li><p>迭代版本<br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331201327.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331201327.png"></p>
+</li>
+<li><p><strong>FindMin</strong><br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331202359.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331202359.png"></p>
+</li>
+<li><p><strong>FindMax</strong><br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331202424.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331202424.png"></p>
+</li>
+</ul>
+<h3 id="3-2-2-插入"><a href="#3-2-2-插入" class="headerlink" title="3.2.2 插入"></a>3.2.2 插入</h3><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331202515.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331202515.png"></p>
+<h3 id="3-2-3-删除"><a href="#3-2-3-删除" class="headerlink" title="3.2.3.删除"></a>3.2.3.删除</h3><p><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331202539.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331202539.png"></p>
+<h2 id="4-一般情况分析"><a href="#4-一般情况分析" class="headerlink" title="4.一般情况分析"></a>4.一般情况分析</h2><ul>
+<li><strong>Question</strong>:  Place n elements in a binary search tree.  How high can this tree be?</li>
+<li><strong>Answer</strong>:  The height depends on <em><strong>the order of insertion</strong></em>.<blockquote>
+<p>[!note] <strong>Example</strong><br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260331202715.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260331202715.png"></p>
+</blockquote>
+</li>
+</ul>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

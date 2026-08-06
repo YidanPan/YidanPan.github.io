@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="图论 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/math/Discrete%20Math/Chapter%2010/%E5%9B%BE%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>图论 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="图论 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/">← 离散数学</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">数学</span>
+      <h1>图论</h1>
+      <span class="notes-source-path">math/Discrete Math/Chapter 10/图论.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h3 id="10-6-最短路径问题-Shortest-Path-Problems"><a href="#10-6-最短路径问题-Shortest-Path-Problems" class="headerlink" title="10.6 最短路径问题 (Shortest Path Problems)"></a>10.6 最短路径问题 (Shortest Path Problems)</h3><p><strong>1. 基础知识点</strong></p>
+<ul>
+<li><strong>带权图 (Weighted Graph)：</strong> 图的边被赋予了权重，记作 $G &#x3D; (V, E, W)$。如果边 $(x, y)$ 存在，则它具有特定的权重。</li>
+<li><strong>路径长度：</strong> 在带权图中，一条路径的长度是组成该路径的所有边的权重之和。</li>
+</ul>
+<p><strong>2. Dijkstra 算法详解</strong></p>
+<ul>
+<li><p><strong>背景拓展：</strong> 由荷兰数学家 E. Dijkstra 于 1959 年发现，用于边权均为正的无向图。</p>
+</li>
+<li><p><strong>算法原理：</strong> 它是一个迭代过程。通过不断扩充一个已知最短路径的顶点集合 $S_k$（$k$ 为迭代次数），逐步寻找从起点 $a$ 到各个顶点，直至终点 $z$ 的最短路径。</p>
+</li>
+<li><p><strong>具体步骤与公式：</strong></p>
+<ul>
+<li><strong>步骤 0（初始化）：</strong> 起点 $a$ 的标签 $L_0(a)&#x3D;0$，其余所有顶点的标签为 $\infty$（表示未知），初始集合 $S_0 &#x3D; \emptyset$。</li>
+<li><strong>步骤 k（迭代）：</strong> 将不在集合 $S_{k-1}$ 中且标签值最小的顶点 $u$ 加入集合，形成 $S_k$。随后更新其余不在 $S_k$ 中的顶点 $v$ 的标签。</li>
+<li><strong>更新公式：</strong> $L_k(v) &#x3D; \min{L_{k-1}(v), L_{k-1}(u) + w(u,v)}$。这代表到达 $v$ 的最短路径要么是前一阶段找到的路径，要么是先经过新加入的顶点 $u$ 再走边 $(u,v)$ 到达 $v$ 的路径。</li>
+</ul>
+</li>
+<li><p><strong>【例题 1】</strong> 求图（含顶点 a, b, c, d, e, z）中从 $a$ 到 $z$ 的最短路径。</p>
+<ul>
+<li><strong>计算过程（列表法）：</strong> 算法使用表格记录每次迭代的标签变化。</li>
+<li>初始：$L_0(a)&#x3D;0$，其余为 $\infty$。</li>
+<li>将 $a$ 加入集合，更新相连点 $b(4), c(2)$。</li>
+<li>$c$ 标签最小(2)，加入集合，通过 $c$ 更新 $b(3), d(10), e(12)$。</li>
+<li>接着依次将 $b, d, e$ 加入集合并更新。</li>
+<li>最终算得到达终点 $z$ 的最短路径为 $a \to c \to b \to d \to e \to z$，总长度为 13。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 定理与复杂度 (Theorems &amp; Complexity)</strong></p>
+<ul>
+<li><strong>定理 1：</strong> Dijkstra 算法能够找到连通的简单无向带权图中两点间的最短路径。<ul>
+<li><strong>证明思路（拓展）：</strong> 采用数学归纳法。假设在第 $k$ 次迭代时，集合 $S$ 中所有顶点的标签已经是真实的最短路径，且不在 $S$ 中的顶点的标签也是“仅经过 $S$ 中顶点”的最短路径。通过反证法推演第 $k+1$ 步加入的顶点 $v$ 也必然符合此条件。</li>
+</ul>
+</li>
+<li><strong>定理 2：</strong> Dijkstra 算法的时间复杂度为 $O(n^2)$。<ul>
+<li><strong>推算细节：</strong> 算法最多迭代 $n-1$ 次。在每次迭代中，最多需要 $n-1$ 次比较来找出最小标签顶点，且最多需要 $2(n-1)$ 次加法和比较操作来更新剩余顶点的标签。</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. 拓展问题：旅行商问题 (TSP)</strong></p>
+<ul>
+<li><strong>定义：</strong> 要求在带权完全无向图中，找到一个总权重最小、访问且仅访问每个顶点一次并回到起点的回路。</li>
+<li><strong>等价描述：</strong> 这等价于在完全图中寻找一条总权重最小的**哈密顿回路 (Hamilton circuit)**。</li>
+</ul>
+<hr>
+<h3 id="10-7-平面图-Planar-Graphs"><a href="#10-7-平面图-Planar-Graphs" class="headerlink" title="10.7 平面图 (Planar Graphs)"></a>10.7 平面图 (Planar Graphs)</h3><p><strong>1. 基础知识点</strong></p>
+<ul>
+<li><strong>定义：</strong> 如果一个图可以在平面上画出，且没有任何边相互交叉，则它是平面图。这种画法称为该图的平面表示。</li>
+<li><strong>应用拓展：</strong> 所有的地图表示都是平面图；电子电路通常也被表示为平面图。</li>
+<li><strong>判断提示：</strong> 证明一个图是平面图，可能需要通过移动顶点，以非常迂回的方式重新绘制边，使其不相交。</li>
+</ul>
+<p><strong>2. 区域与欧拉公式</strong></p>
+<ul>
+<li><strong>区域 (Region)：</strong> 平面图中被边完全隔开的平面部分。分为有界区域 (Bounded region) 和无界区域 (Unbounded region)。<strong>注意：任何平面图都必定包含且仅包含 1 个无界区域。</strong></li>
+<li><strong>【例题 2】</strong> 计算给定平面图的区域数。PPT中展示了如何清点，例如某些图例分别被划分为 4 个和 6 个区域（包含最外围的无界区域）。</li>
+<li><strong>【定理 1】欧拉公式：</strong> 对于有 $e$ 条边、$v$ 个顶点的连通平面简单图，其区域数 $r$ 满足：**$r &#x3D; e - v + 2$**。</li>
+<li><strong>欧拉公式的三大推论：</strong><ul>
+<li>推论 1：如果 $v \ge 3$，则边数 $e \le 3v - 6$。</li>
+<li>推论 2：任何连通平面简单图中，必定存在一个度数不超过 5 的顶点。</li>
+<li>推论 3：如果 $v \ge 3$ 且图中不存在长度为 3 的回路，则 $e \le 2v - 4$。</li>
+<li><strong>一般化推导：</strong> 如果连通平面简单图的每个区域至少有 $k$ 条边，则满足特定不等式（暗示 $2e \ge kr$）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Kuratowski 定理 (库拉托夫斯基定理)</strong></p>
+<ul>
+<li><strong>前置概念：</strong><ul>
+<li><strong>基本细分 (Elementary subdivision)：</strong> 在一条边上插入一个新的度为 2 的顶点。</li>
+<li><strong>同胚 (Homeomorphic)：</strong> 如果两个图可以通过从同一个图进行一系列“基本细分”得到，则它们同胚。</li>
+</ul>
+</li>
+<li><strong>【定理 2】内容：</strong> 一个图是非平面图，当且仅当它包含一个同胚于 $K_{3,3}$（完全二分图）或 $K_5$（完全图）的子图。</li>
+</ul>
+<hr>
+<h3 id="10-8-图着色-Graph-Coloring"><a href="#10-8-图着色-Graph-Coloring" class="headerlink" title="10.8 图着色 (Graph Coloring)"></a>10.8 图着色 (Graph Coloring)</h3><p><strong>1. 基础知识与图的转化</strong></p>
+<ul>
+<li><strong>地图着色问题：</strong> 探讨最少需要多少种颜色来给地图上色，使得任意两个相邻区域的颜色都不相同。</li>
+<li><strong>对偶图转化 (Dual Graph)：</strong> 这个地图着色问题可以转化为图论问题。<ul>
+<li>转化规则：将地图上的每一个区域用一个顶点表示；如果两个区域有<strong>大于零长度的公共边界</strong>，则在两个顶点间连一条边。</li>
+<li><strong>注意（易错点）：</strong> 如果两个区域仅仅在一个点上相交（Touch at only one point），则它们不算相邻，不能连边。</li>
+</ul>
+</li>
+<li><strong>【例题】</strong> PPT中展示了一个包含 A, B, C, D, E, F 六个区域的地图，根据上述规则，可以准确地画出对应的对偶图（点连边）。</li>
+</ul>
+<p><strong>2. 着色与色数</strong></p>
+<ul>
+<li><strong>图的着色：</strong> 为简单图的每个顶点分配一种颜色，使得任何两个相邻顶点的颜色都不同。</li>
+<li><strong>色数 (Chromatic Number)：</strong> 完成图的着色所需的最少颜色数量，记作 $\chi(G)$。</li>
+<li><strong>证明某图色数为 $n$ 的标准方法：</strong><ol>
+<li>构造：展示出一种使用恰好 $n$ 种颜色的可行着色方案。</li>
+<li>反证：证明使用少于 $n$ 种颜色绝对无法完成该图的着色。</li>
+</ol>
+</li>
+</ul>
+<p><strong>3. 四色定理 (The Four Color Theorem)</strong></p>
+<ul>
+<li><strong>核心内容：</strong> 任何平面图的色数都不会超过 4。换言之，任何平面地图都可以最多用 4 种颜色着色。</li>
+<li><strong>历史与拓展：</strong> 该定理最早在 1850 年代作为猜想被提出。直到 1976 年，Haken 和 Appel 借助了计算机的穷举搜索才完成了该定理的证明。</li>
+<li><strong>重要局限：</strong> 四色定理<strong>仅适用于平面图</strong>；对于非平面图，其色数可以是任意大。</li>
+</ul>
+<hr>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

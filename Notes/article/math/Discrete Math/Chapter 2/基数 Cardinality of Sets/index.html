@@ -1,0 +1,866 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="基数 Cardinality of Sets · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/math/Discrete%20Math/Chapter%202/%E5%9F%BA%E6%95%B0%20Cardinality%20of%20Sets/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>基数 Cardinality of Sets · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基数 Cardinality of Sets · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/">← 离散数学</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">数学</span>
+      <h1>基数 Cardinality of Sets</h1>
+      <span class="notes-source-path">math/Discrete Math/Chapter 2/基数 Cardinality of Sets.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h2 id="1-基数定义与比较"><a href="#1-基数定义与比较" class="headerlink" title="1. 基数定义与比较"></a>1. 基数定义与比较</h2><ul>
+<li><strong>定义</strong>：如果集合 A 和 B 之间存在双射，则它们的基数相等，记为 ∣A∣&#x3D;∣B∣。</li>
+<li>如果存在从 A 到 B 的单射，则 ∣A∣≤∣B∣。如果同时大小不同，则 ∣A∣&lt;∣B∣。</li>
+<li><strong>Schröder-Bernstein 定理</strong>：如果存在从 A 到 B 的单射，且存在从 B 到 A 的单射，则必然存在双射，即 ∣A∣&#x3D;∣B∣。</li>
+</ul>
+<h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><ul>
+<li>**基数相等 (∣A∣&#x3D;∣B∣)**：当且仅当存在一个从 A 到 B 的双射（Bijection，即既是单射也是满射）。</li>
+<li>**基数小于等于 (∣A∣≤∣B∣)**：当且仅当存在一个从 A 到 B 的单射（Injection，一对一映射）。</li>
+<li>**基数严格小于 (∣A∣&lt;∣B∣)**：当且仅当 ∣A∣≤∣B∣ 且 $∣A∣\not&#x3D;∣B∣$（即不存在双射）。</li>
+<li>**可数集 (Countable Set)**：基数等于正整数集 Z+ 的集合，其基数记为 $ℵ_0$​ (Aleph-null)。</li>
+<li>**连续统 (Continuum)**：实数集 R 的基数，记为 c。</li>
+</ul>
+<hr>
+<h2 id="2-可数集-Countable-Sets"><a href="#2-可数集-Countable-Sets" class="headerlink" title="2. 可数集 (Countable Sets)"></a>2. 可数集 (Countable Sets)</h2><ul>
+<li><strong>定义</strong>：如果一个集合是有限的，或者与正整数集 Z+ 具有相同的基数（即存在双射，可以将其元素排成一个序列列举出来），则称为可数集。其基数记为 $ℵ_0$​（Aleph null）。</li>
+<li><strong>经典可数集示例</strong>：<ul>
+<li>正偶数集、整数集 Z 都是可数无限的。</li>
+<li><strong>有理数集</strong> Q：可以通过二维坐标点 (p,q) 按照对角线路径穷举，因此也是可数无限的。</li>
+<li><strong>有限字符表构成的有限长度字符串集合（以及合法的Java程序集合）</strong>：可以通过按长度排序，再按字典序（Lexicographic order）排序来逐一列举，因此是可数的。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-不可数集与对角线证明法-Uncountable-Sets"><a href="#3-不可数集与对角线证明法-Uncountable-Sets" class="headerlink" title="3. 不可数集与对角线证明法 (Uncountable Sets)"></a>3. 不可数集与对角线证明法 (Uncountable Sets)</h2><ul>
+<li><strong>实数区间</strong> (0,1) <strong>是不可数的</strong>：教授详细讲解了**康托尔对角线法 (Cantor Diagonalization Argument)**。假设 (0,1) 是可数的并将其小数展开排成一列，我们可以构造一个新数字 x，其第 i 位小数与列表中第 i 个数字的第 i 位不同（例如：如果 $d_{ii}​&#x3D;3$ 则取 4，否则取 3）。这个新数字 x 不在列表中，从而产生矛盾，证明其不可列举。</li>
+<li><strong>实数集</strong> R <strong>与</strong> (0,1) <strong>基数相同</strong>：可以通过函数 $f(x)&#x3D;tan(x)$（经过适当缩放和平移）建立双射，证明它们大小相同。连续统基数通常记为 c。</li>
+</ul>
+<hr>
+<h2 id="4-康托尔定理-Cantor’s-Theorem-与幂集"><a href="#4-康托尔定理-Cantor’s-Theorem-与幂集" class="headerlink" title="4. 康托尔定理 (Cantor’s Theorem) 与幂集"></a>4. 康托尔定理 (Cantor’s Theorem) 与幂集</h2><blockquote>
+<p>[!note] Cantor’s Theorem</p>
+<ul>
+<li><strong>定理</strong>：任何集合 A 的幂集 P(A) 的基数严格大于集合 A 本身的基数（$∣A∣&lt;∣P(A)∣$）。</li>
+<li><strong>证明思路</strong>：<ul>
+<li>假设存在一个双射 $g:A→P(A)$。</li>
+<li>构造一个特殊子集 $B&#x3D;{x∈A∣x \notin g(x)}$（即元素 x 不属于它所映射到的那个子集）。</li>
+<li>如果 g 是满射，必定存在 b∈A 使得 g(b)&#x3D;B。</li>
+<li>这会导致逻辑矛盾：如果 b∈B，由定义 $b \notin g(b)$ 即 $b \notin B$；如果 $b\notin B$，则符合定义，应有 $b∈B$。</li>
+<li>由此反证得出不存在双射，进而得出 $∣A∣&lt;∣P(A)∣$。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="5-可计算性与连续统假设"><a href="#5-可计算性与连续统假设" class="headerlink" title="5. 可计算性与连续统假设"></a>5. 可计算性与连续统假设</h2><ul>
+<li><strong>可计算性 (Computability)<strong>：由于计算机程序（Java程序）的集合是可数的，而所有数学函数的集合是不可数的，因此</strong>必然存在无法用计算机程序实现的“不可计算函数 (Uncomputable functions)”</strong>，且其数量远多于可计算函数。</li>
+<li>**连续统假设 (Continuum Hypothesis)**：认为不存在介于可数集基数 $ℵ_0$​ 和实数集基数 c 之间的基数（即 $ℵ_1​&#x3D;c$）。在标准公理集合论中，这是一个无法被证明也无法被证伪的命题。</li>
+<li><strong>常见证明错误提示</strong>：不能将无限小数的展开式倒转写成整数来证明对应关系，因为<strong>任何合法的整数其位数都必须是有限的</strong>，无限位的“整数”不属于整数集。</li>
+</ul>
+<hr>
+<h2 id="6-经典例题的严格数学推导"><a href="#6-经典例题的严格数学推导" class="headerlink" title="6. 经典例题的严格数学推导"></a>6. 经典例题的严格数学推导</h2><ul>
+<li><h3 id="类别-1：证明集合是“可数无限的”（证明-∣A∣-ℵ-0-​）"><a href="#类别-1：证明集合是“可数无限的”（证明-∣A∣-ℵ-0-​）" class="headerlink" title="类别 1：证明集合是“可数无限的”（证明 $∣A∣&#x3D;ℵ_0$​）"></a>类别 1：证明集合是“可数无限的”（证明 $∣A∣&#x3D;ℵ_0$​）</h3><p>  <strong>核心逻辑</strong>：找到一种不重不漏的“列举方法”，即将集合元素排成一个序列（本质是建立与正整数集 $Z^+$ 的双射）。</p>
+<ul>
+<li><strong>例1.1：正偶数集</strong> $\mathbb E$ <strong>与正整数集</strong> $\mathbb Z^+$ <strong>等势</strong><ul>
+<li><strong>目标</strong>：证明 **$∣\mathbb Z^+∣&#x3D;∣\mathbb E∣$**。</li>
+<li><strong>构造函数</strong>：定义函数 $f:\mathbb Z^+→\mathbb E$，规则为 $f(x)&#x3D;2x$。</li>
+<li><strong>单射证明</strong>：设 $f(a)&#x3D;f(b)$，即 $2a&#x3D;2b$，两边除以2得 a&#x3D;b。故 f 是单射。</li>
+<li><strong>满射证明</strong>：对于任意 y∈E（y 为正偶数），由偶数定义，必然存在正整数 k 使得 $y&#x3D;2k$。取 $x&#x3D;k∈\mathbb Z^+$，有 $f(x)&#x3D;2k&#x3D;y$。故 f 是满射。</li>
+<li><strong>结论</strong>：f 是双射，因此正偶数与正整数一样多，E 是可数的。</li>
+</ul>
+</li>
+<li><strong>例1.2：有限字符表上的有限长度字符串集合</strong> S <strong>是可数的</strong><ul>
+<li><strong>目标</strong>：证明 $∣S∣&#x3D;ℵ_0$​。</li>
+<li><strong>列举策略（Lexicographic Order）</strong>：<ol>
+<li>先按长度（Length）对字符串进行分组：长度为1，长度为2…</li>
+<li>在同一长度的组内，按照**字典序（Alphabetical order）排列。</li>
+</ol>
+</li>
+<li><strong>逻辑关系</strong>：因为字符表是有限的，任意长度 n 的字符串数量也是有限的。这种“按长度+字典序”的二维排序法可以保证每一个合法的字符串（包括任何合法的Java程序）都会在有限步内被列举到（即分配到唯一的一个正整数索引），从而建立了到 $Z^+$ 的双射。</li>
+</ul>
+</li>
+<li><strong>例1.3：📝 证明：正有理数集 $\mathbb{Q}_+$ 是可数的。</strong><br>  <strong>(1) $∣\mathbb Q^+∣≤∣\mathbb S∣$：</strong>$x&#x3D;\frac{p}{q}→(p,q)$<br>  <strong>(2)</strong> $∣\mathbb S∣&#x3D;∣\mathbb Z^+∣$：沿着对角线取——TBD<br>  <strong>(3)</strong> $∣\mathbb Z^+∣≤∣\mathbb Q^+∣$：$x→\frac{x}{1}$</li>
+</ul>
+</li>
+<li><h3 id="类别-2：证明区间集合基数相等（实数域内的双射）"><a href="#类别-2：证明区间集合基数相等（实数域内的双射）" class="headerlink" title="类别 2：证明区间集合基数相等（实数域内的双射）"></a>类别 2：证明区间集合基数相等（实数域内的双射）</h3><p>  <strong>核心逻辑</strong>：利用代数变换或三角函数在区间上建立连续的单调函数，单调连续函数必然是双射。</p>
+<ul>
+<li><strong>例2.1：任意开区间</strong> (a,b) <strong>与</strong> (0,1) <strong>等势</strong><ul>
+<li><strong>构造函数</strong>：设 $f:(0,1)→(a,b)$，我们使用线性缩放平移：$f(x)&#x3D;a+(b−a)x$。</li>
+<li><strong>证明</strong>：这是一条直线方程，斜率为 k&#x3D;b−a&gt;0，因此是严格单调递增的，这保证了单射；同时它的值域完美覆盖了 (a,b)，保证了满射。故 ∣(a,b)∣&#x3D;∣(0,1)∣。</li>
+</ul>
+</li>
+<li><strong>例2.2：实数集</strong> R <strong>与</strong> (0,1) <strong>等势</strong><ul>
+<li><strong>构造函数</strong>：已知正切函数 tan(x) 在 $(\frac{−π}{2},\frac{π}{2})$ 上是双射，映射到整条实数轴 R。我们只需再将 (0,1) 线性映射到 $(\frac{−π}{2},\frac{π}{2})$即可。</li>
+<li><strong>复合双射</strong>：$f(x)&#x3D;tan(πx−\frac{π}{2})$。由于单调连续，f 构成了从 (0,1) 到 R 的双射，因此 ∣R∣&#x3D;∣(0,1)∣&#x3D;c。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="类别-3：证明集合不可数（对角线法与反证法）"><a href="#类别-3：证明集合不可数（对角线法与反证法）" class="headerlink" title="类别 3：证明集合不可数（对角线法与反证法）"></a>类别 3：证明集合不可数（对角线法与反证法）</h3><p>  <strong>核心逻辑</strong>：假设集合可数并将其列举，然后巧妙构造出一个绝对不在列表中的新元素，打破假设。</p>
+<ul>
+<li><strong>例3.1：康托尔对角线法证明</strong> (0,1) <strong>的实数不可数</strong><ul>
+<li><strong>反证假设</strong>：假设 (0,1) 是可数的，那么可以将其所有实数排成一个无限列表 $r_1​,r_2​,…$。</li>
+<li><strong>列出展开式</strong>：每个数用无限小数表示 $r_i​&#x3D;0.d_{i1}​d_{i2}​d_{i3}​…$（其中 $d_{ij}$​ 是第 i 个数的第 j 位小数）。</li>
+<li><strong>构造新数</strong> x：定义一个新实数 $x&#x3D;0.x_1​x_2​x_3​…$，其构造规则如下：<ul>
+<li>考察对角线上的数字 $d_{ii}$。</li>
+<li>如果 $d_{ii​}&#x3D;3$，则令 $x_i​&#x3D;4$。</li>
+<li>如果 $d_{ii}​ \not&#x3D; 3$，则令 $x_i​&#x3D;3$。</li>
+</ul>
+</li>
+<li><strong>得出矛盾</strong>：这个新构造的实数 x 必然介于 0 和 1 之间。但是，它与列表中的第 1 个数在第 1 位不同，与第 2 个数在第 2 位不同……与第 k 个数在第 k 位不同。因此，x <strong>不在我们的全部列举列表中</strong>。这就推翻了“能够全部列举”的假设，证明 (0,1) 是不可数的。</li>
+</ul>
+</li>
+<li><strong>例3.2：康托尔定理——证明</strong> $∣A∣&lt;∣P(A)∣$<strong>（任何集合严格小于其幂集）</strong><ul>
+<li><strong>分析</strong>：这是集合论中最深刻的证明之一。我们要证明不存在从 A 到其幂集 P(A) 的满射。</li>
+<li><strong>反证假设</strong>：假设存在一个双射（或至少是满射）$g:A→P(A)$。这意味着对于每一个元素 x∈A，g(x) 都是 A 的一个子集。</li>
+<li><strong>构造反例（核心动作）</strong>：我们定义一个非常特殊的子集 B⊆A：$B&#x3D;{x∈A∣x \notin g(x)}$ <em>(即：我们检查</em> A <em>中的每个元素</em> x_，看它是否属于它自己映射出的那个子集_ g(x)<em>。如果不属于，我们就把它塞进集合</em> B _里)_。</li>
+<li><strong>得出矛盾</strong>：因为 g 是满射，且 B 也是 A 的一个子集（$B∈P(A)$），所以必然存在某个元素 $b∈A$ 使得 $g(b)&#x3D;B$。 现在我们问：<strong>元素</strong> b <strong>到底在不在集合</strong> B <strong>中？</strong><ul>
+<li><strong>假设 1</strong>：如果 b∈B。根据 B 的定义条件，必须有 $b \notin g(b)$。因为 g(b)&#x3D;B，这就意味着 $b \notin B$。<strong>（矛盾）</strong></li>
+<li><strong>假设 2</strong>：如果 $b \notin B$。既然 $g(b)&#x3D;B$，这意味着 $b \notin g(b)$。但根据 B 的定义条件，不属于自己映射子集的元素都必须收录进 B 中，因此 $b∈B$。<strong>（矛盾）</strong></li>
+</ul>
+</li>
+<li><strong>结论</strong>：逻辑崩溃。因此这样的满射 g 根本不存在。由于可以轻易建立从 A 到 P(A) 的单射（如 f(x)&#x3D;{x}），因此严格得出 $∣A∣&lt;∣P(A)∣$。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="类别-4：运用-Schroder-Bernstein-定理（夹逼定理）"><a href="#类别-4：运用-Schroder-Bernstein-定理（夹逼定理）" class="headerlink" title="类别 4：运用 Schröder-Bernstein 定理（夹逼定理）"></a>类别 4：运用 Schröder-Bernstein 定理（夹逼定理）</h3><p>  <strong>核心逻辑</strong>：如果要证明 ∣A∣&#x3D;∣B∣，但直接找双射太难，可以分别找两个单射：一个从 A→B，另一个从 B→A。</p>
+<ul>
+<li><strong>例4.1：证明闭区间</strong> $[0,1]$<strong>与开区间</strong> (0,1) <strong>基数相同</strong><ul>
+<li><strong>步骤 1 ($[0,1]$≥∣(0,1)∣</strong>)**：(0,1) 本来就是 的真子集，定义恒等映射 f(x)&#x3D;x，这就是一个从 (0,1) 到 的单射。</li>
+<li><strong>步骤 2 ($[0,1]$≤∣(0,1)∣</strong>)**：我们需要找到一个从 完美射入 (0,1) 内部的单射。可以构造函数 g(x)&#x3D;21​x+41​。<ul>
+<li>当 x∈ 时，$g(x)∈[\frac{1}{4},\frac{3}{4}]$。</li>
+<li>因为$[\frac{1}{4},\frac{3}{4}]$ 是 (0,1) 的子集，所以 g 是一个从 到 (0,1) 的严格单射。</li>
+</ul>
+</li>
+<li><strong>结论</strong>：根据 Schröder-Bernstein 定理，既然互相都能单射过去，那么必然存在双射，即$[0,1]&#x3D;∣(0,1)∣$。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="7-基数证明题的“阶梯解题策略”"><a href="#7-基数证明题的“阶梯解题策略”" class="headerlink" title="7.基数证明题的“阶梯解题策略”"></a>7.基数证明题的“阶梯解题策略”</h2><p>针对离散数学中的基数比较问题，建议采用以下“四步阶梯法”进行思考和作答：</p>
+<h4 id="第一阶：明确目标关系（判断势的大小）"><a href="#第一阶：明确目标关系（判断势的大小）" class="headerlink" title="第一阶：明确目标关系（判断势的大小）"></a>第一阶：明确目标关系（判断势的大小）</h4><p>拿到两个集合后，首先凭数学直觉判断它们的关系：</p>
+<ol>
+<li><strong>都是离散的、可数的</strong>（如整数、有理数、字符串） → 目标是建立与 $Z^+$ 的双射（证明 $∣A∣&#x3D;ℵ_0$​）。</li>
+<li><strong>都是连续的区间&#x2F;实数</strong>（如 (a,b)、R） → 目标是建立两者间的双射或利用夹逼定理（证明 $∣A∣&#x3D;c$）。</li>
+<li><strong>层级不同的</strong>（如实数与整数、集合与其幂集） → 目标是使用反证法（对角线法）证明 $∣A∣&lt;∣B∣$。</li>
+</ol>
+<h4 id="第二阶：尝试直接构造双射-Direct-Bijection"><a href="#第二阶：尝试直接构造双射-Direct-Bijection" class="headerlink" title="第二阶：尝试直接构造双射 (Direct Bijection)"></a>第二阶：尝试直接构造双射 (Direct Bijection)</h4><ul>
+<li><strong>代数平移&#x2F;缩放</strong>：如果比较的是两个实数区间，优先尝试一元一次函数 $f(x)&#x3D;kx+b$。</li>
+<li><strong>分段函数映射</strong>：如果是无限集和它的真子集（如 Z 和正偶数），通过乘除法、奇偶分段等建立代数表达式。</li>
+</ul>
+<h4 id="第三阶：退而求其次（使用巧妙的“定理工具”）"><a href="#第三阶：退而求其次（使用巧妙的“定理工具”）" class="headerlink" title="第三阶：退而求其次（使用巧妙的“定理工具”）"></a>第三阶：退而求其次（使用巧妙的“定理工具”）</h4><ul>
+<li><strong>工具 1：穷举法 (Listing&#x2F;Enumeration)</strong> 如果找不到显式的代数公式，但你能用人类语言描述出一个<strong>有固定顺序、不会漏掉任何元素、且不无限卡在某一组</strong>的排队规则（如“先按总和排序”、“先按长度排再按字典序排”），这就等同于建立了与正整数的双射。</li>
+<li><strong>工具 2：Schröder-Bernstein 定理</strong> 如果构造双射 $A↔B$ 太复杂（例如涉及开闭区间的端点），立刻转为分别构造两个单射 A→B 和 B→A。寻找单射通常非常简单，只需将域“按比例压缩”到另一方的内部即可（如例4.1）。</li>
+</ul>
+<h4 id="第四阶：证明“不可能”（Uncountability-严格小于）"><a href="#第四阶：证明“不可能”（Uncountability-严格小于）" class="headerlink" title="第四阶：证明“不可能”（Uncountability &#x2F; 严格小于）"></a>第四阶：证明“不可能”（Uncountability &#x2F; 严格小于）</h4><ul>
+<li>如果题目要求证明<strong>不可数</strong>或<strong>严格小于</strong>，<strong>反证法 (Proof by Contradiction)</strong> 是唯一正途。</li>
+<li><strong>经典套路（康托尔对角线思想）</strong>：<ol>
+<li>假设存在一个全集列举器（双射映射关系）。</li>
+<li>构造一个“唱反调”的新元素 x。</li>
+<li>利用 x 的每个特征都与列表中对应位置的元素不同的特性（$x_i​\not&#x3D; d_{ii}​$，或 $x\notin g(x)$），证明 x 不在被映射的范围内。</li>
+<li>推翻假设。</li>
+</ol>
+</li>
+<li><strong>避坑指南</strong>：绝对不可使用“把无限小数倒过来写成整数”这种直觉谬误。必须牢记：任何合法的整数都必须具有有限的位数。无限小数的展开式不是合法的整数。</li>
+</ul>
+<hr>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

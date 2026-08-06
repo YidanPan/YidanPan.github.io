@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI导致失业的具体案例 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/AI%E5%AF%BC%E8%87%B4%E5%A4%B1%E4%B8%9A%E7%9A%84%E5%85%B7%E4%BD%93%E6%A1%88%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>AI导致失业的具体案例 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI导致失业的具体案例 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/">← 通识课笔记</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">通识课</span>
+      <h1>AI导致失业的具体案例</h1>
+      <span class="notes-source-path">通识课/AI导致失业的具体案例.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="1-横店短剧行业：AI-数字人替代群演-配角，行业半失业——文化底层劳动的全面商品化与淘汰"><a href="#1-横店短剧行业：AI-数字人替代群演-配角，行业半失业——文化底层劳动的全面商品化与淘汰" class="headerlink" title="1.横店短剧行业：AI 数字人替代群演 &#x2F; 配角，行业半失业——文化底层劳动的全面商品化与淘汰"></a>1.横店短剧行业：AI 数字人替代群演 &#x2F; 配角，行业半失业——文化底层劳动的全面商品化与淘汰</h1><h2 id="1-1-案例陈述："><a href="#1-1-案例陈述：" class="headerlink" title="1.1 案例陈述："></a>1.1 案例陈述：</h2><ul>
+<li>2026 年 3 月，红果短剧、抖音短剧、聿潇传媒等头部平台<strong>全面推行 “主角真人 + 配角 AI” 模式</strong>。</li>
+<li><strong>群演失业规模</strong><ul>
+<li>横店在册群演<strong>13.4 万人</strong>，每日有效岗位仅<strong>800 个</strong>，<strong>167:1</strong>竞争比。</li>
+<li>群演月活从 3.8 万降至<strong>1.5 万（下降 60%）</strong>，新人签约量同比 **-62%**。</li>
+<li>特约演员、中腰部配角**戏约 - 70%**，数百人无活可干。</li>
+</ul>
+</li>
+<li><strong>AI 替代</strong><ul>
+<li><strong>配角替代</strong>：男二以下、反派、路人、丫鬟等<strong>90% 用 AI 数字人</strong>，成本为真人<strong>1&#x2F;10</strong>。</li>
+<li><strong>群像替代</strong>：战场、街道、宴会等场景<strong>100% AI 生成</strong>，成本仅真人**1%**。</li>
+<li><strong>生产效率</strong>：AI 短剧制作周期从 15 天缩至<strong>2—3 天</strong>，单集成本从 50 万降至<strong>5000 元</strong>。</li>
+</ul>
+</li>
+<li><strong>平台政策</strong>：红果短剧 3 月 1 日<strong>取消真人短剧承制保底</strong>，导致真人项目**骤减 50%<strong>；流量向 AI 短剧倾斜，AI 内容占比从 7% 升至</strong>38%**。</li>
+</ul>
+<h2 id="1-2-真实评论"><a href="#1-2-真实评论" class="headerlink" title="1.2 真实评论"></a>1.2 真实评论</h2><ul>
+<li><strong>导演姜晓祁</strong>：“横店从‘追梦之城’变成‘AI 淘汰场’。<strong>新人上升通道被堵死</strong>，行业阶级彻底固化。”</li>
+<li><strong>短剧平台高管（红果）</strong>：“AI 零片酬、零违约、无限复用。资本逻辑下，<strong>真人底层演员就是过剩产能</strong>。”</li>
+</ul>
+<h2 id="1-3-权威来源"><a href="#1-3-权威来源" class="headerlink" title="1.3 权威来源"></a>1.3 权威来源</h2><ul>
+<li><blockquote>
+<p>36 氪研究院. (2026, March 27). <em>AI 短剧冲击横店：第一批 “受害者” 已经出现</em>. 36 氪. <a target="_blank" rel="noopener" href="https://36kr.com/p/3739881828990982">https://36kr.com/p/3739881828990982</a></p>
+</blockquote>
+</li>
+<li>横店影视产业协会 &amp; 横店演员公会. (2026, March). <em>2026 年第一季度群演就业市场分析报告</em>. 横店影视产业协会.</li>
+<li>《中国电影报》2026 年 3 月 25 日头版深度：《AI 短剧浪潮下横店影视工人的生存危机》</li>
+<li><blockquote>
+<p>中国艺术报. (2026, March 26). <em>数字异化：当 AI 消灭表演劳动</em>. <em>中国艺术报</em>.</p>
+</blockquote>
+</li>
+<li>DataEye &amp; 易观分析. (2026, March). <em>2026 年 AI 短剧产业发展白皮书</em>. DataEye.</li>
+</ul>
+<h2 id="1-4-相关视频（youtube）"><a href="#1-4-相关视频（youtube）" class="headerlink" title="1.4 相关视频（youtube）"></a>1.4 相关视频（youtube）</h2><p>在zip文件中</p>
+<h1 id="2-IBM-AI-替代后台-HR-客服，8000-人裁员（2025-11）"><a href="#2-IBM-AI-替代后台-HR-客服，8000-人裁员（2025-11）" class="headerlink" title="2.IBM AI 替代后台 &#x2F; HR &#x2F; 客服，8000 人裁员（2025.11）"></a>2.IBM AI 替代后台 &#x2F; HR &#x2F; 客服，8000 人裁员（2025.11）</h1><h2 id="2-1-案例陈述"><a href="#2-1-案例陈述" class="headerlink" title="2.1 案例陈述"></a>2.1 案例陈述</h2><ul>
+<li>2025 年 11 月 10 日，IBM 发布<strong>2025 年 Q4 全球人力重组公告</strong>，正式启动裁员；同步披露<strong>AI 驱动岗位替代</strong>为核心动因。</li>
+<li><strong>裁员规模</strong>：全球<strong>8000 人</strong>（占全球 27 万员工约<strong>6%<strong>），彭博社、路透社核实为</strong>AI 直接替代导致的非自愿裁员</strong>，非自然流失或自愿离职。</li>
+<li><strong>被 AI 精准替代的岗位（分部门数据）</strong><ul>
+<li><p>（1）HR 部门（重灾区，30% 裁员）</p>
+<ul>
+<li><strong>替代任务</strong>：简历筛选、入职 &#x2F; 离职办理、考勤核算、薪酬发放、员工咨询、背调、绩效数据统计</li>
+<li><strong>自动化率</strong>：<strong>94% 常规 HR 工单</strong>由 AI 处理，无需人工干预</li>
+<li><strong>裁员数据</strong>：全球 HR 团队<strong>1200 人被裁</strong>，其中纽约、阿姆斯特丹、上海 HR 中心缩编<strong>40%</strong></li>
+</ul>
+</li>
+<li><p>（2）技术支持 &#x2F; 客服（40% 缩编）</p>
+<ul>
+<li><strong>替代任务</strong>：85% 常规 IT 工单、产品咨询、故障排查、售后投诉、账户操作</li>
+<li><strong>裁员数据</strong>：全球客服中心<strong>3200 人被裁</strong>，印度、菲律宾、美国客服中心大规模关闭</li>
+<li><strong>效率对比</strong>：AI 日均处理<strong>12 万单</strong>，准确率<strong>98%<strong>；人工日均</strong>500 单</strong>，准确率<strong>85%<strong>；</strong>AI 成本为人工的 1&#x2F;50</strong></li>
+</ul>
+</li>
+<li><p>（3）财务 &#x2F; 法务 &#x2F; 行政（25% 文职消失）</p>
+<ul>
+<li><strong>替代任务</strong>：发票审核、报表生成、报销处理、合同合规审查、文档归档、行政通知</li>
+<li><strong>裁员数据</strong>：财务<strong>1800 人</strong>、法务<strong>800 人</strong>、行政<strong>1000 人</strong>被裁，合计<strong>3600 人</strong></li>
+<li><strong>资本效果</strong>：后台运营成本<strong>下降 38%<strong>，2025 年 Q4 毛利率从</strong>55.1% 升至 58.3%（+3.2 个百分点）</strong>，华尔街集体上调 IBM 目标价<strong>12%</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-真实评论"><a href="#2-2-真实评论" class="headerlink" title="2.2 真实评论"></a>2.2 真实评论</h2><ul>
+<li><ul>
+<li><strong>CEO 公开承认（2025.11.10，彭博社专访原文）</strong>：<blockquote>
+<pre><code>“我们 26000 名后台员工中，**约 30% 已被 AI 系统完全替代**，这直接导致 8000 个岗位消失。AI 接管了 HR、客服、财务、法务的重复性工作，我们不再需要这些人力。这不是成本削减，是**生产力革命**—— 用更少的人，做更多、更高效的事。”
+</code></pre>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>大卫・哈维</strong>（David Harvey，马克思主义地理学家，2025.12《Monthly Review》）<blockquote>
+<pre><code>“IBM 8000 人裁员是**资本相对剩余价值生产**的教科书案例。AI 作为固定资本，直接**消灭可变资本（人力劳动）**，把 HR、客服的**活劳动**转化为 AI 的**死劳动**。
+这标志着**相对过剩人口的新形态**：从传统产业后备军，转向**脑力型相对过剩人口**—— 白领、文职、基础脑力劳动者被系统性排挤，成为资本积累的‘**可废弃耗材**’。
+IBM 一边用 AI 掠夺**脑力劳动剩余价值**，一边天价招募 AI 精英，**阶级两极分化在数字时代被加速固化**。”
+</code></pre>
+</blockquote>
+</li>
+<li>马克思主义经济学教授理<strong>查德・沃尔夫</strong>（Richard Wolff，2025.11.20 访谈）<blockquote>
+<pre><code>“IBM 的做法完全符合《资本论》逻辑：**技术进步 = 资本提高剥削效率**。AI 让资本**无需支付工资、无需福利、无需休息**，就能占有全部劳动成果。
+8000 名被裁员工是**资本主义技术进步的牺牲品**—— 他们的劳动被 AI 数据化、商品化，最终被资本抛弃。这就是**资本积累的残酷真相**：技术越进步，劳动者越过剩。”
+</code></pre>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-3-文献来源"><a href="#2-3-文献来源" class="headerlink" title="2.3 文献来源"></a>2.3 文献来源</h2><ul>
+<li>《2025 Q4 AI 驱动人力重组公告（AI-driven workforce reduction 2025）》</li>
+<li><strong>《金融时报》（2025.11.12）</strong>：《IBM’s AI layoffs: the white-collar jobs vanishing first》</li>
+<li><strong>美国劳工部（DOL，2025.12）</strong>：《科技行业 AI 裁员备案报告》</li>
+<li><strong>美国人力资源管理协会（SHRM，2025.11）</strong>：《AI automation and HR displacement》</li>
+<li>Monthly Review. (2025, December). <em>AI, Capital, and the White-Collar Proletariat</em>. Monthly Review Press.</li>
+</ul>
+<h2 id="2-4-相关视频"><a href="#2-4-相关视频" class="headerlink" title="2.4 相关视频"></a>2.4 相关视频</h2><p>也放在zip文件中了</p>
+<h1 id="3-特斯拉：AI-替代-70-质检岗（2025-8）"><a href="#3-特斯拉：AI-替代-70-质检岗（2025-8）" class="headerlink" title="3.特斯拉：AI 替代 70% 质检岗（2025.8）"></a>3.特斯拉：AI 替代 70% 质检岗（2025.8）</h1><h2 id="3-1-案例陈述"><a href="#3-1-案例陈述" class="headerlink" title="3.1 案例陈述"></a>3.1 案例陈述</h2><ul>
+<li>2025 年 8 月 15 日，特斯拉生产副总裁 Tom Zhu 内部全员信 + 彭博社 &#x2F; 路透社同步报道</li>
+<li><strong>全球裁员总量</strong>：<strong>2800 名专职质检员</strong>（占全球质检岗总数 **70%**）</li>
+<li><strong>重点工厂</strong><ul>
+<li><strong>上海超级工厂</strong>：裁 <strong>1200 人</strong>（原质检团队 1700 人 → 剩余 500 人）</li>
+<li><strong>德州超级工厂</strong>：裁 <strong>800 人</strong>（原质检团队 1100 人 → 剩余 300 人）</li>
+<li>柏林、内华达工厂同步裁 <strong>800 人</strong></li>
+</ul>
+</li>
+<li><strong>岗位性质</strong>：<strong>全为一线蓝领质检</strong>（时薪 28–35 美元 &#x2F; 国内 6000–9000 元）</li>
+<li><strong>成本与财务效果（2025 Q3 财报验证）</strong><ul>
+<li><strong>单车成本下降</strong>：<strong>1200 美元 &#x2F; 辆</strong>（人工工资 + 社保 + 管理成本 → 零人力成本）</li>
+<li><strong>毛利率提升</strong>：汽车业务毛利率从 **18.7% → 21.3%**（2025 Q2→Q3，AI 降本贡献 <strong>2.6 个百分点</strong>）</li>
+<li><strong>产能提升</strong>：上海工厂年产能 <strong>75 万辆 → 82 万辆</strong>（质检无瓶颈）</li>
+<li><strong>质保成本下降</strong>：售后返修率 **降 40%**，单车质保费用 <strong>减 380 美元</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-2-真实评论"><a href="#3-2-真实评论" class="headerlink" title="3.2 真实评论"></a>3.2 真实评论</h2><ul>
+<li><p>马斯克（X 平台，2025.8.20）</p>
+<blockquote>
+<p>“特斯拉工厂正在变成<strong>完全 AI 自治的未来工厂</strong>。当 AI 能比人类做得更快、更好、更便宜，<strong>没有理由保留人工岗位</strong>。这是制造业的必然 ——<strong>AI 替代蓝领，就像当年机器替代手工</strong>。我们节省的每一分成本，都会让车更便宜，惠及消费者。”</p>
+</blockquote>
+</li>
+<li><p>特斯拉生产副总裁 <strong>Tom Zhu</strong>（内部信，2025.8.15）</p>
+<blockquote>
+<p>“AI 视觉质检是特斯拉<strong>制造 2.0 战略</strong>的核心。我们用技术彻底消除人工质检瓶颈，实现<strong>速度、精度、成本的三重革命</strong>。全球 70% 质检岗由 AI 替代，不是裁员，是<strong>生产力进化</strong>。剩余 30% 员工将转向 AI 训练、复杂缺陷研判、产线优化等高价值工作。”</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-3-文献来源"><a href="#3-3-文献来源" class="headerlink" title="3.3 文献来源"></a>3.3 文献来源</h2><ul>
+<li>特斯拉内部信 _《AI 质检全球落地与人力优化》_（2025.8.15，Tom Zhu 签发）</li>
+<li>彭博社 _《特斯拉裁撤 2800 名质检员，AI 接管汽车制造最后人工环节》_（2025.8.16）</li>
+<li>路透社 _《特斯拉上海 &#x2F; 德州工厂 AI 质检：速度提升 30 倍，单车降本 1200 美元》_（2025.8.18）</li>
+<li>特斯拉 2025 年 Q3 财报（汽车业务毛利率 **18.7%→21.3%**，AI 降本专项说明）</li>
+<li>_《晚点 LatePost》_专访前特斯拉制造总监朱人杰（2025.9）：“AI 视觉与产线深度融合，质检基本无人化”</li>
+<li>易观分析 _《AI 制造白皮书 2026》_：特斯拉 AI 质检案例，<strong>2800 人裁员、30 倍效率提升</strong></li>
+<li>上海市汽车行业协会 _《2025 上海汽车制造业就业报告》_：特斯拉质检岗裁员 <strong>1200 人</strong>，蓝领再就业困境</li>
+</ul>
+<h2 id="3-4-音频资料"><a href="#3-4-音频资料" class="headerlink" title="3.4 音频资料"></a>3.4 音频资料</h2><p>已放在zip中</p>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

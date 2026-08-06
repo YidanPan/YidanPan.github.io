@@ -1,0 +1,881 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="排序算法 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/FDS/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>排序算法 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="排序算法 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/">← FDS &amp; LeetCode</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">计算机专业课</span>
+      <h1>排序算法</h1>
+      <span class="notes-source-path">FDS/排序算法.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="Heap-sort"><a href="#Heap-sort" class="headerlink" title="Heap sort"></a>Heap sort</h1><ul>
+<li>最先关注的就是这个是大根堆还是小根堆</li>
+</ul>
+<h2 id="一、核心基础：什么是“堆”？"><a href="#一、核心基础：什么是“堆”？" class="headerlink" title="一、核心基础：什么是“堆”？"></a>一、核心基础：什么是“堆”？</h2><p>在学习堆排序之前，必须先明确“堆”这一特殊数据结构的物理存储与逻辑结构。</p>
+<h3 id="1-堆的两个核心特征"><a href="#1-堆的两个核心特征" class="headerlink" title="1. 堆的两个核心特征"></a>1. 堆的两个核心特征</h3><ul>
+<li><p><strong>结构性（完全二叉树）</strong>：堆在逻辑上必须是一棵<strong>完全二叉树</strong>。这意味着除了最后一层外，其余层的节点都是满的，且最后一层的节点都连续集中在左边。</p>
+</li>
+<li><p><strong>有序性（堆序性）</strong>：</p>
+<ul>
+<li><p><strong>大顶堆（Max Heap）</strong>：任何一个父节点的值都<strong>大于或等于</strong>它的左右孩子节点的值（<code>A[i] &gt;= A[2i]</code>）。常用于<strong>升序排序</strong>。</p>
+</li>
+<li><p><strong>小顶堆 Min Heap）</strong>：任何一个父节点的值都<strong>小于或等于</strong>它的左右孩子节点的值（<code>A[i] &lt;= A[2i]</code>）。常用于<strong>降序排序</strong>或优先队列。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-堆的底层存储（数组映射）"><a href="#2-堆的底层存储（数组映射）" class="headerlink" title="2. 堆的底层存储（数组映射）"></a>2. 堆的底层存储（数组映射）</h3><p>虽然堆在逻辑上是一棵树，但在实际物理存储中，我们通常直接使用<strong>一维数组</strong>。通过下标的数学关系，可以完美复现树的父子关系：</p>
+<blockquote>
+<p><strong>以 1-indexed 数组为例（下标从 1 开始）：</strong></p>
+<p>如果一个节点的下标为 $i$：</p>
+<ul>
+<li><p>它的左孩子下标为：$2i$</p>
+</li>
+<li><p>它的右孩子下标为：$2i + 1$</p>
+</li>
+<li><p>它的父节点下标为：$\lfloor i&#x2F;2 \rfloor$</p>
+</li>
+</ul>
+<p><em>(注：如果数组从 0 开始计数，则左孩子为 $2i+1$，右孩子为 $2i+2$，父节点为 $\lfloor (i-1)&#x2F;2 \rfloor$)</em></p>
+</blockquote>
+<h2 id="二、-核心操作：如何维持一个堆？"><a href="#二、-核心操作：如何维持一个堆？" class="headerlink" title="二、 核心操作：如何维持一个堆？"></a>二、 核心操作：如何维持一个堆？</h2><p>堆排序之所以高效，全靠一个核心算子：<strong>下滤（Sift Down &#x2F; Down Adjust）</strong>。</p>
+<h3 id="下滤（Sfit-Down-Heapify）的原理"><a href="#下滤（Sfit-Down-Heapify）的原理" class="headerlink" title="下滤（Sfit Down &#x2F; Heapify）的原理"></a>下滤（Sfit Down &#x2F; Heapify）的原理</h3><p>当某个节点的值被破坏（比如堆顶元素变小了），它就需要与它的左右孩子中<strong>较大的那一个</strong>进行比较：</p>
+<ol>
+<li><p>如果它比最大的孩子还要小，就和这个大孩子<strong>交换位置</strong>。</p>
+</li>
+<li><p>交换后，该元素下降到新的位置，可能会继续破坏子树的堆序性，因此需要<strong>递归或循环向下</strong>继续这个过程。</p>
+</li>
+<li><p>直到它比所有孩子都大，或者已经降到了叶子节点，调整结束。</p>
+</li>
+</ol>
+<h2 id="三、-堆排序的完整步骤"><a href="#三、-堆排序的完整步骤" class="headerlink" title="三、 堆排序的完整步骤"></a>三、 堆排序的完整步骤</h2><p>堆排序的整体流程可以概括为两大家族任务：<strong>“建堆”</strong> 与 <strong>“排序&#x2F;出堆”</strong>。</p>
+<h3 id="阶段一：建堆（Build-Heap）"><a href="#阶段一：建堆（Build-Heap）" class="headerlink" title="阶段一：建堆（Build Heap）"></a>阶段一：建堆（Build Heap）</h3><p>给你一个无序的初始数组，如何把它变成大顶堆？</p>
+<ul>
+<li><p><strong>做法</strong>：我们从<strong>最后一个非叶子节点</strong>开始（下标为 $\lfloor N&#x2F;2 \rfloor$），从右往左、从下往上，对每一个节点调用一次<strong>下滤（Sift Down）</strong>。</p>
+</li>
+<li><p><strong>为什么从 $\lfloor N&#x2F;2 \rfloor$ 开始？</strong> 因为大于 $\lfloor N&#x2F;2 \rfloor$ 的节点都是叶子节点，叶子节点本身已经可以看作是一个合法的堆，无需下滤。</p>
+</li>
+</ul>
+<h3 id="阶段二：排序迭代（Sort-Loop）"><a href="#阶段二：排序迭代（Sort-Loop）" class="headerlink" title="阶段二：排序迭代（Sort Loop）"></a>阶段二：排序迭代（Sort Loop）</h3><p>当大顶堆建好后，数组的第一个元素 <code>A[1]</code> 必然是整个数组的最大值。</p>
+<ol>
+<li><p><strong>交换</strong>：将堆顶元素 <code>A[1]</code> 与当前未排序区域的<strong>最后一个元素</strong>交换。此时，最大值成功“沉底”到了正确的位置。</p>
+</li>
+<li><p><strong>缩小边界</strong>：有效堆的大小减 1（把刚刚沉底的最大值排除在堆之外）。</p>
+</li>
+<li><p><strong>恢复堆</strong>：由于刚才换上去的堆顶元素是个“小兵”，破坏了大顶堆的性质，因此对新的堆顶 <code>A[1]</code> 进行一次<strong>下滤</strong>调整。</p>
+</li>
+<li><p><strong>重复</strong>：重复上述 1~3 步，直到堆的大小缩减为 1，整个数组就变成了升序排列。</p>
+</li>
+</ol>
+<h2 id="四、-性能与复杂度分析"><a href="#四、-性能与复杂度分析" class="headerlink" title="四、 性能与复杂度分析"></a>四、 性能与复杂度分析</h2><p>堆排序在工程中非常受欢迎，主要得益于它极其稳定的高性能。</p>
+<table>
+<thead>
+<tr>
+<th><strong>指标</strong></th>
+<th><strong>复杂度 &#x2F; 状态</strong></th>
+<th><strong>原因及细节</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>时间复杂度（最好）</strong></td>
+<td>$O(N \log N)$</td>
+<td>即使原数组已经有序，每一轮出堆后的下滤依然要走完树的高度。</td>
+</tr>
+<tr>
+<td><strong>时间复杂度（最坏）</strong></td>
+<td>$O(N \log N)$</td>
+<td>树的高度严格控制在 $\log N$， $N$ 次出堆调整的时间非常均匀。</td>
+</tr>
+<tr>
+<td><strong>时间复杂度（平均）</strong></td>
+<td>$O(N \log N)$</td>
+<td>综合表现极其稳定，不像快速排序在最坏情况下会退化为 $O(N^2)$。</td>
+</tr>
+<tr>
+<td><strong>空间复杂度</strong></td>
+<td>$O(1)$</td>
+<td>属于<strong>原地排序（In-place）</strong>，只需要常数级别的辅助变量用于交换。</td>
+</tr>
+<tr>
+<td><strong>稳定性</strong></td>
+<td><strong>不稳定（Unstable）</strong></td>
+<td>在堆顶与堆底元素进行长距离交换时，会破坏相同元素的相对顺序。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>📊 <strong>关于建堆的时间复杂度特殊说明：</strong></p>
+<p>很多人直觉认为建堆是 $O(N \log N)$，但通过数学错位相减法求和可以证明，**建堆的实际时间复杂度为 $O(N)$**。因为越靠近底层的节点越多，但它们下滤的高度越矮；越靠近顶层的节点越少，下滤高度才越深。</p>
+</blockquote>
+<h2 id="五、-经典标准-C-语言实现-1-indexed"><a href="#五、-经典标准-C-语言实现-1-indexed" class="headerlink" title="五、 经典标准 C 语言实现 (1-indexed)"></a>五、 经典标准 C 语言实现 (1-indexed)</h2><p>这是一个直观、规范的 C 语言堆排序实现，方便与你之前PAT考试或课后习题的代码逻辑做对照：</p>
+<p>C</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+// 交换函数
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// 大顶堆下滤核心算子：调整范围是 [root, total]
+void siftDown(int A[], int total, int root) {
+    int parent = root;
+    int child = parent * 2; // 左孩子
+    
+    while (child &lt;= total) {
+        // 1. 如果有右孩子，且右孩子比左孩子大，则将目标转向右孩子
+        if (child + 1 &lt;= total &amp;&amp; A[child + 1] &gt; A[child]) {
+            child = child + 1;
+        }
+        // 2. 如果最大的孩子比父亲大，则交换，并继续向下追踪
+        if (A[child] &gt; A[parent]) {
+            swap(&amp;A[parent], &amp;A[child]);
+            parent = child;     // 父亲来到孩子的位置
+            child = parent * 2; // 计算新的左孩子
+        } else {
+            break; // 父节点已经大于等于左右孩子，调整完毕，退出
+        }
+    }
+}
+
+// 堆排序主函数
+void heapSort(int A[], int n) {
+    // 步骤 1：自底向上建大顶堆
+    // 从最后一个非叶子节点 n/2 开始往前调整
+    for (int i = n / 2; i &gt;= 1; i--) {
+        siftDown(A, n, i);
+    }
+    
+    // 步骤 2：迭代排序
+    for (int i = n; i &gt; 1; i--) {
+        swap(&amp;A[1], &amp;A[i]);  // 将当前的堆顶最大值交换到未排序区域的尾部 A[i]
+        siftDown(A, i - 1, 1); // 缩减堆的边界为 i-1，并对新的堆顶进行下滤
+    }
+}
+
+int main() {
+    // 1-indexed 数组，A[0] 闲置，实际元素 5 个
+    int A[] = {0, 50, 10, 30, 20, 40}; 
+    int n = 5;
+    
+    heapSort(A, n);
+    
+    // 输出结果
+    for (int i = 1; i &lt;= n; i++) {
+        printf(&quot;%d &quot;, A[i]);
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="💡-总结与高频考点"><a href="#💡-总结与高频考点" class="headerlink" title="💡 总结与高频考点"></a>💡 总结与高频考点</h2><ol>
+<li><p><strong>Top-K 问题（海量数据找前 K 大）</strong>：如果要在 1 亿个数据里找前 100 大的数，不需要全排序。只需要维护一个大小为 100 的<strong>小顶堆</strong>，遍历后续数据，比堆顶大的就替换堆顶并下滤。时间复杂度仅为 $O(N \log K)$。</p>
+</li>
+<li><p><strong>与快排、归并的对比</strong>：</p>
+<ul>
+<li><p><strong>快排</strong>：平均速度最快，但最坏情况下性能不稳定，且需要栈空间。</p>
+</li>
+<li><p><strong>归并</strong>：速度极快且稳定，但需要 $O(N)$ 的额外内存空间。</p>
+</li>
+<li><p><strong>堆排</strong>：无论什么极端数据，时间雷打不动是 $O(N \log N)$，空间雷打不动是 $O(1)$。硬件级内存受限、要求严苛最坏打算的系统里（如嵌入式、Linux内核），堆排序常作为后备王牌。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h1></div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

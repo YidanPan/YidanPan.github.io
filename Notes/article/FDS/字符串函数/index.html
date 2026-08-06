@@ -1,0 +1,878 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="字符串函数 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/FDS/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>字符串函数 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="字符串函数 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/">← FDS &amp; LeetCode</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">计算机专业课</span>
+      <h1>字符串函数</h1>
+      <span class="notes-source-path">FDS/字符串函数.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><p>用字符串函数的标准库是include&lt;string.h&gt;</p>
+<h1 id="1-基础操作：长度与复制"><a href="#1-基础操作：长度与复制" class="headerlink" title="1.基础操作：长度与复制"></a>1.基础操作：长度与复制</h1><h2 id="strlen-s-——-获取字符串长度"><a href="#strlen-s-——-获取字符串长度" class="headerlink" title="strlen(s) —— 获取字符串长度"></a><code>strlen(s)</code> —— 获取字符串长度</h2><ul>
+<li><p><strong>作用：</strong> 计算字符串的字符个数，<strong>不包括</strong>末尾的 <code>\0</code>。</p>
+</li>
+<li><p><strong>用法：</strong> <code>size_t len = strlen(str);</code></p>
+</li>
+<li><p><strong>例子：</strong></p>
+<blockquote>
+<p>[!note] C<br>&#96;&#96;&#96;c</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>char s[] &#x3D; “Hello”;<br>printf(“%zu”, strlen(s)); &#x2F;&#x2F; 输出 5</p>
+<pre><code>    
+</code></pre>
+</blockquote>
+<h2 id="strcpy-dest-src-——-字符串拷贝"><a href="#strcpy-dest-src-——-字符串拷贝" class="headerlink" title="strcpy(dest, src) —— 字符串拷贝"></a><code>strcpy(dest, src)</code> —— 字符串拷贝</h2><ul>
+<li><p><strong>作用：</strong> 将 <code>src</code> 完整拷贝到 <code>dest</code> 中（包括 <code>\0</code>）。</p>
+</li>
+<li><p><strong>注意：</strong> <code>dest</code> 空间必须足够大，否则会溢出。</p>
+</li>
+<li><p><strong>例子：</strong></p>
+<p>  C</p>
+</li>
+</ul>
+<blockquote>
+<p>[!note] e.g.</p>
+<pre><code class="c">    char src[] = &quot;Copy Me&quot;;
+    char dest[20];
+    strcpy(dest, src); 
+</code></pre>
+</blockquote>
+<h2 id="strncpy-dest-src-n-——-安全拷贝"><a href="#strncpy-dest-src-n-——-安全拷贝" class="headerlink" title="* strncpy(dest, src, n) —— 安全拷贝"></a><code>* strncpy(dest, src, n)</code> —— 安全拷贝</h2><ul>
+<li><strong>作用：</strong> 最多拷贝 <code>n</code> 个字符。比 <code>strcpy</code> 更安全，防止溢出。</li>
+</ul>
+<hr>
+<h1 id="2-拼接与比较"><a href="#2-拼接与比较" class="headerlink" title="2. 拼接与比较"></a>2. 拼接与比较</h1><h2 id="strcat-dest-src-——-字符串拼接"><a href="#strcat-dest-src-——-字符串拼接" class="headerlink" title="strcat(dest, src) —— 字符串拼接"></a><code>strcat(dest, src)</code> —— 字符串拼接</h2><ul>
+<li><p><strong>作用：</strong> 把 <code>src</code> 接到 <code>dest</code> 的末尾。</p>
+</li>
+<li><p><strong>用法：</strong> <code>dest</code> 必须有足够的剩余空间。</p>
+</li>
+<li><p><strong>例子：</strong><br>  C</p>
+<blockquote>
+<p>[!note] e.g. </p>
+<pre><code class="c">    char s1[20] = &quot;High &quot;;
+</code></pre>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<pre><code>char s2[] = &quot;Five&quot;;
+strcat(s1, s2); // s1 变为 &quot;High Five&quot;
+</code></pre>
+<pre><code>
+</code></pre>
+</blockquote>
+<h2 id="strcmp-s1-s2-——-字符串比较"><a href="#strcmp-s1-s2-——-字符串比较" class="headerlink" title="strcmp(s1, s2) —— 字符串比较"></a><code>strcmp(s1, s2)</code> —— 字符串比较</h2><ul>
+<li><p><strong>作用：</strong> 按照 ASCII 码逐个字符比较。</p>
+</li>
+<li><p><strong>返回值：</strong> </p>
+<ul>
+<li><p>&#x3D;&#x3D; <code>0</code>：相等</p>
+</li>
+<li><p><code> &gt; 0</code>：s1 大于 s2</p>
+</li>
+<li><p><code> &lt; 0</code>：s1 小于 s2</p>
+</li>
+</ul>
+</li>
+<li><p><strong>注意：</strong> 不能直接用 <code>if(s1 == s2)</code>，那是在比较地址！</p>
+</li>
+<li><p><strong>例子：</strong></p>
+<p>  C</p>
+</li>
+</ul>
+<blockquote>
+<p>[!note] e.g.</p>
+<pre><code class="c">    if (strcmp(op, &quot;Push&quot;) == 0) { /* 匹配成功 */ }
+</code></pre>
+</blockquote>
+<hr>
+<h1 id="3-查找与分割"><a href="#3-查找与分割" class="headerlink" title="3. 查找与分割"></a>3. 查找与分割</h1><h2 id="strchr-s-c-——-查找字符"><a href="#strchr-s-c-——-查找字符" class="headerlink" title="strchr(s, c) —— 查找字符"></a><code>strchr(s, c)</code> —— 查找字符</h2><ul>
+<li><p><strong>作用：</strong> 在字符串中查找字符 <code>c</code> 第一次出现的位置。</p>
+</li>
+<li><p><strong>返回：</strong> 返回指向该字符的指针，找不到则返回 <code>NULL</code>。</p>
+</li>
+</ul>
+<h2 id="strstr-haystack-needle-——-查找子串"><a href="#strstr-haystack-needle-——-查找子串" class="headerlink" title="strstr(haystack, needle) —— 查找子串"></a><code>strstr(haystack, needle)</code> —— 查找子串</h2><ul>
+<li><p><strong>作用：</strong> 在一个长字符串中查找是否包含另一个短字符串。</p>
+</li>
+<li><p><strong>例子：</strong></p>
+<p>  C</p>
+</li>
+</ul>
+<blockquote>
+<p>[!note] e.g.</p>
+<pre><code class="c">    char *p = strstr(&quot;Hello World&quot;, &quot;World&quot;);
+    if(p) printf(&quot;找到了！位置在 %ld&quot;, p - str);
+</code></pre>
+</blockquote>
+<h2 id="strtok-s-delim-——-字符串分割"><a href="#strtok-s-delim-——-字符串分割" class="headerlink" title="strtok(s, delim) —— 字符串分割"></a><code>strtok(s, delim)</code> —— 字符串分割</h2><ul>
+<li><p><strong>作用：</strong> 根据分隔符（如空格、逗号）切分字符串。</p>
+</li>
+<li><p><strong>注意：</strong> 它是“有损”的，会修改原字符串（把分隔符换成 <code>\0</code>）。</p>
+</li>
+</ul>
+<hr>
+<h1 id="4-进阶：格式化处理（在-中）"><a href="#4-进阶：格式化处理（在-中）" class="headerlink" title="4. 进阶：格式化处理（在 &lt;stdio.h&gt; 中）"></a>4. 进阶：格式化处理（在 <code>&lt;stdio.h&gt;</code> 中）</h1><p>虽然不在 <code>string.h</code> 里，但这两个函数在处理字符串逻辑时极度常用：</p>
+<table>
+<thead>
+<tr>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+<th><strong>例子</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><code>sprintf</code></strong></td>
+<td>把各种类型“打印”到字符串里（拼接神器）</td>
+<td><code>sprintf(buf, &quot;%d-%d&quot;, year, month);</code></td>
+</tr>
+<tr>
+<td><strong><code>sscanf</code></strong></td>
+<td>从字符串里“提取”变量（解析神器）</td>
+<td><code>sscanf(&quot;Push 10&quot;, &quot;%s %d&quot;, op, &amp;val);</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="综合对比表"><a href="#综合对比表" class="headerlink" title="综合对比表"></a>综合对比表</h1><table>
+<thead>
+<tr>
+<th><strong>函数名</strong></th>
+<th><strong>核心功能</strong></th>
+<th><strong>是否修改原串</strong></th>
+<th><strong>安全风险</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>strlen</code></td>
+<td>算长度</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>strcpy</code></td>
+<td>覆盖拷贝</td>
+<td>是</td>
+<td>高（易溢出）</td>
+</tr>
+<tr>
+<td><code>strcat</code></td>
+<td>尾部追加</td>
+<td>是</td>
+<td>高</td>
+</tr>
+<tr>
+<td><code>strcmp</code></td>
+<td>比大小</td>
+<td>否</td>
+<td>低</td>
+</tr>
+<tr>
+<td><code>strtok</code></td>
+<td>暴力切分</td>
+<td><strong>是</strong></td>
+<td>中</td>
+</tr>
+</tbody></table>
+<h3 id="💡-一个避坑小贴士"><a href="#💡-一个避坑小贴士" class="headerlink" title="💡 一个避坑小贴士"></a>💡 一个避坑小贴士</h3><p>在做你图中的那道题时，如果要清空字符串变量，最快的方法是： <code>str[0] = &#39;\0&#39;;</code> 这在逻辑上就相当于把字符串清空了，因为所有字符串函数遇到第一个 <code>\0</code> 就会停止。</p>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

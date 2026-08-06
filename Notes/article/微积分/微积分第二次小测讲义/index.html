@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="微积分第二次小测讲义 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/%E5%BE%AE%E7%A7%AF%E5%88%86/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%B0%8F%E6%B5%8B%E8%AE%B2%E4%B9%89/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>微积分第二次小测讲义 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="微积分第二次小测讲义 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/math/calculus/">← 微积分</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">数学</span>
+      <h1>微积分第二次小测讲义</h1>
+      <span class="notes-source-path">微积分/微积分第二次小测讲义.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h2 id="模块一：极限、连续、偏导数与可微性的关系"><a href="#模块一：极限、连续、偏导数与可微性的关系" class="headerlink" title="模块一：极限、连续、偏导数与可微性的关系"></a>模块一：极限、连续、偏导数与可微性的关系</h2><p>这是最容易出现概念判断题（如多选题）的重灾区 。必须牢记它们之间的单向推导链条与反例陷阱。</p>
+<h3 id="1-核心推导关系"><a href="#1-核心推导关系" class="headerlink" title="1. 核心推导关系"></a>1. 核心推导关系</h3><ul>
+<li><p><strong>偏导数连续</strong> $\Rightarrow$ <strong>可微</strong> $\Rightarrow$ <strong>连续</strong> $\Rightarrow$ <strong>极限存在</strong>。</p>
+</li>
+<li><p><strong>可微</strong> $\Rightarrow$ <strong>偏导数存在</strong> 且 <strong>沿任意方向的方向导数存在</strong>。</p>
+</li>
+</ul>
+<h3 id="2-常见反例与易错点"><a href="#2-常见反例与易错点" class="headerlink" title="2. 常见反例与易错点"></a>2. 常见反例与易错点</h3><ul>
+<li><p><strong>偏导数存在 $\nRightarrow$ 连续</strong>：例如只在坐标轴上有非零值，其余全为 $0$ 的函数，在原点偏导数存在但显然不连续。</p>
+</li>
+<li><p><strong>连续 $\nRightarrow$ 偏导数存在</strong>：例如包含绝对值或根号的函数（类似一元函数 $y&#x3D;|x|$ 在原点的尖点）。</p>
+</li>
+<li><p><strong>方向导数存在 $\nRightarrow$ 可微&#x2F;连续</strong>：即使沿所有直线的方向导数都存在，函数在原点也可能不可微 。</p>
+</li>
+</ul>
+<h3 id="3-分段函数在-0-0-处的判定套路"><a href="#3-分段函数在-0-0-处的判定套路" class="headerlink" title="3. 分段函数在 $(0,0)$ 处的判定套路"></a>3. 分段函数在 $(0,0)$ 处的判定套路</h3><p>面对 $f(x,y) &#x3D; \frac{x^my^n}{x^a+y^b}$ 类的分段函数 ：</p>
+<ol>
+<li><p><strong>求偏导</strong>：必须使用定义法 $f_x’(0,0) &#x3D; \lim_{x \to 0} \frac{f(x,0) - f(0,0)}{x}$。</p>
+</li>
+<li><p><strong>判可微</strong>：计算全微分增量极限 $\lim_{\rho \to 0} \frac{\Delta z - (A\Delta x + B\Delta y)}{\sqrt{\Delta x^2 + \Delta y^2}}$。通常采用<strong>路径法</strong>（令 $y&#x3D;kx$ 或 $y&#x3D;x^2$）来证明极限不存在或不为 $0$，从而判定不可微 。</p>
+</li>
+<li><p><strong>求方向导数</strong>：若不可微，必须使用定义法 $\lim_{t \to 0^+} \frac{f(t\cos\alpha, t\sin\alpha) - f(0,0)}{t}$ 。</p>
+</li>
+</ol>
+<h2 id="模块二：多元复合函数与隐函数微分法"><a href="#模块二：多元复合函数与隐函数微分法" class="headerlink" title="模块二：多元复合函数与隐函数微分法"></a>模块二：多元复合函数与隐函数微分法</h2><h3 id="1-链式求导法则"><a href="#1-链式求导法则" class="headerlink" title="1. 链式求导法则"></a>1. 链式求导法则</h3><ul>
+<li><p><strong>核心法则</strong>：画出变量依赖树状图，分清“对第几个中间变量求导”与“最终对自变量求导”。</p>
+</li>
+<li><p><strong>常见题型</strong>：如 $\varphi(x) &#x3D; f(x, f(2x-1, x^3))$，求导时要注意外层函数对第二个变量求导后，还需乘以内层函数的链式导数 。</p>
+</li>
+</ul>
+<h3 id="2-隐函数求导"><a href="#2-隐函数求导" class="headerlink" title="2. 隐函数求导"></a>2. 隐函数求导</h3><ul>
+<li><p><strong>隐函数存在定理与公式</strong>：对于方程 $F(x,y,z)&#x3D;0$ 确定的隐函数 $z&#x3D;z(x,y)$，有 $\frac{\partial z}{\partial x} &#x3D; -\frac{F_x’}{F_z’}$ 。</p>
+</li>
+<li><p><strong>实战技巧（全微分法）</strong>：遇到复杂的隐函数方程（如含有指数 $e^{2z}$ ），可直接对方程两边同时取微分操作 $d$，整理提取出 $dx$ 和 $dy$ 的系数，即为偏导数。</p>
+</li>
+</ul>
+<h2 id="模块三：方向导数与梯度"><a href="#模块三：方向导数与梯度" class="headerlink" title="模块三：方向导数与梯度"></a>模块三：方向导数与梯度</h2><h3 id="1-梯度（Gradient）"><a href="#1-梯度（Gradient）" class="headerlink" title="1. 梯度（Gradient）"></a>1. 梯度（Gradient）</h3><ul>
+<li><strong>定义</strong>：梯度是一个向量，指明了函数在某点<strong>增长最快</strong>的方向，即 $\text{grad},f &#x3D; (f_x’, f_y’, f_z’)$ 。</li>
+</ul>
+<h3 id="2-方向导数"><a href="#2-方向导数" class="headerlink" title="2. 方向导数"></a>2. 方向导数</h3><ul>
+<li><p><strong>计算公式（可微条件）</strong>：沿单位方向向量 $\vec{l} &#x3D; (\cos\alpha, \cos\beta, \cos\gamma)$，方向导数为梯度与该方向向量的内积，即 $\frac{\partial f}{\partial l} &#x3D; \text{grad},f \cdot \vec{l}$。</p>
+</li>
+<li><p><strong>极值性质</strong>：函数沿<strong>梯度方向</strong>的方向导数最大，最大值等于梯度的模长 $|\text{grad},f|$ 。</p>
+</li>
+</ul>
+<h2 id="模块四：空间几何应用"><a href="#模块四：空间几何应用" class="headerlink" title="模块四：空间几何应用"></a>模块四：空间几何应用</h2><h3 id="1-空间曲面的切平面与法线"><a href="#1-空间曲面的切平面与法线" class="headerlink" title="1. 空间曲面的切平面与法线"></a>1. 空间曲面的切平面与法线</h3><ul>
+<li><p><strong>法向量</strong>：对于隐式曲面 $F(x,y,z)&#x3D;0$，其在某点的法向量为 $\vec{n} &#x3D; (F_x’, F_y’, F_z’)$ 。</p>
+</li>
+<li><p><strong>切平面方程</strong>：点法式方程 $F_x’(x-x_0) + F_y’(y-y_0) + F_z’(z-z_0) &#x3D; 0$ 。</p>
+</li>
+</ul>
+<h3 id="2-空间曲线的切线与法平面"><a href="#2-空间曲线的切线与法平面" class="headerlink" title="2. 空间曲线的切线与法平面"></a>2. 空间曲线的切线与法平面</h3><ul>
+<li><p><strong>切向量</strong>：若曲线为参数方程 $r(t) &#x3D; {x(t), y(t), z(t)}$，其切向量 $\vec{s} &#x3D; {x’(t), y’(t), z’(t)}$ 。</p>
+</li>
+<li><p><strong>平行&#x2F;垂直条件</strong>：曲线切线平行于某平面，意味着切向量 $\vec{s}$ 与平面的法向量 $\vec{n}$ 垂直，即 $\vec{s} \cdot \vec{n} &#x3D; 0$ 。</p>
+</li>
+</ul>
+<h2 id="模块五：极值问题与泰勒公式应用"><a href="#模块五：极值问题与泰勒公式应用" class="headerlink" title="模块五：极值问题与泰勒公式应用"></a>模块五：极值问题与泰勒公式应用</h2><h3 id="1-利用泰勒展开式提取偏导数"><a href="#1-利用泰勒展开式提取偏导数" class="headerlink" title="1. 利用泰勒展开式提取偏导数"></a>1. 利用泰勒展开式提取偏导数</h3><p>这是试卷中极为高频的“秒杀”技巧 。 若已知 $f(x,y) &#x3D; A + B(x-x_0) + C(y-y_0) + D(x-x_0)^2 + E(x-x_0)(y-y_0) + F(y-y_0)^2 + o(\rho^2)$：</p>
+<ul>
+<li><p><strong>函数值</strong>：$f(x_0,y_0) &#x3D; A$。</p>
+</li>
+<li><p><strong>一阶偏导（全微分）</strong>：$f_x’ &#x3D; B$，$f_y’ &#x3D; C$。全微分为 $dz &#x3D; Bdx + Cdy$ 。</p>
+</li>
+<li><p><strong>二阶偏导</strong>：注意泰勒展开二次项前的系数 $\frac{1}{2!}$。因此 $f_{xx}’’ &#x3D; 2D$，$f_{xy}’’ &#x3D; E$，$f_{yy}’’ &#x3D; 2F$。</p>
+</li>
+</ul>
+<h3 id="2-极值判别法"><a href="#2-极值判别法" class="headerlink" title="2. 极值判别法"></a>2. 极值判别法</h3><ul>
+<li><p><strong>必要条件</strong>：若在内部取得极值，必为驻点（$f_x’ &#x3D; 0$ 且 $f_y’ &#x3D; 0$）。</p>
+</li>
+<li><p><strong>充分条件（Hessian矩阵）</strong>：令 $A &#x3D; f_{xx}’’$，$B &#x3D; f_{xy}’’$，$C &#x3D; f_{yy}’’$。</p>
+<ul>
+<li><p>$\Delta &#x3D; AC - B^2 &gt; 0$ 有极值（$A&gt;0$ 极小，$A&lt;0$ 极大）。</p>
+</li>
+<li><p>$\Delta &#x3D; AC - B^2 &lt; 0$ 无极值（鞍点）。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="模块六：重积分的计算法宝"><a href="#模块六：重积分的计算法宝" class="headerlink" title="模块六：重积分的计算法宝"></a>模块六：重积分的计算法宝</h2><p>重积分计算的第一步永远是<strong>画图看对称性</strong>，切忌盲目硬算。</p>
+<h3 id="1-对称性（奇偶性与轮换性）"><a href="#1-对称性（奇偶性与轮换性）" class="headerlink" title="1. 对称性（奇偶性与轮换性）"></a>1. 对称性（奇偶性与轮换性）</h3><ul>
+<li><p><strong>奇偶对称性</strong>：若积分区域关于坐标面（如 $x&#x3D;0$）对称，且被积函数关于该变量（$x$）是奇函数，则积分为 $0$ 。</p>
+<ul>
+<li><em>例如_：$\iiint</em>{x^2+y^2+z^2 \le 1} (2x+xy+z^2)dV$，因区域对原点和坐标面对称，$2x$ 和 $xy$ 均为奇函数，积分直接抵消为 $0$，只需算 $\iiint z^2 dV$ 。</li>
+</ul>
+</li>
+<li><p><strong>轮换对称性</strong>：若积分区域关于 $y&#x3D;x$ 对称，则 $\iint_D f(x,y)d\sigma &#x3D; \iint_D f(y,x)d\sigma$。</p>
+</li>
+</ul>
+<h3 id="2-分块法（处理绝对值与最值函数）"><a href="#2-分块法（处理绝对值与最值函数）" class="headerlink" title="2. 分块法（处理绝对值与最值函数）"></a>2. 分块法（处理绝对值与最值函数）</h3><ul>
+<li>遇到 $\iint \max(x,y) d\sigma$ 或 $\iint \sin(\min(x,y)) d\sigma$ 时，立即在积分区域内画出直线 $y&#x3D;x$，将区域切分为 $y&gt;x$ 和 $x&gt;y$ 两部分，分别脱去 $\max&#x2F;\min$ 符号后再积分 。</li>
+</ul>
+<h3 id="3-坐标系转换"><a href="#3-坐标系转换" class="headerlink" title="3. 坐标系转换"></a>3. 坐标系转换</h3><ul>
+<li><p>看到 $x^2+y^2$，首选极坐标（二重积分）或柱坐标（三重积分）。</p>
+</li>
+<li><p>看到 $x^2+y^2+z^2$，首选球面坐标。注意雅可比行列式的补偿（极坐标为 $rdrd\theta$）。</p>
+</li>
+</ul>
+<hr>
+<h1 id="多元微积分期中-期末冲刺讲义"><a href="#多元微积分期中-期末冲刺讲义" class="headerlink" title="多元微积分期中&#x2F;期末冲刺讲义"></a>多元微积分期中&#x2F;期末冲刺讲义</h1><h2 id="模块一：多元函数的基本概念（极限、连续、偏导、可微）"><a href="#模块一：多元函数的基本概念（极限、连续、偏导、可微）" class="headerlink" title="模块一：多元函数的基本概念（极限、连续、偏导、可微）"></a>模块一：多元函数的基本概念（极限、连续、偏导、可微）</h2><p>这是历年小测中最常考的理论辨析题，通常以选择题（多选）的形式出现。</p>
+<h3 id="1-核心理论关系（必考概念图）"><a href="#1-核心理论关系（必考概念图）" class="headerlink" title="1. 核心理论关系（必考概念图）"></a>1. 核心理论关系（必考概念图）</h3><p>根据讲义中的逻辑关系图，你需要牢记以下推导链条：</p>
+<ul>
+<li><strong>强条件 $\Rightarrow$ 弱条件</strong>：<strong>偏导数连续 $\Rightarrow$ 可微</strong>。</li>
+<li><strong>可微 $\Rightarrow$ 必然满足的三个推论</strong>：若函数在某点可微，则必然<strong>连续</strong>、<strong>偏导数存在</strong>、<strong>沿任意方向的方向导数存在</strong>。</li>
+<li><strong>易错反例</strong>：连续<strong>不一定</strong>可偏导；偏导数存在<strong>不一定</strong>连续；极限存在<strong>不一定</strong>连续（除非等于该点函数值）。</li>
+</ul>
+<h3 id="2-分段函数在原点的性质辨析"><a href="#2-分段函数在原点的性质辨析" class="headerlink" title="2. 分段函数在原点的性质辨析"></a>2. 分段函数在原点的性质辨析</h3><ul>
+<li><strong>常见题型</strong>：给定含有分母为 $\sqrt{x^2+y^2}$ 或类似形式的分段函数，求其在 $(0,0)$ 处的偏导数或沿特定方向的方向导数。</li>
+<li><strong>解题方法</strong>：<strong>必须使用定义法！</strong><ul>
+<li>求偏导：$f_x(0,0) &#x3D; \lim_{\Delta x \to 0} \frac{f(\Delta x, 0) - f(0,0)}{\Delta x}$。</li>
+<li>求方向导数：使用极限公式 $\lim_{\rho \to 0^+} \frac{f(\rho\cos\theta, \rho\sin\theta) - f(0,0)}{\rho}$。</li>
+</ul>
+</li>
+<li><strong>拓展</strong>：注意判断 $\lim_{(x,y)\to(0,0)}$ 是否存在时，常用 $y&#x3D;kx$ 或极坐标 $x&#x3D;r\cos\theta, y&#x3D;r\sin\theta$ 代入，若结果受 $k$ 或 $\theta$ 影响，则极限不存在。</li>
+</ul>
+<hr>
+<h2 id="模块二：偏导数计算与全微分"><a href="#模块二：偏导数计算与全微分" class="headerlink" title="模块二：偏导数计算与全微分"></a>模块二：偏导数计算与全微分</h2><h3 id="1-复合函数求导（链式法则）"><a href="#1-复合函数求导（链式法则）" class="headerlink" title="1. 复合函数求导（链式法则）"></a>1. 复合函数求导（链式法则）</h3><ul>
+<li><strong>常见题型</strong>：设 $\varphi(x) &#x3D; f(x, f(2x-1, x^3))$，求 $\varphi’(1)$。</li>
+<li><strong>解题方法</strong>：画出变量依赖树状图。由外向内逐层求导，注意不要漏掉中间变量。 $\varphi’(x) &#x3D; f_1’ \cdot 1 + f_2’ \cdot [f_1’ \cdot 2 + f_2’ \cdot 3x^2]$，然后代入具体数值计算即可。</li>
+</ul>
+<h3 id="2-基于泰勒展开（局部近似）判断全微分"><a href="#2-基于泰勒展开（局部近似）判断全微分" class="headerlink" title="2. 基于泰勒展开（局部近似）判断全微分"></a>2. 基于泰勒展开（局部近似）判断全微分</h3><ul>
+<li><strong>常见题型</strong>：已知函数在点 $P(0,1)$ 处满足 $f(x,y) &#x3D; 5 + x - y + x^2 + 2x(y-1) + (y-1)^2 + o(…)$，求 $f(0,1)$、全微分 $df|_{(0,1)}$ 或判断极值。</li>
+<li><strong>解题方法</strong>：对比二元函数泰勒展开式。<ul>
+<li>常数项即为 $f(0,1) &#x3D; 5$。</li>
+<li>一次项系数对应一阶偏导数：$f_x &#x3D; 1, f_y &#x3D; -1$，因此全微分 $df|_{(0,1)} &#x3D; dx - dy$。</li>
+<li>二次项系数对应二阶偏导数（注意泰勒公式中有 $\frac{1}{2}$ 系数）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="模块三：几何应用（切线与切平面）"><a href="#模块三：几何应用（切线与切平面）" class="headerlink" title="模块三：几何应用（切线与切平面）"></a>模块三：几何应用（切线与切平面）</h2><h3 id="1-空间曲线的切线"><a href="#1-空间曲线的切线" class="headerlink" title="1. 空间曲线的切线"></a>1. 空间曲线的切线</h3><ul>
+<li><strong>常见题型</strong>：在空间曲线 $r(t) &#x3D; {t, -t^2, t^3}$ 的所有切线中，寻找与平面 $x+2y+z&#x3D;4$ 平行的切线。</li>
+<li><strong>解题方法</strong>：<ol>
+<li>对参数方程求导得到切向量 $\vec{v} &#x3D; r’(t) &#x3D; {1, -2t, 3t^2}$。</li>
+<li>提取目标平面的法向量 $\vec{n} &#x3D; {1, 2, 1}$。</li>
+<li>利用“线面平行 $\Leftrightarrow$ 方向向量与法向量垂直”的性质，令内积 $\vec{v} \cdot \vec{n} &#x3D; 0$，解出 $1 - 4t + 3t^2 &#x3D; 0$，得到两个 $t$ 的值，说明有两条切线。</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-隐函数曲面的切平面"><a href="#2-隐函数曲面的切平面" class="headerlink" title="2. 隐函数曲面的切平面"></a>2. 隐函数曲面的切平面</h3><ul>
+<li><strong>常见题型</strong>：求曲面 $e^{2z} - xyz &#x3D; e^2$ 在点 $M(0,2,1)$ 处的切平面方程。</li>
+<li><strong>解题方法</strong>：构造隐函数 $F(x,y,z) &#x3D; e^{2z} - xyz - e^2 &#x3D; 0$。求梯度向量 $\nabla F &#x3D; (F_x, F_y, F_z)$ 作为平面的法向量，代入点斜式即可。</li>
+</ul>
+<hr>
+<h2 id="模块四：方向导数与梯度"><a href="#模块四：方向导数与梯度" class="headerlink" title="模块四：方向导数与梯度"></a>模块四：方向导数与梯度</h2><ul>
+<li><strong>常见题型</strong>：函数 $u &#x3D; \sqrt{x^2+2y^2+3z^2}$ 在点 $M(2,-1,1)$ 处的梯度或最大方向导数。</li>
+<li><strong>解题方法</strong>：<ol>
+<li><strong>最大方向导数 &#x3D; 梯度的模</strong>。先分别求出 $u_x, u_y, u_z$。</li>
+<li>代入已知点 $M$ 得到梯度向量 $\nabla u &#x3D; {u_x(M), u_y(M), u_z(M)}$。</li>
+<li>取模 $|\nabla u|$ 即为最大方向导数的值（选项常为 $\frac{\sqrt{17}}{3}$）。</li>
+</ol>
+</li>
+<li><strong>拓展</strong>：如果题目要求“沿特定向量 $\vec{l}$ 的方向导数”，则需计算 $\nabla u \cdot \frac{\vec{l}}{|\vec{l}|}$（切记向量必须<strong>单位化</strong>）。</li>
+</ul>
+<hr>
+<h2 id="模块五：多元函数极值"><a href="#模块五：多元函数极值" class="headerlink" title="模块五：多元函数极值"></a>模块五：多元函数极值</h2><ul>
+<li><strong>常见题型</strong>：隐函数极值判定或多项式极值判定。</li>
+<li><strong>解题方法</strong>：<ol>
+<li><strong>必要条件</strong>：驻点处 $f_x &#x3D; 0, f_y &#x3D; 0$。</li>
+<li><strong>充分条件</strong>：求出二阶偏导数 $A &#x3D; f_{xx}, B &#x3D; f_{xy}, C &#x3D; f_{yy}$。</li>
+<li>根据判别式 $\Delta &#x3D; AC - B^2$ 判断：<ul>
+<li>$\Delta &gt; 0$ 且 $A &gt; 0$，为极小值。</li>
+<li>$\Delta &gt; 0$ 且 $A &lt; 0$，为极大值。</li>
+<li>$\Delta &lt; 0$，无极值。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>拓展</strong>：若结合前面的泰勒展开题型，可通过直接提取二次项系数判断 $A, B, C$，从而快速判定 $(0,1)$ 点是否为极值点。</li>
+</ul>
+<hr>
+<h2 id="模块六：重积分计算"><a href="#模块六：重积分计算" class="headerlink" title="模块六：重积分计算"></a>模块六：重积分计算</h2><p>这是测试中计算量最大的部分，掌握“取巧”方法是关键。</p>
+<h3 id="1-利用对称性化简重积分（必考）"><a href="#1-利用对称性化简重积分（必考）" class="headerlink" title="1. 利用对称性化简重积分（必考）"></a>1. 利用对称性化简重积分（必考）</h3><ul>
+<li><strong>常见题型</strong>：已知 $\Omega: x^2+y^2+z^2 \le 1$，求 $\iiint_\Omega (2x + xy + z^2) dV$。</li>
+<li><strong>解题方法</strong>：观察积分域，积分域关于原点或坐标轴高度对称。由于 $2x$ 和 $xy$ 是奇函数，在对称域上的积分为 $0$。原式直接化简为 $\iiint_\Omega z^2 dV$。</li>
+<li><strong>拓展计算</strong>：利用轮换对称性，$\iiint z^2 dV &#x3D; \frac{1}{3} \iiint (x^2+y^2+z^2) dV$，结合球坐标系轻松秒杀，答案为 $\frac{4}{15}\pi$。</li>
+</ul>
+<h3 id="2-含-Max-Min-或绝对值的分段积分"><a href="#2-含-Max-Min-或绝对值的分段积分" class="headerlink" title="2. 含 Max&#x2F;Min 或绝对值的分段积分"></a>2. 含 Max&#x2F;Min 或绝对值的分段积分</h3><ul>
+<li><strong>常见题型</strong>：$\iint_D e^{\max{x,y}} dxdy$，区域为 $0 \le x \le 1, 0 \le y \le 1$；或 $\iint_D \sin(\min(x,y)) dxdy$。</li>
+<li><strong>解题方法</strong>：<strong>画图分块！</strong> 在正方形区域内，画出对角线 $y&#x3D;x$。<ul>
+<li>在 $D_1$（$y&gt;x$ 区域），$\max{x,y} &#x3D; y$，积分变为 $\iint_{D_1} e^y dxdy$。</li>
+<li>在 $D_2$（$x&gt;y$ 区域），$\max{x,y} &#x3D; x$，积分变为 $\iint_{D_2} e^x dxdy$。 分别计算两个三角形区域的积分后相加。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-极坐标系下的双重积分"><a href="#3-极坐标系下的双重积分" class="headerlink" title="3. 极坐标系下的双重积分"></a>3. 极坐标系下的双重积分</h3><ul>
+<li><strong>常见题型</strong>：区域为 $x^2+y^2 \le 2|x| + |y| \ge 1$ 形式的计算。</li>
+<li><strong>解题方法</strong>：统一替换 $x &#x3D; r\cos\theta, y &#x3D; r\sin\theta$，并将面积微元 $dxdy$ 替换为 $r dr d\theta$ 进行求解。</li>
+</ul>
+<hr>
+<h3 id="一、-分段函数在原点-0-0-处的“全面体检”"><a href="#一、-分段函数在原点-0-0-处的“全面体检”" class="headerlink" title="一、 分段函数在原点 $(0,0)$ 处的“全面体检”"></a>一、 分段函数在原点 $(0,0)$ 处的“全面体检”</h3><p>这类题目（如测试卷中的多选题）往往给出一个含有分母 $x^2+y^2$ 的分段函数，要求判断其在原点的连续性、偏导数、可微性以及方向导数。</p>
+<p><strong>相关知识：</strong></p>
+<ul>
+<li><p><strong>连续</strong>：二重极限 $\lim_{(x,y)\to(0,0)} f(x,y) &#x3D; f(0,0)$。</p>
+</li>
+<li><p><strong>偏导数</strong>：坐标轴方向的变化率。</p>
+</li>
+<li><p><strong>可微</strong>：全微分增量极限为 $0$。</p>
+</li>
+<li><p><strong>方向导数</strong>：任意射线方向的变化率。</p>
+</li>
+</ul>
+<p><strong>解题技巧（严格遵循三步法）：</strong></p>
+<p>遇到此类题目，<strong>切忌直接使用求导公式</strong>，必须用定义！</p>
+<ol>
+<li><p><strong>求偏导用单变量极限</strong>：</p>
+<p> $$f_x’(0,0) &#x3D; \lim_{x \to 0} \frac{f(x,0) - f(0,0)}{x}$$</p>
+<p> $$f_y’(0,0) &#x3D; \lim_{y \to 0} \frac{f(0,y) - f(0,0)}{y}$$</p>
+</li>
+<li><p><strong>判可微用路径法（证伪神器）</strong>：</p>
+<p> 计算极限 $\lim_{(x,y) \to (0,0)} \frac{f(x,y) - f(0,0) - f_x’(0,0)x - f_y’(0,0)y}{\sqrt{x^2+y^2}}$。</p>
+<p> _技巧_：令 $y&#x3D;kx$（直线逼近）或 $y&#x3D;x^2$（抛物线逼近）代入上式。如果算出的结果含有 $k$，或者不等于 $0$，则<strong>立刻判定为不可微</strong>。</p>
+</li>
+<li><p><strong>求方向导数用射线参数方程</strong>：</p>
+<p> 设方向 $\vec{l} &#x3D; (\cos\alpha, \sin\alpha)$。</p>
+<p> $$\frac{\partial f}{\partial l}\bigg|<em>{(0,0)} &#x3D; \lim</em>{t \to 0^+} \frac{f(t\cos\alpha, t\sin\alpha) - f(0,0)}{t}$$</p>
+<p> _避坑_：千万不要用 $\text{grad},f \cdot \vec{l}$ 去算，因为这个公式<strong>仅在函数可微时成立</strong>。</p>
+</li>
+</ol>
+<h3 id="二、-空间几何：切线、法面与平行的转化"><a href="#二、-空间几何：切线、法面与平行的转化" class="headerlink" title="二、 空间几何：切线、法面与平行的转化"></a>二、 空间几何：切线、法面与平行的转化</h3><p>几何应用题（如求切平面、切线方程，或已知平行&#x2F;垂直关系求参数）是必考的计算题。</p>
+<p><strong>相关知识：</strong></p>
+<ul>
+<li><p><strong>曲面 $F(x,y,z)&#x3D;0$ 的法向量</strong>：$\vec{n} &#x3D; (F_x’, F_y’, F_z’)$。</p>
+</li>
+<li><p><strong>曲线 $r(t) &#x3D; {x(t), y(t), z(t)}$ 的切向量</strong>：$\vec{s} &#x3D; (x’(t), y’(t), z’(t))$。</p>
+</li>
+</ul>
+<p><strong>解题技巧（几何关系的代数翻译）：</strong></p>
+<ol>
+<li><p><strong>曲线切线 $\parallel$ 已知平面</strong>：</p>
+<ul>
+<li><p>_翻译_：曲线的<strong>切向量 $\vec{s}$</strong> 与平面的<strong>法向量 $\vec{n}$</strong> 必须<strong>垂直</strong>。</p>
+</li>
+<li><p>_列式_：$\vec{s} \cdot \vec{n} &#x3D; 0$。解这个方程就能找到对应的切点参数 $t$。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>隐函数曲面求切平面（一招鲜）</strong>：</p>
+<ul>
+<li><p>遇到 $e^{2z} - xyz &#x3D; e^2$ 这种方程，令 $F(x,y,z) &#x3D; e^{2z} - xyz - e^2$。</p>
+</li>
+<li><p>分别对 $x, y, z$ 求偏导，将已知点 $M(0,2,1)$ 代入得到法向量 $\vec{n} &#x3D; (A, B, C)$。</p>
+</li>
+<li><p>直接写出点法式：$A(x-0) + B(y-2) + C(z-1) &#x3D; 0$。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="三、-复合函数的高阶偏导数（链式法则的终极考验）"><a href="#三、-复合函数的高阶偏导数（链式法则的终极考验）" class="headerlink" title="三、 复合函数的高阶偏导数（链式法则的终极考验）"></a>三、 复合函数的高阶偏导数（链式法则的终极考验）</h3><p>对于形如 $u &#x3D; u(x, 2x)$ 求 $u_{xx}’’$ 的题目，极易在求导过程中漏项。</p>
+<p><strong>相关知识：</strong></p>
+<ul>
+<li>多元复合函数的链式法则（树状图法）。</li>
+</ul>
+<p><strong>解题技巧（变量替换法）：</strong></p>
+<p>千万不要直接在原式上硬看，引入中间变量：</p>
+<ol>
+<li><p><strong>设中间变量</strong>：令 $v &#x3D; x, w &#x3D; 2x$，则 $u &#x3D; u(v, w)$。</p>
+</li>
+<li><p><strong>求一阶导</strong>：</p>
+<p> $$\frac{du}{dx} &#x3D; \frac{\partial u}{\partial v}\frac{dv}{dx} + \frac{\partial u}{\partial w}\frac{dw}{dx} &#x3D; u_1’ \cdot 1 + u_2’ \cdot 2$$</p>
+<p> <em>(注：$u_1’, u_2’$ 表示对第1、第2个位置的变量求导)</em></p>
+</li>
+<li><p><strong>求二阶导（算子法）</strong>：</p>
+<p> 将 $\frac{d}{dx} &#x3D; (\frac{\partial}{\partial v} \cdot 1 + \frac{\partial}{\partial w} \cdot 2)$ 作为一个算子，作用到一阶导数上：</p>
+<p> $$u_{xx}’’ &#x3D; \frac{d}{dx}(u_1’ + 2u_2’) &#x3D; (u_{11}’’ \cdot 1 + u_{12}’’ \cdot 2) + 2(u_{21}’’ \cdot 1 + u_{22}’’ \cdot 2)$$</p>
+<p> 合并同类项（假设混合偏导数连续，$u_{12}’’ &#x3D; u_{21}’’$）：</p>
+<p> $$u_{xx}’’ &#x3D; u_{11}’’ + 4u_{12}’’ + 4u_{22}’’$$</p>
+</li>
+</ol>
+<h3 id="四、-重积分的“降维打击”"><a href="#四、-重积分的“降维打击”" class="headerlink" title="四、 重积分的“降维打击”"></a>四、 重积分的“降维打击”</h3><p>重积分题目如果硬算原函数，往往会陷入死胡同。考试中的重积分题 80% 考查的是<strong>化简技巧</strong>。</p>
+<p><strong>相关知识：</strong></p>
+<ul>
+<li><p>积分区域的对称性。</p>
+</li>
+<li><p>极坐标、柱坐标、球面坐标系。</p>
+</li>
+</ul>
+<p><strong>解题技巧：</strong></p>
+<ol>
+<li><p><strong>奇偶对称性（第一眼必须看）</strong>：</p>
+<ul>
+<li><p>题目：$\iiint_{x^2+y^2+z^2 \le 1} (2x + xy + z^2) dV$。</p>
+</li>
+<li><p>_技巧_：球体关于 $x&#x3D;0, y&#x3D;0, z&#x3D;0$ 全对称。看到 $2x$（关于 $x$ 是奇函数）、$xy$（关于 $x,y$ 是奇函数），直接划掉！积分瞬间退化为 $\iiint z^2 dV$。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>绝对值与 $\max&#x2F;\min$ 问题（切西瓜法）</strong>：</p>
+<ul>
+<li><p>题目：$\iint_D \sin(\min{x,y}) dxdy$，其中 $D$ 为正方形 $[0,\pi] \times [0,\pi]$。</p>
+</li>
+<li><p>_技巧_：画出正方形，再画对角线 $y&#x3D;x$。这条线把正方形切成两半。</p>
+<ul>
+<li><p>在上方区域 $D_1$：$y &gt; x$，所以 $\min{x,y} &#x3D; x$。</p>
+</li>
+<li><p>在下方区域 $D_2$：$y &lt; x$，所以 $\min{x,y} &#x3D; y$。</p>
+</li>
+</ul>
+</li>
+<li><p>然后利用轮换对称性，$2 \iint_{D_1} \sin x ,dxdy$ 即可快速解出。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>累次积分的逆向操作（画图法）</strong>：</p>
+<ul>
+<li><p>题目：$\int_0^2 dx \int_0^{\sqrt{4-x^2}} \sqrt{x^2+y^2} dy$。</p>
+</li>
+<li><p>_技巧_：看到这种形式，绝对不要试图直接积分。先根据上下限<strong>画出积分区域</strong>（这是一个第一象限的四分之一圆）。一旦画出图形，立刻转换为极坐标：$\int_0^{\pi&#x2F;2} d\theta \int_0^2 r \cdot r dr$，心算即可出结果。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="五、-极值与泰勒展开的“读参法”"><a href="#五、-极值与泰勒展开的“读参法”" class="headerlink" title="五、 极值与泰勒展开的“读参法”"></a>五、 极值与泰勒展开的“读参法”</h3><p>在之前的测试卷中出现了给出一个长长的多项式加上 $o(\rho^2)$，问你原点是不是极值点的题目。</p>
+<p><strong>相关知识：</strong></p>
+<ul>
+<li><p>二元泰勒公式。</p>
+</li>
+<li><p>极值的二阶充分条件 ($AC-B^2$)。</p>
+</li>
+</ul>
+<p><strong>解题技巧（直接读系数）：</strong></p>
+<p>不要去求导！直接对比标准泰勒公式：</p>
+<p>$$f(x,y) &#x3D; f(x_0,y_0) + f_x’\Delta x + f_y’\Delta y + \frac{1}{2}(f_{xx}’’\Delta x^2 + 2f_{xy}’’\Delta x \Delta y + f_{yy}’’\Delta y^2) + o(\rho^2)$$</p>
+<ul>
+<li><p>一次项的系数就是一阶偏导数。<strong>如果一次项系数不全为 $0$，说明该点不是驻点，绝对没有极值！</strong></p>
+</li>
+<li><p>如果是驻点（一次项都没了），去读二次项系数：</p>
+<ul>
+<li><p>$A &#x3D; 2 \times (x^2\text{的系数})$</p>
+</li>
+<li><p>$B &#x3D; xy\text{的系数}$</p>
+</li>
+<li><p>$C &#x3D; 2 \times (y^2\text{的系数})$</p>
+</li>
+</ul>
+</li>
+<li><p>最后算 $AC - B^2$ 判别极值。这种方法在选择题中可以做到 10 秒出答案。</p>
+</li>
+</ul>
+</div>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

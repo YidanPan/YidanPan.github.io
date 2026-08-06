@@ -1,0 +1,13 @@
+<div class="container nopadding-x-md notes-archive-container">
+<div id="board" class="notes-archive-board">
+<div class="notes-category-page">
+<a class="notes-breadcrumb" href="/Notes/">← Notes</a>
+<div class="notes-category-hero"><span class="notes-category-kicker"><%= page.notesCategory.label === '离散数学' ? 'Chapter index' : 'Knowledge category' %></span><h1><%= page.notesCategory.label %></h1><p><%= page.notesCategory.description %></p></div>
+<div class="notes-subcategory-grid">
+<% page.groups.forEach(function(group) { %>
+<a class="notes-subcategory-card" href="<%= group.permalink %>"><h2><%= group.label %></h2><span class="notes-card-link">View subject →</span></a>
+<% }) %>
+</div>
+</div>
+</div>
+</div>

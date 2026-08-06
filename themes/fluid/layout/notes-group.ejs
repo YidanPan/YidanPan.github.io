@@ -1,0 +1,11 @@
+<div class="container nopadding-x-md notes-archive-container">
+<div id="board" class="notes-archive-board">
+<div class="notes-category-page">
+<a class="notes-breadcrumb" href="<%= page.notesCategory.parentPermalink || ('/Notes/category/' + page.notesCategory.slug + '/') %>">← <%= page.notesCategory.label %></a>
+<div class="notes-category-hero"><span class="notes-category-kicker"><%= page.notesCategory.label %></span><h1><%= page.notesGroup.label %></h1></div>
+<% if (page.notes.length) { %>
+<div class="notes-article-list"><% page.notes.forEach(function(note, index) { %><a class="notes-article-list-item" href="<%= note.permalink %>"><span class="notes-article-number"><%= String(index + 1).padStart(2, '0') %></span><span class="notes-article-title"><%= note.title %></span><span class="notes-article-arrow">→</span></a><% }) %></div>
+<% } else { %><div class="notes-empty-state">This subject is ready for your next note.</div><% } %>
+</div>
+</div>
+</div>

@@ -1,0 +1,134 @@
+<!-- ============== PAGE ============== -->
+<div class="home-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-avatar-wrap">
+        <div class="sidebar-avatar">
+          <span class="sidebar-avatar-text">Y</span>
+        </div>
+      </div>
+
+      <h1 class="sidebar-name"><%= config.author %></h1>
+      <div class="sidebar-handle">@yidanpan</div>
+      <div class="sidebar-tagline"><%= config.subtitle %></div>
+
+      <div class="sidebar-meta">
+        <div class="sidebar-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Hangzhou, China</span>
+        </div>
+        <div class="sidebar-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:yidanpan@zju.edu.cn">yidanpan@zju.edu.cn</a>
+        </div>
+      </div>
+
+      <div class="sidebar-socials">
+        <a class="social-pill" href="https://github.com/YidanPan" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <section class="section section-first hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="hero-greeting reveal-up" id="typewriterText"></span><span class="typewriter-cursor">|</span>
+        </h1>
+        <p class="hero-sub reveal-up" style="animation-delay:0.6s">
+          Exploring <span class="hero-accent">AI</span> &middot;
+          <span class="hero-accent">LLM</span> &middot;
+          <span class="hero-accent">Software</span>
+        </p>
+        <p class="hero-intro reveal-up" style="animation-delay:1.2s">
+          Hi, I'm <strong>Yidan</strong> — a student at <span class="hl">Zhejiang University</span>
+          passionate about <em>Artificial Intelligence</em>, <em>Large Language Models</em>,
+          and <em>Software Engineering</em>.
+        </p>
+        <div class="hero-tags reveal-up" style="animation-delay:1.5s">
+          <a href="/About/" class="hero-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4 3.4-6 8-6s7.2 2 8 6"/></svg>
+            <span>About Me</span>
+          </a>
+          <a href="/Projects/" class="hero-link primary">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2.5h6.5A2.5 2.5 0 0 1 21 10v8.5a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5z"/><path d="M3 10h18"/></svg>
+            <span>View Projects</span>
+          </a>
+          <a href="/archives/" class="hero-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>
+            <span>Read Blog</span>
+          </a>
+          <a href="/Notes/" class="hero-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>
+            <span>Read Notes</span>
+          </a>
+        </div>
+
+        <section class="home-skills reveal-up" style="animation-delay:1.7s" aria-labelledby="skills-title">
+          <div class="home-module-label" id="skills-title">TECH STACK</div>
+          <div class="skill-cloud">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">LLM</span>
+            <span class="skill-tag">CTF</span>
+            <span class="skill-tag">Web</span>
+          </div>
+        </section>
+      </div>
+
+      <section class="home-feed reveal-up" style="animation-delay:1.9s" aria-labelledby="updates-title">
+        <div class="home-feed-head">
+          <div>
+            <div class="home-module-label">WHAT'S NEW</div>
+            <h2 class="home-feed-title" id="updates-title">Recent updates</h2>
+          </div>
+        </div>
+        <div class="home-feed-list">
+          <a href="/Projects/" class="feed-item">
+            <span class="feed-icon feed-icon-project" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2.5h6.5A2.5 2.5 0 0 1 21 10v8.5a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 18.5z"/><path d="M3 10h18"/></svg>
+            </span>
+            <span class="feed-copy"><strong>3D Gesture Particle System</strong><small>Featured project · Python, MediaPipe &amp; OpenGL</small></span>
+            <span class="feed-side"><time class="feed-time" datetime="2026-08">This month</time><span class="feed-meta feed-meta-project">Project</span></span>
+          </a>
+          <a href="/Projects/" class="feed-item">
+            <span class="feed-icon feed-icon-site" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18M7 6h.01M10 6h.01"/></svg>
+            </span>
+            <span class="feed-copy"><strong>Personal website refresh</strong><small>Refining a calm, responsive space for writing and work</small></span>
+            <span class="feed-side"><time class="feed-time" datetime="2026-08">Today</time><span class="feed-meta feed-meta-now">Now</span></span>
+          </a>
+          <a href="/archives/" class="feed-item">
+            <span class="feed-icon feed-icon-blog" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>
+            </span>
+            <span class="feed-copy"><strong>Notes and explorations</strong><small>Follow along with my latest writing and project learnings</small></span>
+            <span class="feed-side"><time class="feed-time" datetime="2026-08">Recently</time><span class="feed-meta feed-meta-blog">Blog</span></span>
+          </a>
+        </div>
+      </section>
+    </section>
+  </div>
+</div>
+
+<script>
+(function() {
+  var text = "Welcome to Dan's Home!";
+  var el = document.getElementById('typewriterText');
+  var i = 0;
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 50 + Math.random() * 40);
+    }
+  }
+  setTimeout(type, 400);
+})();
+</script>

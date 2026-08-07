@@ -294,6 +294,165 @@ body:not(.is-home) > main {
 }
 
 /* ============================================================
+   BLOG TIMELINE ARCHIVE
+   ============================================================ */
+.blog-timeline-page {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto 80px;
+  padding: 56px 0 24px;
+}
+
+.blog-timeline-header {
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.blog-timeline-kicker,
+.blog-timeline-rail-label {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blog-timeline-header h1 {
+  margin: 10px 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1;
+}
+
+.blog-timeline-header p {
+  margin: 0;
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.blog-timeline-layout {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 40px;
+}
+
+.blog-timeline-rail {
+  position: sticky;
+  top: 104px;
+  align-self: start;
+  padding-top: 34px;
+}
+
+.blog-timeline-years {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+}
+
+.blog-timeline-years a {
+  position: relative;
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.blog-timeline-years a::before {
+  content: '';
+  position: absolute;
+  left: -21px;
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.blog-timeline-years a:hover {
+  color: var(--accent-ink);
+}
+
+.blog-timeline-list {
+  min-width: 0;
+}
+
+.blog-timeline-year {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 28px;
+  padding: 34px 0 8px;
+}
+
+.blog-timeline-year-marker {
+  color: var(--accent-ink);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.blog-timeline-year-posts {
+  border-left: 1px solid var(--line);
+}
+
+.blog-timeline-entry {
+  display: grid;
+  grid-template-columns: 105px minmax(0, 1fr);
+  gap: 22px;
+  padding: 0 0 28px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.blog-timeline-entry + .blog-timeline-entry {
+  padding-top: 28px;
+}
+
+.blog-timeline-entry time {
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.blog-timeline-entry h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.blog-timeline-entry h2 a {
+  color: var(--ink);
+}
+
+.blog-timeline-entry h2 a:hover {
+  color: var(--accent-ink);
+}
+
+.blog-timeline-entry p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.blog-timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-top: 13px;
+}
+
+.blog-timeline-tags a {
+  color: var(--accent-ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+/* ============================================================
    PAGE LAYOUT — Sidebar + Main (Home page)
    ============================================================ */
 .home-page {
@@ -911,6 +1070,48 @@ body:not(.is-home) > main {
   }
 }
 @media (max-width: 720px) {
+  .blog-timeline-page {
+    width: min(100% - 32px, 680px);
+    padding-top: 32px;
+  }
+
+  .blog-timeline-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .blog-timeline-rail {
+    position: static;
+    padding-top: 24px;
+  }
+
+  .blog-timeline-years {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .blog-timeline-years a::before {
+    display: none;
+  }
+
+  .blog-timeline-year {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .blog-timeline-entry {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-left: 16px;
+  }
+
+  .blog-timeline-entry h2 {
+    font-size: 21px;
+  }
+
   .hero-title {
     font-size: 32px;
   }

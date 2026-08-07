@@ -266,6 +266,12 @@
   margin: 1.2em 0;
 }
 
+.notes-article-comments {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
 .notes-article-toc {
   display: block;
   margin-top: 26px;

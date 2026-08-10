@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="这份文档是 ACTF（安全夺旗赛）中一道非常经典的逆向工程入门挑战源码。它通过编写一个“微型操作系统引导程序”，手把手带你从零学习 x86 汇编、寄存器套娃、条件跳转、BIOS 中断调用以及栈（Stack）的概念。 最重要的是，文件的最末尾包含了你需要提交的 Flag 题目（共 6 道思考题）！ 为了方便你阅读和通关，我为你将整个 .asm 源码文件分段进行了完整翻译与深度注释： 第一部分：欢迎来">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://yidanpan.github.io/_notes/CTF/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%91%E6%88%98%E6%BA%90%E7%A0%81.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="这份文档是 ACTF（安全夺旗赛）中一道非常经典的逆向工程入门挑战源码。它通过编写一个“微型操作系统引导程序”，手把手带你从零学习 x86 汇编、寄存器套娃、条件跳转、BIOS 中断调用以及栈（Stack）的概念。 最重要的是，文件的最末尾包含了你需要提交的 Flag 题目（共 6 道思考题）！ 为了方便你阅读和通关，我为你将整个 .asm 源码文件分段进行了完整翻译与深度注释： 第一部分：欢迎来">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-10T03:14:37.840Z">
+<meta property="article:modified_time" content="2026-07-10T03:14:37.840Z">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/%20') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <p>这份文档是 ACTF（安全夺旗赛）中一道非常经典的<strong>逆向工程入门挑战源码</strong>。它通过编写一个“微型操作系统引导程序”，手把手带你从零学习 x86 汇编、寄存器套娃、条件跳转、BIOS 中断调用以及栈（Stack）的概念。</p>
+<p>最重要的是，<strong>文件的最末尾包含了你需要提交的 Flag 题目（共 6 道思考题）</strong>！</p>
+<p>为了方便你阅读和通关，我为你将整个 <code>.asm</code> 源码文件分段进行了<strong>完整翻译与深度注释</strong>：</p>
+<h3 id="第一部分：欢迎来到逆向的世界（致新同学）"><a href="#第一部分：欢迎来到逆向的世界（致新同学）" class="headerlink" title="第一部分：欢迎来到逆向的世界（致新同学）"></a>第一部分：欢迎来到逆向的世界（致新同学）</h3><p>代码段</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs julia">; 鸣谢: <span class="hljs-meta">@CSAW</span><br><br>;                        ___     ___    _____     ___             ___      __      _      ___   <br>;                       /   \   / __|  |_   _|   | __|    o O O  |_  )    /  \    / |    / _ \  <br>;                       | - |  | (__     | |     | _|    o        / /    | () |   | |    \_, /  <br>;                       |_|_|   \___|   _|_|_   _|_|_   AAA_[O]  /___|   _\__/   _|_|_   _/_/_  <br>;                     _|<span class="hljs-string">&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span>|_|<span class="hljs-string">&quot;&quot;&quot;&quot;&quot;|_| &quot;&quot;&quot;</span> | &#123;======|_|<span class="hljs-string">&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span>|_|<span class="hljs-string">&quot;&quot;&quot;&quot;&quot;|_|&quot;&quot;&quot;</span><span class="hljs-string">&quot;&quot;</span>| <br>;                     <span class="hljs-string">&quot;`-0-0-&#x27;&quot;</span><span class="hljs-string">`-0-0-&#x27;&quot;`</span>-<span class="hljs-number">0</span>-<span class="hljs-number">0</span>-&#x27;<span class="hljs-string">&quot;`-0-0-&#x27;./o--000&#x27;&quot;</span><span class="hljs-string">`-0-0-&#x27;&quot;`</span>-<span class="hljs-number">0</span>-<span class="hljs-number">0</span>-&#x27;<span class="hljs-string">&quot;`-0-0-&#x27;&quot;</span><span class="hljs-string">`-0-0-&#x27; </span><br><span class="hljs-string"></span><br><span class="hljs-string">; 欢迎来到 ACTF！并且，预祝你来到逆向工程的世界。</span><br><span class="hljs-string">; 本挑战专为萌新（N3WbS）设计，所以如果你是个刚转专业/刚入学、完全不懂什么是逆向或汇编的新生，千万别紧张。</span><br><span class="hljs-string"></span><br><span class="hljs-string">; 【第一条铁律】：</span><br><span class="hljs-string">; 本题旨在带萌新入门，因此这份源码的设计思路是：希望你能从上到下一行行读下去，并对这一堆“鬼画符”建立起合理的理解……</span><br><span class="hljs-string">; 逆向工程是对“系统（SYSTEMS）”的解剖和理解，而不是对“代码（CODE）”的死记硬背。所以，只要你能看懂大体上发生了什么、并对系统的行为建立直观的直觉，你就不需要读懂每一行代码。</span><br><span class="hljs-string">; 举个例子：如果你看到代码里先调用了 `</span>print(<span class="hljs-string">&quot;input: &quot;</span>)<span class="hljs-string">`（打印输入提示），紧接着又调用了 `</span>password = inputPassword()<span class="hljs-string">`（输入密码），我由衷地希望你能推导出来——系统现在是在问你要密码，而不是在问你一只成年长颈鹿的平均体重。</span><br><span class="hljs-string"></span><br><span class="hljs-string">; 很好。如果你还在继续往下读，那你即将学到全宇宙最酷炫的玩意儿。</span><br><span class="hljs-string">; 这就是汇编语言。它是计算机处理器真正运行的机器码的“人类可读版”（在保持可读性的前提下，它已经尽可能地接近底层了）。</span><br><span class="hljs-string">; 值得一提的是，汇编是一个非常硬核且密集的课题，有海量的知识需要理解…… 按常理你现在应该去报个班、读几本厚书，然后——等一下！不！！这里是 ACTF！！！我们用最快乐的方式来学：不听劝告地一头扎进最深处，在把东西乱砸一通的过程中把知识学到手。</span><br><span class="hljs-string">; 那么，我们要开始了。</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="第二部分：物料清单与编译器对暗号"><a href="#第二部分：物料清单与编译器对暗号" class="headerlink" title="第二部分：物料清单与编译器对暗号"></a>第二部分：物料清单与编译器对暗号</h3><p>; 按照惯例，我今天不打算给你写一个 “Hello World” 程序——因为那种程序解析起来实在太复杂了。相反，我们来动手写一个<strong>基础操作系统</strong>。这可简单多了，对吧？ <em>眼角疯狂抽搐</em></p>
+<p>; 以下是你在本次挑战（以及你未来绝大多数的黑客&#x2F;构建&#x2F;编程&#x2F;人生旅程中…… .-.）所需要准备的“物料清单”：<br>;  1. 某种 Linux 系统 —— 我自己运行的是 Ubuntu 18.04，很多其他的 CTF 题目也是以它为目标的。不过市面上有非常多的 Linux 版本…… 在你真正搞懂这个“类 Unix 的玩意儿”到底怎么运作之前，你可能得把你搭好的系统重装个上百万次，所以别太焦虑，随便挑一个装上就行。<br>;      * 你可能想用虚拟机（Virtual Machine）来搞这个，完全没问题。<br>;      * 如果你真的很极客，甚至可以用容器（Container&#x2F;Docker）来封装它。那会很酷…… 但没那个必要。<br>;      * 如果你使用的是 Windows，Windows 的 Linux 子系统（WSL）真的非常香…… 我超级喜欢它。<br>;<br>;  2. NASM —— 负责把我们下面写的文本转换成计算机真正能读懂的东西。<br>;      * 呃，好吧，坏消息是计算机其实读不懂人类的文本。好消息是，把文本变得机器可读非常简单：下面写的每一行代码，都会被翻译成 1 到 15 个字节（Bytes）。这些字节计算机能完美理解——但在我们眼里，它们只是一堆随机数字的集合。<br>;      * （在 Ubuntu 上，只需要简单运行：<code>sudo apt install nasm</code>）<br>;<br>;  3. QEMU —— 用来运行我们自己写的这个操作系统的模拟器。<br>;      * （在 Ubuntu 上，只需要简单运行：<code>sudo apt install qemu</code>）<br>;<br>;  4. 应该还需要一个文本编辑器，用来编辑像这个挑战里一样的文本。我个人喜欢 VisualStudioCode…… 它有一些很棒的汇编（asm）扩展插件。<br>;<br>;  5. 一个终端（T3rMiNaL）！ 这东西超好用。你在里面敲字，就能让各种事情发生…… 这基本是不言自明的，我们将通过终端与这次挑战（以及未来许多其他挑战）中用到的工具进行交互。<br>;      * 不过别害怕，沿途你也会用到很多精美的图形化工具。<br>;<br>;  6. 要想在逆向工程中真正有所建树，你还需要一个反汇编器（Disassembler）。<br>;      * 反汇编器能把那一堆看起来像乱码的随机数字，重新翻译成人类能看懂的东西。<br>;      * 那些优秀的反汇编器还能对程序进行一些额外的分析，让反汇编的结果更准确，比如 BinaryNinja！！&lt;- 有史以来最赞的工具。:) 而且声明一下，我可没有签什么代言合同被迫说这话。我也没有被关在盒子里。我也没有想念天上那个巨大的死亡激光。那个死亡激光对我可凶了。</p>
+<p>; 该死，前面这段真是有够无聊的。</p>
+<p>; 接下来才是真正酷炫的东西！<br><strong>x86 汇编语言</strong>！<br>;   值得一说的是，世界上有许多种不同的汇编语言；因为有很多种不同设计目标和应用场景的计算机，而“处理器”是所有这些设备的大脑。所以，为了控制这些不同的处理器，人们发展出了好几种不同的汇编语言。<br>;   我们可以拿两种应用场景来举例：一种是像你手机这样的低功耗环境（你希望它能续航一整天），另一种是像服务器或游戏电脑这样的计算密集型设备……<br>手机会使用专门针对低功耗设计的处理器，比如 ARM 处理器；而台式机则会使用更强大、更快速、功能更多的处理器，比如英特尔（Intel）和 AMD 自家的 x86！<br>;   这也是我们将要学习的，因为你在“真实自然环境”中要去漏洞利用（Exploit）的大多数服务，都会运行在重型 x86 计算机上——顺带提一句，正因为它的设计极其强悍，所以它要复杂得多，以至于在实现处理器的指令时偶尔会出现一些小故障（我们称之为漏洞 Vulnerabilities），利用这些漏洞我们可以做出设计之外的事情——比如泄露数据。</p>
+<p>; 首先说明，接下来这三行代码你千万别读：</p>
+<p>org 7C00h       ; 告诉把文本转换成机器码的机器（NASM），我们的代码将被加载到内存的 0x7C00 位置。十六进制表示。遗留的历史屎山（BS）罢了。<br>bits 16         ; 告诉机器先生，我们现在使用的是 16 位汇编语言</p>
+<p>; 提前设置好两个宏定义，省得一会儿代码里到处都是让人摸不着头脑的“魔法数字（Magic Numbers）”。<br>%define LOAD_ADDR 0x6000</p>
+<p>; 被我抓到了吧——我敢打赌你肯定把上面那几行读了。啧，真拿你没办法。</p>
+<h3 id="第三部分：通用寄存器大清零与条件跳转"><a href="#第三部分：通用寄存器大清零与条件跳转" class="headerlink" title="第三部分：通用寄存器大清零与条件跳转"></a>第三部分：通用寄存器大清零与条件跳转</h3><p>; 每一个程序总得从某个地方开始运行，那为什么不从 <code>_start</code> 开始呢？<br>_start:  ; 这是一个“标签（Label）”…… 它本身并不是一条机器指令。它只是写给我们人类看的标记。我们把它放在这里是为了以后方便引用。这样一来，如果我们后面在代码里提到了 <code>_start</code>，NASM 编译器就会知道我们指的是这个标签紧跟在后面的那个元素。</p>
+<p>  cli    ; 这条指令你平时在写普通程序时基本见不到…… 所以不用太担心。它的作用大概就是：把中断关掉，免得此时往电脑上插个 USB 闪存盘把处理器吓跑、打断我们的核心工作。</p>
+<p>  ; 重要概念：汇编语言会给你提供一套数量固定的“变量”。这些变量被称为寄存器（Registers）。呃，严格来说它们并不是变量，但你完全可以把它们当成变量来理解。它们的速度极快。根据你调用它们的名字不同，你拿到的空间大小也不同（比如 16 位、8 位还是 64 位等等）——它们就是用来供我们存储“数据”的固定大小的格子。<br>  ; 接下来，我准备把我们拥有“通用”访问权限（且不会导致代码直接当场暴毙）的所有寄存器全部清零，好让你看清它们长啥样…… 实际上还有很多其他寄存器，但下面这些是我们在存储和操作数据时最常用到的“主食”。</p>
+<p>  mov ah, 0<br>  mov al, 0<br>  mov ax, 0</p>
+<p>  ; 好了，我得在这里先踩个刹车。让我们把上面那行代码拆开，看看它的各个组成部分：<br>  ;   <code>mov</code> —— 你看到的第一个单词被称为“操作码（Opcode）”，代表了你的代码让计算机处理器去执行的某个具体动作。这一个代表的是 Move（移动&#x2F;赋值）。它就是用来挪动东西的。<br>  ;   <code>ah</code>  —— 就是我刚才提到的那些寄存器之一（也就是 ‘a’ 寄存器…… 顺便说一下，后面还有 ‘b’, ‘c’, ‘d’ 等等）。它的容量是 8 位（Bits）…… 这是我们能使用的最小的寄存器尺寸。<br>  ;   <code>0</code>   —— 它就是…… 数字零。不然你还想让我解释个啥嘛（meee）？<br>  ;<br>  ; 所以用一个你可能更习惯的语法来表达：<br>  ; <code>mov ah, 0</code> 实际上就等于 <code>ah = 0</code><br>  ; 因为我们是在把数据从右边挪到左边…… 让 ah 这个格子装下“零”这个值。<br>  ; 我们对 al 和 ax 做的也是同样的事情。al 是另一个 8 位寄存器，而 ax 是 16 位的…… 不过，它们都因为字母 A 产生关联。它们其实是同一个寄存器的不同组成部分：<br>  ;<br>  ; 16 位（为了视觉效果，我把它拆成了两个 8 位的块）：<br>  ;<br>  ; ——– ——–<br>  ;<br>  ; 这些是用来存放 0 和 1 的插槽…… 看起来可能像这样：<br>  ;<br>  ; 00000000 00000000<br>  ;<br>  ; 或者是我们设置的任何其他二进制值。<br>  ;<br>  ; 数字中最高位的数字在左边，这跟我们日常的数学习惯一样。因此，正如我所做的那样，我们可以把这 16 位拆成两个独立的半部分，并把它们标记为 high（高位，简称 h）和 low（低位，简称 l）…… 较高的 8 位是更重要的有效数字（高位数字）。<br>  ; 为了方便，我们可以完全独立地去操作这其中的每一个半部分。我们只需要知道怎么引用它们就行了：<br>  ;<br>  ; ——– ——–<br>  ;    AH       AL<br>  ;<br>  ; 而这整个整体，就被称为 AX。<br>  ;<br>  ; 这一点非常重要，所以，我再重申一遍…… 如果你想改变 A 寄存器的任何一部分，你需要指明你想改变它的哪一部分。是整个 16 位，还是低 8 位，亦或是高 8 位。必须要“精确到比特”（Specif-bits，作者在开谐音梗）。我知道，我可真幽默。<br>  ;<br>  ; 我们手里拥有的 A、B、C、D 寄存器全都是这种结构。稍后我们还会接触到 8 到 15 号寄存器，它们也类似，但等碰到了再聊。</p>
+<p>  ; 让我们继续清空我们的寄存器…… 只是为了确保我们刚开始的时候它们全都是 0，顺便让你看看它们都长啥样：</p>
+<p>  mov bh, 0<br>  mov bl, 0<br>  mov bx, 0 ; 请意识到，最后这一行其实是多余且毫无意义的（因为前面两行已经把高低部分都清零了）。</p>
+<p>  mov ch, 1<br>  mov cl, 1<br>  mov cx, 0 ; 无论前面设置了啥，之前的两个值都会被这一行无情覆盖。在这条指令执行完后，组成 cx 的两个部分（ch 和 cl）的值都会变成 0，而不是 1。</p>
+<p>  ; 为了证明我刚才说的话，让我们引入一个快捷的比较指令…… <code>cmp</code>（Compare）<br>  <strong>条件判断：</strong><br>  cmp ch, 1  ; 许多指令在执行时，<strong>影响的局限于显式写出来的操作数</strong>。在这个例子中，它会悄悄设置一个名为 <code>flags</code>（标志寄存器）里的某些特定位。标志寄存器的每一个二进制位都被用作一个布尔值（True&#x2F;False）。不过你不需要去死记硬背每一个位代表什么布尔值，因为我们有其他的操作码会去自动读取并解析这个标志寄存器。<br>  ; 这条指令会盯着寄存器 ch 和绝对值 1，并根据它发现的属性（小于、大于、等于等）来设置 flags 里的各个字段。</p>
+<p>寄存器:cpu中可以寄存数据的器件（用来快速存储数据，速度快但是存储容量小。）<br>有四大通用寄存器，abcd，用来存具体数据。<code>flags</code> 寄存器非常特殊，它是 CPU 内部的<strong>一个“状态仪表盘”</strong>。这个寄存器的每一位都是布尔变量，true或者false，分为零标志位，符号标志位，进位标志位。<br>先通过cmp比较如果是1则零标志位标志成true，如果是0则零标志位标志成false，符号标志位标志成true</p>
+<p>  je .death  ; 读作“Jump if Equal”（等于则跳转）。如果之前比较的两个值在比较时是<strong>相等</strong>的，那么程序就会跳转到作为唯一操作数指定的“标签”（还记得之前的 <code>_start</code> 吗？）处去执行。这条指令同样作用于一个没有明确写出来的寄存器…… 那就是“指令指针寄存器（IP）”，它实际上保存着我们下一步要执行的指令在内存中的计数。</p>
+<p>  jmp .next_test ; 既然刚才那两个值不相等（因为 cx&#x3D;0 导致 ch&#x3D;0，0 不等于 1），没有满足跳转条件，程序就会直接“顺着滑落”到下一条指令，也就是这一条。这一条是一个“<strong>无条件跳转</strong>”，直接帮我们绕过下面的死亡代码块。</p>
+<p>  .death:<br>    hlt  ; “Halt and catch fire”（挂起并自焚指令）—— <strong>立即停止执行任何代码</strong>。当场去世。永远别想回来。一切都结束了。天上的死亡激光射中你了。诸如此类。</p>
+<p>  .next_test:  ; 顺便提一句，我这里使用的是 NASM 汇编器，它提供了很多好用的预处理器功能，非常像 C++ 里的 #include 之类的玩意。<br>                ; NASM 提供的功能之一就是“<strong>局部标签</strong>（Local Labels）”。任何前面带有一个点号（“.”）的标签，都被视为属于<strong>上级函数（即前面那个不带点号的普通标签）的局部标签</strong>。这样为了方便，你就可以在不同的老大哥标签内部重复使用相同的局部标签名。<br>    cmp cl, 0<br>    je .success  ; 如果 cl 确实是 0，那就跳过死亡块！</p>
+<pre><code class="hljs">hlt  ; 别啊（pls no）
+
+.success:  ; 顺便说一下，代码里的空格和缩进都会被忽略…… 就像被无视的我一样。
+</code></pre>
+<p>  ; 其实，让一个寄存器归零还有很多其他的方法…… 我希望你还记得你的二进制位运算符（与 AND、或 OR、非 NOT、异或 XOR）<br>  xor dh, dh  ; &lt;- 思考题 1 （提示：自己异或自己会发生什么？）<br>  and dl, 0<br>  mov dx, 0xffff  ; 十六进制数<br>  not dx      ; &lt;- 思考题 2 （提示：全满的 1 经过 NOT 取反会变成什么？）</p>
+<p>  cmp dx, 0<br>  jne .death  ; 这一次如果不相等，就往回跳转到我们之前路过的死亡标签…… 这样能避免写重复的代码。</p>
+<blockquote>
+<p>关于<strong>局部标签举个例子</strong>：<br>_start:              ; 👑 这是全局大路标（老大）<br>  cli<br>  …<br>  je .death          ; 👈 这里其实完整的意思是：跳到 “_start 内部的 death”<br>  jmp .next_test     ; 👈 这里完整的意思是：跳到 “_start 内部的 next_test”</p>
+<p>  .death:            ; 📌 局部路标（附属在 _start 门下）<br>    hlt  </p>
+<p>  .next_test:        ; 📌 局部路标（附属在 _start 门下）<br>    cmp cl, 0<br>    je .success</p>
+<p>new_function:        ; 👑 新的全局大路标（新老大诞生！）<br>  …<br>  jmp .end</p>
+<p>  .end:              ; 📌 又是局部路标 .end，但它现在自动绑定了 new_function！</p>
+</blockquote>
+<h3 id="第四部分：高级寄存器（段寄存器与指针寄存器）清零"><a href="#第四部分：高级寄存器（段寄存器与指针寄存器）清零" class="headerlink" title="第四部分：高级寄存器（段寄存器与指针寄存器）清零"></a>第四部分：高级寄存器（段寄存器与指针寄存器）清零</h3><p>  ; 好了，新兵们！来看新寄存器！<br>  ; 这些被称为“<strong>段寄存器（Segment Registers）</strong>”，它们全部都只有 16 位大小。<br>  ; ……行吧……<br>  ; 真是百无一用（历史包袱）。</p>
+<p>  mov ds, ax ; 噢，好吧，所以这一次既然<br>  mov es, bx ; 刚才右边的通用寄存器<br>  mov fs, cx ; 已经被我们成功清零了，<br>  mov gs, dx ; 那我就直接用它们来帮忙<br>  mov ss, ax ; 把这些段寄存器也一并洗白清零。<br>之前已经把通用寄存器清零了，这里借用通用寄存器（abcd+x）来把段寄存器（…+s)清零。</p>
+<p>  ; 下面这些寄存器其实有各自专属的名字，但绝大多数都成了历史遗留。<br>  mov sp, cx ; Stack Pointer（栈指针寄存器）<br>  mov bp, dx ; Base Pointer（基址指针寄存器）<br>  mov si, sp ; Source Index（源变址寄存器）<br>  mov di, bp ; Destination Index（目的变址寄存器）  &lt;- 思考题 3<br>  ; 记住，上面这些操作只是类似于 <code>ds = ax; es = bx;</code>。那么此时右边的那些通用寄存器里的值是多少呢？</p>
+<p>  ; 既然现在我们已经把能摸到的寄存器全认识了一遍，我们来真正干点实事吧。</p>
+<h3 id="第五部分：利用-BIOS-中断一个字一个字打印字符串"><a href="#第五部分：利用-BIOS-中断一个字一个字打印字符串" class="headerlink" title="第五部分：利用 BIOS 中断一个字一个字打印字符串"></a>第五部分：利用 BIOS 中断一个字一个字打印字符串</h3><p>; 定义一个新函数<br>new_function:<br>  ; 如你所见，它并不是什么真正的新函数…… 既然空格和标签都会被编译器忽略，我只是在源码文件里标记了一个新位置而已。</p>
+<p>  ; 【终极目标】：<strong>让我们在屏幕上打印一些文字</strong>！</p>
+<p>  ; 第一步：我们需要设置一下屏幕，好让它允许我们显示文本。<br>  mov ax, 0x0003     ; <strong>设置文本显示模式</strong>；相当于ah是0x00，al是0x03<br>  int 0x10          ; 啊哈！新玩意儿登场了！<strong>触发 BIOS 中断</strong>。</p>
+<p>ah&#x3D;0x00时是在说要现在要设置显示器的画面模式，al&#x3D;0x03是在说把屏幕切成80$*$ 25字符的纯文本黑底模式（首先是设置好ax，所以在后面中断bios的时候才可以达到这个效果）</p>
+<p>  ; 第二步，遇到了一个问题：<strong>我们一次只能打印一个字母</strong>，像这样：<br>  mov al, ‘t’        ; 把字符 ‘t’ 装入 al（把字符t的ascall码值装进al）<br>  mov ah, 0x0e      ; 告诉 BIOS：我要使用“电传打字机模式”打印单个字符！&lt;- 思考题 4（提示：看下面关于 0x0e 功能的解释）<br>  int 0x10          ; 又是这个新东西。好吓人！</p>
+<p>  ; <code>int</code> 代表中断（Interrupt）。退一步站在程序员的角度来看，我们写的代码除了<strong>操纵数据</strong>和<strong>做决定（分支跳转）</strong> 之外，其实什么都干不了。<br>  ; 如果我们想让我们写的东西产生真正的实际影响，我们就必须<strong>和外部环境交互</strong>——把代码里倒腾的数据显现出来，让最终用户能看到。<br>  ; 这意味着我们必须调用系统留给我们的 API。在这个操作系统的世界里，我们需要和<strong>主板的系统——BIOS</strong> 打交道，并拜托它替我们去和<strong>屏幕交互</strong>（以后可能还要和 USB 驱动器之类的交互）。<br>  ; 我们在这里调用的中断号是 0x10。你可以去维基百科查阅 INT 10H 的所有功能。<strong>简而言之，根据 AH 寄存器里的值的不同，这个中断能干完全不同的活。</strong> 当 AH &#x3D; 0x0e 时，它允许我们把存储在 AL 寄存器里的 8 位 ASCII 码字母直接打印到屏幕上。</p>
+<p>  ; 但这感觉有点鸡肋。一次只能打印一个字母。我们可以写得更高级一点。</p>
+<p>  ; 首先，让我们定义一串用来打印的字符串。但请记住：现在我们是在代码堆里硬生生定义了一块“垃圾数据”，所以我们必须在程序运行到它之前“飞跃”过去，免得 CPU 误把我们的文本字符串当成机器指令去解码执行。<br>  mov ax, .string_to_print  ; 把字符串的内存首地址交给 ax<br>  jmp print_string          ; 飞跃到打印函数去<br>  .string_to_print: db “acOS”, 0x0a, 0x0d, “  by Elyk”, 0x00  ; 格式：标签: &lt;元素大小&gt; &lt;元素数组&gt;<br>  ; <strong><code>db</code> 代表 Define Bytes（定义字节）</strong> 意思就是把后面的字符在后面的内存中一个一个存入。类似的还有 db, dw, dd, dq, dt, do, dy, 和 dz。我刚才甚至惊奇地发现最后那三个竟然真的存在。这不算什么汇编特有知识，不记得也没关系。<br>  ; 数据的定义可以是“字符串”的形式，也可以是用逗号隔开的值。</p>
+<p>db后面引号内的是需要打印的字符串，在后面的字符是计算机底层用来控制文本排版和标记结束的符号</p>
+<ul>
+<li>0x0a：控制屏幕的光标<strong>垂直向下移动一行</strong>，但光标的横坐标不变。如果只执行这一步，光标会悬在下一行的正中间。,</li>
+<li>0x0d：把光标<strong>狠狠地甩回到当前行的最左边（起始位置）</strong>，</li>
+<li>“  by Elyk”：这就没什么意思了，纯粹是作者的硬编码署名、</li>
+<li>0x00：汇编语言中的NULL，代表字符串到这里就结束了。一般所有字符串的终止应该都是0x00</li>
+</ul>
+<p>; 现在我们来写一个能<strong>打印一整串字符串</strong>的“函数”<br>print_string:<br>  .init:<br>    mov si, ax  ; 因为我们从语法上没办法像高级语言那样传参，所以我直接用 ax 来充当第一个参数——把要打印的字符串指针传给 si。（ax什么都是通用寄存器，能够比较好的存储各种数据）</p>
+<p>  .print_char_loop:<br>    cmp byte [si], 0  ; <strong>表达式加上方括号 <code>[...]</code> 代表“取……地址里的内容</strong>”，这跟 C 语言里的指针解引用操作（*ptr）完全一模一样！<br>                        ; 所以在这里，si 是一个指针（它是从 ax 复制过来的字符串首地址）<br>                        ; 如果我们当前指到的地方是一个零（Null-byte），说明我们撞上了字符串的末尾——这就是所谓的“以 0 结尾的字符串”（参考上面 178 行末尾定义的 0x00）<br>    je .end            ; 如果撞到 0，说明打完了，跳出循环。如果相等就跳转到end</p>
+<pre><code class="hljs">mov al, [si]  ; 既然方括号是解引用，这就是把 si 指向的那个“单字节字符”抓出来丢进 al 里：`al = *si`这一步真正实现了内存数据到寄存器的转移，把数据真正存在了寄存器中
+
+mov ah, 0x0e  ; &lt;- 思考题 5！（提示：循环到第三次时，ah 的值被改成了什么？）
+int 0x10      ; 这个指令可以让cpu呼叫 烧录好的BIOS，真正把字符打印在屏幕上。bios看到ah中装的是0x0e就知道是要打印单个字符，然后打印al中的字符
+
+inc si        ; 指针自增 1，走到下一个字符的地址 （inc是increment自增的意思）
+jmp .print_char_loop 无条件跳转到循环开始
+.end:
+</code></pre>
+<p>一个字符或者字母是一个字节，也就是八个比特（八位），所以是两位十六进制 所以对应十六进制要两个两个一起看</p>
+<h3 id="第六部分：一行指令打印整个字符串的“正规写法”"><a href="#第六部分：一行指令打印整个字符串的“正规写法”" class="headerlink" title="第六部分：一行指令打印整个字符串的“正规写法”"></a>第六部分：一行指令打印整个字符串的“正规写法”</h3><p>代码段</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-symbol">print_string_right:</span><br>  <span class="hljs-comment">; 用更正规的姿势来打印字符串</span><br><br>  <span class="hljs-keyword">jmp</span> .past_data  <span class="hljs-comment">; 温馨提示：局部标签，顺便提醒：跳过下面定义的硬编码数据 jmp是无条件跳转</span><br><span class="hljs-symbol">  .important_string_to_print:</span> <span class="hljs-built_in">db</span> <span class="hljs-string">&quot;lol kek &quot;</span>, <span class="hljs-number">0</span> 跳过了这个标签<br><span class="hljs-symbol">  .past_data:</span>  <span class="hljs-keyword">jmp</span>到这里<br><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">bp</span>, .important_string_to_print  <span class="hljs-comment">; 把字符串的指针交给 bp（bp是基址指针寄存器）只能是bp寄存器</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-number">dh</span>, <span class="hljs-number">3</span>   <span class="hljs-comment">; 指定从屏幕的第 3 行开始打印 指定行</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">dl</span>, <span class="hljs-number">15</span>  <span class="hljs-comment">; 指定从屏幕的第 15 列开始打印 &lt;- 思考题 6 指定列</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">cx</span>, <span class="hljs-number">0x0007</span>   <span class="hljs-comment">; 字符串的长度 cx是计数寄存器，7是因为刚好7个字符</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>, <span class="hljs-number">0000000000001111b</span>  <span class="hljs-comment">; 颜色属性：黑底白字（二进制表示）末尾的b代表二进制binary</span><br>                               <span class="hljs-number">0x0f</span>中<span class="hljs-number">0</span>代表黑底，f代表白色 刚好就是黑底白字<br><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0x1301</span>  <span class="hljs-comment">; AH=13h 是 BIOS 另一个高级中断功能：一次性打印整个字符串！ al=01代表把光标移动到字符串末尾</span><br>  <span class="hljs-keyword">int</span> <span class="hljs-number">0x10</span>  <span class="hljs-comment">; 执行！</span><br><br>  <span class="hljs-comment">; 不过说老实话，我个人其实更喜欢刚刚那种一个字一个字蹦出来的效果…… 更有黑客美感。而且你甚至可以调用 0x15 号中断让它每打一个字就“睡”一小会儿，做出的效果简直酷毙了……</span><br><br>  <span class="hljs-comment">; 在我问心无愧地放你离开这里之前，还有最后一个极其重要的地底秘密必须展示给你：内存栈（The Stack）</span><br>  <span class="hljs-comment">; 让我们快速写一个“打印数字”的函数（然后直接跳过它，去执行演示栈的代码）</span><br>  <span class="hljs-keyword">jmp</span> stack_example<br></code></pre></td></tr></table></figure>
+
+<p>普通通用寄存器中只有bx可以存储地址，也就是只有bx可以放入方括号中。cx是计数寄存器 dx是数据寄存器 ax是累加寄存器<br>a：accumulater  b：base c：count  d：data</p>
+<h3 id="第七部分：极其复杂的“打印数字”函数"><a href="#第七部分：极其复杂的“打印数字”函数" class="headerlink" title="第七部分：极其复杂的“打印数字”函数"></a>第七部分：极其复杂的“打印数字”函数</h3><p>代码段</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-comment">; 这个函数负责把存储在 AX 里的十六进制或二进制数字转换成人类看得懂的十进制字符并打印出来……这在汇编里可不是个简单的活。</span><br><span class="hljs-symbol">newline:</span> <br>  <span class="hljs-built_in">db</span> <span class="hljs-number">0x0d</span>, <span class="hljs-number">0x0a</span>（回车换行）<br><span class="hljs-symbol">print_buf:</span><br>  <span class="hljs-built_in">resb</span> <span class="hljs-number">5</span>          <span class="hljs-comment">; 预留 5 个字节的缓冲区</span><br>  <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-number">0</span><br><span class="hljs-symbol">print_rax:</span><br>  <span class="hljs-keyword">lea</span> <span class="hljs-built_in">si</span>, [print_buf + <span class="hljs-number">4</span>]       <span class="hljs-comment">; 我们的策略是通过“除以 10 取余数”的数学方法，从右往左逆向构建数字字符串，所以指针先指向缓冲区的末尾。</span><br>  <span class="hljs-comment">; 顺便解释一下这个神奇的 `lea`（Load Effective Address）操作码…… 它简直就像黑魔法。</span><br>  <span class="hljs-comment">; 在方括号 `[...]` 里面，最复杂的表达式可以写成 `[寄存器1 + 寄存器2 * 常数1 + 常数2]`</span><br>    <span class="hljs-comment">; 寄存器1 叫 基址（Base）</span><br>    <span class="hljs-comment">; 寄存器2 叫 变址（Index）</span><br>  <span class="hljs-comment">; 绝大多数时候方括号代表去内存里取值，但 `lea` 极其叛逆，它偏不取值，它只负责把括号里算出来的“纯地址结果”直接抢过来。这样能当成高级数学计算的快捷方式，省得去反复调用 `add` 指令。</span><br><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">di</span>, <span class="hljs-built_in">si</span>                    <span class="hljs-comment">; 备份最后一位字符的地址</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>, <span class="hljs-number">10</span>                    <span class="hljs-comment">; 把除数 10 存进 B 寄存器</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">  .div_loop:</span><br>    <span class="hljs-comment">; 汇编里的除法有点怪，但用起来很爽。</span><br>    <span class="hljs-comment">; 除法指令非常简单，就写 `div 操作数`，它会自动把 A 寄存器里的值拿去当被除数。</span><br>    <span class="hljs-comment">; 除法的结果（商）会被存进 rax，而余数则被丢进 rdx。但在做除法之前，必须手动把 rdx 清空，否则数据会乱套。</span><br>    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">dx</span>, <span class="hljs-built_in">dx</span>                    <span class="hljs-comment">; 异或清空 dx，为除法做准备</span><br>    <span class="hljs-keyword">div</span> <span class="hljs-built_in">bx</span>                        <span class="hljs-comment">; 执行除法！(商:余数) = ax / bx</span><br>    <span class="hljs-keyword">add</span> <span class="hljs-built_in">dx</span>, <span class="hljs-number">0x30</span>                  <span class="hljs-comment">; 把得到的数字加上 0x30，转换成 ASCII 码格式（比如数字 0 变成字符 &#x27;0&#x27;）</span><br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> [<span class="hljs-built_in">si</span>], <span class="hljs-built_in">dl</span>             <span class="hljs-comment">; 把余数（字符）存入缓冲区</span><br>    <span class="hljs-keyword">dec</span> <span class="hljs-built_in">si</span>                        <span class="hljs-comment">; 指针向前挪一位，准备存“十位数”</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0</span>                     <span class="hljs-comment">; 检查商是不是已经变成 0 了（数字是不是除光了）</span><br>    <span class="hljs-keyword">jz</span> .check_buf                 <span class="hljs-comment">; 如果除光了，跳出循环</span><br>    <span class="hljs-keyword">jmp</span> .div_loop<br><span class="hljs-symbol"></span><br><span class="hljs-symbol">  .check_buf:</span><br>    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">si</span>, <span class="hljs-built_in">di</span>                    <span class="hljs-comment">; 检查我们有没有真的往里写过数字</span><br>    <span class="hljs-keyword">jne</span> .print_buf<br>    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">byte</span> [<span class="hljs-built_in">si</span>], <span class="hljs-string">&#x27;0&#x27;</span>            <span class="hljs-comment">; 如果啥都没干，那这个数就是 0，往里写个 &#x27;0&#x27;</span><br>    <span class="hljs-keyword">dec</span> <span class="hljs-built_in">si</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">  .print_buf:</span><br>    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">si</span>                        <span class="hljs-comment">; 指针校准，指向数字字符串的开头</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">    .print_char_loop:</span><br>      <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">byte</span> [<span class="hljs-built_in">si</span>], <span class="hljs-number">0</span>           <span class="hljs-comment">; 检查是否撞上了缓冲区末尾</span><br>      <span class="hljs-keyword">je</span> .end<br><br>      <span class="hljs-comment">; 在输出字符之间故意“睡”一小会儿，因为我是一个冷酷又非主流（3dGY and C00l）的黑客</span><br>      <span class="hljs-keyword">push</span> <span class="hljs-built_in">cx</span><br>        <span class="hljs-keyword">push</span> <span class="hljs-built_in">dx</span><br>          <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span><br>            <span class="hljs-keyword">xor</span> <span class="hljs-built_in">cx</span>, <span class="hljs-built_in">cx</span><br>            <span class="hljs-keyword">mov</span> <span class="hljs-built_in">dx</span>, <span class="hljs-number">0xffff</span><br>            <span class="hljs-keyword">mov</span> <span class="hljs-number">ah</span>, <span class="hljs-number">0x86</span><br>            <span class="hljs-keyword">int</span> <span class="hljs-number">0x15</span>              <span class="hljs-comment">; 呼叫延迟中断，让屏幕卡顿一下营造极客范</span><br>          <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span><br>        <span class="hljs-keyword">pop</span> <span class="hljs-built_in">dx</span><br>      <span class="hljs-keyword">pop</span> <span class="hljs-built_in">cx</span><br><br>      <span class="hljs-keyword">mov</span> <span class="hljs-built_in">al</span>, [<span class="hljs-built_in">si</span>]               <span class="hljs-comment">; 取出字符</span><br>      <span class="hljs-keyword">mov</span> <span class="hljs-number">ah</span>, <span class="hljs-number">0x0e</span>                <span class="hljs-comment">; 打印它</span><br>      <span class="hljs-keyword">int</span> <span class="hljs-number">0x10</span><br>  <br>      <span class="hljs-keyword">inc</span> <span class="hljs-built_in">si</span><br>      <span class="hljs-keyword">jmp</span> .print_char_loop<br><span class="hljs-symbol">.end:</span><br><span class="hljs-keyword">ret</span>                               <span class="hljs-comment">; 函数返回</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="第八部分：内存栈（Stack）的“大变魔术”演示"><a href="#第八部分：内存栈（Stack）的“大变魔术”演示" class="headerlink" title="第八部分：内存栈（Stack）的“大变魔术”演示"></a>第八部分：内存栈（Stack）的“大变魔术”演示</h3><p>代码段</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-symbol">print_info:</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">bp</span>  <span class="hljs-comment">; 打印基址指针寄存器 BP 的当前值</span><br>  <span class="hljs-keyword">call</span> print_rax<br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">sp</span>  <span class="hljs-comment">; 打印栈指针寄存器 SP 的当前值</span><br>  <span class="hljs-keyword">call</span> print_rax<br><span class="hljs-keyword">ret</span><br><span class="hljs-symbol"></span><br><span class="hljs-symbol">stack_example:</span><br>  <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">1</span><br>  <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span>  <span class="hljs-comment">; 【压栈】：把 ax 的值（1）强行塞进内存栈里保存起来。</span><br>    <span class="hljs-keyword">call</span> print_rax  <span class="hljs-comment">; 哦顺便说一句，汇编里确实是有“函数调用”的！就是用 `call`。它会悄悄把当前执行到的指令位置（ip）存下来，等函数里面执行到 `ret` 时，又能原路返回到这里接着往下跑。</span><br>    <span class="hljs-keyword">call</span> print_info  <span class="hljs-comment">; 观察这次打印出来的两个值…… 你会发现一个纹丝不动，另一个上蹿下跳。</span><br><br>      <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">2</span><br>      <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span>      <span class="hljs-comment">; 继续压入 2</span><br>        <span class="hljs-keyword">call</span> print_rax<br>        <span class="hljs-keyword">call</span> print_info  <span class="hljs-comment">; 【核心观察点】：BP（栈底）的值一直没有变</span><br><br>        <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">3</span><br>        <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span>    <span class="hljs-comment">; 继续压入 3</span><br>          <span class="hljs-keyword">call</span> print_rax <br>          <span class="hljs-keyword">call</span> print_info  <span class="hljs-comment">; 【核心观察点】：随着数据越塞越多，SP（栈顶）的值一直在疯狂改变！</span><br><br>          <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">4</span><br>          <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span>  <span class="hljs-comment">; 继续压入 4</span><br>            <span class="hljs-keyword">call</span> print_rax<br>            <span class="hljs-keyword">call</span> print_info<br><br>            <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">5</span><br>            <span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span> <span class="hljs-comment">; 继续压入 5</span><br>              <span class="hljs-keyword">call</span> print_rax<br>              <span class="hljs-keyword">call</span> print_info<br><br>          <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span>  <span class="hljs-comment">; 【出栈】：把栈顶最后塞进去的东西弹出来复原（先进后出原则 FILO）</span><br>          <span class="hljs-keyword">call</span> print_rax<br>          <span class="hljs-keyword">call</span> print_info  <span class="hljs-comment">; 当我们把东西一个个拿出来时，SP 奇迹般地往回退，恢复到了原本的数值！</span><br><br>        <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span><br>        <span class="hljs-keyword">call</span> print_rax<br>        <span class="hljs-keyword">call</span> print_info<br><br>      <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span><br>      <span class="hljs-keyword">call</span> print_rax<br>      <span class="hljs-keyword">call</span> print_info  <span class="hljs-comment">; 程序员通常利用 BP 和 SP 之间的这一段距离，在内存里圈出一块专属于某个函数的私密领地，用来存放局部变量。这东西就叫做【栈帧（Stack Frame）】。这是一个存储临时变量的绝佳手段。</span><br><br>    <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span><br>    <span class="hljs-keyword">call</span> print_rax<br>    <span class="hljs-keyword">call</span> print_info  <span class="hljs-comment">; 事实上，所有的高级语言编译器（如 C++、Java），底层都是把函数的局部变量这么死死捏在栈里面的。</span><br><br>  <span class="hljs-keyword">pop</span> <span class="hljs-built_in">ax</span><br>  <span class="hljs-keyword">call</span> print_rax<br>  <span class="hljs-keyword">call</span> print_info<br></code></pre></td></tr></table></figure>
+
+<h3 id="第九部分：尾声与-Flag-通关思考题（期末大考）"><a href="#第九部分：尾声与-Flag-通关思考题（期末大考）" class="headerlink" title="第九部分：尾声与 Flag 通关思考题（期末大考）"></a>第九部分：尾声与 Flag 通关思考题（期末大考）</h3><p>代码段</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-symbol">end:</span><br>  <span class="hljs-comment">; 在我们彻底告别这段美妙的源码之前，我由衷地感谢你能来到 ACTF 并坚持读到这里。</span><br>  <span class="hljs-comment">; 我希望你能享受接下来的比赛，并对汇编、逆向工程产生浓厚的爱——或者，开始痛恨自己为什么长了眼睛。</span><br>  <span class="hljs-comment">; 请记住：谷歌、Stack-Overflow、芯片手册、参考文档、维基百科全书全都是你最好的死党。尤其是这个网站可能会对你大有裨益：nasm.us/doc/nasmdoci.html（汇编编译器 NASM 的官方权威文档指南）。</span><br><br>  <span class="hljs-comment">; 接下来，是时候把我们的系统从简陋的 16 位模式跨越升级到现代的 64 位了！我们会看到翻天覆地的变化。其中最明显的就是我们迎来了全新的 64 位寄存器：</span><br>  <span class="hljs-comment">; </span><br>  <span class="hljs-comment">; 原来的 A, B, C, D 通用寄存器全部被暴力拉长到了 64 位，但依然完美兼容底层的切片：</span><br>  <span class="hljs-comment">;   RAX = 完整的 64 位 A 寄存器</span><br>  <span class="hljs-comment">;   EAX = 低 32 位的 A 寄存器</span><br>  <span class="hljs-comment">;    AX = 低 16 位的 A 寄存器</span><br>  <span class="hljs-comment">;    AL = 低 8 位的 A 寄存器</span><br>  <span class="hljs-comment">;    AH = 倒数第二个 8 位的 A 寄存器</span><br>  <span class="hljs-comment">;   【警告】：修改它们中的任何一个零件，都会牵一发而动全身地影响整个 RAX。唯一的例外是：当你执行 `mov eax, __` 修改低 32 位时，高 32 位会被硬件强行自动清零。</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 我们还白嫖拿到了全新命名的 R8 到 R15 寄存器：</span><br>  <span class="hljs-comment">;   R8  = 完整的 64 位</span><br>  <span class="hljs-comment">;   R8D = 低 32 位 (D 代表 Doubleword)</span><br>  <span class="hljs-comment">;   R8W = 低 16 位 (W 代表 Word)</span><br>  <span class="hljs-comment">;   R8B = 低 8 位 (B 代表 Byte)</span><br>  <span class="hljs-comment">;   （注意：R8-R15 这一对新寄存器不再提供像 AH 那种奇葩的倒数第二字节切片访问权）。</span><br><br>  <span class="hljs-comment">; 好了，废话不多说。你现在无论如何都得去准备一个反汇编软件了…… 我强烈推荐 BinaryNinja。</span><br><br>  <span class="hljs-comment">; ================================================================================</span><br>  <span class="hljs-comment">; 【你要回答的通关大作业问题】：</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 问题 1：当第 138 行的代码（xor dh, dh）执行完毕后，dh 寄存器的值是多少？00</span><br>  <span class="hljs-comment">;        （请用 1 个字节的十六进制格式回答，比如 00）</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 问题 2：当第 141 行的代码（not dx）执行完毕后，dl 寄存器的值是多少？00</span><br>  <span class="hljs-comment">;        （请用 1 个字节的十六进制格式回答）</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 问题 3：当第 161 行的代码（mov di, bp）执行完毕后，di 寄存器的值是多少？0000</span><br>  <span class="hljs-comment">;        （请用 2 个字节的十六进制格式回答，比如 0000）</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 问题 4：当第 176 行的代码（mov ax, .string_to_print）执行完毕后，ax 寄存器的高 8 位也就是 ah 的值是多少？0e74</span><br>  <span class="hljs-comment">;        （请用 2 个字节的十六进制格式回答。提示：注意看前面 174 行对 ah 赋了什么值，以及 176 行是对整固 ax 还是指针进行了操作！）</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 问题 5：当第 206 行的代码（mov ah, 0x0e）第三次被循环执行完时，ax 寄存器的整体值是多少？</span><br>  <span class="hljs-comment">;        （请用 2 个字节的十六进制格式回答。提示：看第 178 行定义的字符串 &quot;acOS&quot;，第三个字符是什么？它的 ASCII 码是多少？此时 ah 被强制改成了什么？）0e4f</span><br>  <span class="hljs-comment">;</span><br>  <span class="hljs-comment">; 问题 6：当第 222 行的代码（mov dl, 15）执行完毕后，dx 寄存器的整体值是多少？</span><br>  <span class="hljs-comment">;        （请用 2 个字节的十六进制格式回答。提示：dh 此时是多少？dl 的 15 变成十六进制是多少？把它们拼起来！）</span><br>  <span class="hljs-comment">; </span><br>  <span class="hljs-comment">; 【Flag 提交秘籍】：</span><br>  <span class="hljs-comment">; 把你的 6 个答案全部转换成小写字母，按顺序用下划线 &#x27;_&#x27; 拼接在 &quot;We1com3_7o_R3_&quot; 的后面，然后套上大括号塞进 ACTF&#123;&#125; 里面。</span><br>  <span class="hljs-comment">; </span><br>  <span class="hljs-comment">; 例如：假设你的 6 个题目的答案计算出来分别是：00, aa, bbbb, ffff, 0000, 0000；</span><br>  <span class="hljs-comment">; 那么你最终要在比赛网站上提交的正确 Flag 就是：</span><br>  <span class="hljs-comment">; ACTF&#123;We1com3_7o_R3_00_aa_bbbb_ffff_0000_0000&#125;</span><br>  <span class="hljs-comment">; ================================================================================</span><br></code></pre></td></tr></table></figure>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

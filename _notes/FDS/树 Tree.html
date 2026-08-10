@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="[!note] 核心知识  树的表示法：first-child-next-sibling 二叉树 性质 树的遍历：前、中、后、层 线索二叉树 应用：文件系统、表达式树 二叉搜索树 各种操作，重点是插入和删除   1.基本知识1.1.定义：它是一组节点，可以为空，如果不为空： 包含 1 个根节点 (root) r 有 0 个或多个子树 (subtrees) $T1,…,Tk​$，每个子树的根节点都">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://yidanpan.github.io/_notes/FDS/%E6%A0%91%20Tree.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="[!note] 核心知识  树的表示法：first-child-next-sibling 二叉树 性质 树的遍历：前、中、后、层 线索二叉树 应用：文件系统、表达式树 二叉搜索树 各种操作，重点是插入和删除   1.基本知识1.1.定义：它是一组节点，可以为空，如果不为空： 包含 1 个根节点 (root) r 有 0 个或多个子树 (subtrees) $T1,…,Tk​$，每个子树的根节点都">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-31T12:33:06.617Z">
+<meta property="article:modified_time" content="2026-03-31T12:33:06.617Z">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/%20') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <blockquote>
+<p>[!note] 核心知识</p>
+<ul>
+<li>树的表示法：first-child-next-sibling</li>
+<li>二叉树</li>
+<li>性质</li>
+<li>树的遍历：前、中、后、层</li>
+<li>线索二叉树</li>
+<li>应用：文件系统、表达式树</li>
+<li><strong>二叉搜索树</strong></li>
+<li>各种操作，重点是插入和删除</li>
+</ul>
+</blockquote>
+<h1 id="1-基本知识"><a href="#1-基本知识" class="headerlink" title="1.基本知识"></a>1.基本知识</h1><h2 id="1-1-定义：它是一组节点，可以为空，如果不为空："><a href="#1-1-定义：它是一组节点，可以为空，如果不为空：" class="headerlink" title="1.1.定义：它是一组节点，可以为空，如果不为空："></a>1.1.定义：它是一组节点，可以为空，如果不为空：</h2><ul>
+<li>包含 1 个<strong>根节点 (root)</strong> r</li>
+<li>有 0 个或多个<strong>子树 (subtrees)</strong> $T1,…,Tk​$，每个子树的根节点都和 r 通过一条<strong>边 (edge)</strong> 连接<blockquote>
+<p>[!tip] 注：</p>
+<ul>
+<li>子树之间不会相互连接，因此每个节点都是某个子树的根节点</li>
+<li>对于一棵有 N 个节点的树，它有 N−1条边</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="1-2-基本术语"><a href="#1-2-基本术语" class="headerlink" title="1.2.基本术语"></a>1.2.基本术语</h2><p>![[8ca644fd0951bef54e9586b63eaf22af.jpg]]</p>
+<p>![[64b701f9be8d52bd2d15f5820180ad42.jpg]]</p>
+<h2 id="1-3-性质"><a href="#1-3-性质" class="headerlink" title="1.3.性质"></a>1.3.性质</h2><p>![[62e6faea69617e42625b6d3a19c79d0e.jpg]]<br>![[7e8ac77b83df7612541df1a19e427c71.jpg]]</p>
+<blockquote>
+<p>[!note] 个人心得：</p>
+<ul>
+<li>对于概念搞明白深度、高度两个概念。深度是从根节点开始算的层数（根节点的深度为0）；高度是从叶节点开始算的（叶节点的深度为0）（那两个公式算是特例）</li>
+<li>区分好度为m的树和m叉树（度为m说明至少有一个节点的度为m；m叉树是一开始在构建树的时候设计好了度为m，但经过删除插入等操作之后它的度不一定是m，甚至可以为空树）</li>
+<li>任何一棵树都可以转化成二叉树</li>
+<li>树都可以用一个一维数组来表示（每个位置可以存储当前节点的父节点的index）</li>
+</ul>
+</blockquote>
+<h1 id="2-Binary-Tree-二叉树"><a href="#2-Binary-Tree-二叉树" class="headerlink" title="2.Binary Tree 二叉树"></a>2.Binary Tree 二叉树</h1><h2 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1.基本概念"></a>2.1.基本概念</h2><p>**二叉树 (binary tree)**：每个节点拥有不超过两个孩子的树（最大度为2的树）<br>![[Pasted image 20260331153752.png]]<br>补充：一般树（左图）的后序遍历 &#x3D; 由上述方法得到的二叉树（右图）的中序遍历</p>
+<h2 id="2-2-Tree-Traversals"><a href="#2-2-Tree-Traversals" class="headerlink" title="2.2.Tree Traversals"></a>2.2.Tree Traversals</h2><p>**树的遍历 (tree traversals)**：对树的每个节点都访问一次，时间复杂度为 $O(N)$</p>
+<h3 id="2-2-1-前序遍历-preorder-traversal"><a href="#2-2-1-前序遍历-preorder-traversal" class="headerlink" title="2.2.1. 前序遍历 (preorder traversal)"></a>2.2.1. 前序遍历 (preorder traversal)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">preorder</span><span class="hljs-params">(tree_ptr tree)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (tree)<br>    &#123;<br>        visit(tree);<span class="hljs-comment">//visit=printf</span><br>        <span class="hljs-keyword">for</span> (each child C of tree)<br>            preorder(C);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-后序遍历-postorder-traversal"><a href="#2-2-2-后序遍历-postorder-traversal" class="headerlink" title="2.2.2. 后序遍历 (postorder traversal)"></a>2.2.2. 后序遍历 (postorder traversal)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">postorder</span><span class="hljs-params">(tree_ptr tree)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (tree)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (each child C of tree)<br>            postorder(C);<br>        visit(tree);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-3-层序遍历-levelorder-traversal"><a href="#2-2-3-层序遍历-levelorder-traversal" class="headerlink" title="2.2.3.层序遍历 (levelorder traversal)"></a>2.2.3.层序遍历 (levelorder traversal)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">levelorder</span><span class="hljs-params">(tree_ptr tree)</span><br>&#123;<br>    enqueue(tree);<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">queue</span> is not empty)<br>    &#123;<br>        visit(T = dequeue());<br>        <span class="hljs-keyword">for</span> (each child C of T)<br>            enqueue(C);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-4-中序遍历-inorder-traversal"><a href="#2-2-4-中序遍历-inorder-traversal" class="headerlink" title="2.2.4.中序遍历 (inorder traversal)"></a>2.2.4.中序遍历 (inorder traversal)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// Recursion</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(tree_ptr tree)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (tree)<br>    &#123;<br>        inorder(tree-&gt;Left);<br>        visit(tree-&gt;Element);<br>        inorder(tree-&gt;Right);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// Iteration(using stack)</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iter_inorder</span><span class="hljs-params">(tree_ptr tree)</span><br>&#123;<br>    Stack S = CreateStack(MAX_SIZE);<br>    <span class="hljs-keyword">for</span> (;;)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (; tree; tree = tree-&gt;left)<br>            Push(tree, S);<br>        tree = Top(S);<br>        Pop(S);<br>        <span class="hljs-keyword">if</span> (!tree)<br>            <span class="hljs-keyword">break</span>;<br>        visit(tree-&gt;Element);<br>        tree = tree-&gt;Right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[!note] 总结点：</p>
+<ul>
+<li>知道&#x3D;&#x3D;前序或者后序遍历 + 中序遍历&#x3D;&#x3D;，可以确定唯一的一棵树</li>
+<li>知道前序遍历 + 后序遍历，一般情况下无法确定树的形状</li>
+</ul>
+</blockquote>
+<h2 id="2-3-Threaded-Tree-线索二叉树"><a href="#2-3-Threaded-Tree-线索二叉树" class="headerlink" title="2.3. Threaded Tree 线索二叉树"></a>2.3. Threaded Tree 线索二叉树</h2><p>**线索二叉树 (threaded binary trees)**很好地利用了闲置的节点，具体规则如下：</p>
+<ul>
+<li>如果 <code>Tree-&gt;Left</code> 为空，将它指向<strong>中序</strong>遍历中的<strong>前一个节点</strong></li>
+<li>如果 <code>Tree-&gt;Right</code> 为空，将它指向<strong>中序</strong>遍历中的<strong>后一个节点</strong></li>
+<li>有一个<strong>头节点</strong>(dummy node)，使得_最左边_和_最右边_孩子分别指向这个节点的左右孩子</li>
+</ul>
+<h2 id="2-4-Special-tree"><a href="#2-4-Special-tree" class="headerlink" title="2.4 Special tree"></a>2.4 Special tree</h2><h3 id="2-4-1-skewed-tree-斜二叉树"><a href="#2-4-1-skewed-tree-斜二叉树" class="headerlink" title="2.4.1 skewed tree 斜二叉树"></a>2.4.1 skewed tree 斜二叉树</h3><p>![[Pasted image 20260331182642.png]]</p>
+<h3 id="2-4-2-comlete-binary-tree-完全二叉树"><a href="#2-4-2-comlete-binary-tree-完全二叉树" class="headerlink" title="2.4.2 comlete binary tree 完全二叉树"></a>2.4.2 comlete binary tree 完全二叉树</h3><p>![[Pasted image 20260331182727.png]]</p>
+<h2 id="2-5-性质"><a href="#2-5-性质" class="headerlink" title="2.5 性质"></a>2.5 性质</h2><ul>
+<li>第 $i$层 $(i≥1)$ 最多拥有 $2i−1$ 个节点；深度为 $k$ 的二叉树最多有 $2^{k+1}−1$个节点 ($k≥1$)</li>
+<li>对于非空的二叉树，$n_0&#x3D;n_2+1$，其中 $n_0$是叶子节点个数，$n_2$​ 是度为 2 的节点个数<blockquote>
+<p>[!note] 推论：</p>
+<ul>
+<li>推论1：对于一棵完全二叉树，易知 $n_1&#x3D;0$ 或 $1$。由 $n_0&#x3D;n_2+1$ 知 :</li>
+<li>完全二叉树有奇数个节点时，$n_1&#x3D;0$</li>
+<li>完全二叉树有偶数个节点时，$n_1&#x3D;1$</li>
+<li>推论2：$n$ 叉树的叶子节点个数与 $n_1$​ 无关，且$n_0&#x3D;\sum_{i&#x3D;2}^{n}(i-1)n_i+1$</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-Binary-Search-Tree"><a href="#3-Binary-Search-Tree" class="headerlink" title="3.Binary Search Tree"></a>3.Binary Search Tree</h2><h3 id="3-1-Definition"><a href="#3-1-Definition" class="headerlink" title="3.1.Definition"></a>3.1.Definition</h3><ul>
+<li>A binary search tree is a binary tree.  It may be empty.  If it is not empty, it satisfies the following properties:<br>(1)  Every node has a key which is an integer, and the keys are distinct.<br>(2)  The keys in a nonempty left subtree must be smaller than the key in the root of the subtree.<br>(3)  The keys in a nonempty right subtree must be larger than the key in the root of the subtree.<br>(4)  The left and right subtrees are also binary search trees.</li>
+</ul>
+<h2 id="3-2-代码实现"><a href="#3-2-代码实现" class="headerlink" title="3.2.代码实现"></a>3.2.代码实现</h2><h3 id="3-2-1-Find"><a href="#3-2-1-Find" class="headerlink" title="3.2.1 Find"></a>3.2.1 Find</h3><ul>
+<li><p>递归版本<br>![[Pasted image 20260331201107.png]]</p>
+</li>
+<li><p>迭代版本<br>![[Pasted image 20260331201327.png]]</p>
+</li>
+<li><p><strong>FindMin</strong><br>![[Pasted image 20260331202359.png]]</p>
+</li>
+<li><p><strong>FindMax</strong><br>![[Pasted image 20260331202424.png]]</p>
+</li>
+</ul>
+<h3 id="3-2-2-插入"><a href="#3-2-2-插入" class="headerlink" title="3.2.2 插入"></a>3.2.2 插入</h3><p>![[Pasted image 20260331202515.png]]</p>
+<h3 id="3-2-3-删除"><a href="#3-2-3-删除" class="headerlink" title="3.2.3.删除"></a>3.2.3.删除</h3><p>![[Pasted image 20260331202539.png]]</p>
+<h2 id="4-一般情况分析"><a href="#4-一般情况分析" class="headerlink" title="4.一般情况分析"></a>4.一般情况分析</h2><ul>
+<li><strong>Question</strong>:  Place n elements in a binary search tree.  How high can this tree be?</li>
+<li><strong>Answer</strong>:  The height depends on <em><strong>the order of insertion</strong></em>.<blockquote>
+<p>[!note] <strong>Example</strong><br>![[Pasted image 20260331202715.png]]</p>
+</blockquote>
+</li>
+</ul>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

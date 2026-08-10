@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="在算力的洪流中，摆渡长夜的孤勇与人味  潘艺丹 3250102451  或许当我们坐在求是园的课堂里，我们已经常常习惯了将一切推导至最完美的公式，或是把未来打包成一份逻辑无懈可击的商业计划书。然而听完朱世强教授关于“机器人学校”的拆解，以及花姐对硅谷与浙大创业生态的白描，我脑海中浮现出的第一个词，竟然是“荒野” 。 真实的物理世界是一片巨大的荒野。朱教授拉来了一台身怀绝技、拥有八辆大电机却在初到学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://yidanpan.github.io/_notes/%E9%80%9A%E8%AF%86%E8%AF%BE/%E5%8F%8C%E5%88%9B%E8%AF%BE%E7%A8%8B%E6%84%9F%E6%82%9F.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="在算力的洪流中，摆渡长夜的孤勇与人味  潘艺丹 3250102451  或许当我们坐在求是园的课堂里，我们已经常常习惯了将一切推导至最完美的公式，或是把未来打包成一份逻辑无懈可击的商业计划书。然而听完朱世强教授关于“机器人学校”的拆解，以及花姐对硅谷与浙大创业生态的白描，我脑海中浮现出的第一个词，竟然是“荒野” 。 真实的物理世界是一片巨大的荒野。朱教授拉来了一台身怀绝技、拥有八辆大电机却在初到学">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-05-28T12:20:31.517Z">
+<meta property="article:modified_time" content="2026-05-27T15:20:21.136Z">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/%20') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 style="text-align: center;">在算力的洪流中，摆渡长夜的孤勇与人味</h1>
+
+<center><b>潘艺丹 3250102451</b></center>
+
+<p>或许当我们坐在求是园的课堂里，我们已经常常习惯了将一切推导至最完美的公式，或是把未来打包成一份逻辑无懈可击的商业计划书。然而听完朱世强教授关于“机器人学校”的拆解，以及花姐对硅谷与浙大创业生态的白描，我脑海中浮现出的第一个词，竟然是“荒野” 。</p>
+<p>真实的物理世界是一片巨大的荒野。朱教授拉来了一台身怀绝技、拥有八辆大电机却在初到学校时把实验室墙壁砸出一个深坑的机器人。这台被机器自己戏称为“四肢发达、头脑简单”的裸机，其实就是许多技术型创业团队的缩影。我们总以为把顶级的芯片、灵巧的机械手组装在一起，赋予它一段写死的舞蹈程序，它就拥有了生命 。但在朱教授的 VL to A（视觉-语言-逻辑-行动）模型出现出来之前，它不过是悬挂在实验室里等待施舍指令的逻辑死物。</p>
+<p>从“裸机”到“小脑”加持的本体，再到真正能理解咖啡杯、门把手、甚至是人类皱眉表情的“母机”，这中间隔着无数条技术和资金的死亡谷 。朱教授提出的“机器人学校”，其动人之处不在于它要包揽所有的硬件制造，而在于它像一个慈祥而清醒的教育家，试图在杭州西站对面的云门公园里，为这些工作场所里懵懵懂懂的小白，安上一颗具有“拟人化逻辑分析能力”的大脑 。</p>
+<p>这种对环境的感知与对任务的动态分解，恰好呼应了花姐随后抛出的那个关于“帝国边缘”的论断。花姐说，真正具有颠覆性的重大创新，往往不是发生在灯火辉煌、规矩严密的帝国中心，而是发生在充满混乱与未知的帝国边缘。那些在初创公司混乱状态里如鱼得水的野狼、土狗，和机器人学校里那些正在分科培养、试图跨越两座死亡谷的机器样机，在精神底色上是高度同构的。它们都身处荒野，都必须在不确定性中闭环找到属于自己的生存可行解。这不仅仅是机器的进化史，更是每一个不甘于在现有试卷里内卷的求是青年，必须直面的命运演进 。</p>
+<p>如果我们将这个逻辑进一步深化，便会发现“荒野”才是创新的常态，而“学校”则是跨越死亡谷的渡轮。在创业的荒野中，单打独斗的技术裸机很容易在现实的强磁场或复杂场景中“趴窝” 。朱教授所定义的机器人大脑五个核心能力，交互、认知、决策、常识与经验，本质上是人类在面对未知物理世界时赖以生存的本本能。当机器人学校将这些能力模块化、智能体化地赋予一台裸机时，它是在进行一种“技术资本的普惠” 。它让那些不具备全栈大模型开发能力的小团队，不必在每一个细分零部件上重复发明轮子，而是能够站在巨人的肩膀上，直接去对接真实的作业场景。</p>
+<p>这打破了以往“大资本垄断大技术”的铁律，给边缘切入的创业者提供了向死而生的武器。它试图告诉我们，不要试图去建造一个泛化的、无所不知的“世界模型”，那是一条漫长且充满幻觉的弯路。相反，我们要带着独特的“场景模型”和拟人化的硬核逻辑，去垂直领域里解决一个高频、高需的实际卡点。在帝国的边缘，混乱即是阶梯，只要你的逻辑能够闭环，荒野里就能长出最强悍的生命。</p>
+<p>但这节课让我印象很深的一点或许是在于，当我们面临AI时代洪流之下的找工作难题时，花姐那句调侃的话语，或许也是如此，当下的很多工种都在逐渐被AI在替代。当每日互动推出的“数字员工”和Agent能够用自然语言去替代、蒸馏大部分白领和小白程序员的日常工作时，我们过去赖以自豪的绩点、平均分、甚至是手搓一段固定代码的技能，都在被光速贬值。在效率主义和绩效主义的赛道上，人类永远无法跑赢一个不眠不休、成本刚刚被大模型打掉七成的大模型。</p>
+<p>那么，人的意义究竟在哪里？朱教授在讲德智体美劳时，把“德”放在了第一位。他讲到那个陪小孩子斗嘴、培养思辨能力的机器人，它的边界在于“不能说脏话，不能骂人” 。这就是德，是道德、法律与伦理的底线。这些底线不是靠代码的概率算出来的，而是靠人类千百年来在社会科学、文学和哲学里积淀出来的风序良俗。花姐提到的那个在硅谷悄然兴起的岗位，“首席哲学家”，更是扯下了技术万能的羞布。微观层面上，一个团队看待世界的方式，它跟物理世界互动的三观，就是它的个人哲学。当理科生将算力与硬件推向极致，甚至开始为“硅基统治世界铺路”的时候，更需要文科生跳进这个泥潭，用对人性的敏锐感知，去拉闸，去踩刹车，去定义什么是“被服务到的幸福感” 。</p>
+<p>当我们深入思考关于AI暂时还没有的“人味”，我们面对的其实是一场人类主体性的保卫战。当大语言模型横扫职场，甚至有人开始推崇连CEO都由Agent担任的“零人公司”时，人类被逼到了精神的死角。但正如课程中所展现的，AI可以生成完美的翻译、精准的动作，却无法生成对生命最深沉的敬畏与关怀。技术的极限在算法，而算法的漏洞在人性。一个只会算概率的机器，在面对活生生的失能老人或多变的人类社会时，它的“奋不顾身”往往会演变成破坏力。</p>
+<p>这时候，那些看起来最“没用”的文史哲、心理学和教育学，恰恰成了给冰冷机器“注入灵魂”的圣经 。理科生负责让机器“动起来、跑得快”，而文科生则负责在逻辑模型的底层注入同理心、边界感与美学设计。未来的竞争，绝不是一个人跟另一个人的孤立内卷，而是一群懂得技术与人文交叉融合的人，去驾驭另一群被工具异化的人。专业只是你工具箱里的一件兵器，它不该成为你的信息茧房 。当我们能够用哲学的深度去审视技术的边界，用文学的温度去讲好一个市场的真实需求时，理科生的技术才能真正找到回家的路。我们在泥潭中摆渡，不是为了对抗AI，而是为了在算力统治的洪流中，为人类保留最后一丝高贵而独特的微光。</p>
+<p>当技术和逻辑的烟雾散去，这场深夜分享沉淀在我心底最重的一块基石，其实是一种近乎古典的浪漫主义与长线坚守 。在资本和流量喧嚣的当下，人人都在渴望一夜暴富，朋友圈和各种社交媒体上充斥着“普通人如何靠AI翻盘”的神话。可或许，最好的方式是慢慢颠覆，但没有人愿意慢慢颠覆。</p>
+<p>那些能被一眼看穿、人人都能挤进去分一杯羹的所谓机会，最终只会因为分母的无限大而迅速失效。创业和做学问一样，最大的奢侈和最难的操守，都在于耐得住寂寞。朱教授的大脑模型深耕了许多年，承担了国家自然科学基金的重点项目，在经历了大语言模型的似是非是、甚至在硅谷高调宣扬具身智能世界模型时保持冷静的批判性思考后，才最终调整出自己独特的场景模型。这种深耕，就是耐心的最高表现形式。如果技术仅仅跟随每一次热点的风向去左右摇摆，那它永远只能做帝国中心的附庸，而无法在荒野中开辟出自己的绿洲。</p>
+<p>对于创业者而言，更有一种近乎悲壮的悖论。投资人必须是绝对理性的海王，他们要看壁垒、看盈利、看可复制性，甚至随时准备劝你改行。但真正的创始人，却必须在某种程度上保持非理性的坚信。如果你除了眼前的创业项目，还有另外一个更让你感到满足的备选项，那你就不配去创业。你必须把所有的精力、团队的生命和自身的未来，死死地砸进那个外人看起来荒诞不经的设想里。去相信那个现在还没有被发明出来的未来，去动手手搓第一个最丑的小板凳。正如花姐所鼓励的那样，最糟糕的Demo，也比最好的简历更有力量。因为只有你的双手弄脏了，你才能真正闭环，完成认知在真实物理世界里的跌倒与复活。</p>
+<p>这种非理性的坚信，本质上是一种寻找同频灵魂的磁场。当每日互动和花姐去孵化一个项目、去投资一个团队时，他们看的不仅是财务报表上的数字，而是创始人眼里有没有火，是整个团队在面对绝境时是否还散发着某种人格魅力。</p>
+<p>两个多小时的聆听与碰撞，我想，每一次能有一点认知上的收获就是这节课带给我最大的财富。而这一次，它启蒙给我的，绝不仅仅是机器人有几朵脑，或是投资孵化的五层公司理论，而是关于生命、常识与操守的重塑。在这个AI泛滥、轨范消解的变轨时代，世界正在从按部就班的轨道退回百花齐放的荒野。那么决定一个人能走多远的，不再是你在温室里被喂养了多少知识，而是你在面对未知时，内心是否拥有慢慢颠覆的底气。愿我们都能像花姐所期许的那样，内心充满明媚的热忱，对世界保持不理性的热爱。同时，更要像朱教授所践行的那般，在踏入荒野的每一步里，都用硬核的实践去对抗焦虑。唯学无际，觊觎天地，而人性的靠谱、对初心的孤勇坚守，才是我们在这片喧嚣荒野里，穿透迷雾、走向卓越的唯一通行证。</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

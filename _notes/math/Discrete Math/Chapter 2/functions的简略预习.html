@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Funtions1.Define $f(a)&#x3D;b$  如果是一个函数，那么对于domain中的任意一个a，都能找到唯一的一个b（b属于 codomain ） 反之，如果一个a对应过去之后有两个及以上的b与之相对应，那么这个f就不是一个函数。  2.特征 单射： $a_1 \neq a_2$，则 $f(a_1) \neq f(a_2)$   满射： 对于 $B$ 中任意 $y$，都能找到">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://yidanpan.github.io/_notes/math/Discrete%20Math/Chapter%202/functions%E7%9A%84%E7%AE%80%E7%95%A5%E9%A2%84%E4%B9%A0.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Funtions1.Define $f(a)&#x3D;b$  如果是一个函数，那么对于domain中的任意一个a，都能找到唯一的一个b（b属于 codomain ） 反之，如果一个a对应过去之后有两个及以上的b与之相对应，那么这个f就不是一个函数。  2.特征 单射： $a_1 \neq a_2$，则 $f(a_1) \neq f(a_2)$   满射： 对于 $B$ 中任意 $y$，都能找到">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-27T02:47:05.371Z">
+<meta property="article:modified_time" content="2026-03-27T02:36:16.656Z">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/%20') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Funtions"><a href="#Funtions" class="headerlink" title="Funtions"></a>Funtions</h1><h2 id="1-Define"><a href="#1-Define" class="headerlink" title="1.Define"></a>1.Define</h2><ul>
+<li>$f(a)&#x3D;b$  如果是一个函数，那么对于domain中的任意一个a，都能找到唯一的一个b（b属于 codomain ）</li>
+<li>反之，如果一个a对应过去之后有两个及以上的b与之相对应，那么这个f就不是一个函数。</li>
+</ul>
+<h2 id="2-特征"><a href="#2-特征" class="headerlink" title="2.特征"></a>2.特征</h2><ul>
+<li><strong>单射：</strong> $a_1 \neq a_2$，则 $f(a_1) \neq f(a_2)$  </li>
+<li><strong>满射：</strong> 对于 $B$ 中任意 $y$，都能找到 $A$ 中的 $x$ 使得 $f(x) &#x3D; y$。</li>
+<li><strong>双射：</strong> 既是单射，又是满射。</li>
+</ul>
+<h1 id="Cardinality-of-Sets"><a href="#Cardinality-of-Sets" class="headerlink" title="Cardinality of Sets"></a>Cardinality of Sets</h1><h2 id="1-基数：无穷大的“比较”"><a href="#1-基数：无穷大的“比较”" class="headerlink" title="1. 基数：无穷大的“比较”"></a>1. 基数：无穷大的“比较”</h2><ul>
+<li>基数：一个集合中不同元素的数量。</li>
+</ul>
+<p>在有限集合里，我们数个数。但在无限集合里，我们没法数，只能靠<strong>“连连看”</strong>。</p>
+<ul>
+<li><p><strong>等势（$|A| &#x3D; |B|$）：</strong> 如果集合 $A$ 和 $B$ 的元素能<strong>一一对应（双射）</strong>，一个都不多，一个都不少，那它们就一样大。</p>
+</li>
+<li><p><strong>小于等于（$|A| \le |B|$）：</strong> 如果能把 $A$ 的每个元素都对应到 $B$ 里的不同位置（单射），但 $B$ 可能还有剩余，那 $B$ 就比 $A$ 大或者相等。</p>
+</li>
+</ul>
+<p>比较<strong>集合的基数(cardinality of set)</strong> 的大小最关键的步骤就在于找到一个集合$|s|$ 到另一个集合 $|T|$的<strong>单射</strong>，如果这样的单射能够找到，就有 ∣S∣≤∣T∣。</p>
+<blockquote>
+<p><strong>通俗理解：</strong> 想象一个电影院，如果每个观众都正好坐在一张椅子上，没空位也没人站着，那“人数”就等于“椅数”。</p>
+</blockquote>
+<h2 id="2-可数（Countable）：无穷大的“起跑线”"><a href="#2-可数（Countable）：无穷大的“起跑线”" class="headerlink" title="2. 可数（Countable）：无穷大的“起跑线”"></a>2. 可数（Countable）：无穷大的“起跑线”</h2><p>这是最基础的无穷大。</p>
+<ul>
+<li><p><strong>定义：</strong> 一个集合如果是有限的，或者能和<strong>正整数集 $\mathbb{Z}_+$</strong> 一一对应，它就是“可数的”。</p>
+</li>
+<li><p><strong>符号：</strong> 无限可数集的基数记作 <strong>$\aleph_0$（阿列夫零）</strong>。</p>
+</li>
+<li><p><strong>做题窍门：</strong> 只要你能给这个集合的元素<strong>排个队（写成 $a_1, a_2, a_3, \dots$ 的形式）</strong>，让每个元素都能在队列里找到自己的位置，它就是可数的。</p>
+</li>
+</ul>
+<h3 id="重点证明：为什么有理数集-mathbb-Q-是可数的？"><a href="#重点证明：为什么有理数集-mathbb-Q-是可数的？" class="headerlink" title="重点证明：为什么有理数集 $\mathbb{Q}_+$ 是可数的？"></a>重点证明：为什么有理数集 $\mathbb{Q}_+$ 是可数的？</h3><p>有理数（分数）看起来比整数多得多，但其实它们一样大。</p>
+<ul>
+<li><p><strong>证明思路（蛇形走位法）：</strong></p>
+<p>  把所有分数 $p&#x2F;q$ 写成一个矩阵（行是分子，列是分母）。</p>
+<p>  按对角线箭头方向连线：$1&#x2F;1 \to 2&#x2F;1 \to 1&#x2F;2 \to 1&#x2F;3 \to 2&#x2F;2 \dots$</p>
+<p>  通过这种走法，我们可以把所有的分数排成一列。只要能排成一列，它就是可数的！</p>
+</li>
+</ul>
+<h2 id="3-不可数：更大的无穷"><a href="#3-不可数：更大的无穷" class="headerlink" title="3. 不可数：更大的无穷"></a>3. 不可数：更大的无穷</h2><p>有些无穷大是“排不了队的”，比如 $(0, 1)$ 之间的实数。</p>
+<h3 id="核心考点：康托尔对角论证法（Cantor’s-Diagonal-Argument）"><a href="#核心考点：康托尔对角论证法（Cantor’s-Diagonal-Argument）" class="headerlink" title="核心考点：康托尔对角论证法（Cantor’s Diagonal Argument）"></a>核心考点：康托尔对角论证法（Cantor’s Diagonal Argument）</h3><p>要证明 $(0, 1)$ 不可数，我们用<strong>反证法</strong>：</p>
+<ol>
+<li><p>假设 $(0, 1)$ 可数，那我们就能把里面所有小数列出来：$d_1, d_2, d_3, \dots$</p>
+</li>
+<li><p>我们构造一个新小数 $x$，它的第 1 位和 $d_1$ 的第 1 位不同，第 2 位和 $d_2$ 的第 2 位不同……以此类推。</p>
+</li>
+<li><p>这个新小数 $x$ 就在 $(0, 1)$ 之间，但它和列表里的<strong>每一个</strong>数都至少有一位不同。</p>
+</li>
+<li><p><strong>结论：</strong> 列表漏掉了 $x$，所以实数是排不完的，是<strong>不可数</strong>的。</p>
+</li>
+</ol>
+<h2 id="4-康托尔定理：无穷没有终点"><a href="#4-康托尔定理：无穷没有终点" class="headerlink" title="4. 康托尔定理：无穷没有终点"></a>4. 康托尔定理：无穷没有终点</h2><p><strong>定理内容：</strong> 任何集合 $S$ 的<strong>幂集</strong>（所有子集构成的集合，$P(S)$）的基数永远大于原集合 $S$。</p>
+<p>$$|P(S)| &gt; |S|$$</p>
+<ul>
+<li><p><strong>这意味着：</strong> 无穷大是有等级的。</p>
+<ul>
+<li><p>最小的无穷是 $\aleph_0$（整数集、有理数集）。</p>
+</li>
+<li><p>大一点的是 $2^{\aleph_0}$（实数集，记作 $C$ 或者 $\aleph_1$）。</p>
+</li>
+<li><p>再大一点的是 $P(\mathbb{R})$……以此类推，无穷之上还有无穷。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-解题技巧总结"><a href="#5-解题技巧总结" class="headerlink" title="5. 解题技巧总结"></a>5. 解题技巧总结</h2><p>在做有关基数的题目时，请记住以下三招：</p>
+<table>
+<thead>
+<tr>
+<th><strong>题目类型</strong></th>
+<th><strong>常用手段</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>**证明 $</td>
+<td>A</td>
+</tr>
+<tr>
+<td><strong>证明可数</strong></td>
+<td>尝试把元素按某种规律<strong>排成一列</strong>，或者证明它是几个可数集的并集。</td>
+</tr>
+<tr>
+<td><strong>证明不可数</strong></td>
+<td>使用<strong>对角论证法</strong>，或者证明它包含一个已知的不可数子集（如实数区间）。</td>
+</tr>
+</tbody></table>
+<p><strong>例子：证明 $[0, 1]$ 和 $(0, 1)$ 等势。</strong></p>
+<p>这题很有趣，因为 $[0, 1]$ 只比 $(0, 1)$ 多了 $0$ 和 $1$ 这两个点。</p>
+<ul>
+<li><strong>技巧：</strong> 在 $(0, 1)$ 内部找一列数（比如 $1&#x2F;2, 1&#x2F;3, 1&#x2F;4 \dots$），把这列数“挪个位”，腾出两个位置给 $0$ 和 $1$。这种“无限旅馆”式的挪位可以完美建立双射。</li>
+</ul>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

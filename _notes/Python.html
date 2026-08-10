@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="1.基础语法字符串 反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义。 如 r”this is a line with \n” 则 \n 会显示，并不是换行 按字面意义级联字符串，如 “this “ “is “ “string” 会被自动转换为 this is string。 字符串可以用 + 运算符连接在一起，用 * 运算符重复。 单引号和双引号没区别 Python 中的字符串有两种索引方式">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://yidanpan.github.io/_notes/Python.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="1.基础语法字符串 反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义。 如 r”this is a line with \n” 则 \n 会显示，并不是换行 按字面意义级联字符串，如 “this “ “is “ “string” 会被自动转换为 this is string。 字符串可以用 + 运算符连接在一起，用 * 运算符重复。 单引号和双引号没区别 Python 中的字符串有两种索引方式">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-10T02:23:57.090Z">
+<meta property="article:modified_time" content="2026-07-21T04:30:25.124Z">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/%20') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="1-基础语法"><a href="#1-基础语法" class="headerlink" title="1.基础语法"></a>1.基础语法</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li>反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义。 如 <strong>r”this is a line with \n”</strong> 则 \n 会显示，并不是换行</li>
+<li>按字面意义级联字符串，如 <strong>“this “ “is “ “string”</strong> 会被自动转换为 <strong>this is string</strong>。</li>
+<li>字符串可以用 + 运算符连接在一起，用 * 运算符重复。</li>
+<li>单引号和双引号没区别</li>
+<li>Python 中的字符串有两种索引方式，从左往右以 0 开始，从右往左以 -1 开始。</li>
+<li>Python 没有单独的字符类型，一个字符就是长度为 1 的字符串。</li>
+<li>字符串切片：str[start:end:step] 其中 start（包含）是切片开始的索引，end（不包含）是切片结束的索引。</li>
+</ul>
+<h2 id="Print输出"><a href="#Print输出" class="headerlink" title="Print输出"></a>Print输出</h2><ul>
+<li>print输出默认是换行，不换行需要在变量末尾加上 end&#x3D;””</li>
+<li>Python 3 中整数字面量不允许前导零（如 <code>080</code>），八进制数必须使用 <code>0o</code> 前缀（如 <code>0o17</code>），十六进制使用 <code>0x</code> 前缀（如 <code>0x69</code>），二进制使用 <code>0b</code> 前缀。</li>
+</ul>
+<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><ul>
+<li>python中的name意味着变量，可以随时和值绑定，在赋值语句中，会先执行等号右侧的值，然后依次从左到右赋值给左侧的变量</li>
+<li>赋值的时候内置函数也可以被赋值，变量也可以被赋值为函数，f&#x3D;max，之后还可以继续f&#x3D;1，重新赋值为常量</li>
+<li>一个语句可以同时给多个变量赋值，从左到右的顺序依次赋值</li>
+<li>代码语句只是被执行做出改变</li>
+<li>print是个函数，它的返回值是none，但是它会有副作用会打印出东西<br>  ![[Pasted image 20260716225622.png]]</li>
+<li>所谓函数就是把名称绑定在一组运算上。def中写的参数是形式参数，只是提供一个名称为后续提供一个赋值的容器。</li>
+<li>The name of a function is repeated twice, once in the frame and again as part of the function itself. The name appearing in the function is called the <em>intrinsic name</em>. The name in a frame is a <em>bound name</em>.</li>
+<li>function signature指的是函数形式参数的描述。形式参数的个数是固定的，传入的时候不能随意更改。但是内置函数的参数个数是没有被定义的，所以传入参数个数是不定的</li>
+<li>定义函数的时候并不等于被执行，单独一步是进行整个函数的定义，但是没有被代入具体的值进行运算</li>
+<li>注意区分函数返回值并不是绑定在函数名称上的</li>
+<li>框架分为全局框架和局部框架，整个函数名称是全局框架，只有调用函数传入真实参数的时候才是创建局部框架</li>
+<li>每个函数被调用的时候都是会新创建一个环境</li>
+<li>函数的形式参数的名称仅仅作用于函数内部，每个函数的参数都是独立的</li>
+<li>函数使用看清定义域、值域、主体范围</li>
+<li>函数定义通常包括描述该功能的文档，称为 _docstring_，必须与函数主体一起缩进。文件字符串通常用三引号。第一行用一行描述了该函数的工作。</li>
+<li>在函数定义中，可以给其中一个参数赋值为常数，如果实际调用没有给出具体值，就按照定义时的常数去计算，提供的话就忽略定义给的常数、</li>
+<li>一些永不变化的值，如基本常数 k ，可以被束缚在函数体或全局参考系中。</li>
+<li>每条语句都描述了<strong>解释器（interpreter）状态的一种变化</strong>，执行语句就是把这种变化真正应用到解释器中。</li>
+<li>statement是语句，是被执行使解释器状态发生改变的语句。expression是表达式，是计算出最终值的。解释器状态就是当前python中记住的东西</li>
+<li><code>return</code> 后面的表达式<strong>不会在定义函数时立即求值</strong>，而是会被保存起来，等到以后真正调用这个函数时才进行计算。</li>
+<li>函数定义时写def的时候只是建立函数对象，没有执行，return语句也没有被执行，只是被保存起来，等到调用的时候再执行</li>
+<li>函数体内部的赋值语句不会影响全局帧</li>
+<li>一个表达式如果被 Python 用来判断真假，而不是获取它的实际值，那么它就在布尔上下文中。</li>
+<li>三个基本的逻辑运算符：and&#x2F;or&#x2F;not 可以用作bool 运算。一个逻辑表达式的真假值，有时可以在不计算所有子表达式的情况下确定。</li>
+<li>布尔表达式的实际执行顺序是从左到右，比如说是and操作，如果左侧的表达式结果为false，那么就不会执行右侧表达式直接判断为false，反之结果就是右侧表达式的结果。注意这种逻辑表达式返回值不一定是布尔值，为左侧或者右侧表达式的真实值。</li>
+<li>右侧 <code>=</code> 后面的所有表达式，会先全部计算完成，然后才进行左侧变量的重新绑定。</li>
+<li>循环语句的最后循环条件的变量值一定得改变不然会变成无限循环。在每一次执行中改变某些变量，使条件最终可能变成 False。</li>
+<li>环境就是一个或者多个frame,每次调用一个函数就是创建一个新的frame，frame决定了查询的顺序，global是最后查询的，这个解释了为什么当变量名一样时函数内部的优先级会高于全局变量。</li>
+<li>通过<strong>高阶函数</strong>，我们开始看到一种更强大的抽象：<strong>某些函数能够表达通用的计算方法，而独立于它们所调用的具体函数。</strong> 但是缺点是全局环境帧（global frame）会变得拥挤不堪，塞满了各种小函数的名称，而且这些名称还必须互不相同。</li>
+<li>一般函数return结束后就会被内存回收消失，但是如果返回值是一个函数又被重新赋值给新的变量，那么这个局部函数就不会消失。</li>
+<li>![[Pasted image 20260720193333.png]]<br>  结果仍然是一样的，甚至可以返回第0个位置的值，比原数组就多了一位，所以k&#x3D;0开始：1 0 1 1 2</li>
+<li>control是if while这种条件判断，可以控制程序哪部分被执行或者不执行，</li>
+<li>python中的逻辑表达式是用and 和or直接表达，因为它是个解释性的编程语言<br>。但相同的他对于条件的判断顺序是从左向右的。如果左半部分已经成立了就不会再去执行剩余的部分代码了</li>
+<li>asssert 条件语句 ，“  ”  如果条件语句是错误的就会执行逗号后面的代码![[Pasted image 20260720213002.png]]如果assert判断出来是错误的打印完报错信息之后就不会再执行后面的所有代码了</li>
+<li>如果返回值是自定义函数的话，这个函数必须在body中已经被定义过了</li>
+<li>函数可以被视为是first-class,因为它操作时受到的限制是很小的，可以作为参数传入、作为返回值返回、可以被调用</li>
+<li><strong><code>-i</code></strong>: The <code>-i</code> option runs the code in the file you provide, then opens an interactive session (with a <code>&gt;&gt;&gt;</code> prompt). You can then evaluate expressions such as calling functions you defined. To exit, type <code>exit()</code>. You can also use the keyboard shortcut <code>Ctrl-D</code> on Linux&#x2F;Mac machines or <code>Ctrl-Z Enter</code> on Windows.</li>
+<li>If Python reaches the end of the function body without executing a <code>return</code> statement, the function returns <code>None</code>.</li>
+<li>在交互式界面中如果返回值是让终端接收的，那么返回值会被打印在屏幕上。但是如果是作为程序在脚本中实现的话，那么是不会显示的，除非用print函数</li>
+<li>print（  ，  ）不会打印出逗号，会用空格隔开，每次执行完一个print语句会自动返回一个回车</li>
+<li>递归函数是指在函数body中再次调用它本身。考虑问题就只需要考虑这一步和前面的一步两步，不要走完整的思考路线</li>
+<li></li>
+</ul>
+<h2 id="关于ok的使用"><a href="#关于ok的使用" class="headerlink" title="关于ok的使用"></a>关于ok的使用</h2><ul>
+<li>python3 ok -q ### Q1测试特定问题</li>
+<li>python3 ok 对所有问题进行测试</li>
+<li>python3 ok -v  显示所有测试</li>
+<li>python3 ok –local  在本地进行测试，不用把数据发送到ucb的服务器，毕竟我们没有人家的校内账号</li>
+<li>linux do论坛</li>
+</ul>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

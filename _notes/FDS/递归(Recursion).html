@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="1. 递归的两个必要条件（缺一不可）写递归就像下楼梯，你必须知道什么时候停下来，否则就会掉进无限循环，导致栈溢出（Stack Overflow）。  基准情形 (Base Case)： 也就是“停止条件”。必须有一个情况是不再递归，直接返回结果。  在二叉树中： 通常是 if (root &#x3D;&#x3D; NULL)。   递归步骤 (Recursive Step)： 把大问题分解成规模更小、但形式相同的子问">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://yidanpan.github.io/_notes/FDS/%E9%80%92%E5%BD%92(Recursion).html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="1. 递归的两个必要条件（缺一不可）写递归就像下楼梯，你必须知道什么时候停下来，否则就会掉进无限循环，导致栈溢出（Stack Overflow）。  基准情形 (Base Case)： 也就是“停止条件”。必须有一个情况是不再递归，直接返回结果。  在二叉树中： 通常是 if (root &#x3D;&#x3D; NULL)。   递归步骤 (Recursive Step)： 把大问题分解成规模更小、但形式相同的子问">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-29T04:40:25.396Z">
+<meta property="article:modified_time" content="2026-03-28T06:03:18.839Z">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/%20') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h2 id="1-递归的两个必要条件（缺一不可）"><a href="#1-递归的两个必要条件（缺一不可）" class="headerlink" title="1. 递归的两个必要条件（缺一不可）"></a>1. 递归的两个必要条件（缺一不可）</h2><p>写递归就像下楼梯，你必须知道什么时候停下来，否则就会掉进无限循环，导致<strong>栈溢出（Stack Overflow）</strong>。</p>
+<ol>
+<li><p><strong>基准情形 (Base Case)：</strong> 也就是“停止条件”。必须有一个情况是不再递归，直接返回结果。</p>
+<ul>
+<li><em>在二叉树中：</em> 通常是 <code>if (root == NULL)</code>。</li>
+</ul>
+</li>
+<li><p><strong>递归步骤 (Recursive Step)：</strong> 把大问题分解成规模更小、但形式相同的子问题，且这些子问题必须正在向“基准情形”靠拢。</p>
+<ul>
+<li><em>在二叉树中：</em> 处理完根节点，去处理 <code>root-&gt;left</code> 和 <code>root-&gt;right</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-递归的执行过程：函数调用栈"><a href="#2-递归的执行过程：函数调用栈" class="headerlink" title="2. 递归的执行过程：函数调用栈"></a>2. 递归的执行过程：函数调用栈</h2><p>理解递归的关键在于理解<strong>“递”去和“归”来</strong>。</p>
+<ul>
+<li><p><strong>递 (Forward)：</strong> 每次调用函数，系统都会在内存中开辟一块空间（栈帧），保存当前的变量、返回地址等。</p>
+</li>
+<li><p><strong>归 (Backward)：</strong> 当遇到基准情形时，函数开始层层返回，释放栈空间，并将结果带回给上一层调用者。</p>
+</li>
+</ul>
+<h2 id="3-写好递归的小技巧"><a href="#3-写好递归的小技巧" class="headerlink" title="3. 写好递归的小技巧"></a>3. 写好递归的小技巧</h2><ol>
+<li><p><strong>不要试图在脑子里人肉模拟超过 3 层的递归！</strong> 这样会晕。</p>
+</li>
+<li><p><strong>信任你的函数：</strong> 在写 <code>root-&gt;left = buildTree(...)</code> 时，你要假设这个函数已经写好了，它一定能返回正确的左子树给你，你只需要关注当前这一层怎么组合即可。</p>
+</li>
+<li><p><strong>先写 Base Case：</strong> 动笔写递归函数的第一行，永远应该是判断什么时候结束。</p>
+</li>
+</ol>
+<hr>
+<h2 id="4-掌握递归思维：“雇佣兵思维”"><a href="#4-掌握递归思维：“雇佣兵思维”" class="headerlink" title="4.掌握递归思维：“雇佣兵思维”"></a>4.掌握递归思维：“雇佣兵思维”</h2><h3 id="4-1-思维核心：信任与分工"><a href="#4-1-思维核心：信任与分工" class="headerlink" title="4.1.思维核心：信任与分工"></a>4.1.思维核心：信任与分工</h3><p>假设你是一个包工头（当前函数），你的任务是给一棵大树数有多少个果子。</p>
+<ul>
+<li><p><strong>你的原则：</strong> 我很懒，我只数根节点上那<strong>一个</strong>果子。</p>
+</li>
+<li><p><strong>你的手段：</strong> 你有两个雇佣兵（左分身和右分身）。</p>
+</li>
+<li><p><strong>递归逻辑：</strong> </p>
+<ul>
+<li><ol>
+<li>你问左分身：“喂，你负责的那部分（左子树）有多少果子？”</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>你问右分身：“喂，你负责的那部分（右子树）有多少果子？”</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><strong>信任：</strong> 你不需要管他们是怎么数的，你坚信他们一定会给你一个准确的数字。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li><strong>汇总：</strong> 最终结果 &#x3D; 左分身的数 + 右分身的数 + 我手里的这 1 个。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li><strong>出口：</strong> 如果分身汇报说“头儿，我面前根本没有树（NULL）”，那他直接告诉你 0 即可。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>什么时候用？</strong> 只要你发现一个大问题的子问题，<strong>长得跟大问题一模一样</strong>，就可以雇佣分身。</p>
+<h3 id="4-2-三个经典场景：帮你找到“调用时机”"><a href="#4-2-三个经典场景：帮你找到“调用时机”" class="headerlink" title="4.2.三个经典场景：帮你找到“调用时机”"></a>4.2.三个经典场景：帮你找到“调用时机”</h3><h4 id="场景-A：当你需要“拆地雷”-类似本题建树"><a href="#场景-A：当你需要“拆地雷”-类似本题建树" class="headerlink" title="场景 A：当你需要“拆地雷” (类似本题建树)"></a>场景 A：当你需要“拆地雷” (类似本题建树)</h4><p>如果你发现要解决当前问题，必须先知道“左边”和“右边”的结果。</p>
+<ul>
+<li><p><strong>例子：</strong> 判断两棵树是否完全相同。</p>
+</li>
+<li><p><strong>思路：</strong> * 我先看我这层的根节点值一样吗？</p>
+<ul>
+<li><p>如果一样，我得问分身：“左子树一样吗？”</p>
+</li>
+<li><p>再问：“右子树一样吗？”</p>
+</li>
+<li><p><strong>代码感觉：</strong> <code>return (我这层OK) &amp;&amp; (递归左边) &amp;&amp; (递归右边);</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="场景-B：当你遇到“套娃”结构-路径问题"><a href="#场景-B：当你遇到“套娃”结构-路径问题" class="headerlink" title="场景 B：当你遇到“套娃”结构 (路径问题)"></a>场景 B：当你遇到“套娃”结构 (路径问题)</h4><p>如果你发现每走一步，剩下的路虽然变短了，但规则没变。</p>
+<ul>
+<li><p><strong>例子：</strong> 走迷宫。</p>
+</li>
+<li><p><strong>思路：</strong> * 我站在这里，往上下左右看一眼。</p>
+<ul>
+<li><p>只要有一个方向能走通，我就派个分身去那一格继续走。</p>
+</li>
+<li><p><strong>代码感觉：</strong> <code>if (can_go) return solve(下一格);</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="场景-C：当你需要“事后处理”-类似本题后序遍历"><a href="#场景-C：当你需要“事后处理”-类似本题后序遍历" class="headerlink" title="场景 C：当你需要“事后处理” (类似本题后序遍历)"></a>场景 C：当你需要“事后处理” (类似本题后序遍历)</h4><p>如果你必须等手下把事情全办完了，你才能做决定。</p>
+<ul>
+<li><p><strong>例子：</strong> 删除一棵树。</p>
+</li>
+<li><p><strong>思路：</strong> * 我不能先删根节点，删了根我就找不到孩子了。</p>
+<ul>
+<li><p>我先让左分身把左边删光，让右分身把右边删光。</p>
+</li>
+<li><p>最后，我再把自己（根）删掉。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-经典例题"><a href="#5-经典例题" class="headerlink" title="5. 经典例题"></a>5. 经典例题</h2><h3 id="5-1-数学逻辑型：阶乘-Factorial"><a href="#5-1-数学逻辑型：阶乘-Factorial" class="headerlink" title="5.1. 数学逻辑型：阶乘 (Factorial)"></a>5.1. 数学逻辑型：阶乘 (Factorial)</h3><p>这是最简单的递归，用来理解<strong>“传递”与“回溯”</strong>。</p>
+<ul>
+<li><p><strong>问题：</strong> 计算 $n! &#x3D; n \times (n-1) \times \dots \times 1$。</p>
+</li>
+<li><p><strong>关系式：</strong> $n! &#x3D; n \times (n-1)!$</p>
+</li>
+<li><p><strong>分身逻辑：</strong> * 我（计算 $n$ 的阶乘）只管把 $n$ 乘上“分身”算出来的结果。</p>
+<ul>
+<li>分身（计算 $n-1$ 的阶乘）再去管他的分身。</li>
+</ul>
+</li>
+<li><p><strong>出口：</strong> 当 $n &#x3D; 1$ 时，别再找分身了，直接告诉上级结果是 $1$。</p>
+</li>
+</ul>
+<blockquote>
+<p>[!tip] 代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">factorial</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;          <span class="hljs-comment">// 出口：最简单的情况</span><br>    <span class="hljs-keyword">return</span> n * factorial(n - <span class="hljs-number">1</span>);   <span class="hljs-comment">// 关系式：我 × (n-1)的结果</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+</blockquote>
+<hr>
+<h3 id="5-2-数组搜索型：二分查找-Binary-Search"><a href="#5-2-数组搜索型：二分查找-Binary-Search" class="headerlink" title="5.2. 数组搜索型：二分查找 (Binary Search)"></a>5.2. 数组搜索型：二分查找 (Binary Search)</h3><p>这是理解“缩小规模”的典型例子。</p>
+<ul>
+<li><p><strong>问题：</strong> 在有序数组中找数字 <code>target</code>。</p>
+</li>
+<li><p><strong>分身逻辑：</strong></p>
+<ul>
+<li><p>我先看数组中间那个数。</p>
+</li>
+<li><p>如果中间的数比 <code>target</code> 大，说明 <code>target</code> 在左半边。</p>
+</li>
+<li><p>我雇佣一个分身，<strong>只让他看左半边</strong>。规则完全不变。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>出口：</strong> * 找到了：返回下标。</p>
+<ul>
+<li>找完了（范围空了）：返回 -1。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!tip] 代码实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c">&gt;<span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> L, <span class="hljs-type">int</span> R, <span class="hljs-type">int</span> target)</span> &#123;<br><span class="hljs-keyword">if</span> (L &gt; R) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; <span class="hljs-comment">// 出口：找不到了</span><br>  <br> <span class="hljs-type">int</span> mid = L + (R - L) / <span class="hljs-number">2</span>;<br>   <span class="hljs-keyword">if</span> (arr[mid] == target) <span class="hljs-keyword">return</span> mid; <span class="hljs-comment">// 出口：找到了</span><br>   <br>  <span class="hljs-keyword">if</span> (arr[mid] &gt; target) <br>       <span class="hljs-keyword">return</span> binarySearch(arr, L, mid - <span class="hljs-number">1</span>, target); <span class="hljs-comment">// 递归左边</span><br>   <span class="hljs-keyword">else</span> <br>       <span class="hljs-keyword">return</span> binarySearch(arr, mid + <span class="hljs-number">1</span>, R, target); <span class="hljs-comment">// 递归右边</span><br>&gt;&#125;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="5-3-翻转二叉树（把所有节点的左右子树对调）"><a href="#5-3-翻转二叉树（把所有节点的左右子树对调）" class="headerlink" title="5.3.翻转二叉树（把所有节点的左右子树对调）"></a>5.3.翻转二叉树（把所有节点的左右子树对调）</h3><p><strong>逻辑应该是：</strong></p>
+<ol>
+<li><p><strong>信任：</strong> 我有一个函数 <code>invert(node)</code>，它能把一棵树变镜像。</p>
+</li>
+<li><p><strong>动作：</strong> * 我先把我的左孩子和右孩子交换位置（拿个临时变量 <code>temp</code> 交换）。</p>
+<ul>
+<li><p>交换完后，我发现左孩子和右孩子<strong>内部</strong>还没翻转。</p>
+</li>
+<li><p><strong>调用递归：</strong> <code>invert(root-&gt;left);</code> 和 <code>invert(root-&gt;right);</code>（交给分身去搞定它们内部的翻转）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>出口：</strong> 如果节点是空的，直接返回。</p>
+</li>
+</ol>
+<blockquote>
+<p>[!note] 代码实现（伪代码):</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">&gt;<span class="hljs-type">void</span> <span class="hljs-title function_">invert</span><span class="hljs-params">(Node* root)</span> &#123;<br> <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// 出口</span><br>   <br>  <span class="hljs-comment">// 交换左右孩子</span><br>  Node* temp = root-&gt;left;<br>  root-&gt;left = root-&gt;right;<br>  root-&gt;right = temp;<br>   <br>   <span class="hljs-comment">// 信任递归：剩下的交给分身</span><br>   invert(root-&gt;left);<br>  invert(root-&gt;right);<br>&gt;&#125;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>tips：</strong><br>翻转和对调的顺序并不重要，两者都可以实现相同的效果。</p>
+<p>根据你把“自己要做的事”放在“递归调用”的什么位置，会有不同的效果：</p>
+<ol>
+<li><p><strong>事发前处理（先序）：</strong> 先处理根，再处理子树（如：从上往下传值、翻转）。</p>
+</li>
+<li><p><strong>事中处理（中序）：</strong> 处理完左边，处理根，再处理右边（常用于二叉搜索树，因为结果是有序的）。</p>
+</li>
+<li><p><strong>事后处理（后序）：</strong> 先处理完两个子树，最后处理根（如：计算树的高度、删除整棵树）。</p>
+</li>
+</ol>
+<h2 id="6-递归的精髓：不要越级指挥"><a href="#6-递归的精髓：不要越级指挥" class="headerlink" title="6. 递归的精髓：不要越级指挥"></a>6. 递归的精髓：不要越级指挥</h2><p>很多初学者容易犯的错误是：<strong>试图在这一层就把下一层的事儿给干了。</strong></p>
+<ul>
+<li><p><strong>错误思维：</strong> 我要交换 <code>root-&gt;left</code> 和 <code>root-&gt;right</code>，然后我还要交换 <code>root-&gt;left-&gt;left</code> 和 <code>root-&gt;left-&gt;right</code>……</p>
+</li>
+<li><p><strong>正确递归思维：</strong> 我只负责交换 <code>root</code> 的两个孩子。至于孩子们自己的孩子怎么换，那是<strong>下一层调用</strong>该操心的事。</p>
+</li>
+</ul>
+<p><strong>“我只管我能看到的这一层，看不见的交给递归。”</strong> —— 这就是掌握递归的终极秘诀。</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

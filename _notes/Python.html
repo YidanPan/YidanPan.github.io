@@ -26,8 +26,8 @@
 <meta property="og:site_name" content="Dan&#39;s Blog">
 <meta property="og:description" content="1.基础语法字符串 反斜杠可以用来转义，使用 r 可以让反斜杠不发生转义。 如 r”this is a line with \n” 则 \n 会显示，并不是换行 按字面意义级联字符串，如 “this “ “is “ “string” 会被自动转换为 this is string。 字符串可以用 + 运算符连接在一起，用 * 运算符重复。 单引号和双引号没区别 Python 中的字符串有两种索引方式">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-08-10T02:23:57.090Z">
-<meta property="article:modified_time" content="2026-07-21T04:30:25.124Z">
+<meta property="article:published_time" content="2026-08-20T09:05:11.239Z">
+<meta property="article:modified_time" content="2026-08-20T09:05:11.239Z">
 <meta property="article:author" content="Yidan Pan">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Software">
@@ -404,12 +404,10 @@
 <li>Python 中的字符串有两种索引方式，从左往右以 0 开始，从右往左以 -1 开始。</li>
 <li>Python 没有单独的字符类型，一个字符就是长度为 1 的字符串。</li>
 <li>字符串切片：str[start:end:step] 其中 start（包含）是切片开始的索引，end（不包含）是切片结束的索引。</li>
-</ul>
-<h2 id="Print输出"><a href="#Print输出" class="headerlink" title="Print输出"></a>Print输出</h2><ul>
 <li>print输出默认是换行，不换行需要在变量末尾加上 end&#x3D;””</li>
 <li>Python 3 中整数字面量不允许前导零（如 <code>080</code>），八进制数必须使用 <code>0o</code> 前缀（如 <code>0o17</code>），十六进制使用 <code>0x</code> 前缀（如 <code>0x69</code>），二进制使用 <code>0b</code> 前缀。</li>
 </ul>
-<h1 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h1><ul>
+<h1 id="Ch1-函数"><a href="#Ch1-函数" class="headerlink" title="Ch1 函数"></a>Ch1 函数</h1><ul>
 <li>python中的name意味着变量，可以随时和值绑定，在赋值语句中，会先执行等号右侧的值，然后依次从左到右赋值给左侧的变量</li>
 <li>赋值的时候内置函数也可以被赋值，变量也可以被赋值为函数，f&#x3D;max，之后还可以继续f&#x3D;1，重新赋值为常量</li>
 <li>一个语句可以同时给多个变量赋值，从左到右的顺序依次赋值</li>
@@ -451,14 +449,111 @@
 <li>在交互式界面中如果返回值是让终端接收的，那么返回值会被打印在屏幕上。但是如果是作为程序在脚本中实现的话，那么是不会显示的，除非用print函数</li>
 <li>print（  ，  ）不会打印出逗号，会用空格隔开，每次执行完一个print语句会自动返回一个回车</li>
 <li>递归函数是指在函数body中再次调用它本身。考虑问题就只需要考虑这一步和前面的一步两步，不要走完整的思考路线</li>
+<li>要注意局部变量名称的使用，只有嵌套def的时候才可以不用重新定义，函数会去父环境中寻找变量名，但是是分开定义的函数的时候两个自定义函数都处于全局环境中，都会从当前函数去全局环境中找变量找不到就会返回错误</li>
+<li>lambda是一个关键字，是用来返回一个函数的，但是只需要一个语句就可以实现，不需要用到def。labmda后面是写参数，冒号后面是返回的表达式，不需要写return语句，本身就实现了返回值，所以不需要写return。lambda本身就是创建一个简短的匿名函数，写明了传递的参数和返回值。  <figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">def</span> <span class="hljs-function"><span class="hljs-title">make_adder</span>(<span class="hljs-variable">n</span>):</span><br><span class="hljs-function">    <span class="hljs-variable">return</span> <span class="hljs-variable">lambda</span> <span class="hljs-variable">x</span>: <span class="hljs-variable">x</span> + <span class="hljs-variable">n</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-variable">add5</span> = <span class="hljs-title">make_adder</span>(<span class="hljs-number">5</span>)</span><br><span class="hljs-function"><span class="hljs-title">print</span>(<span class="hljs-title">add5</span>(<span class="hljs-number">10</span>))</span><br></code></pre></td></tr></table></figure>
+  ![[Pasted image 20260807213820.png]]</li>
+<li>函数curry。相同效果之下，一个函数接收多个参数返回一个值，和一个函数接收单个参数返回一个函数。所谓curry就是把传入多个参数的函数转化为只传入一个参数的函数，但是实现的效果是一样的。每次调用函数时，固定一个参数，并返回一个新的函数；这个新函数通过闭包保存之前已经固定的参数，等待剩余参数。</li>
+<li>python中的错误主要有三种，syntax error是语法错误，这是在程序开始之前发生的，是由于语法表达式不清楚导致的。第二种是runtime error，运行时错误，是由python解释器检查出来的，这个会生成错误报告告诉你错误点在第几行。第三种是逻辑错误，这种程序能运行但是结果是有问题的，可能是人为设计上的问题所在。</li>
+<li>递归函数的基本格式是base case是出口，然后是recursive case，递归就是先假设下一步是正确的，当前这一步也是正确的</li>
+<li>树状递归经典例子就是斐波那契数列，每一项都返回前面两项。树状<br>  ![[Pasted image 20260809175343.png]]</li>
+<li>递归的例子是对数字n进行分割，其中不能超过m。把问题转化为递归就是两大类，一个是使用至少一个m来划分，另一种是不使用m来划分。</li>
+</ul>
+<h1 id="Ch2：Data"><a href="#Ch2：Data" class="headerlink" title="Ch2：Data"></a>Ch2：Data</h1><ul>
+<li>数据抽象的关键是分离数据的表达方式和操作数据的方式。就是一种wishful thinking，假设一些函数成立，那么接下来的逻辑操作代码就可以简洁的书写。具体数据的实现方式可以不同，但是程序使用数据时不直接依赖这些实现细节，而是通过统一的抽象接口来操作。每个功能模块负责自己的部分，使数据表示和程序逻辑分离。</li>
+<li>最经典的例子就是有理数的表示。按照分子分母分开的方式分别进行计算，但是并不考虑怎么分离的分子分母，只是假定已经分离的函数是正确的。最后只是确认分离函数的实现方式</li>
+<li>任何有理数的表示可以按照分子、分母的方式来表示</li>
+<li>from fractions import gcd python的库中直接由gcd可以算出两个整数的最大公约数</li>
+<li>数据抽象的核心思想是：针对某类值的所有操作，确定一组基本操作来表达它们，然后在处理数据时只使用这些操作。通过这种方式限制操作的使用范围，在不改变程序行为的前提下，更改抽象数据的表示方式将变得容易得多。所以就是把考虑操作方式和数据的表达方式的具体实现方式分开考虑计算。  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs 1c">最高层<br>↓<br>使用有理数的程序<br>        <span class="hljs-string">|</span><br>        <span class="hljs-string">|</span><br>        ↓<br>有理数操作接口<br><span class="hljs-punctuation">(</span>numer<span class="hljs-punctuation">,</span> denom<span class="hljs-punctuation">,</span> mul_rational<span class="hljs-punctuation">)</span><br>        <span class="hljs-string">|</span><br>        <span class="hljs-string">|</span><br>        ↓<br>有理数具体表示<br><span class="hljs-punctuation">(</span>list / dict / class<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure></li>
+<li>把几个值组合成一个整体进行运算</li>
+<li>python中列表的实现也可以通过自定义函数来实现<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">select</span>(<span class="hljs-params">x,y</span>):<br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">index</span>):<br>		<span class="hljs-keyword">if</span> index==<span class="hljs-number">0</span>:<br>			<span class="hljs-keyword">return</span> x<br>		<span class="hljs-keyword">elif</span> index==<span class="hljs-number">1</span>:<br>			<span class="hljs-keyword">return</span> y<br>	<span class="hljs-keyword">return</span> get<br>	<br><span class="hljs-meta">&gt;&gt;&gt; </span>a=select(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>)<br><span class="hljs-meta">&gt;&gt;&gt; </span>a(<span class="hljs-number">0</span>)<br> <span class="hljs-number">10</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>a(<span class="hljs-number">1</span>)<br> <span class="hljs-number">20</span><br></code></pre></td></tr></table></figure></li>
+<li>list列表是python内置的原生数据类型。本质是一种任意长度的序列。内置的len()函数可以返回序列的长度。列表中的元素类型是任意的，可以列表嵌套列表，采用多次引用索引进行选取元素</li>
+<li>两种迭代循环方式，while和for。for语句的遍历方式可以直接遍历序列中的元素，无需引入新的变量。while遍历需要引入新的变量名进行遍历。每次for语句执行完之后，name会被绑定在序列中最后一个元素</li>
+<li>链表是由嵌套的对构成的，序列中第一个元素是当前节点值，第二个元素也是个序列链表。它的递归结构是第二个元素都是一个链表或者empty。要证明链表也是序列就要满足序列的两大特点，有长度且能进行元素选择，这个可以通过构造函数来实现此功能</li>
+<li>为数据添加状态，是一种称为面向对象编程的范式的核心要素。</li>
+<li>关于函数和对象，函数执行操作，数据是操作的对象。但是函数也可以像数据一样被操作，作为参数或者返回值被调用计算。</li>
+<li>Python 中几乎所有你接触到的值都是对象。对象就是数据（是什么）+行为（怎么做）</li>
+<li>class：一种对象的“模板”或者“类型定义” <code>from datetime import date</code>,date就是表示日期这种对象</li>
+<li>instance实例：根据class创建一个具体的对象</li>
+<li>object behavior（对象行为）：前面说了对象也是行为，对象行为就是对象自己知道如何计算的逻辑</li>
+<li>attribute（属性）：对象里面可以保存一些跟它相关的信息。属性名称是<strong>属于对象的</strong>。</li>
+<li>method（方法）：属于某个对象的函数。是类的属性。</li>
+<li>oop：将数据和行为封装在一起</li>
+<li>封装（encapsulation）不应该关心底层具体实现，只需要使用更高层的接口。</li>
+<li>只有函数调用才能引入新的框架。nonlocal语句能够实现在非局部frame中更改变量值</li>
+<li>计算机程序传统上被组织为单向计算，即对预先指定的参数执行操作，以产生所需的输出。计算机中永远都是先计算右侧的值再赋值给左侧变量，这是正向的，计算机也是按照这个顺序正向单向输入输出，没法实现反推</li>
+<li>要区分类的属性和instance 属性，实例属性可以特殊定义不受类属性控制</li>
+<li>子类继承基类的属性，定义子类的时候只需要说明有差异的部分即可，能够覆盖基类的定义</li>
+<li>在实例调用方法的时候，默认dot左侧的对象名称绑定到方法的第一个参数self上。这也就是函数和绑定方法的唯一区别，函数是需要多重参数的，但是绑定方法肯定比函数少一个参数</li>
+<li>类和对象本身也可以仅使用函数和字典来表示 有关如何表示和操作数据的大部分逻辑，都在类声明中表达。</li>
+<li>调度字典”（dispatch dictionaries）来模拟对象的行为，即根据接收到的消息（如方法名）查找并执行相应的逻辑，这是实现对象多态性和封装性的核心手段，用以替代语言内置的点号表示法。</li>
+<li>分派字典是dipatch dictionary，在字典中根据字符串找到并调用相应的函数。</li>
+<li><code>*arg</code>是接收任意数量参数的意思</li>
+<li>对象抽象中的核心概念是泛用函数，即能够接受多种不同类型的值的函数。我们将考虑实现泛用函数的三种不同技术：共享接口、类型调度和类型强制。</li>
+<li>在没有能够返回原始值的表示形式时，Python 通常会生成一个用尖括号包裹的描述。</li>
+<li>对象属性作为消息传递的一种形式，允许不同数据类型以不同方式响应同一消息。</li>
+<li><code>@property</code> 把一个方法包装成“只读属性”的使用方式：定义时是函数，使用时不用 <code>()</code>。</li>
+<li>接口。对象属性作为消息传递的一种形式，允许不同数据类型以不同方式响应同一消息。一组共享的消息集能够使不同类产生相似行为，这是一种强大的抽象方法。接口由一组共享属性名称及其行为规范组成。</li>
+<li>为了理解一个函数的空间需求，我们必须在我们的计算环境模型中通常说明内存的使用、保留和回收方式。在求值一个表达式时，解释器会保留所有活动的环境以及这些环境所引用的所有值和帧。一个环境在为某些被求值表达式提供求值上下文时是活动的。只要其第一帧创建的函数调用最终返回，该环境就会变为不活动。</li>
+<li>每次调用一个新函数，都会创建一个新的frame</li>
+<li>一种有效的分类方式是过程增长阶数，它简明地表达了过程资源需求如何随输入规模的增长而变化。</li>
+<li>运行需要多少时间是需要具体看机器的硬件条件</li>
+<li>了解并识别常见的增长阶以及辨识同一阶的过程，是计算机科学家必备的基本技能。</li>
+<li>当某类的对象的一个属性值也是同一类时，它就是递归对象。一个对象也可以作为其他对象的attribute</li>
+<li>链表由一个第一元素和链表的其余部分组成。链表的其余部分本身也是一个链表——一个递归定义。</li>
+<li>Link 类具有闭包属性。就像列表的一个元素本身也可以是一个列表一样， Link 可以将一个 Link 作为其 first 元素包含在内。</li>
+<li>当需要以“正式的字符串形式”表示一个对象时，可以调用这个对象的 <code>__repr__</code> 方法。repr(s)这个函数实际上是去寻找s的属性中repr的属性进行调用。</li>
+<li><code>Link.__repr__ = link_expression</code> 把 <code>Link</code> 类的 <code>__repr__</code> 属性设置成 <code>link_expression</code> 这个函数。对于类中的函数属性进行重定向方法都是类似的。这样可以让自定义对象的使用像使用内置对象一样。</li>
+<li>不同于C语言，python中的链表本质上就是列表，可以直接通过<code>[]</code> 来进行元素选择，而不用顺序查找。</li>
+<li>通过+可以自动查找_add_属性，其实也是属性内部做好的设计条件，能够进行自动匹配。如果是自己设计add函数就会变得复杂很多</li>
+<li>因为链表中每个部分提取出来本质都是链表，所以多用的是递归</li>
+<li>树是任何一种数据结构，其属性包含一个分支序列，这些分支本身也是树。在结构上可以很好的应用递归进行运算</li>
+<li>除了列表、元组和字典之外，Python 还有第四种内置容器类型，称为 set 。集合字面量遵循用大括号括起元素的数学表示法。构造时会去重。集合是无序的集合，因此打印的顺序可能与集合字面量中的元素顺序不同。</li>
+<li>集合表示会自动去重，打印是无序，操作有并集、交集、插入、删除、异或、将元素添加到一个集合中会返回一个新集合，该集合包含原集合的所有元素以及新元素（如果它不同的话）</li>
+</ul>
+<blockquote>
+<p>[!note] 判断元素v是否在set中的增长阶是 $\Theta(n)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">empty</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-keyword">return</span> s <span class="hljs-keyword">is</span> Link.empty<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_contain</span>(<span class="hljs-params">s,v</span>): <span class="hljs-comment">#检测s的集合中是否包含了v这个元素</span><br>    <span class="hljs-keyword">if</span> empty(s):<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-keyword">elif</span> s.first==v:<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> set_contain(s.rest,v)<br><span class="hljs-comment"># 整体思路是按照set的顺序逐个排查，如果第一个元素是v就退出，不是就排除第一个递归进行剩余元素的检查</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>[!note] 求两个集合的交集的增长阶是$\Theta(n^2)$</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">intersect_set</span>(<span class="hljs-params">set1,set2</span>):<br>    <span class="hljs-keyword">return</span> keep_if_link(set1,labmda <span class="hljs-symbol">v:</span>set_contain(set2,v))<br>    <span class="hljs-comment"># 假设set2的元素个数是n，遍历每个set1的元素跟2比较，相乘是平方</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>[!note] 求两个集合的交集的增长阶是$\Theta(n^2)$</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss">def <span class="hljs-built_in">union</span>(set1,set2):<br>    set1_not_set2=<span class="hljs-built_in">keep_if_link</span>(set1,lambda v:not <span class="hljs-built_in">set_contain</span>(set2,v))<br>    return <span class="hljs-built_in">set_extended</span>(set1_not_set2,set2)<br></code></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li>Python 内置的集合不能包含可变数据类型，如列表、字典或其他集合。为了允许嵌套集合，Python 还包含一个内置的不可变 frozenset 类，该类与 set 类共享方法，但排除了修改方法和运算符。</li>
 <li></li>
+</ul>
+<h1 id="Scheme"><a href="#Scheme" class="headerlink" title="Scheme"></a>Scheme</h1><ul>
+<li>scheme完全不允许可变值</li>
+<li>它们不包含对象系统、高阶函数、赋值，甚至不包含诸如 while 和 for 语句之类的控制结构。</li>
+<li>许多解释器具有一种优雅的共同结构：两个相互递归的函数。第一个在环境中求值表达式；第二个将函数应用于参数。</li>
+<li>高级语言、编译语言、机器语言（01串）</li>
+<li>它采用与 Python 非常相似的计算模型，但仅使用表达式（没有语句），专注于符号计算，并且仅使用不可变值。</li>
+<li>scheme中的海龟绘图，一只海龟在画布上有两个参数，一个是position，一个是heading方向，begin（）函数是按顺序执行传入的多个表达式参数，一个函数调用需要有一个整体的表达式，begin的返回值是最后一个表达式的值。</li>
+<li>repeat k fn 意思是把fn函数执行k次，说明在这里函数也可以作为一个参数传入</li>
+<li>鲁棒性意思是抗折腾能力，一个系统面对变化异常的时候，仍然能够正常工作，不容易崩掉的能力。代码越少依赖具体实现、越依赖抽象接口，通常越鲁棒。</li>
+<li>引发异常是一种中断程序正常执行流程的技术，用于指示某种异常情况已经发生，并直接返回到程序中指定用于应对该情况的封闭部分。</li>
+<li>Python 解释器每次在表达式或语句中检测到错误时都会引发异常。用户也可以通过 raise 和 assert 语句引发异常。</li>
+<li>An exception is a object instance with a class that inherits, either directly or indirectly, from the BaseException class.一般来说，任何异常实例都可以通过 raise 语句引发。raise 最常见的用法是构造一个异常实例并引发它。&gt;&gt;&gt; raise Exception(‘An error occurred’)</li>
+<li>异常可以由一个外层的 try 语句来处理。一个 try 语句由多个子句组成；第一个子句以 try 开头，其余子句以 except 开头</li>
+<li>用 Python 为 Calculator 语言实现一个解释器：<ul>
+<li>我们将编写一个 Python 程序，它接收字符串行作为输入，并返回将这些行作为 Calculator 表达式求值的结果。如果计算器表达式格式不正确，我们的解释器将抛出适当的异常。</li>
+<li>加法和乘法接收任意数量的参数进行运算</li>
+<li>减法有两种行为，如果只传入一个参数则对这个参数取反。传入至少两个参数，则用第一个参数减去后面所有参数</li>
+<li>除法也是两种行为。一个参数就取倒数。多个参数就用第一个参数除以后面所有参数</li>
+</ul>
+</li>
+<li>调用表达式是一个 Scheme 列表，其第一个元素（运算符）后面跟着零个或多个操作数表达式。</li>
+<li>装饰器就是“接收一个函数，再返回一个经过加工的新函数”。利用高阶函数，在不直接修改原函数代码的情况下，给函数增加功能。</li>
 </ul>
 <h2 id="关于ok的使用"><a href="#关于ok的使用" class="headerlink" title="关于ok的使用"></a>关于ok的使用</h2><ul>
 <li>python3 ok -q ### Q1测试特定问题</li>
 <li>python3 ok 对所有问题进行测试</li>
 <li>python3 ok -v  显示所有测试</li>
-<li>python3 ok –local  在本地进行测试，不用把数据发送到ucb的服务器，毕竟我们没有人家的校内账号</li>
-<li>linux do论坛</li>
+<li>python3 ok –local  在本地进行测试，不用把数据发送到ucb的服务器，毕竟我们没有人家的校内账号<br>linux do论坛</li>
 </ul>
 
 

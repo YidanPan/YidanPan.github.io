@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/">← 通识课笔记</a>
+    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>通识课笔记</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/general-education/">通识课笔记</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">社会实践前言部分</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">通识课</span>
       <h1>社会实践前言部分</h1>
@@ -438,6 +445,12 @@
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/%E7%A4%BE%E5%8F%91%E5%8F%B2%E5%B0%8F%E6%B5%8B/"><span>← Previous</span><strong>社发史小测</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/%E5%8F%8C%E5%88%9B%E8%AF%BE%E7%A8%8B%E6%84%9F%E6%82%9F/"><span>Next →</span><strong>双创课程感悟</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -460,7 +473,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/">← CTF</a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>CTF</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/ctf/">CTF</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">逆向工程入门挑战源码</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">计算机专业课</span>
       <h1>逆向工程入门挑战源码</h1>
@@ -700,6 +707,12 @@ stack_example:
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <span></span>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/CTF/Crypto%E5%AF%BC%E8%AE%BA/"><span>Next →</span><strong>Crypto导论</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -722,7 +735,7 @@ stack_example:
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

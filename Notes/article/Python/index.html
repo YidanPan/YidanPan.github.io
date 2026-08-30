@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/python/python-basics/">← Python 基础</a>
+    <a class="notes-breadcrumb" href="/Notes/category/python/python-basics/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Python 基础</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/python/">Python</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/python/python-basics/">Python 基础</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">Python</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">Python</span>
       <h1>Python</h1>
@@ -672,6 +679,7 @@ def set_contain(s,v): #检测s的集合中是否包含了v这个元素
         async>
       </script>
     </section>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -694,7 +702,7 @@ def set_contain(s,v): #检测s的集合中是否包含了v这个元素
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

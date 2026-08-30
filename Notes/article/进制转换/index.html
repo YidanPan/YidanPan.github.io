@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/other/miscellaneous/">← 杂项知识</a>
+    <a class="notes-breadcrumb" href="/Notes/category/other/miscellaneous/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>杂项知识</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/other/">Other</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/other/miscellaneous/">杂项知识</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">进制转换</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">Other</span>
       <h1>进制转换</h1>
@@ -517,6 +524,7 @@
         async>
       </script>
     </section>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -539,7 +547,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

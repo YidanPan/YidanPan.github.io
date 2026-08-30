@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/ai-llm/llm-engineering/">← LLM Engineering</a>
+    <a class="notes-breadcrumb" href="/Notes/category/ai-llm/llm-engineering/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>LLM Engineering</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/ai-llm/">AI / LLM</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/ai-llm/llm-engineering/">LLM Engineering</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">mini rag中的mini知识点</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">AI / LLM</span>
       <h1>mini rag中的mini知识点</h1>
@@ -546,6 +553,12 @@ RAG
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/LangChain/"><span>← Previous</span><strong>LangChain</strong></a>
+      
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -568,7 +581,7 @@ RAG
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/">← CTF</a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>CTF</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/ctf/">CTF</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">Reverse导论</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">计算机专业课</span>
       <h1>Reverse导论</h1>
@@ -519,6 +526,12 @@
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/CTF/pwn%E5%AF%BC%E8%AE%BA/"><span>← Previous</span><strong>pwn导论</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/CTF/Web%E5%AF%BC%E8%AE%BA/"><span>Next →</span><strong>Web导论</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -541,7 +554,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

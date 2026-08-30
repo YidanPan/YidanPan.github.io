@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/">← 通识课笔记</a>
+    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>通识课笔记</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/general-education/">通识课笔记</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">The Magic of Showing  Up--Mere Exposure Effect</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">通识课</span>
       <h1>The Magic of Showing  Up--Mere Exposure Effect</h1>
@@ -418,6 +425,12 @@
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/AI%E5%AF%BC%E8%87%B4%E5%A4%B1%E4%B8%9A%E7%9A%84%E5%85%B7%E4%BD%93%E6%A1%88%E4%BE%8B/"><span>← Previous</span><strong>AI导致失业的具体案例</strong></a>
+      
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -440,7 +453,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

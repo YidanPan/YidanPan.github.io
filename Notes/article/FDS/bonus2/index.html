@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/">← FDS &amp; LeetCode</a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS &amp; LeetCode</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/fds/">FDS &amp; LeetCode</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">bonus2</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">计算机专业课</span>
       <h1>bonus2</h1>
@@ -598,6 +605,12 @@ int main(){
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/FDS/leetcode/%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/"><span>← Previous</span><strong>最长有效括号</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/FDS%E5%A4%A7%E7%BA%B2/"><span>Next →</span><strong>FDS大纲</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -620,7 +633,7 @@ int main(){
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

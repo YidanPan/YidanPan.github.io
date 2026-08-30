@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/">← 离散数学</a>
+    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-10/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 10</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/discrete-math/chapter-10/">Chapter 10</a><span aria-hidden="true">/</span>
+      <span aria-current="page">图论</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">数学</span>
       <h1>图论</h1>
@@ -512,6 +519,12 @@
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/math/Discrete%20Math/Chapter%2011/%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8/"><span>← Previous</span><strong>树的应用</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/math/Discrete%20Math/Chapter%204/%E6%95%B4%E9%99%A4%E5%92%8C%E6%A8%A1%E8%BF%90%E7%AE%97/"><span>Next →</span><strong>整除和模运算</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -534,7 +547,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

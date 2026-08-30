@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/">← CTF</a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>CTF</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/ctf/">CTF</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">Crypto导论</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">计算机专业课</span>
       <h1>Crypto导论</h1>
@@ -459,6 +466,12 @@
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/CTF/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%85%A5%E9%97%A8%E6%8C%91%E6%88%98%E6%BA%90%E7%A0%81/"><span>← Previous</span><strong>逆向工程入门挑战源码</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/CTF/Misc%E5%AF%BC%E8%AE%BA%20%E7%BC%96%E8%A7%A3%E7%A0%81%E5%92%8C%E6%B5%81%E9%87%8F%E5%8F%96%E8%AF%81/"><span>Next →</span><strong>Misc导论 编解码和流量取证</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -481,7 +494,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

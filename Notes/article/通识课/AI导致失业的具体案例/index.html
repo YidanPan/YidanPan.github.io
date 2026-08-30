@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/">← 通识课笔记</a>
+    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>通识课笔记</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/general-education/">通识课笔记</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">AI导致失业的具体案例</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">通识课</span>
       <h1>AI导致失业的具体案例</h1>
@@ -543,6 +550,12 @@ IBM 一边用 AI 掠夺**脑力劳动剩余价值**，一边天价招募 AI 精�
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/%E5%BD%A2%E7%AD%962/"><span>← Previous</span><strong>形策2</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/The%20Magic%20of%20Showing%20%20Up--Mere%20Exposure%20Effect/"><span>Next →</span><strong>The Magic of Showing  Up--Mere Exposure Effect</strong></a>
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -565,7 +578,7 @@ IBM 一边用 AI 掠夺**脑力劳动剩余价值**，一边天价招募 AI 精�
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

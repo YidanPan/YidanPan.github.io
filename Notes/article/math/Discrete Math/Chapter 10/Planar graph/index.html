@@ -386,7 +386,14 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/">← 离散数学</a>
+    <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-10/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 10</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/discrete-math/chapter-10/">Chapter 10</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Planar graph</span>
+    </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">数学</span>
       <h1>Planar graph</h1>
@@ -482,6 +489,12 @@
         async>
       </script>
     </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/math/Discrete%20Math/Chapter%205/Mathematical%20Induction/"><span>← Previous</span><strong>Mathematical Induction</strong></a>
+      
+    </nav>
+    
   </article>
 
   <aside class="notes-article-toc" aria-label="Article outline">
@@ -504,7 +517,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
     return;

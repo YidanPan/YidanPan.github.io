@@ -1,0 +1,861 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Software,Blog,LLM">
+  
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="mini rag中的mini知识点 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/mini%20rag%E4%B8%AD%E7%9A%84mini%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>mini rag中的mini知识点 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Friends/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Friends</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Friends/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>Friends</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="mini rag中的mini知识点 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  <!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/About/">About</a>
+      <a class="nav-link" href="/Projects/">Projects</a>
+      <a class="nav-link" href="/Notes/">Notes</a>
+      <a class="nav-link" href="/archives/" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/ai-llm/llm-engineering/">← LLM Engineering</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">AI / LLM</span>
+      <h1>mini rag中的mini知识点</h1>
+      <span class="notes-source-path">mini rag中的mini知识点.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="RAG："><a href="#RAG：" class="headerlink" title="RAG："></a>RAG：</h1><p>名称意思是检索增强生成<br>实现内部的参数化知识和外部的非参数化知识结合。它的运作逻辑是在大模型生成文本之前先通过检索机制在外部知识库中动态获取相关信息，并将这些参考资料融合入生成过程。</p>
+<p>技术上：提示词工程-&gt;rag-&gt;微调<br>微调是指调整模型严格遵守某种独特的输出格式或者其他特定的格式，或者是将极其复杂的指令蒸馏进入模型中</p>
+<p>主要实现过程是：</p>
+<ul>
+<li>检索阶段：在外部知识库中动态获取信息。其中嵌入模型充当了连接器的作用，会把文本内容转换为数学向量，存入向量数据库。其中语义召回意思是当用户检索查询的时候，检索模块利用同样的嵌入模型将问题向量化，并通过相似度搜索，从数据库中找出相似的内容。</li>
+<li>生成阶段：会融合两种知识。一个是上下文整合，一个是指令引导生成</li>
+</ul>
+<p>rag有效预防了模型胡说八道，因为引入了外部知识库的检索功能，针对性引入特定专业领域的知识，处理特定专业的问题时候还可以缩小模型参数内容，减少计算成本。</p>
+<ul>
+<li>基础工具：<ul>
+<li>开发模型：langchain  LlamaIndex 等成熟框架</li>
+<li>记忆载体（向量数据库）：既有 <strong>Milvus</strong>、<strong>Pinecone</strong> 等适合大规模数据的方案，也有 <strong>FAISS</strong>、<strong>Chroma</strong> 等轻量级或本地化的选择  后期为了量化效果，还可以引入 <strong>RAGAS</strong> 或 <strong>TruLens</strong> 等自动化<strong>评估工具</strong>。</li>
+</ul>
+</li>
+<li>构建步骤：<ul>
+<li><strong>数据准备和清洗</strong>：需要将各种不同的文件格式标准化，采用不同的分块策略（如<strong>按语义切割</strong>）</li>
+<li><strong>索引构建</strong>：将切分好的文本通过<strong>嵌入模型</strong>转化为数学向量存入向量数据库，可以在此阶段关联<strong>元数据</strong>（如页码、来源）</li>
+<li><strong>检索策略优化</strong>：不依赖单一的向量搜索，可以采用<strong>混合检索</strong>，通过向量加关键词的方式来提升召回率，并引入<strong>重排序模型</strong>对检索结果进行二次精选</li>
+<li><strong>生成与提示工程</strong>：设计一套<strong>prompt模版</strong>，将检索到的内容按照模版格式输出</li>
+</ul>
+</li>
+</ul>
+<h1 id="学习Embedding"><a href="#学习Embedding" class="headerlink" title="学习Embedding"></a>学习Embedding</h1><ul>
+<li>理解embedding是什么：作用是能够把文本转换成可以进行比较的数学向量</li>
+<li>文件embed.py是学习成果文件：实现目标为从sentence-&gt;vector（向量）,比较两个句子语义相似度</li>
+<li>embedding dimension是什么：<br>  嵌入维度，具体说是一段文本经过Embedding 模型之后，被表示成的向量有多少个数字。同时，不同模型的 dimension 不一样。</li>
+<li>cosine similarity：<br>  解释了两个文本通过Embedding模型之后，如何判断语义相似度<br>  实际上是计算两个向量之间的夹角余弦值。两个向量越接近，夹角越小，越接近一，角度范围在0-180之间</li>
+<li><code>model.encode()</code>：<br>  <code>model.encode()</code> 就是让 Embedding 模型把文本转换成向量。encode翻译过来就是编码。<br>  model就是调用模型，encode就是编码，实际上就是实现了把输入的文本转换为数学向量表示。但encode作用是把文本通过神经网络映射为向量的</li>
+<li>同一个上下文中要使用同一个大模型：<br>  不同模型中的向量空间是不同的,无法比较</li>
+</ul>
+<h1 id="计算向量相似度"><a href="#计算向量相似度" class="headerlink" title="计算向量相似度"></a>计算向量相似度</h1><ul>
+<li><code>numpy</code>：Python 中专门进行数值计算的库</li>
+<li>np.dot()是计算两个向量点积的值</li>
+<li>np.linalg.norm是计算一个向量的模<blockquote>
+<p>embedding shape： (3, 384)<br>Python ↔ Software: 0.86191505<br>Python ↔ Apple: 0.08179839</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="学习Chunking"><a href="#学习Chunking" class="headerlink" title="学习Chunking"></a>学习Chunking</h1><ul>
+<li>中文是文本切分。作用是把一整个文档切分成一个一个的chunk，然后单独对每个chunk进行embedding</li>
+<li>chunk overlap：chunk可以有重叠。防止重要信息被切分在chunk边缘。但是也会导致切断单词或者段落，进一步需要根据自然语言的结构切分</li>
+<li>自然语言的结构：文档、段落、句子、单词、字母</li>
+<li>自然语言结构的划分方法（手搓版）：先按照段落划分，如果还是大于chunk—size，再按照句号进行句子划分。</li>
+</ul>
+<h1 id="学习FAISS"><a href="#学习FAISS" class="headerlink" title="学习FAISS"></a>学习FAISS</h1><ul>
+<li>为何要引入FAISS：因为原来切分转换好的向量存储在embedding这个python变量中,但不能每次用户需要查询的时候都调用vector进行顺序遍历来计算相似度</li>
+<li>Facebook AI Similarity Search  词义解释：一个专门用来存储和搜索向量的索引。这是一个高效进行向量相似度搜索的库。通过问题在数据库中找最相似的向量</li>
+<li>针对向量相似度搜索进行了专门的高性能优化。比起手动进行for循环效率会高很多</li>
+<li>IndexFaltL2:索引直接存储，通过欧氏距离进行向量搜索</li>
+<li>其他的搜索方式：IndexFlatIP、HNSW、IVF、PQ</li>
+<li>这个过程也就是retrieval中的一环。把用户问题通过Embedding转换成向量，通过FAISS存储最相关的向量索引返回。</li>
+</ul>
+<h1 id="接入-LLM"><a href="#接入-LLM" class="headerlink" title="接入 LLM"></a>接入 LLM</h1><ul>
+<li>计划先采用免费方案：install ollama和qwen来使用</li>
+<li>ollama：Ollama 是一个<strong>让你在自己电脑上本地运行大语言模型（LLM）的工具</strong>。它帮你下载、管理和运行 Llama、Qwen、DeepSeek、Gemma 等模型，不需要自己折腾复杂的推理环境。运行地点在本地电脑，是本地模拟运行llm的工具，可以自己选择模型，适合本地体验AI</li>
+</ul>
+<h1 id="引入Langchain"><a href="#引入Langchain" class="headerlink" title="引入Langchain"></a>引入Langchain</h1><ul>
+<li>创建虚拟环境：python -m venv .venv 单独在项目目录下创建一个.venv&#x2F;目录，这里单独安装该项目需要的python包。(.venv) PS C:\Users\admin\Desktop\mini_RAG&gt;出现这个样式说明已经进入了创建好的虚拟环境，接下来进行python的命令会优先在这个环境中执行。</li>
+<li>激活虚拟环境：<code>.\.venv\Scripts\Activate.ps1</code></li>
+</ul>
+<h1 id="Conversation-RAG"><a href="#Conversation-RAG" class="headerlink" title="Conversation RAG"></a>Conversation RAG</h1><p>流程为：</p>
+<pre><code>聊天历史
+   +
+当前问题
+   ↓
+理解上下文
+   ↓
+把问题改写成完整问题
+
+&quot;What are the main stages of RAG?&quot;
+   ↓
+Retriever
+   ↓
+RAG
+</code></pre>
+<p>解决当前问题依赖之前对话时，依然能够正确检索知识库</p>
+<ul>
+<li>简单的实现版本：接收用户输入的问题，先用llm根据之前的对话把问题重新写完整，在把用户问题+对话历史+重新写的问题交给retrieve去检索，最终把检索的内容+原问题+chat历史给llm输出</li>
+</ul>
+<h1 id="Streaming"><a href="#Streaming" class="headerlink" title="Streaming"></a>Streaming</h1><ul>
+<li><p>概念：区别于之前的llm组织完语言完整直接输出，streaming流式输出讲究的是先打印一点，再产生，再打印。。。</p>
+</li>
+<li><p>作用是用户体感上延迟更低，更早看到内容。LangChain 官方也把 streaming 的主要意义描述为实时反馈和改善长回答的交互体验。</p>
+</li>
+<li><p>区分invoke和stream：<br>  response &#x3D; llm.invoke(prompt)<br>  invoke中是把内容直接给llm，然后直接printresponse.content</p>
+<p>  llm.stream(prompt)<br>  stream返回的是一个迭代器，会不断产出 <code>AIMessageChunk</code>。</p>
+</li>
+<li><p>同步stream和异步stream（多人请求时候才会使用：astream(））</p>
+</li>
+<li><p>Token streaming&#x2F;Progress streaming:一个是流式显示模型内容，一个是流式显示系统执行过程</p>
+</li>
+</ul>
+<h1 id="Agentic-RAG"><a href="#Agentic-RAG" class="headerlink" title="Agentic RAG"></a>Agentic RAG</h1><ul>
+<li>普通rag：用户一提问就直接走rag流程</li>
+<li><strong>agentic rag</strong>：用户提问后，有agent（判断需要调用什么能力和工具）判断是否需要调用rag。RAG 从“固定流程”变成 Agent 可以调用的一个 Tool。</li>
+<li>理解<strong>agent</strong>：一个会根据用户问题，自己决定下一步调用什么工具的 LLM。核心是控制流也是动态的，区别chain是固定的数据流向</li>
+<li><strong>tool</strong>：本质上是给agent调用的函数。不返回完整答案，只是调用完知识库之后把资料拿出来。实现时用@tool，会把函数包装成agent可以调用的工具</li>
+<li>当前 LangChain 的核心 Agent API 是 <code>create_agent()</code>。官方对 Agent 的定义就是：<strong>模型在一个循环中调用工具，直到任务完成</strong>；<code>create_agent</code> 可以直接接收模型、tools 和 system prompt。工具可以是普通 callable 或 LangChain Tool。</li>
+<li>官方目前推荐的基本写法是使用 <code>@tool</code> 装饰器；工具的函数名、参数 schema 和 docstring 都会参与模型判断如何调用它。</li>
+<li>system prompt其实也就是harness的行为规则。官方当前也把 Agent 理解为 “model + harness”，其中 system prompt、tools、middleware 等共同决定模型获得什么上下文以及怎么执行任务。</li>
+<li>agent最重要的<strong>数据结构是message</strong>，LangChain 当前 Agent 的基础 state 中就包含：<code>messages: list[BaseMessage]</code>,也就是当前 thread 的完整消息历史。</li>
+<li>agent loop</li>
+<li><strong><code>create_agent()</code></strong> 自己就有 thread state。官方当前文档说明：如果要通过 <code>thread_id</code> 持久并恢复 Agent 的 conversation history，需要给 Agent 配置 <strong>checkpointer</strong>；本地可以直接使用 <code>InMemorySaver()</code>。</li>
+<li>thread_id 是对话编号，不同id之间互不影响</li>
+<li>Query Rewrite 没消失，只是从一个固定 Chain，变成 Agent 的推理步骤。</li>
+<li>LangChain 当前支持 Agent streaming，并区分例如 <code>updates</code>、<code>messages</code>、<code>custom</code> 等模式；其中 <code>updates</code> 更适合看 Agent 执行进度，<code>messages</code> 更适合 token streaming。</li>
+<li><strong><code>InMemorySaver</code></strong> 是 LangGraph 提供的一个内存型 checkpointer。它负责保存 Agent 的状态，比如当前对话里的 <code>messages</code>。相当于agent的短期会话记忆</li>
+<li><strong>Multi-tool Agent</strong>：一个任务中连续调用多个工具。实现关键是下一个 Tool 的调用参数，经常来自前一个 Tool 的结果。agent调用完一个工具，结果返回给agent，由agent整合信息继续判断是否需要进一步调用工具 </li>
+<li><strong>Agent Streaming</strong>：把 Agent 的决策、Tool 调用、Tool 返回和最终答案实时展示出来。区别普通streaming，只是llm把token一个个输出。agent streaming需要显示的是progress streaming</li>
+<li><strong>updates</strong>：可以看到agent执行到哪一步了。一般写成：stream_mode&#x3D;”updates”</li>
+<li>Custom Streaming：LangChain 支持 Tool 自己发送 <code>custom</code> stream event，通过 <code>get_stream_writer()</code> 输出自定义进度，获取一个向streaming通道发送信息的对象。Custom Streaming 就是让 Tool 自己在执行过程中发消息。</li>
+<li>进一步更新agent：当程序查找失败时候不直接退出，反而把失败信息返回给agent，再重新调用tool进行再次执行。当agent尝试失败后也agentic retry。当某条路径失败后换用另一条路径。</li>
+<li>Structured Tool Error：Tool 出错时，不返回一句随意文本，而是返回一个统一结构</li>
+<li>LangChain 官方现在也推荐把 Web Search 作为 Tool 交给 Agent，由模型根据问题决定什么时候调用。Tools 本身就是“Agent 可以调用的外部能力”，模型会依据上下文和 tool description 决定是否调用。</li>
+<li>web search 通常返回的是title、url、snippets</li>
+<li>TavilyExtract：专门从 URL 提取清洗后的网页内容</li>
+<li><code>get()</code> 的好处是：即使返回结果没有 <code>answer</code> 字段，也不会触发 <code>KeyError</code></li>
+</ul>
+<h1 id="CLI-COMMAND"><a href="#CLI-COMMAND" class="headerlink" title="CLI COMMAND"></a>CLI COMMAND</h1><ul>
+<li>终端命令实现逻辑：用户输入一串字符串，先判断是不是特殊命令，如果是就执行相应命令。不是就当做普通字符串交给agent处理。</li>
+<li>CLI command 本质上就是在 <strong>LLM 之前加了一层命令解析器</strong></li>
+<li>query.partition(“ “) 按照空格拆开</li>
+<li>不需要的参数可以直接用下划线替代</li>
+<li>json.load(response)能把json格式转换为python数据结构</li>
+<li>from urllib.request import urlopen：发送HTTP请求的工具</li>
+<li><code>DATA_PATH.rglob(&quot;*&quot;)</code> :递归查找data目录下的所有文件</li>
+<li><code>sys</code> 是 Python 的<strong>标准库模块</strong>，主要负责让 Python 程序和“Python 解释器 &#x2F; 运行环境”打交道。<ul>
+<li><code>sys.argv</code>：获取命令行参数</li>
+<li><code>sys.path</code>：查看&#x2F;修改 Python 查找模块的路径</li>
+<li><code>sys.exit()</code>：退出程序</li>
+<li><code>sys.stdin / sys.stdout / sys.stderr</code>：处理输入、正常输出、错误输出</li>
+<li><code>sys.version</code>：查看 Python 版本</li>
+</ul>
+</li>
+<li>Streamlit 是一个用 Python 构建 Web 应用界面的框架。</li>
+</ul>
+</div>
+    <section class="notes-article-comments" aria-label="Comments">
+      <script src="https://giscus.app/client.js"
+        data-repo="YidanPan/YidanPan.github.io"
+        data-repo-id="R_kgDOTtkhPw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTtkhP84DC1wo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      scrollToHeading(link.getAttribute('href').slice(1));
+    });
+  });
+
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    function normalizePath(pathname) {
+      var normalized = (pathname || '/').replace(/\/+$/, '');
+      return normalized ? normalized.toLowerCase() : '/';
+    }
+
+    var currentPath = normalizePath(window.location.pathname);
+    var notesPath = '/notes';
+    var notesLink = null;
+    var homeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      var href = normalizePath(link.getAttribute('href'));
+      if (href === '/') {
+        homeLink = link;
+      }
+      if (href === notesPath) {
+        notesLink = link;
+      }
+      if (href === currentPath || (href !== '/' && currentPath.startsWith(href + '/'))) {
+        link.classList.add('active');
+        updatePill(link);
+      }
+    });
+
+    if (!document.querySelector('#navLinks .nav-link.active')) {
+      if (currentPath.startsWith(notesPath) && notesLink) {
+        notesLink.classList.add('active');
+        updatePill(notesLink);
+      } else if (homeLink) {
+        homeLink.classList.add('active');
+        updatePill(homeLink);
+      }
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) { l.classList.remove('active'); });
+        link.classList.add('active');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

@@ -19,15 +19,13 @@
   <meta name="author" content="Yidan Pan">
   <meta name="keywords" content="AI,Software,Blog,LLM">
   
-    <meta name="description" content="PROJECTS       1 &#x2F; 4 Projects                013D GestureParticle System         02PersonalWebsite         03CS 61ACoursework         04AgenticMini RAG                     3D Gesture Pa">
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Projects">
-<meta property="og:url" content="https://yidanpan.github.io/Projects/index.html">
+<meta property="og:title" content="LangChain · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/LangChain/index.html">
 <meta property="og:site_name" content="Dan&#39;s Blog">
-<meta property="og:description" content="PROJECTS       1 &#x2F; 4 Projects                013D GestureParticle System         02PersonalWebsite         03CS 61ACoursework         04AgenticMini RAG                     3D Gesture Pa">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-08-30T10:13:11.315Z">
-<meta property="article:modified_time" content="2026-08-30T10:13:11.315Z">
 <meta property="article:author" content="Yidan Pan">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Software">
@@ -37,7 +35,7 @@
   
   
   
-  <title>Projects - Dan&#39;s Blog</title>
+  <title>LangChain · Notes - Dan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -103,7 +101,7 @@
     <header>
       
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 0vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -332,13 +330,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/%20') no-repeat center center; background-size: cover;">
+     style="background: url('/') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Projects"></span>
+            <span id="subtitle" data-typed-text="LangChain · Notes"></span>
           
         </div>
 
@@ -386,188 +384,198 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/ai-llm/llm-engineering/">← LLM Engineering</a>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">AI / LLM</span>
+      <h1>LangChain</h1>
+      <span class="notes-source-path">LangChain.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><ul>
+<li>LangChain 是一个用于构建 <strong>基于大语言模型（LLM）的应用开发框架</strong>。它的目标是帮助开发者更方便地将 LLM 与外部数据、工具、数据库和业务流程结合起来</li>
+<li>LLM + 数据 + 工具 + 工作流 &#x3D; LangChain 的主要应用场景</li>
+<li>主要模块:统一管理各种大模型、Prompt参数化、输出解析、读取各种文档、文本切分、向量化、向量数据库、检索器（RAG）、调用Tools、Agent</li>
+<li>优点：模块化程度高、支持大量模型、集成方便、Python 和 JavaScript&#x2F;TypeScript 都有成熟支持。</li>
+<li>局限性：对于简单调用API官方的SDK更为轻量级</li>
+</ul>
+<h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
+<li>rag还需要来源、页码、文件名、作者等内容，document就是文本内容和附加信息组装在一起统一表示</li>
+<li>最重要的两个属性：document.page_content  document.metadata（元数据就是跟文本内容对应起来的内容）</li>
+</ul>
+<h2 id="Text-Splitter"><a href="#Text-Splitter" class="headerlink" title="Text Splitter"></a>Text Splitter</h2><ul>
+<li>TextLoader：读取文档中的内容</li>
+<li>RecursiveCharacterTextSplitter ：一个按照字符，并且尽量保持文本结构进行切分的 Text Splitter。更适合自然语言结构的切分。最终是创建一个切分的工具对象</li>
+<li>splitter.split_documents（）：对文本进行切分。得到的是一个<code>list[document]</code> list中每个元素都是document对象</li>
+</ul>
+<h2 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h2><ul>
+<li>Langchain中把向量化封装成一个模块进行使用</li>
+<li>embeddings &#x3D; HuggingFaceEmbeddings(</li>
+</ul>
+<p>    model_name&#x3D;”sentence-transformers&#x2F;all-MiniLM-L6-v2”</p>
+<p>) ：这里HuggingFaceEmbeddings是用来创建Embedding模型，里面封装了很多功能</p>
+<ul>
+<li>embeddings.embed_documents(…) ：把多个文本文档转换为向量</li>
+</ul>
+<h2 id="FAISS"><a href="#FAISS" class="headerlink" title="FAISS"></a>FAISS</h2><ul>
+<li>FAISS.from_documents(<br>  chunks,<br>  embeddings<br>)： embeddings是Embedding模型。相当于告诉 LangChain，把这些 Document 转换成向量，然后建立一个 FAISS 向量索引。</li>
+<li>Langchain把FAISS功能封装成统一接口。把chunk和向量储存进FAISS</li>
+</ul>
+<h2 id="Retrieval"><a href="#Retrieval" class="headerlink" title="Retrieval"></a>Retrieval</h2><ul>
+<li>retriever &#x3D; vectorstore.as_retriever(<br>  search_kwargs&#x3D;{“k”: 2}<br>)： 检索功能实现。选出向量距离最接近的前两个</li>
+<li>results &#x3D; retriever.invoke(<br>  “What is Python used for?”<br>)：插入检索对象，也就是问题内容</li>
+</ul>
+<h2 id="Prompt"><a href="#Prompt" class="headerlink" title="Prompt"></a>Prompt</h2><ul>
+<li>PromptTemplate：该函数用于常见提示语模版，{context}是变量占位符。也是创建模版工具</li>
+<li>prompt.invoke：真正填入需要的内容</li>
+</ul>
+<h2 id="接入LLM"><a href="#接入LLM" class="headerlink" title="接入LLM"></a>接入LLM</h2><ul>
+<li>from langchain_ollama import ChatOllama 直接引入封装好的ollama</li>
+<li>ChatOllama(model&#x3D;”qwen2.5:3b”)：确定模型名称</li>
+</ul>
+<h1 id="LCEL（LangChain-Expression-Language）"><a href="#LCEL（LangChain-Expression-Language）" class="headerlink" title="LCEL（LangChain Expression Language）"></a>LCEL（LangChain Expression Language）</h1><ul>
+<li>解决问题：怎么把这些组件组合起来，让数据自动从一个组件流到下一个组件</li>
+<li>核心思想之一：每个组件都有输入和输出</li>
+<li>chain&#x3D;prompt | llm，这里的|相当于pipeline，把前一个组件的数据传递给下一个组件</li>
+<li>之前是靠自己手动完成prompt传递给llm，Langchain把这些步骤封装起来</li>
+<li>把retrieve接入lcel：RunnablePassthrough() 作用是输入是什么，就原样传下去</li>
+<li>FAISS持久化：把document切分后转为embedding存入FAISS之后保存入硬盘</li>
+<li>读取多文档：<pre><code>DirectoryLoader(
+    &quot;data&quot;,
+    glob=&quot;*.txt&quot;,
+    loader_cls=TextLoader,
+    loader_kwargs={
+        &quot;encoding&quot;: &quot;utf-8&quot;
+    }
+)
+</code></pre>
+</li>
+<li>RunnableParallel:实现同一个输入应用不同的分支</li>
+<li>RunnableLambda：传入参数是一个python函数，返回结果是langchain中传递数据给函数的返回结果</li>
+<li>MMR &#x3D; Maximum Marginal Relevance：既要相关，又要不重复。也就是需要考虑和query的相关性以及和已经选择的chunk的差异性</li>
+<li>处理pdf文件：from langchain_community.document_loaders import PyPDFLoader，从社区导入加载pdf文件的工具，通常一个pdf页面对应一个document（content、source、page）</li>
+<li>向量用来判断语义相似，matedata负责结构化筛选</li>
+</ul>
+</div>
+    <section class="notes-article-comments" aria-label="Comments">
+      <script src="https://giscus.app/client.js"
+        data-repo="YidanPan/YidanPan.github.io"
+        data-repo-id="R_kgDOTtkhPw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTtkhP84DC1wo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+  </article>
 
-<article class="page-content">
-  <div class="projects-layout" data-projects-layout>
-  <aside class="projects-nav" aria-label="Project navigation">
-    <div class="projects-nav-inner">
-      <div class="projects-nav-label">PROJECTS</div>
-      <div class="projects-progress"><span id="projectsProgress">1 / 4 Projects</span><i aria-hidden="true"><b id="projectsProgressBar"></b></i></div>
-      <nav class="projects-nav-list">
-        <a class="project-nav-link is-active" href="#gesture-particle-system" data-project-nav="gesture-particle-system"><span class="project-nav-index">01</span><span class="project-nav-dot"></span><span>3D Gesture<br>Particle System</span></a>
-        <a class="project-nav-link" href="#personal-website" data-project-nav="personal-website"><span class="project-nav-index">02</span><span class="project-nav-dot"></span><span>Personal<br>Website</span></a>
-        <a class="project-nav-link" href="#cs61a" data-project-nav="cs61a"><span class="project-nav-index">03</span><span class="project-nav-dot"></span><span>CS 61A<br>Coursework</span></a>
-        <a class="project-nav-link" href="#agentic-mini-rag" data-project-nav="agentic-mini-rag"><span class="project-nav-index">04</span><span class="project-nav-dot"></span><span>Agentic<br>Mini RAG</span></a>
-      </nav>
-    </div>
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
   </aside>
-
-<div class="projects-content">
-<article class="proj-card" id="gesture-particle-system" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>3D Gesture Particle System</h2>
-<div class="proj-label">Python · MediaPipe · OpenGL</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-active">Active</span><time datetime="2024-03">2024.03 – Present</time></div>
-</header>
-
-<div class="proj-description">
-<p>A real-time hand gesture recognition system that controls an interactive 3D particle field with dynamic physics and visual effects.</p>
-<ul>
-<li>Real-time hand landmark detection via MediaPipe</li>
-<li>Dynamic particle generation and physics simulation</li>
-<li>Gesture-based interaction modes</li>
-<li>OpenGL rendering for smooth 60fps performance</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-
-<article class="proj-card" id="personal-website" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>Personal Website</h2>
-<div class="proj-label">Hexo · EJS · CSS</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-progress">In Progress</span><time datetime="2026-08">2026.08 – Present</time></div>
-</header>
-
-<div class="proj-description">
-<p>This website — a clean, minimal personal academic homepage built with Hexo static site generator and custom theming inspired by modern academic homepages.</p>
-<ul>
-<li>Custom responsive sidebar + main layout</li>
-<li>Dark mode with CSS custom properties</li>
-<li>Pill-style navigation with animated indicator</li>
-<li>Merriweather serif typography</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/YidanPan.github.io" target="_blank" rel="noopener">Source →</a>
-<a class="proj-link" href="https://YidanPan.github.io" target="_blank" rel="noopener">Live →</a>
-</div>
-</article>
-
-<article class="proj-card" id="cs61a" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>CS 61A Coursework</h2>
-<div class="proj-label">Python · Computer Science · Coursework</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-active">Completed</span><time datetime="2026-08">2026.08.05 – 2026.08</time></div>
-</header>
-
-<div class="proj-description">
-<p>A completed personal archive of UC Berkeley's CS 61A coursework, covering core programming abstractions through progressively larger homework, lab, and project exercises.</p>
-<ul>
-<li>Completed homework, labs, and course exercises</li>
-<li>Python practice in abstraction, recursion, higher-order functions, and data structures</li>
-<li>Course projects including Hog, Cats, Ants, Scheme, and Scalc</li>
-<li>Organized repository structure for future reference and review</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/cs61a" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-
-<article class="proj-card" id="agentic-mini-rag" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>Agentic Mini RAG</h2>
-<div class="proj-label">Python · LangChain · FAISS · Ollama · Streamlit</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-active">Completed</span><time datetime="2026-08">2026.08.30</time></div>
-</header>
-
-<div class="proj-description">
-<p>A local RAG learning project that combines document retrieval, LLM reasoning, conversation memory, and tool-using agents in a runnable Python application.</p>
-<ul>
-<li>Conversational RAG with follow-up question rewriting and streaming answers</li>
-<li>Agentic RAG with local document search, calculator, document listing, and optional web search</li>
-<li>FAISS vector indexing with Ollama-powered local models</li>
-<li>Streamlit web interface with Chinese and English language switching</li>
-<li>Startup checks, structured tool errors, and terminal command workflows</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/Agentic-Mini-RAG" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-</div>
 </div>
 
 <script>
 (function() {
-  var cards = Array.prototype.slice.call(document.querySelectorAll('[data-project-card]'));
-  var links = Array.prototype.slice.call(document.querySelectorAll('[data-project-nav]'));
-  var progressLabel = document.getElementById('projectsProgress');
-  var progressBar = document.getElementById('projectsProgressBar');
-  if (!cards.length || !links.length || !progressLabel || !progressBar) return;
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
 
-  function activate(id) {
-    var index = cards.findIndex(function(card) { return card.id === id; });
-    if (index === -1) return;
-    links.forEach(function(link) {
-      var isActive = link.getAttribute('data-project-nav') === id;
-      link.classList.toggle('is-active', isActive);
-      link.setAttribute('aria-current', isActive ? 'true' : 'false');
-    });
-    progressLabel.textContent = (index + 1) + ' / ' + cards.length + ' Projects';
-    progressBar.style.height = ((index + 1) / cards.length * 100) + '%';
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
   }
 
-  var observer = new IntersectionObserver(function(entries) {
-    var visible = entries.filter(function(entry) { return entry.isIntersecting; });
-    if (visible.length) {
-      visible.sort(function(a, b) { return b.intersectionRatio - a.intersectionRatio; });
-      activate(visible[0].target.id);
-    }
-  }, { rootMargin: '-18% 0px -62% 0px', threshold: [0.1, 0.35, 0.65] });
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
 
-  cards.forEach(function(card) { observer.observe(card); });
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
   links.forEach(function(link) {
     link.addEventListener('click', function(event) {
       event.preventDefault();
-      var target = document.getElementById(link.getAttribute('data-project-nav'));
-      if (!target) return;
-      activate(target.id);
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.replaceState(null, '', '#' + target.id);
+      scrollToHeading(link.getAttribute('href').slice(1));
     });
   });
 
-  var initialId = window.location.hash.slice(1);
-  activate(cards.some(function(card) { return card.id === initialId; }) ? initialId : cards[0].id);
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
 })();
 </script>
 
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
 
-  
-
-</article>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     
 
     

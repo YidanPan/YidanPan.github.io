@@ -1702,6 +1702,7 @@ undefined
 }
 
 .notes-tech-python .notes-tech-icon { background: #E7EFFB; color: #5578A8; }
+.notes-tech-ai .notes-tech-icon { background: #F5E9D7; color: #A56A22; }
 .notes-tech-frontend .notes-tech-icon { background: #EFE4E6; color: #8B6B72; }
 .notes-tech-tools .notes-tech-icon { background: #E8F3EB; color: #527C60; }
 .notes-tech-other .notes-tech-icon { background: var(--lav-100); color: var(--lav-700); }
@@ -3572,4 +3573,3 @@ body a:hover {
 [data-user-color-scheme="dark"] .about-learning-card {
   background: var(--bg-elev);
 }
-

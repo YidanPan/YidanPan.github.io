@@ -453,6 +453,44 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  var calloutLabels = {
+    note: 'Note',
+    tip: 'Tip',
+    quote: 'Quote',
+    info: 'Info',
+    warning: 'Warning',
+    danger: 'Important',
+    example: 'Example'
+  };
+
+  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
+    var firstParagraph = blockquote.querySelector(':scope > p');
+    if (!firstParagraph) return;
+    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
+    if (!match) return;
+
+    var type = match[1].toLowerCase();
+    var title = match[2] || calloutLabels[type] || type;
+    var header = document.createElement('div');
+    var icon = document.createElement('span');
+    var label = document.createElement('strong');
+    var detail = document.createElement('span');
+
+    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
+    icon.className = 'obsidian-callout-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
+    label.textContent = calloutLabels[type] || type;
+    detail.className = 'obsidian-callout-title';
+    detail.textContent = title;
+    header.className = 'obsidian-callout-header';
+    header.appendChild(icon);
+    header.appendChild(label);
+    if (match[2]) header.appendChild(detail);
+    blockquote.insertBefore(header, firstParagraph);
+    firstParagraph.remove();
+  });
+
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';

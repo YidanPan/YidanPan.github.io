@@ -1,11 +1,21 @@
 /* Notes archive pages generated from source/_notes. */
 .notes-archive-container {
-  width: min(980px, calc(100% - 40px));
+  width: min(1600px, calc(100% - 80px));
   margin: 0 auto 64px;
 }
 
+/* Category and subject pages use a focused reading width; the Notes home
+   can stay wide, but a full-width category board makes two cards feel empty. */
+.notes-archive-container:not(.notes-article-shell) {
+  width: min(1600px, calc(100% - 80px));
+}
+
+.notes-archive-container:not(.notes-article-shell) .notes-archive-board {
+  padding: 46px 44px 48px;
+}
+
 .notes-archive-board {
-  padding: 34px;
+  padding: 46px 44px 48px;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--bg-elev);
@@ -15,19 +25,41 @@
 .notes-category-page,
 .notes-article-page {
   display: block;
-  max-width: 840px;
+  max-width: none;
   margin: 0 auto;
   color: var(--ink-2);
 }
 
+.notes-archive-container:not(.notes-article-shell) .notes-category-page {
+  max-width: 1180px;
+}
+
+/* Category indexes use the same centered column for their heading and cards. */
+.notes-archive-container:not(.notes-article-shell) .notes-category-index {
+  max-width: 960px;
+}
+
+.notes-category-index .notes-subcategory-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Article-list pages stay readable inside the shared wide white board. */
+.notes-archive-container:not(.notes-article-shell) .notes-group-page {
+  max-width: 980px;
+}
+
+.notes-group-page .notes-category-hero {
+  max-width: 700px;
+}
+
 .notes-article-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 290px;
-  gap: 34px;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 44px;
   align-items: start;
-  width: min(1180px, calc(100% - 40px));
+  width: min(1320px, calc(100% - 48px));
   max-width: none;
-  padding: 34px;
+  padding: 40px 44px 44px;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   background: var(--bg-elev);
@@ -201,6 +233,11 @@
   border-bottom: 1px solid var(--line);
 }
 
+.notes-category-hero {
+  max-width: 680px;
+  margin-bottom: 36px;
+}
+
 .notes-category-kicker,
 .notes-source-path {
   display: block;
@@ -214,18 +251,18 @@
 
 .notes-category-hero h1,
 .notes-article-header h1 {
-  margin: 10px 0 12px;
+  margin: 12px 0 14px;
   font-family: var(--font-body);
-  font-size: 46px;
-  line-height: 1.12;
+  font-size: 42px;
+  line-height: 1.16;
 }
 
 .notes-category-hero p {
-  max-width: 650px;
+  max-width: 620px;
   margin: 0;
   color: var(--ink-2);
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.7;
 }
 
 .notes-category-total {
@@ -242,16 +279,16 @@
 
 .notes-article-list {
   display: grid;
-  margin-top: 22px;
+  margin-top: 30px;
   border-top: 1px solid var(--line);
 }
 
 .notes-article-list-item {
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) auto;
-  gap: 14px;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  gap: 18px;
   align-items: center;
-  padding: 18px 8px;
+  padding: 22px 16px;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
   transition: color 0.2s, background 0.2s, padding 0.2s;
@@ -273,7 +310,7 @@
 
 .notes-article-title {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 23px;
   line-height: 1.35;
 }
 
@@ -289,10 +326,11 @@
 
 .notes-article-content {
   display: block;
-  margin-top: 32px;
+  max-width: 860px;
+  margin-top: 40px;
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.9;
+  font-size: 17px;
+  line-height: 1.8;
   color: var(--ink-2);
   visibility: visible;
   opacity: 1;
@@ -308,6 +346,102 @@
   color: var(--ink-2);
 }
 
+.notes-article-content p {
+  margin: 0 0 1.1em;
+}
+
+.notes-article-content ul,
+.notes-article-content ol {
+  margin: .6em 0 1.2em;
+  padding-left: 1.45em;
+}
+
+.notes-article-content li + li {
+  margin-top: .35em;
+}
+
+.notes-article-content blockquote.obsidian-callout {
+  margin: 1.4em 0;
+  padding: 0 18px 16px;
+  border: 1px solid #cddbf0;
+  border-left: 4px solid #7597c6;
+  border-radius: 14px;
+  background: #f4f8ff;
+  color: var(--ink-2);
+}
+
+.obsidian-callout-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin: 0 -18px 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(117, 151, 198, .22);
+  color: #4f709d;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.obsidian-callout-icon {
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: #7597c6;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.obsidian-callout-header strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+.obsidian-callout-title {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.notes-article-content blockquote.obsidian-callout > :last-child {
+  margin-bottom: 0;
+}
+
+.notes-article-content blockquote.obsidian-callout-tip {
+  border-color: #cde6d4;
+  border-left-color: #639976;
+  background: #f3faf5;
+}
+
+.obsidian-callout-tip .obsidian-callout-header { border-bottom-color: rgba(99, 153, 118, .22); color: #4b7b5c; }
+.obsidian-callout-tip .obsidian-callout-icon { background: #639976; }
+
+.notes-article-content blockquote.obsidian-callout-quote {
+  border-color: #ead5da;
+  border-left-color: #ab7d88;
+  background: #fcf6f7;
+}
+
+.obsidian-callout-quote .obsidian-callout-header { border-bottom-color: rgba(171, 125, 136, .22); color: #8e6670; }
+.obsidian-callout-quote .obsidian-callout-icon { background: #ab7d88; font-family: var(--font-display); font-size: 18px; }
+
+.notes-article-content blockquote.obsidian-callout-warning,
+.notes-article-content blockquote.obsidian-callout-danger {
+  border-color: #efd9b5;
+  border-left-color: #bd8a37;
+  background: #fff9ee;
+}
+
+.obsidian-callout-warning .obsidian-callout-header,
+.obsidian-callout-danger .obsidian-callout-header { border-bottom-color: rgba(189, 138, 55, .22); color: #956819; }
+.obsidian-callout-warning .obsidian-callout-icon,
+.obsidian-callout-danger .obsidian-callout-icon { background: #bd8a37; }
+
 .notes-article-content h1,
 .notes-article-content h2,
 .notes-article-content h3,
@@ -320,9 +454,47 @@
 .notes-article-content h1,
 .notes-article-content h2,
 .notes-article-content h3,
-.notes-article-content h4 {
-  margin-top: 1.8em;
+.notes-article-content h4,
+.notes-article-content h5,
+.notes-article-content h6 {
   font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.3;
+}
+
+.notes-article-content h1 {
+  margin: 2.4rem 0 1rem;
+  font-size: 34px;
+}
+
+.notes-article-content h2 {
+  margin: 2.2rem 0 .9rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 27px;
+}
+
+.notes-article-content h3 {
+  margin: 1.7rem 0 .7rem;
+  font-size: 22px;
+}
+
+.notes-article-content h4 {
+  margin: 1.45rem 0 .6rem;
+  font-size: 19px;
+}
+
+.notes-article-content h5,
+.notes-article-content h6 {
+  margin: 1.2rem 0 .55rem;
+  font-size: 17px;
+}
+
+.notes-article-content > h1:first-child,
+.notes-article-content > h2:first-child,
+.notes-article-content > h3:first-child {
+  margin-top: 0;
 }
 
 .notes-article-content img {
@@ -347,7 +519,7 @@
 }
 
 .notes-article-content mjx-container[display="true"] {
-  margin: 1.2em 0;
+  margin: 1em 0;
 }
 
 .notes-article-comments {
@@ -401,8 +573,14 @@
 
 
 @media (max-width: 960px) {
+  .notes-category-index .notes-subcategory-grid {
+    grid-template-columns: 1fr;
+  }
+
   .notes-article-shell {
     grid-template-columns: 1fr;
+    width: min(860px, calc(100% - 32px));
+    padding: 30px;
   }
 
   .notes-article-toc {
@@ -419,6 +597,20 @@
 }
 
 @media (max-width: 720px) {
+  .notes-archive-container {
+    width: calc(100% - 24px);
+    margin-bottom: 34px;
+  }
+
+  .notes-archive-container:not(.notes-article-shell) {
+    width: calc(100% - 24px);
+  }
+
+  .notes-article-shell {
+    width: calc(100% - 24px);
+    padding: 24px 20px 28px;
+  }
+
   .notes-article-breadcrumb {
     gap: 8px;
     margin-bottom: 26px;
@@ -456,4 +648,14 @@
   .notes-article-pagination-link.is-next {
     text-align: left;
   }
+
+  .notes-article-content {
+    margin-top: 30px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .notes-article-content h1 { font-size: 29px; }
+  .notes-article-content h2 { font-size: 24px; }
+  .notes-article-content h3 { font-size: 20px; }
 }

@@ -19,15 +19,13 @@
   <meta name="author" content="Yidan Pan">
   <meta name="keywords" content="AI,Software,Blog,LLM">
   
-    <meta name="description" content="PROJECTS       1 &#x2F; 5 Projects                01MovieAgent         023D GestureParticle System         03PersonalWebsite         04CS 61ACoursework         05AgenticMini RAG">
+    <meta name="description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Projects">
-<meta property="og:url" content="https://yidanpan.github.io/Projects/index.html">
+<meta property="og:title" content="计算机网络 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="Dan&#39;s Blog">
-<meta property="og:description" content="PROJECTS       1 &#x2F; 5 Projects                01MovieAgent         023D GestureParticle System         03PersonalWebsite         04CS 61ACoursework         05AgenticMini RAG">
+<meta property="og:description" content="Personal website of Yidan Pan — exploring AI, LLM, and Software Engineering at Zhejiang University.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-09-02T07:12:34.113Z">
-<meta property="article:modified_time" content="2026-09-02T07:12:34.113Z">
 <meta property="article:author" content="Yidan Pan">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Software">
@@ -37,7 +35,7 @@
   
   
   
-  <title>Projects - Dan&#39;s Blog</title>
+  <title>计算机网络 · Notes - Dan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -103,7 +101,7 @@
     <header>
       
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 0vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -332,13 +330,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/%20') no-repeat center center; background-size: cover;">
+     style="background: url('/') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Projects"></span>
+            <span id="subtitle" data-typed-text="计算机网络 · Notes"></span>
           
         </div>
 
@@ -386,214 +384,227 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/cs/computer-network/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>计算机网络</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/computer-network/">计算机网络</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">计算机网络</span>
+    </nav>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">计算机专业课</span>
+      <h1>计算机网络</h1>
+      <span class="notes-source-path">计算机网络.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="MAC地址-IP地址"><a href="#MAC地址-IP地址" class="headerlink" title="MAC地址 IP地址"></a>MAC地址 IP地址</h1><ul>
+<li>mac地址是物理绝对地址，是收件地址，处于数据链路层中，是全球唯一的地址。表示网卡在网络中的绝对位置</li>
+<li>ip地址是网络局给的地址，是收件人，是在网络层中，网卡上需要配置好ip地址才能工作<ul>
+<li>ipv4：198.168.1.1  由四位0-255的数字构成，小数点隔开</li>
+<li>ipv6：新造的</li>
+</ul>
+</li>
+<li>我们自己填写ip地址和内容，操作系统会 自动补充mac地址从网卡发出</li>
+<li>DHCP协议：能够动态分配IP地址。当设备连上网线，会自动向路由器发送DHCP协议请求分配IP地址。路由器通过dhcp回复报文发送回去。在一个局域网中一个ip地址也是唯一的。</li>
+<li>ARP协议：计算机a向计算机b发送信息，需要先通过arp协议发送给所有设备，只有计算机b能返回它的mac地址，a就会收到并缓存它的mac地址，然后通过网卡发送出去。</li>
+</ul>
+<h1 id="路由器-交换机"><a href="#路由器-交换机" class="headerlink" title="路由器 交换机"></a>路由器 交换机</h1><ul>
+<li>交换机：把数据包发送到正确位置。交换机根据数据包中的mac地址找到对应的物理端口。一台交换机有很多个端口，他们都有自己的编号。</li>
+<li>计算机网卡通过网线连接到交换的网口上，就能确定一个物理端口。交换机每次通过查询mac地址表来查询对应端口，再从这个端口发送出去。</li>
+<li>每个数据包有两个mac地址。一个是发送方的mac地址，为源地址。还有一个接收方的mac地址，为目标mac</li>
+<li>路由器有两种接口：LAN口（多个）连接家庭网络设备。WAN口只有一个，用来接入运营商网络来接入因特网</li>
+<li>子网划分：IP和子网掩码取与，结果相同的是在同一子网之下，反之则不同。用1的数量表示掩码，如255.255.255.0&#x3D;24 用IP&#x2F;掩码来表示子网</li>
+<li>TCP&#x2F;IP协议规定不同子网不能够交流，得通过网关来转发。网关上有两个网卡，配置了两个IP地址。一台计算机发送数据包的时候先判断对方是否和自己在同一子网下，若是，则直接从网卡发出。反之，则把mac地址改为网关的mac地址发出，网关拿到数据后查询接收方是属于子网2，网关修改mac地址发出</li>
+<li>路由：根据目标IP决定如何发送数据包。这是一种行为。</li>
+<li>SNAT（源地址转换技术）：路由器发送的时候改变IP地址</li>
+<li>TCP传输层协议：源端口和目标端口。SNAT就需要修改源端口和目标端口。UDP协议同理</li>
+<li>ICMP协议（常用来ping命令检测网络联通性）：IP地址+type code，无端口信息</li>
+<li>DNAT（目标地址转换）：作用是向内网转发请求</li>
+</ul>
+<h1 id="TCP协议-UDP协议"><a href="#TCP协议-UDP协议" class="headerlink" title="TCP协议 UDP协议"></a>TCP协议 UDP协议</h1><ul>
+<li>两者均工作在传输层，负责程序间的数据传输</li>
+<li>TCP协议是基于连接，类比打电话，可以收到实时的反馈<ul>
+<li>三次握手：确认连接的过程。客户端向服务端发送连接请求（SYN包）-&gt;若对方同意则返回一包SYN+ACK包 -&gt; 我方确认后返回SYN包。<br>  本质上解决网络信道不可靠问题，在不可靠的信道上建立可靠的连接<br>  如果是两次握手，当客户端向服务端发送一次数据包，结果数据包1在网络中阻塞了，于是第二次发送了数据包2，接收成功返回SYN+ACK建立一次连接，这时数据包1成功到达服务端，服务器误以为是客户端再次发送连接请求，于是处于等待数据的阶段，这样两者的状态不一致。</li>
+<li>传输确认</li>
+<li>四次挥手：处于连接状态的客户端和服务端都可以发送关闭连接的请求。需要通过四次挥手来关闭连接。<br>  客户端向服务端发起关闭连接请求，发送FIN包，服务端接收后发送ACK包，此时客户端处于等待关闭状态，还可以继续发送没有发送完全的数据包，之后客户端再次发送FIN包，服务端接收后发送ACK包并立即关闭连接，客户端等待超过超时时间后才会关闭连接。</li>
+</ul>
+</li>
+<li>UDP协议是基于非连接，类比写信，很多都是未知的</li>
+</ul>
+<h1 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h1><ul>
+<li><p>访问一个网站最重要的就是访问这个网站的域名。但其实通过IP地址或者域名都是可以访问网站的。</p>
+</li>
+<li><p>域名是和IP地址一一对应的，是为了方便使用记忆。</p>
+</li>
+<li><p>DNS协议：用户输入域名，需要查询相应的IP地址，这个查询的协议就是DNS协议。<br>  查询的时候主机会向上一级的DNS服务器发送DNS报文请求，DNS服务器收到这一帧查询报文后会在自己缓存的DNS池中查找这个域名的记录找到对应IP地址。若找不到会向更上一级的DNS服务器发送DNS请求，以此类推。最终返回对应的IP地址。</p>
+<p>  浏览器知道对应IP地址后会构建HTTP协议数据包，通过HTTP协议最终获取需要的网页。浏览器为了方便快速查询，也会缓存一些域名对应的IP地址进行快速查询。</p>
+</li>
+</ul>
+<h1 id="SSH协议"><a href="#SSH协议" class="headerlink" title="SSH协议"></a>SSH协议</h1><ul>
+<li>ssh是安全外壳协议，Secure Shell，是一种加密网络协议。最著名的例子就是用户通过该协议进行远程登录到计算机系统。</li>
+<li>SSH 使用非对称加密技术来保护客户端与服务器之间的连接安全。在非对称加密中，需要使用两种密钥：公钥和私钥。公钥用于加密数据，而私钥则用于解密数据。当您连接到 SSH 服务器时，服务器会将其公共密钥发送给客户端。客户端使用这个公共密钥来加密一个随机生成的会话密钥，然后将其返回给服务器。服务器则使用其私有密钥来解密会话密钥，从而建立安全连接。<br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260828103754.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260828103754.png"></li>
+</ul>
+</div>
+    <section class="notes-article-comments" aria-label="Comments">
+      <script src="https://giscus.app/client.js"
+        data-repo="YidanPan/YidanPan.github.io"
+        data-repo-id="R_kgDOTtkhPw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTtkhP84DC1wo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+    
+  </article>
 
-<article class="page-content">
-  <div class="projects-layout" data-projects-layout>
-  <aside class="projects-nav" aria-label="Project navigation">
-    <div class="projects-nav-inner">
-      <div class="projects-nav-label">PROJECTS</div>
-      <div class="projects-progress"><span id="projectsProgress">1 / 5 Projects</span><i aria-hidden="true"><b id="projectsProgressBar"></b></i></div>
-      <nav class="projects-nav-list">
-        <a class="project-nav-link is-active" href="#movie-agent" data-project-nav="movie-agent"><span class="project-nav-index">01</span><span class="project-nav-dot"></span><span>Movie<br>Agent</span></a>
-        <a class="project-nav-link" href="#gesture-particle-system" data-project-nav="gesture-particle-system"><span class="project-nav-index">02</span><span class="project-nav-dot"></span><span>3D Gesture<br>Particle System</span></a>
-        <a class="project-nav-link" href="#personal-website" data-project-nav="personal-website"><span class="project-nav-index">03</span><span class="project-nav-dot"></span><span>Personal<br>Website</span></a>
-        <a class="project-nav-link" href="#cs61a" data-project-nav="cs61a"><span class="project-nav-index">04</span><span class="project-nav-dot"></span><span>CS 61A<br>Coursework</span></a>
-        <a class="project-nav-link" href="#agentic-mini-rag" data-project-nav="agentic-mini-rag"><span class="project-nav-index">05</span><span class="project-nav-dot"></span><span>Agentic<br>Mini RAG</span></a>
-      </nav>
-    </div>
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
   </aside>
-
-<div class="projects-content">
-<article class="proj-card" id="movie-agent" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>Movie Agent</h2>
-<div class="proj-label">Python · FastAPI · ModelScope · ComfyUI · FFmpeg</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-progress">In Progress</span><time datetime="2026-09-02">2026.09 – Present</time></div>
-</header>
-
-<div class="proj-description">
-<p>A multi-agent film production workspace that turns an original science-fiction idea into a production brief, script, visual bible, structured storyboard, quality reports, and an editable final-cut plan.</p>
-<ul>
-<li>Independent director, writer, storyboard, visual-design, generation, review, and editing agents coordinated by a shared orchestration flow</li>
-<li>Real-time production progress through FastAPI and server-sent events, with resumable projects and per-shot retries</li>
-<li>Mock, ModelScope text-generation, and Spark ComfyUI rendering modes for staged development</li>
-<li>Structured quality gates for shot duration, prompt completeness, visual consistency, and originality risk</li>
-<li>Keyframe review and FFmpeg assembly for traceable, editable video delivery</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/Movie-Agent" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-
-<article class="proj-card" id="gesture-particle-system" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>3D Gesture Particle System</h2>
-<div class="proj-label">Python · MediaPipe · OpenGL</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-active">Active</span><time datetime="2024-03">2024.03 – Present</time></div>
-</header>
-
-<div class="proj-description">
-<p>A real-time hand gesture recognition system that controls an interactive 3D particle field with dynamic physics and visual effects.</p>
-<ul>
-<li>Real-time hand landmark detection via MediaPipe</li>
-<li>Dynamic particle generation and physics simulation</li>
-<li>Gesture-based interaction modes</li>
-<li>OpenGL rendering for smooth 60fps performance</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-
-<article class="proj-card" id="personal-website" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>Personal Website</h2>
-<div class="proj-label">Hexo · EJS · CSS</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-progress">In Progress</span><time datetime="2026-08">2026.08 – Present</time></div>
-</header>
-
-<div class="proj-description">
-<p>This website — a clean, minimal personal academic homepage built with Hexo static site generator and custom theming inspired by modern academic homepages.</p>
-<ul>
-<li>Custom responsive sidebar + main layout</li>
-<li>Dark mode with CSS custom properties</li>
-<li>Pill-style navigation with animated indicator</li>
-<li>Merriweather serif typography</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/YidanPan.github.io" target="_blank" rel="noopener">Source →</a>
-<a class="proj-link" href="https://YidanPan.github.io" target="_blank" rel="noopener">Live →</a>
-</div>
-</article>
-
-<article class="proj-card" id="cs61a" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>CS 61A Coursework</h2>
-<div class="proj-label">Python · Computer Science · Coursework</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-active">Completed</span><time datetime="2026-08">2026.08.05 – 2026.08</time></div>
-</header>
-
-<div class="proj-description">
-<p>A completed personal archive of UC Berkeley's CS 61A coursework, covering core programming abstractions through progressively larger homework, lab, and project exercises.</p>
-<ul>
-<li>Completed homework, labs, and course exercises</li>
-<li>Python practice in abstraction, recursion, higher-order functions, and data structures</li>
-<li>Course projects including Hog, Cats, Ants, Scheme, and Scalc</li>
-<li>Organized repository structure for future reference and review</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/cs61a" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-
-<article class="proj-card" id="agentic-mini-rag" data-project-card>
-<header class="proj-card-head">
-<div>
-<h2>Agentic Mini RAG</h2>
-<div class="proj-label">Python · LangChain · FAISS · Ollama · Streamlit</div>
-</div>
-<div class="proj-card-meta"><span class="proj-status proj-status-active">Completed</span><time datetime="2026-08-30">2026.08.30</time></div>
-</header>
-
-<div class="proj-description">
-<p>A local RAG learning project that combines document retrieval, LLM reasoning, conversation memory, and tool-using agents in a runnable Python application.</p>
-<ul>
-<li>Conversational RAG with follow-up question rewriting and streaming answers</li>
-<li>Agentic RAG with local document search, calculator, document listing, and optional web search</li>
-<li>FAISS vector indexing with Ollama-powered local models</li>
-<li>Streamlit web interface with Chinese and English language switching</li>
-<li>Startup checks, structured tool errors, and terminal command workflows</li>
-</ul>
-</div>
-
-<div class="proj-links">
-<a class="proj-link" href="https://github.com/YidanPan/Agentic-Mini-RAG" target="_blank" rel="noopener">GitHub →</a>
-</div>
-</article>
-</div>
 </div>
 
 <script>
 (function() {
-  var cards = Array.prototype.slice.call(document.querySelectorAll('[data-project-card]'));
-  var links = Array.prototype.slice.call(document.querySelectorAll('[data-project-nav]'));
-  var progressLabel = document.getElementById('projectsProgress');
-  var progressBar = document.getElementById('projectsProgressBar');
-  if (!cards.length || !links.length || !progressLabel || !progressBar) return;
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
 
-  function activate(id) {
-    var index = cards.findIndex(function(card) { return card.id === id; });
-    if (index === -1) return;
-    links.forEach(function(link) {
-      var isActive = link.getAttribute('data-project-nav') === id;
-      link.classList.toggle('is-active', isActive);
-      link.setAttribute('aria-current', isActive ? 'true' : 'false');
-    });
-    progressLabel.textContent = (index + 1) + ' / ' + cards.length + ' Projects';
-    progressBar.style.height = ((index + 1) / cards.length * 100) + '%';
+  var headerOffset = 110;
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var calloutLabels = {
+    note: 'Note',
+    tip: 'Tip',
+    quote: 'Quote',
+    info: 'Info',
+    warning: 'Warning',
+    danger: 'Important',
+    example: 'Example'
+  };
+
+  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
+    var firstParagraph = blockquote.querySelector(':scope > p');
+    if (!firstParagraph) return;
+    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
+    if (!match) return;
+
+    var type = match[1].toLowerCase();
+    var title = match[2] || calloutLabels[type] || type;
+    var header = document.createElement('div');
+    var icon = document.createElement('span');
+    var label = document.createElement('strong');
+    var detail = document.createElement('span');
+
+    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
+    icon.className = 'obsidian-callout-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
+    label.textContent = calloutLabels[type] || type;
+    detail.className = 'obsidian-callout-title';
+    detail.textContent = title;
+    header.className = 'obsidian-callout-header';
+    header.appendChild(icon);
+    header.appendChild(label);
+    if (match[2]) header.appendChild(detail);
+    blockquote.insertBefore(header, firstParagraph);
+    firstParagraph.remove();
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
   }
 
-  var observer = new IntersectionObserver(function(entries) {
-    var visible = entries.filter(function(entry) { return entry.isIntersecting; });
-    if (visible.length) {
-      visible.sort(function(a, b) { return b.intersectionRatio - a.intersectionRatio; });
-      activate(visible[0].target.id);
-    }
-  }, { rootMargin: '-18% 0px -62% 0px', threshold: [0.1, 0.35, 0.65] });
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
 
-  cards.forEach(function(card) { observer.observe(card); });
+  toc.innerHTML = items.map(function(item) {
+    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
+  }).join('');
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollToHeading(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+    setActive(id);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
   links.forEach(function(link) {
     link.addEventListener('click', function(event) {
       event.preventDefault();
-      var target = document.getElementById(link.getAttribute('data-project-nav'));
-      if (!target) return;
-      activate(target.id);
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.history.replaceState(null, '', '#' + target.id);
+      scrollToHeading(link.getAttribute('href').slice(1));
     });
   });
 
-  var initialId = window.location.hash.slice(1);
-  activate(cards.some(function(card) { return card.id === initialId; }) ? initialId : cards[0].id);
+  if (window.location.hash) {
+    var initialId = window.location.hash.slice(1);
+    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
+  }
 })();
 </script>
 
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: false
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
 
-  
-
-</article>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     
 
     

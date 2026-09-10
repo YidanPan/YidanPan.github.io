@@ -348,7 +348,7 @@
 
 /* Markdown **emphasis** is the warm visual marker for key ideas in notes. */
 .notes-article-page .notes-article-content strong {
-  color: #b47c8a !important;
+  color: var(--accent-ink) !important;
   font-weight: 700;
 }
 

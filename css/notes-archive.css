@@ -347,8 +347,8 @@
 }
 
 /* Markdown **emphasis** is the warm visual marker for key ideas in notes. */
-.notes-article-content strong {
-  color: #a66f7d;
+.notes-article-page .notes-article-content strong {
+  color: #b47c8a !important;
   font-weight: 700;
 }
 
@@ -405,7 +405,7 @@
 }
 
 .obsidian-callout-header strong {
-  color: inherit;
+  color: inherit !important;
   font-weight: 700;
 }
 

@@ -1289,6 +1289,13 @@ body:not(.is-home) > main {
   }
 }
 
+@media (min-width: 1024px) {
+  /* Keep the full Recent updates section closer to Tech Stack on desktop. */
+  .home-feed {
+    margin-top: 32px;
+  }
+}
+
 undefined
 /* ============================================================
    NOTES PAGE — Editorial archive with category cards

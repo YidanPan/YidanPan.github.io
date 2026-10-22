@@ -717,8 +717,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 .notes-example > summary:hover { background: var(--bg-tint); border-radius: 12px; }
 .notes-example > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .notes-example > summary > :is(h1,h2,h3,h4,h5,h6,p) { display: inline; margin: 0; padding: 0; border: 0; font: inherit; }
-.notes-example[open] > summary { border-bottom: 1px solid var(--line); }
+.notes-example[open] > summary { border-bottom: 1px solid var(--line); background: var(--accent-soft); border-radius: 11px 11px 0 0; }
 .notes-example-body { min-width: 0; padding: 16px 18px; }
+.notes-example[open] > .notes-example-body { background: #faf3f5; border-radius: 0 0 11px 11px; }
+[data-user-color-scheme="dark"] .notes-example[open] > .notes-example-body { background: #302830; }
 .notes-example-body > :first-child { margin-top: 0; }
 .notes-example-body > :last-child { margin-bottom: 0; }
 [data-user-color-scheme="dark"] .notes-article-content blockquote.obsidian-callout { background: var(--bg-tint); color: var(--ink); }

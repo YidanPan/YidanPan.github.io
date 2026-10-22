@@ -630,7 +630,7 @@ io.interactive()
 &nbsp; &nbsp; alarm(60);//60s缓冲
 }
 </code></pre>
-<h3 id="系统调用"><a href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8" class="headerlink" title="系统调用"></a>系统调用</h3><p>CPU 在执行你的代码时，有些事自己做不了——比如读文件、写屏幕、启动新程序。这些事必须请求操作系统帮忙。<br>**系统调用（System Call）理解为 Linux 内核提供给程序的一组”服务”**。</p>
+<h3 id="系统调用"><a href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8" class="headerlink" title="系统调用"></a>系统调用</h3><p>CPU 在执行你的代码时，有些事自己做不了——比如读文件、写屏幕、启动新程序。这些事必须请求操作系统帮忙。<br><strong>系统调用（System Call）理解为 Linux 内核提供给程序的一组”服务”</strong>。</p>
 <ul>
 <li>请求操作系统帮忙的机制就叫<strong>系统调用</strong>，简称 syscall。</li>
 <li>系统调用不是一种语言，是一种服务。但是汇编语言就是一种编程语言（低级语言）<br>所以系统调用就是cpu让操作系统来帮忙干事情</li>
@@ -831,19 +831,19 @@ mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
 <h3 id="libc-start-main"><a href="#libc-start-main" class="headerlink" title="__libc_start_main"></a>__libc_start_main</h3><p>在我们的认知里，<code>main</code> 函数是程序的起点。但实际上，在 Linux 系统中，<code>main</code> 并不是第一个执行的函数。</p>
 <p>当程序启动时，操作系统首先会调用 C 语言运行库（glibc）的初始化函数，即 <code>__libc_start_main</code>。这个函数做完准备工作后，再去调用你的 <code>main</code> 函数：</p>
 <div class="note-math-display">\[\text{\_\_libc\_start\_main} \longrightarrow \text{调用} \longrightarrow \text{main()}\]</div>
-<p>因此，**<code>__libc_start_main</code> 是 <code>main</code> 的“爸爸”（调用者）**。</p>
+<p>因此，<strong><code>__libc_start_main</code> 是 <code>main</code> 的“爸爸”（调用者）</strong>。</p>
 <h3 id="valgrind"><a href="#valgrind" class="headerlink" title="valgrind"></a>valgrind</h3><p>它是一个<strong>用于内存调试、内存泄漏检测以及性能分析的开源工具套件</strong>。</p>
 <ul>
 <li>Valgrind 的核心能力 (Memcheck)<br>  Valgrind 包含多个工具，其中最常用、也是默认运行的子工具叫 <strong>Memcheck</strong>。它可以精准检测出以下致命的 C/C++ 内存错误：<ol>
-<li><p>**内存泄漏 (Memory Leak)**：比如我们刚才代码里 <code>malloc</code> 了心跳包但忘记 <code>free</code> 的问题。Valgrind 会在程序结束时生成一份详细的“泄漏报告”，告诉你泄漏了多少字节。</p>
+<li><p><strong>内存泄漏 (Memory Leak)</strong>：比如我们刚才代码里 <code>malloc</code> 了心跳包但忘记 <code>free</code> 的问题。Valgrind 会在程序结束时生成一份详细的“泄漏报告”，告诉你泄漏了多少字节。</p>
 </li>
-<li><p>**使用未初始化的内存 (Uninitialized Values)**：比如刚才代码里的 <code>err</code> 和 <code>written</code> 变量。如果程序的分支逻辑基于这些垃圾值进行判断，Valgrind 会立刻报出 <code>Conditional jump or move depends on uninitialised value(s)</code> 的警告。</p>
+<li><p><strong>使用未初始化的内存 (Uninitialized Values)</strong>：比如刚才代码里的 <code>err</code> 和 <code>written</code> 变量。如果程序的分支逻辑基于这些垃圾值进行判断，Valgrind 会立刻报出 <code>Conditional jump or move depends on uninitialised value(s)</code> 的警告。</p>
 </li>
-<li><p>**越界读写 (Out-of-bounds Read/Write)**：比如那个类似“心脏滴血”的漏洞（读取超过实际分配大小的堆内存），或者栈溢出。</p>
+<li><p><strong>越界读写 (Out-of-bounds Read/Write)</strong>：比如那个类似“心脏滴血”的漏洞（读取超过实际分配大小的堆内存），或者栈溢出。</p>
 </li>
-<li><p>**释放后使用 (Use-After-Free, UAF)**：使用了已经被 <code>free</code> 掉的指针。</p>
+<li><p><strong>释放后使用 (Use-After-Free, UAF)</strong>：使用了已经被 <code>free</code> 掉的指针。</p>
 </li>
-<li><p>**重复释放 (Double Free)**：对同一个指针 <code>free</code> 两次引发的崩溃。</p>
+<li><p><strong>重复释放 (Double Free)</strong>：对同一个指针 <code>free</code> 两次引发的崩溃。</p>
 </li>
 </ol>
 </li>

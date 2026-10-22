@@ -682,4 +682,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 .notes-table-scroll th { background: var(--bg-tint); }
 .note-math-display { overflow-x: auto; margin: 1.2em 0; }
 .notes-missing-image { display: block; padding: 16px; margin: 16px 0; border: 1px dashed var(--line); border-radius: 12px; color: var(--ink-3); overflow-wrap: anywhere; }
+.notes-article-content mark { padding: .08em .18em; border-radius: .2em; background: #f5e3a6; color: inherit; }
+[data-user-color-scheme="dark"] .notes-article-content mark { background: #675631; }
 [data-user-color-scheme="dark"] .notes-article-content blockquote.obsidian-callout { background: var(--bg-tint); color: var(--ink); }

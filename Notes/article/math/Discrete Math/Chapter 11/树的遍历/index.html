@@ -384,9 +384,9 @@
 <li><strong>定义</strong>：遍历算法是一种系统性地访问有序有根树中<strong>每一个顶点</strong>的过程。</li>
 <li><strong>递归特性</strong>：树的遍历通常是<strong>递归</strong>定义的。</li>
 <li><strong>三种主要的遍历方式</strong>（以二叉树为例）：<ol>
-<li><strong>前序遍历 (Preorder Traversal)<strong>：首先访问</strong>根节点</strong>，然后前序遍历左子树，最后前序遍历右子树。</li>
-<li><strong>中序遍历 (Inorder Traversal)<strong>：首先中序遍历左子树，然后访问</strong>根节点</strong>，最后中序遍历右子树。</li>
-<li><strong>后序遍历 (Postorder Traversal)<strong>：首先后序遍历左子树，然后后序遍历右子树，最后访问</strong>根节点</strong>。</li>
+<li><strong>前序遍历 (Preorder Traversal)</strong>：首先访问<strong>根节点</strong>，然后前序遍历左子树，最后前序遍历右子树。</li>
+<li><strong>中序遍历 (Inorder Traversal)</strong>：首先中序遍历左子树，然后访问<strong>根节点</strong>，最后中序遍历右子树。</li>
+<li><strong>后序遍历 (Postorder Traversal)</strong>：首先后序遍历左子树，然后后序遍历右子树，最后访问<strong>根节点</strong>。</li>
 </ol>
 </li>
 </ul>
@@ -434,10 +434,10 @@
 <hr>
 <h3 id="3-表达式的三种记法-Infix-Prefix-Postfix"><a href="#3-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E8%AE%B0%E6%B3%95-Infix-Prefix-Postfix" class="headerlink" title="3. 表达式的三种记法 (Infix, Prefix, Postfix)"></a>3. 表达式的三种记法 (Infix, Prefix, Postfix)</h3><p><strong>核心知识点：</strong> 通过对二叉表达式树进行不同的遍历，可以得到表达式的三种不同书写形式：</p>
 <ul>
-<li><strong>中缀形式 (Infix Form)<strong>：通过对树进行</strong>中序遍历</strong>得到。这是带有完整括号的常规表达式书写习惯。</li>
-<li><strong>前缀形式 (Prefix Form / 波兰表达式 Polish notation)<strong>：通过对树进行</strong>前序遍历</strong>得到。在计算机中，前缀表达式可以<strong>从右向左</strong>进行求值，无需括号。</li>
+<li><strong>中缀形式 (Infix Form)</strong>：通过对树进行<strong>中序遍历</strong>得到。这是带有完整括号的常规表达式书写习惯。</li>
+<li><strong>前缀形式 (Prefix Form / 波兰表达式 Polish notation)</strong>：通过对树进行<strong>前序遍历</strong>得到。在计算机中，前缀表达式可以<strong>从右向左</strong>进行求值，无需括号。</li>
 <li>这里注意从右往左是计算顺序但是单独两个操作数的运算还是从左往右把操作符号放在中间计算</li>
-<li><strong>后缀形式 (Postfix Form / 逆波兰表达式 Reverse Polish notation)<strong>：通过对树进行</strong>后序遍历</strong>得到。在计算机中，后缀表达式可以<strong>从左向右</strong>进行求值（利用栈结构非常方便），同样无需括号。</li>
+<li><strong>后缀形式 (Postfix Form / 逆波兰表达式 Reverse Polish notation)</strong>：通过对树进行<strong>后序遍历</strong>得到。在计算机中，后缀表达式可以<strong>从左向右</strong>进行求值（利用栈结构非常方便），同样无需括号。</li>
 </ul>
 <p><strong>例题与拓展：</strong></p>
 <ul>

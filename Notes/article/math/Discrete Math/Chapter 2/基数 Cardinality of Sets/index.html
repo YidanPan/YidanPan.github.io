@@ -384,11 +384,11 @@
 <li><strong>Schröder-Bernstein 定理</strong>：如果存在从&nbsp;A&nbsp;到&nbsp;B&nbsp;的单射，且存在从&nbsp;B&nbsp;到&nbsp;A&nbsp;的单射，则必然存在双射，即&nbsp;∣A∣=∣B∣。</li>
 </ul>
 <h3 id="概念："><a href="#%E6%A6%82%E5%BF%B5%EF%BC%9A" class="headerlink" title="概念："></a>概念：</h3><ul>
-<li>**基数相等 (∣A∣=∣B∣)**：当且仅当存在一个从 A 到 B 的双射（Bijection，即既是单射也是满射）。</li>
-<li>**基数小于等于 (∣A∣≤∣B∣)**：当且仅当存在一个从 A 到 B 的单射（Injection，一对一映射）。</li>
-<li>**基数严格小于 (∣A∣&lt;∣B∣)**：当且仅当 ∣A∣≤∣B∣ 且 <span class="note-math-inline">\(∣A∣\not=∣B∣\)</span>（即不存在双射）。</li>
-<li>**可数集 (Countable Set)**：基数等于正整数集 Z+ 的集合，其基数记为 <span class="note-math-inline">\(ℵ_0\)</span>​ (Aleph-null)。</li>
-<li>**连续统 (Continuum)**：实数集 R 的基数，记为 c。</li>
+<li><strong>基数相等 (∣A∣=∣B∣)</strong>：当且仅当存在一个从 A 到 B 的双射（Bijection，即既是单射也是满射）。</li>
+<li><strong>基数小于等于 (∣A∣≤∣B∣)</strong>：当且仅当存在一个从 A 到 B 的单射（Injection，一对一映射）。</li>
+<li><strong>基数严格小于 (∣A∣&lt;∣B∣)</strong>：当且仅当 ∣A∣≤∣B∣ 且 <span class="note-math-inline">\(∣A∣\not=∣B∣\)</span>（即不存在双射）。</li>
+<li><strong>可数集 (Countable Set)</strong>：基数等于正整数集 Z+ 的集合，其基数记为 <span class="note-math-inline">\(ℵ_0\)</span>​ (Aleph-null)。</li>
+<li><strong>连续统 (Continuum)</strong>：实数集 R 的基数，记为 c。</li>
 </ul>
 <hr>
 <h2 id="2-可数集-Countable-Sets"><a href="#2-%E5%8F%AF%E6%95%B0%E9%9B%86-Countable-Sets" class="headerlink" title="2. 可数集 (Countable Sets)"></a>2. 可数集 (Countable Sets)</h2><ul>
@@ -402,7 +402,7 @@
 </ul>
 <hr>
 <h2 id="3-不可数集与对角线证明法-Uncountable-Sets"><a href="#3-%E4%B8%8D%E5%8F%AF%E6%95%B0%E9%9B%86%E4%B8%8E%E5%AF%B9%E8%A7%92%E7%BA%BF%E8%AF%81%E6%98%8E%E6%B3%95-Uncountable-Sets" class="headerlink" title="3. 不可数集与对角线证明法 (Uncountable Sets)"></a>3. 不可数集与对角线证明法 (Uncountable Sets)</h2><ul>
-<li><strong>实数区间</strong>&nbsp;(0,1)&nbsp;<strong>是不可数的</strong>：教授详细讲解了**康托尔对角线法 (Cantor Diagonalization Argument)**。假设&nbsp;(0,1)&nbsp;是可数的并将其小数展开排成一列，我们可以构造一个新数字&nbsp;x，其第&nbsp;i&nbsp;位小数与列表中第&nbsp;i&nbsp;个数字的第&nbsp;i&nbsp;位不同（例如：如果&nbsp;<span class="note-math-inline">\(d_{ii}​=3\)</span>&nbsp;则取&nbsp;4，否则取&nbsp;3）。这个新数字&nbsp;x&nbsp;不在列表中，从而产生矛盾，证明其不可列举。</li>
+<li><strong>实数区间</strong>&nbsp;(0,1)&nbsp;<strong>是不可数的</strong>：教授详细讲解了<strong>康托尔对角线法 (Cantor Diagonalization Argument)</strong>。假设&nbsp;(0,1)&nbsp;是可数的并将其小数展开排成一列，我们可以构造一个新数字&nbsp;x，其第&nbsp;i&nbsp;位小数与列表中第&nbsp;i&nbsp;个数字的第&nbsp;i&nbsp;位不同（例如：如果&nbsp;<span class="note-math-inline">\(d_{ii}​=3\)</span>&nbsp;则取&nbsp;4，否则取&nbsp;3）。这个新数字&nbsp;x&nbsp;不在列表中，从而产生矛盾，证明其不可列举。</li>
 <li><strong>实数集</strong>&nbsp;R&nbsp;<strong>与</strong>&nbsp;(0,1)&nbsp;<strong>基数相同</strong>：可以通过函数&nbsp;<span class="note-math-inline">\(f(x)=tan(x)\)</span>（经过适当缩放和平移）建立双射，证明它们大小相同。连续统基数通常记为&nbsp;c。</li>
 </ul>
 <hr>
@@ -422,8 +422,8 @@
 </blockquote>
 <hr>
 <h2 id="5-可计算性与连续统假设"><a href="#5-%E5%8F%AF%E8%AE%A1%E7%AE%97%E6%80%A7%E4%B8%8E%E8%BF%9E%E7%BB%AD%E7%BB%9F%E5%81%87%E8%AE%BE" class="headerlink" title="5. 可计算性与连续统假设"></a>5. 可计算性与连续统假设</h2><ul>
-<li><strong>可计算性 (Computability)<strong>：由于计算机程序（Java程序）的集合是可数的，而所有数学函数的集合是不可数的，因此</strong>必然存在无法用计算机程序实现的“不可计算函数 (Uncomputable functions)”</strong>，且其数量远多于可计算函数。</li>
-<li>**连续统假设 (Continuum Hypothesis)**：认为不存在介于可数集基数&nbsp;<span class="note-math-inline">\(ℵ_0\)</span>​&nbsp;和实数集基数&nbsp;c&nbsp;之间的基数（即&nbsp;<span class="note-math-inline">\(ℵ_1​=c\)</span>）。在标准公理集合论中，这是一个无法被证明也无法被证伪的命题。</li>
+<li><strong>可计算性 (Computability)</strong>：由于计算机程序（Java程序）的集合是可数的，而所有数学函数的集合是不可数的，因此<strong>必然存在无法用计算机程序实现的“不可计算函数 (Uncomputable functions)”</strong>，且其数量远多于可计算函数。</li>
+<li><strong>连续统假设 (Continuum Hypothesis)</strong>：认为不存在介于可数集基数&nbsp;<span class="note-math-inline">\(ℵ_0\)</span>​&nbsp;和实数集基数&nbsp;c&nbsp;之间的基数（即&nbsp;<span class="note-math-inline">\(ℵ_1​=c\)</span>）。在标准公理集合论中，这是一个无法被证明也无法被证伪的命题。</li>
 <li><strong>常见证明错误提示</strong>：不能将无限小数的展开式倒转写成整数来证明对应关系，因为<strong>任何合法的整数其位数都必须是有限的</strong>，无限位的“整数”不属于整数集。</li>
 </ul>
 <hr>
@@ -431,7 +431,7 @@
 <li><h3 id="类别-1：证明集合是“可数无限的”（证明-∣A∣-ℵ-0-​）"><a href="#%E7%B1%BB%E5%88%AB-1%EF%BC%9A%E8%AF%81%E6%98%8E%E9%9B%86%E5%90%88%E6%98%AF%E2%80%9C%E5%8F%AF%E6%95%B0%E6%97%A0%E9%99%90%E7%9A%84%E2%80%9D%EF%BC%88%E8%AF%81%E6%98%8E-%E2%88%A3A%E2%88%A3-%E2%84%B5-0-%E2%80%8B%EF%BC%89" class="headerlink" title="类别 1：证明集合是“可数无限的”（证明 \(∣A∣=ℵ_0\)​）"></a>类别 1：证明集合是“可数无限的”（证明 <span class="note-math-inline">\(∣A∣=ℵ_0\)</span>​）</h3><p>  <strong>核心逻辑</strong>：找到一种不重不漏的“列举方法”，即将集合元素排成一个序列（本质是建立与正整数集 <span class="note-math-inline">\(Z^+\)</span> 的双射）。</p>
 <ul>
 <li><strong>例1.1：正偶数集</strong> <span class="note-math-inline">\(\mathbb E\)</span> <strong>与正整数集</strong> <span class="note-math-inline">\(\mathbb Z^+\)</span> <strong>等势</strong><ul>
-<li><strong>目标</strong>：证明 **<span class="note-math-inline">\(∣\mathbb Z^+∣=∣\mathbb E∣\)</span>**。</li>
+<li><strong>目标</strong>：证明 <strong><span class="note-math-inline">\(∣\mathbb Z^+∣=∣\mathbb E∣\)</span></strong>。</li>
 <li><strong>构造函数</strong>：定义函数 <span class="note-math-inline">\(f:\mathbb Z^+→\mathbb E\)</span>，规则为 <span class="note-math-inline">\(f(x)=2x\)</span>。</li>
 <li><strong>单射证明</strong>：设 <span class="note-math-inline">\(f(a)=f(b)\)</span>，即 <span class="note-math-inline">\(2a=2b\)</span>，两边除以2得 a=b。故 f 是单射。</li>
 <li><strong>满射证明</strong>：对于任意 y∈E（y 为正偶数），由偶数定义，必然存在正整数 k 使得 <span class="note-math-inline">\(y=2k\)</span>。取 <span class="note-math-inline">\(x=k∈\mathbb Z^+\)</span>，有 <span class="note-math-inline">\(f(x)=2k=y\)</span>。故 f 是满射。</li>
@@ -442,7 +442,7 @@
 <li><strong>目标</strong>：证明 <span class="note-math-inline">\(∣S∣=ℵ_0\)</span>​。</li>
 <li><strong>列举策略（Lexicographic Order）</strong>：<ol>
 <li>先按长度（Length）对字符串进行分组：长度为1，长度为2…</li>
-<li>在同一长度的组内，按照**字典序（Alphabetical order）排列。</li>
+<li>在同一长度的组内，按照<strong>字典序（Alphabetical order）</strong>排列。</li>
 </ol>
 </li>
 <li><strong>逻辑关系</strong>：因为字符表是有限的，任意长度 n 的字符串数量也是有限的。这种“按长度+字典序”的二维排序法可以保证每一个合法的字符串（包括任何合法的Java程序）都会在有限步内被列举到（即分配到唯一的一个正整数索引），从而建立了到 <span class="note-math-inline">\(Z^+\)</span> 的双射。</li>
@@ -496,8 +496,8 @@
 <li><h3 id="类别-4：运用-Schroder-Bernstein-定理（夹逼定理）"><a href="#%E7%B1%BB%E5%88%AB-4%EF%BC%9A%E8%BF%90%E7%94%A8-Schroder-Bernstein-%E5%AE%9A%E7%90%86%EF%BC%88%E5%A4%B9%E9%80%BC%E5%AE%9A%E7%90%86%EF%BC%89" class="headerlink" title="类别 4：运用 Schröder-Bernstein 定理（夹逼定理）"></a>类别 4：运用 Schröder-Bernstein 定理（夹逼定理）</h3><p>  <strong>核心逻辑</strong>：如果要证明 ∣A∣=∣B∣，但直接找双射太难，可以分别找两个单射：一个从 A→B，另一个从 B→A。</p>
 <ul>
 <li><strong>例4.1：证明闭区间</strong> <span class="note-math-inline">\([0,1]\)</span><strong>与开区间</strong> (0,1) <strong>基数相同</strong><ul>
-<li><strong>步骤 1 (<span class="note-math-inline">\([0,1]\)</span>≥∣(0,1)∣</strong>)**：(0,1) 本来就是 的真子集，定义恒等映射 f(x)=x，这就是一个从 (0,1) 到 的单射。</li>
-<li><strong>步骤 2 (<span class="note-math-inline">\([0,1]\)</span>≤∣(0,1)∣</strong>)**：我们需要找到一个从 完美射入 (0,1) 内部的单射。可以构造函数 g(x)=21​x+41​。<ul>
+<li><strong>步骤 1 (<span class="note-math-inline">\([0,1]\)</span>≥∣(0,1)∣)</strong>：(0,1) 本来就是 的真子集，定义恒等映射 f(x)=x，这就是一个从 (0,1) 到 的单射。</li>
+<li><strong>步骤 2 (<span class="note-math-inline">\([0,1]\)</span>≤∣(0,1)∣)</strong>：我们需要找到一个从 完美射入 (0,1) 内部的单射。可以构造函数 g(x)=21​x+41​。<ul>
 <li>当 x∈ 时，<span class="note-math-inline">\(g(x)∈[\frac{1}{4},\frac{3}{4}]\)</span>。</li>
 <li>因为<span class="note-math-inline">\([\frac{1}{4},\frac{3}{4}]\)</span> 是 (0,1) 的子集，所以 g 是一个从 到 (0,1) 的严格单射。</li>
 </ul>

@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/python/python-basics/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Python 基础</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/programming/">编程与前端</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/python/">Python</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/python/python-basics/">Python 基础</a><span aria-hidden="true">/</span>
       
@@ -575,8 +576,8 @@ print(add5(10))
 <li>除了列表、元组和字典之外，Python 还有第四种内置容器类型，称为&nbsp;set&nbsp;。集合字面量遵循用大括号括起元素的数学表示法。构造时会去重。集合是无序的集合，因此打印的顺序可能与集合字面量中的元素顺序不同。</li>
 <li>集合表示会自动去重，打印是无序，操作有并集、交集、插入、删除、异或、将元素添加到一个集合中会返回一个新集合，该集合包含原集合的所有元素以及新元素（如果它不同的话）</li>
 </ul>
-<blockquote>
-<p>[!note] 判断元素v是否在set中的增长阶是 $\Theta(n)$</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">判断元素v是否在set中的增长阶是 <span class="note-math-inline">\(\Theta(n)\)</span></div>
 <pre><code>def empty(s):
 &nbsp; &nbsp; return s is Link.empty
 
@@ -590,15 +591,15 @@ def set_contain(s,v): #检测s的集合中是否包含了v这个元素
 # 整体思路是按照set的顺序逐个排查，如果第一个元素是v就退出，不是就排除第一个递归进行剩余元素的检查
 </code></pre>
 </blockquote>
-<blockquote>
-<p>[!note] 求两个集合的交集的增长阶是$\Theta(n^2)$</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">求两个集合的交集的增长阶是<span class="note-math-inline">\(\Theta(n^2)\)</span></div>
 <pre><code>def intersect_set(set1,set2):
 &nbsp; &nbsp; return keep_if_link(set1,labmda v:set_contain(set2,v))
 &nbsp; &nbsp; # 假设set2的元素个数是n，遍历每个set1的元素跟2比较，相乘是平方
 </code></pre>
 </blockquote>
-<blockquote>
-<p>[!note] 求两个集合的交集的增长阶是$\Theta(n^2)$</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">求两个集合的交集的增长阶是<span class="note-math-inline">\(\Theta(n^2)\)</span></div>
 <pre><code>def union(set1,set2):
 &nbsp; &nbsp; set1_not_set2=keep_if_link(set1,lambda v:not set_contain(set2,v))
 &nbsp; &nbsp; return set_extended(set1_not_set2,set2)
@@ -680,44 +681,6 @@ def set_contain(s,v): #检测s的集合中是否包含了v这个元素
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
-  });
-
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
@@ -777,11 +740,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

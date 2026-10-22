@@ -385,42 +385,32 @@
   </div></nav>
   <div class="notes-page-main">
     <section id="overview" class="notes-section notes-overview" data-notes-section>
-      <div class="notes-kicker">KNOWLEDGE ARCHIVE</div><h1 class="notes-title">Notes</h1>
-      <p class="notes-subtitle">按课程与技术主题整理，找到下一篇想读的笔记。</p>
-      <div class="notes-summary"><span class="notes-pill">54 篇笔记 · 8 个分类</span></div>
-      <div class="notes-search" hidden data-notes-search>
-        <label for="notes-search-input">搜索笔记</label>
-        <input id="notes-search-input" type="search" placeholder="搜索标题、课程或分类…" autocomplete="off">
-        <p data-search-status role="status"></p><div data-search-results class="notes-article-list" hidden></div>
-      </div>
+      <div class="notes-shell"><div class="notes-hero"><div class="notes-hero-copy">
+        <div class="notes-kicker">NOTES</div><h1 class="notes-title">Notes</h1>
+        <p class="notes-subtitle">A focused archive for courses, code, and ideas.</p>
+      </div></div></div>
     </section>
     
     <section id="course-notes" class="notes-section" data-notes-section>
       <div class="notes-section-head"><h2 class="notes-section-title">Course Notes</h2></div>
       <div class="notes-card-grid notes-card-grid-course">
         
-        <a class="notes-card" href="/Notes/category/math/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>数学</h3></div><p>离散数学、微积分、图论、树、生成树与数论。</p>
-          <div class="notes-chip-list"><span class="notes-chip">离散数学</span><span class="notes-chip">微积分</span></div>
-          <div class="notes-card-footer"><span>12 篇 · 2 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
+        <a class="notes-card notes-card-math" href="/Notes/collection/science/"><div class="notes-card-icon"><span>M</span></div><div class="notes-card-body">
+          <div class="notes-card-head"><h3>数学与物理</h3></div><p>离散数学、微积分与大学物理，从概念到推导。</p>
+          <div class="notes-chip-list"><span class="notes-chip">离散数学</span><span class="notes-chip">微积分</span><span class="notes-chip">大物乙二</span></div>
+          <div class="notes-card-footer"><span class="notes-card-link">浏览分类 →</span></div>
         </div></a>
         
-        <a class="notes-card" href="/Notes/category/physics/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>大学物理</h3></div><p>大物乙二的静电场、电流与磁场学习笔记。</p>
-          <div class="notes-chip-list"><span class="notes-chip">大物乙二</span></div>
-          <div class="notes-card-footer"><span>2 篇 · 1 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
+        <a class="notes-card notes-card-cs" href="/Notes/category/cs/"><div class="notes-card-icon"><span>CS</span></div><div class="notes-card-body">
+          <div class="notes-card-head"><h3>计算机专业课</h3></div><p>数据结构、算法练习、计算机网络与 CTF。</p>
+          <div class="notes-chip-list"><span class="notes-chip">LeetCode 算法练习</span><span class="notes-chip">FDS 项目与作业</span><span class="notes-chip">FDS 数据结构</span></div>
+          <div class="notes-card-footer"><span class="notes-card-link">浏览分类 →</span></div>
         </div></a>
         
-        <a class="notes-card" href="/Notes/category/cs/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>计算机专业课</h3></div><p>FDS、LeetCode、计算机网络，以及体系化的 CTF 学习。</p>
-          <div class="notes-chip-list"><span class="notes-chip">LeetCode 算法练习</span><span class="notes-chip">FDS 项目与作业</span><span class="notes-chip">FDS 数据结构</span><span class="notes-chip">计算机网络</span><span class="notes-chip">CTF</span></div>
-          <div class="notes-card-footer"><span>20 篇 · 5 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
-        </div></a>
-        
-        <a class="notes-card" href="/Notes/category/general-education/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>通识课</h3></div><p>社会实践、双创、心理学、奇妙分子、形策与社会发展史。</p>
-          <div class="notes-chip-list"><span class="notes-chip">奇妙分子</span><span class="notes-chip">形势政策与社会发展史</span><span class="notes-chip">社会实践与创新创业</span><span class="notes-chip">心理学与社会议题</span></div>
-          <div class="notes-card-footer"><span>14 篇 · 4 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
+        <a class="notes-card notes-card-general" href="/Notes/category/general-education/"><div class="notes-card-icon"><span>GE</span></div><div class="notes-card-body">
+          <div class="notes-card-head"><h3>通识课程</h3></div><p>社会发展、心理学、奇妙分子与实践思考。</p>
+          <div class="notes-chip-list"><span class="notes-chip">奇妙分子</span><span class="notes-chip">形势政策与社会发展史</span><span class="notes-chip">社会实践与创新创业</span></div>
+          <div class="notes-card-footer"><span class="notes-card-link">浏览分类 →</span></div>
         </div></a>
         
       </div>
@@ -428,30 +418,24 @@
     
     <section id="tech-stack" class="notes-section" data-notes-section>
       <div class="notes-section-head"><h2 class="notes-section-title">Tech Stack</h2></div>
-      <div class="notes-card-grid notes-card-grid-course">
+      <div class="notes-tech-grid">
         
-        <a class="notes-card" href="/Notes/category/python/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>Python</h3></div><p>Python 基础语法与实践记录。</p>
-          <div class="notes-chip-list"><span class="notes-chip">Python 基础</span></div>
-          <div class="notes-card-footer"><span>1 篇 · 1 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
-        </div></a>
-        
-        <a class="notes-card" href="/Notes/category/ai-llm/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>AI / LLM</h3></div><p>PyTorch、LangChain、RAG、Embedding、Agent 与本地大模型实践笔记。</p>
+        <a class="notes-tech-card notes-tech-ai" href="/Notes/category/ai-llm/"><div class="notes-tech-icon"><span>AI</span></div><div class="notes-card-body">
+          <div class="notes-card-head"><h3>AI / LLM</h3></div><p>PyTorch、RAG、LangChain 与智能体实践。</p>
           <div class="notes-chip-list"><span class="notes-chip">Deep Learning</span><span class="notes-chip">LLM Engineering</span></div>
-          <div class="notes-card-footer"><span>3 篇 · 2 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
+          <div class="notes-card-footer"><span class="notes-card-link">浏览分类 →</span></div>
         </div></a>
         
-        <a class="notes-card" href="/Notes/category/frontend/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>Frontend</h3></div><p>HTML、CSS、JavaScript 与前端随手记。</p>
-          <div class="notes-chip-list"><span class="notes-chip">前端三件套</span></div>
-          <div class="notes-card-footer"><span>1 篇 · 1 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
+        <a class="notes-tech-card notes-tech-python" href="/Notes/collection/programming/"><div class="notes-tech-icon"><span>Py</span></div><div class="notes-card-body">
+          <div class="notes-card-head"><h3>编程与前端</h3></div><p>Python 基础，以及 HTML、CSS、JavaScript 开发笔记。</p>
+          <div class="notes-chip-list"><span class="notes-chip">Python 基础</span><span class="notes-chip">前端三件套</span></div>
+          <div class="notes-card-footer"><span class="notes-card-link">浏览分类 →</span></div>
         </div></a>
         
-        <a class="notes-card" href="/Notes/category/other/"><div class="notes-card-body">
-          <div class="notes-card-head"><h3>Other</h3></div><p>进制转换与其他零散知识。</p>
+        <a class="notes-tech-card notes-tech-tools" href="/Notes/collection/foundations/"><div class="notes-tech-icon"><span>TL</span></div><div class="notes-card-body">
+          <div class="notes-card-head"><h3>工具与基础</h3></div><p>进制、编码、开发工具与环境配置。</p>
           <div class="notes-chip-list"><span class="notes-chip">杂项知识</span></div>
-          <div class="notes-card-footer"><span>1 篇 · 1 个主题</span><span class="notes-card-link">浏览分类 →</span></div>
+          <div class="notes-card-footer"><span class="notes-card-link">浏览分类 →</span></div>
         </div></a>
         
       </div>

@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-11/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 11</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/chapter-11/">Chapter 11</a><span aria-hidden="true">/</span>
@@ -380,7 +381,7 @@
     <div class="notes-article-content" id="notesArticleContent"><p>这份PPT（DM11.4-11.5）主要介绍了<strong>生成树（Spanning Trees）</strong>和<strong>最小生成树（Minimum Spanning Trees）</strong>的相关理论、构造算法及其实际应用。以下是详细的知识点、例题以及拓展总结：</p>
 <h3 id="1-生成树-Spanning-Trees-11-4节"><a href="#1-%E7%94%9F%E6%88%90%E6%A0%91-Spanning-Trees-11-4%E8%8A%82" class="headerlink" title="1. 生成树 (Spanning Trees, 11.4节)"></a>1. 生成树 (Spanning Trees, 11.4节)</h3><p><strong>核心知识点：</strong></p>
 <ul>
-<li><strong>基本定义</strong>：设 $G$ 是一个简单图，$G$ 的生成树是 $G$ 的一个子图，并且这个子图是一棵<strong>包含 $G$ 中所有顶点</strong>的树。</li>
+<li><strong>基本定义</strong>：设 <span class="note-math-inline">\(G\)</span> 是一个简单图，<span class="note-math-inline">\(G\)</span> 的生成树是 <span class="note-math-inline">\(G\)</span> 的一个子图，并且这个子图是一棵<strong>包含 <span class="note-math-inline">\(G\)</span> 中所有顶点</strong>的树。</li>
 <li>**连通性定理 (Theorem 1)**：一个简单图是连通的，当且仅当它拥有一棵生成树。</li>
 <li><strong>构造生成树的两种思路</strong>：<ol>
 <li><strong>删边法</strong>：从图的简单回路中不断移除边，直到破坏所有回路但保持图的连通。也就是保证最后图中没有回路</li>
@@ -420,9 +421,9 @@
 <li><strong>基本定义</strong>：在连通的加权图中，最小生成树是一棵使得<strong>其所有边的权重之和尽可能小</strong>的生成树。</li>
 <li>**贪心算法 (Greedy Algorithms)**：构造最小生成树的算法通常是贪心算法，即在每一步都做出当前看似最优的选择（挑选权重最小的边）。这里介绍了两种算法。</li>
 <li>**普里姆算法 (Prim’s algorithm)**：<ul>
-<li>从一条权重最小的边开始初始化树 $T$。</li>
-<li>在不构成简单回路的前提下，每次选择<strong>与当前树 $T$ 中已有顶点相连</strong>的权重最小的边加入 $T$ 中。</li>
-<li>重复直至添加了 $n-1$ 条边。</li>
+<li>从一条权重最小的边开始初始化树 <span class="note-math-inline">\(T\)</span>。</li>
+<li>在不构成简单回路的前提下，每次选择<strong>与当前树 <span class="note-math-inline">\(T\)</span> 中已有顶点相连</strong>的权重最小的边加入 <span class="note-math-inline">\(T\)</span> 中。</li>
+<li>重复直至添加了 <span class="note-math-inline">\(n-1\)</span> 条边。</li>
 </ul>
 </li>
 <li>**克鲁斯卡尔算法 (Kruskal’s algorithm)**：</li>
@@ -471,44 +472,6 @@
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
   });
 
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
@@ -570,11 +533,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

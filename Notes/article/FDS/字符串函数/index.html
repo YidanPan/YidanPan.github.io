@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS 数据结构</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/fds/">FDS 数据结构</a><span aria-hidden="true">/</span>
       
@@ -384,8 +385,8 @@
 <li><p><strong>用法：</strong> <code>size_t len = strlen(str);</code></p>
 </li>
 <li><p><strong>例子：</strong></p>
-<blockquote>
-<p>[!note] C<br>```c</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">C</div><p>```c</p>
 </blockquote>
 </li>
 </ul>
@@ -403,8 +404,8 @@
 <p>  C</p>
 </li>
 </ul>
-<blockquote>
-<p>[!note] e.g.</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">e.g.</div>
 <pre><code class="c">    char src[] = "Copy Me";
     char dest[20];
     strcpy(dest, src); 
@@ -420,8 +421,8 @@
 <li><p><strong>用法：</strong> <code>dest</code> 必须有足够的剩余空间。</p>
 </li>
 <li><p><strong>例子：</strong><br>  C</p>
-<blockquote>
-<p>[!note] e.g. </p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">e.g. </div>
 <pre><code class="c">    char s1[20] = "High ";
 </code></pre>
 </blockquote>
@@ -453,8 +454,8 @@ strcat(s1, s2); // s1 变为 "High Five"
 <p>  C</p>
 </li>
 </ul>
-<blockquote>
-<p>[!note] e.g.</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">e.g.</div>
 <pre><code class="c">    if (strcmp(op, "Push") == 0) { /* 匹配成功 */ }
 </code></pre>
 </blockquote>
@@ -472,8 +473,8 @@ strcat(s1, s2); // s1 变为 "High Five"
 <p>  C</p>
 </li>
 </ul>
-<blockquote>
-<p>[!note] e.g.</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">e.g.</div>
 <pre><code class="c">    char *p = strstr("Hello World", "World");
     if(p) printf("找到了！位置在 %ld", p - str);
 </code></pre>
@@ -486,7 +487,7 @@ strcat(s1, s2); // s1 变为 "High Five"
 </ul>
 <hr>
 <h1 id="4-进阶：格式化处理（在-中）"><a href="#4-%E8%BF%9B%E9%98%B6%EF%BC%9A%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%A4%84%E7%90%86%EF%BC%88%E5%9C%A8-%E4%B8%AD%EF%BC%89" class="headerlink" title="4. 进阶：格式化处理（在 <stdio.h> 中）"></a>4. 进阶：格式化处理（在 <code>&lt;stdio.h&gt;</code> 中）</h1><p>虽然不在 <code>string.h</code> 里，但这两个函数在处理字符串逻辑时极度常用：</p>
-<table>
+<div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th><strong>函数</strong></th>
@@ -504,9 +505,9 @@ strcat(s1, s2); // s1 变为 "High Five"
 <td>从字符串里“提取”变量（解析神器）</td>
 <td><code>sscanf("Push 10", "%s %d", op, &amp;val);</code></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <hr>
-<h1 id="综合对比表"><a href="#%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E8%A1%A8" class="headerlink" title="综合对比表"></a>综合对比表</h1><table>
+<h1 id="综合对比表"><a href="#%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E8%A1%A8" class="headerlink" title="综合对比表"></a>综合对比表</h1><div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th><strong>函数名</strong></th>
@@ -545,7 +546,7 @@ strcat(s1, s2); // s1 变为 "High Five"
 <td><strong>是</strong></td>
 <td>中</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h3 id="💡-一个避坑小贴士"><a href="#%F0%9F%92%A1-%E4%B8%80%E4%B8%AA%E9%81%BF%E5%9D%91%E5%B0%8F%E8%B4%B4%E5%A3%AB" class="headerlink" title="💡 一个避坑小贴士"></a>💡 一个避坑小贴士</h3><p>在做你图中的那道题时，如果要清空字符串变量，最快的方法是： <code>str[0] = '\0';</code> 这在逻辑上就相当于把字符串清空了，因为所有字符串函数遇到第一个 <code>\0</code> 就会停止。</p>
 </div>
     <section class="notes-article-comments" aria-label="Comments">
@@ -591,44 +592,6 @@ strcat(s1, s2); // s1 变为 "High Five"
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
   });
 
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
@@ -690,11 +653,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

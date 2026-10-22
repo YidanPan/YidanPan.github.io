@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-10/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 10</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/chapter-10/">Chapter 10</a><span aria-hidden="true">/</span>
@@ -379,41 +380,41 @@
     </header>
     <div class="notes-article-content" id="notesArticleContent"><h3 id="10-6-最短路径问题-Shortest-Path-Problems"><a href="#10-6-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98-Shortest-Path-Problems" class="headerlink" title="10.6 最短路径问题 (Shortest Path Problems)"></a>10.6 最短路径问题 (Shortest Path Problems)</h3><p><strong>1. 基础知识点</strong></p>
 <ul>
-<li><strong>带权图 (Weighted Graph)：</strong> 图的边被赋予了权重，记作 $G = (V, E, W)$。如果边 $(x, y)$ 存在，则它具有特定的权重。</li>
+<li><strong>带权图 (Weighted Graph)：</strong> 图的边被赋予了权重，记作 <span class="note-math-inline">\(G = (V, E, W)\)</span>。如果边 <span class="note-math-inline">\((x, y)\)</span> 存在，则它具有特定的权重。</li>
 <li><strong>路径长度：</strong> 在带权图中，一条路径的长度是组成该路径的所有边的权重之和。</li>
 </ul>
 <p><strong>2. Dijkstra 算法详解</strong></p>
 <ul>
 <li><p><strong>背景拓展：</strong> 由荷兰数学家 E. Dijkstra 于 1959 年发现，用于边权均为正的无向图。</p>
 </li>
-<li><p><strong>算法原理：</strong> 它是一个迭代过程。通过不断扩充一个已知最短路径的顶点集合 $S_k$（$k$ 为迭代次数），逐步寻找从起点 $a$ 到各个顶点，直至终点 $z$ 的最短路径。</p>
+<li><p><strong>算法原理：</strong> 它是一个迭代过程。通过不断扩充一个已知最短路径的顶点集合 <span class="note-math-inline">\(S_k\)</span>（<span class="note-math-inline">\(k\)</span> 为迭代次数），逐步寻找从起点 <span class="note-math-inline">\(a\)</span> 到各个顶点，直至终点 <span class="note-math-inline">\(z\)</span> 的最短路径。</p>
 </li>
 <li><p><strong>具体步骤与公式：</strong></p>
 <ul>
-<li><strong>步骤 0（初始化）：</strong> 起点 $a$ 的标签 $L_0(a)=0$，其余所有顶点的标签为 $\infty$（表示未知），初始集合 $S_0 = \emptyset$。</li>
-<li><strong>步骤 k（迭代）：</strong> 将不在集合 $S_{k-1}$ 中且标签值最小的顶点 $u$ 加入集合，形成 $S_k$。随后更新其余不在 $S_k$ 中的顶点 $v$ 的标签。</li>
-<li><strong>更新公式：</strong> $L_k(v) = \min{L_{k-1}(v), L_{k-1}(u) + w(u,v)}$。这代表到达 $v$ 的最短路径要么是前一阶段找到的路径，要么是先经过新加入的顶点 $u$ 再走边 $(u,v)$ 到达 $v$ 的路径。</li>
+<li><strong>步骤 0（初始化）：</strong> 起点 <span class="note-math-inline">\(a\)</span> 的标签 <span class="note-math-inline">\(L_0(a)=0\)</span>，其余所有顶点的标签为 <span class="note-math-inline">\(\infty\)</span>（表示未知），初始集合 <span class="note-math-inline">\(S_0 = \emptyset\)</span>。</li>
+<li><strong>步骤 k（迭代）：</strong> 将不在集合 <span class="note-math-inline">\(S_{k-1}\)</span> 中且标签值最小的顶点 <span class="note-math-inline">\(u\)</span> 加入集合，形成 <span class="note-math-inline">\(S_k\)</span>。随后更新其余不在 <span class="note-math-inline">\(S_k\)</span> 中的顶点 <span class="note-math-inline">\(v\)</span> 的标签。</li>
+<li><strong>更新公式：</strong> <span class="note-math-inline">\(L_k(v) = \min{L_{k-1}(v), L_{k-1}(u) + w(u,v)}\)</span>。这代表到达 <span class="note-math-inline">\(v\)</span> 的最短路径要么是前一阶段找到的路径，要么是先经过新加入的顶点 <span class="note-math-inline">\(u\)</span> 再走边 <span class="note-math-inline">\((u,v)\)</span> 到达 <span class="note-math-inline">\(v\)</span> 的路径。</li>
 </ul>
 </li>
-<li><p><strong>【例题 1】</strong> 求图（含顶点 a, b, c, d, e, z）中从 $a$ 到 $z$ 的最短路径。</p>
+<li><p><strong>【例题 1】</strong> 求图（含顶点 a, b, c, d, e, z）中从 <span class="note-math-inline">\(a\)</span> 到 <span class="note-math-inline">\(z\)</span> 的最短路径。</p>
 <ul>
 <li><strong>计算过程（列表法）：</strong> 算法使用表格记录每次迭代的标签变化。</li>
-<li>初始：$L_0(a)=0$，其余为 $\infty$。</li>
-<li>将 $a$ 加入集合，更新相连点 $b(4), c(2)$。</li>
-<li>$c$ 标签最小(2)，加入集合，通过 $c$ 更新 $b(3), d(10), e(12)$。</li>
-<li>接着依次将 $b, d, e$ 加入集合并更新。</li>
-<li>最终算得到达终点 $z$ 的最短路径为 $a \to c \to b \to d \to e \to z$，总长度为 13。</li>
+<li>初始：<span class="note-math-inline">\(L_0(a)=0\)</span>，其余为 <span class="note-math-inline">\(\infty\)</span>。</li>
+<li>将 <span class="note-math-inline">\(a\)</span> 加入集合，更新相连点 <span class="note-math-inline">\(b(4), c(2)\)</span>。</li>
+<li><span class="note-math-inline">\(c\)</span> 标签最小(2)，加入集合，通过 <span class="note-math-inline">\(c\)</span> 更新 <span class="note-math-inline">\(b(3), d(10), e(12)\)</span>。</li>
+<li>接着依次将 <span class="note-math-inline">\(b, d, e\)</span> 加入集合并更新。</li>
+<li>最终算得到达终点 <span class="note-math-inline">\(z\)</span> 的最短路径为 <span class="note-math-inline">\(a \to c \to b \to d \to e \to z\)</span>，总长度为 13。</li>
 </ul>
 </li>
 </ul>
 <p><strong>3. 定理与复杂度 (Theorems &amp; Complexity)</strong></p>
 <ul>
 <li><strong>定理 1：</strong> Dijkstra 算法能够找到连通的简单无向带权图中两点间的最短路径。<ul>
-<li><strong>证明思路（拓展）：</strong> 采用数学归纳法。假设在第 $k$ 次迭代时，集合 $S$ 中所有顶点的标签已经是真实的最短路径，且不在 $S$ 中的顶点的标签也是“仅经过 $S$ 中顶点”的最短路径。通过反证法推演第 $k+1$ 步加入的顶点 $v$ 也必然符合此条件。</li>
+<li><strong>证明思路（拓展）：</strong> 采用数学归纳法。假设在第 <span class="note-math-inline">\(k\)</span> 次迭代时，集合 <span class="note-math-inline">\(S\)</span> 中所有顶点的标签已经是真实的最短路径，且不在 <span class="note-math-inline">\(S\)</span> 中的顶点的标签也是“仅经过 <span class="note-math-inline">\(S\)</span> 中顶点”的最短路径。通过反证法推演第 <span class="note-math-inline">\(k+1\)</span> 步加入的顶点 <span class="note-math-inline">\(v\)</span> 也必然符合此条件。</li>
 </ul>
 </li>
-<li><strong>定理 2：</strong> Dijkstra 算法的时间复杂度为 $O(n^2)$。<ul>
-<li><strong>推算细节：</strong> 算法最多迭代 $n-1$ 次。在每次迭代中，最多需要 $n-1$ 次比较来找出最小标签顶点，且最多需要 $2(n-1)$ 次加法和比较操作来更新剩余顶点的标签。</li>
+<li><strong>定理 2：</strong> Dijkstra 算法的时间复杂度为 <span class="note-math-inline">\(O(n^2)\)</span>。<ul>
+<li><strong>推算细节：</strong> 算法最多迭代 <span class="note-math-inline">\(n-1\)</span> 次。在每次迭代中，最多需要 <span class="note-math-inline">\(n-1\)</span> 次比较来找出最小标签顶点，且最多需要 <span class="note-math-inline">\(2(n-1)\)</span> 次加法和比较操作来更新剩余顶点的标签。</li>
 </ul>
 </li>
 </ul>
@@ -433,12 +434,12 @@
 <ul>
 <li><strong>区域 (Region)：</strong> 平面图中被边完全隔开的平面部分。分为有界区域 (Bounded region) 和无界区域 (Unbounded region)。<strong>注意：任何平面图都必定包含且仅包含 1 个无界区域。</strong></li>
 <li><strong>【例题 2】</strong> 计算给定平面图的区域数。PPT中展示了如何清点，例如某些图例分别被划分为 4 个和 6 个区域（包含最外围的无界区域）。</li>
-<li><strong>【定理 1】欧拉公式：</strong> 对于有 $e$ 条边、$v$ 个顶点的连通平面简单图，其区域数 $r$ 满足：**$r = e - v + 2$**。</li>
+<li><strong>【定理 1】欧拉公式：</strong> 对于有 <span class="note-math-inline">\(e\)</span> 条边、<span class="note-math-inline">\(v\)</span> 个顶点的连通平面简单图，其区域数 <span class="note-math-inline">\(r\)</span> 满足：**<span class="note-math-inline">\(r = e - v + 2\)</span>**。</li>
 <li><strong>欧拉公式的三大推论：</strong><ul>
-<li>推论 1：如果 $v \ge 3$，则边数 $e \le 3v - 6$。</li>
+<li>推论 1：如果 <span class="note-math-inline">\(v \ge 3\)</span>，则边数 <span class="note-math-inline">\(e \le 3v - 6\)</span>。</li>
 <li>推论 2：任何连通平面简单图中，必定存在一个度数不超过 5 的顶点。</li>
-<li>推论 3：如果 $v \ge 3$ 且图中不存在长度为 3 的回路，则 $e \le 2v - 4$。</li>
-<li><strong>一般化推导：</strong> 如果连通平面简单图的每个区域至少有 $k$ 条边，则满足特定不等式（暗示 $2e \ge kr$）。</li>
+<li>推论 3：如果 <span class="note-math-inline">\(v \ge 3\)</span> 且图中不存在长度为 3 的回路，则 <span class="note-math-inline">\(e \le 2v - 4\)</span>。</li>
+<li><strong>一般化推导：</strong> 如果连通平面简单图的每个区域至少有 <span class="note-math-inline">\(k\)</span> 条边，则满足特定不等式（暗示 <span class="note-math-inline">\(2e \ge kr\)</span>）。</li>
 </ul>
 </li>
 </ul>
@@ -449,7 +450,7 @@
 <li><strong>同胚 (Homeomorphic)：</strong> 如果两个图可以通过从同一个图进行一系列“基本细分”得到，则它们同胚。</li>
 </ul>
 </li>
-<li><strong>【定理 2】内容：</strong> 一个图是非平面图，当且仅当它包含一个同胚于 $K_{3,3}$（完全二分图）或 $K_5$（完全图）的子图。</li>
+<li><strong>【定理 2】内容：</strong> 一个图是非平面图，当且仅当它包含一个同胚于 <span class="note-math-inline">\(K_{3,3}\)</span>（完全二分图）或 <span class="note-math-inline">\(K_5\)</span>（完全图）的子图。</li>
 </ul>
 <hr>
 <h3 id="10-8-图着色-Graph-Coloring"><a href="#10-8-%E5%9B%BE%E7%9D%80%E8%89%B2-Graph-Coloring" class="headerlink" title="10.8 图着色 (Graph Coloring)"></a>10.8 图着色 (Graph Coloring)</h3><p><strong>1. 基础知识与图的转化</strong></p>
@@ -465,10 +466,10 @@
 <p><strong>2. 着色与色数</strong></p>
 <ul>
 <li><strong>图的着色：</strong> 为简单图的每个顶点分配一种颜色，使得任何两个相邻顶点的颜色都不同。</li>
-<li><strong>色数 (Chromatic Number)：</strong> 完成图的着色所需的最少颜色数量，记作 $\chi(G)$。</li>
-<li><strong>证明某图色数为 $n$ 的标准方法：</strong><ol>
-<li>构造：展示出一种使用恰好 $n$ 种颜色的可行着色方案。</li>
-<li>反证：证明使用少于 $n$ 种颜色绝对无法完成该图的着色。</li>
+<li><strong>色数 (Chromatic Number)：</strong> 完成图的着色所需的最少颜色数量，记作 <span class="note-math-inline">\(\chi(G)\)</span>。</li>
+<li><strong>证明某图色数为 <span class="note-math-inline">\(n\)</span> 的标准方法：</strong><ol>
+<li>构造：展示出一种使用恰好 <span class="note-math-inline">\(n\)</span> 种颜色的可行着色方案。</li>
+<li>反证：证明使用少于 <span class="note-math-inline">\(n\)</span> 种颜色绝对无法完成该图的着色。</li>
 </ol>
 </li>
 </ul>
@@ -523,44 +524,6 @@
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
   });
 
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
@@ -622,11 +585,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

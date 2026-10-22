@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>CTF</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/ctf/">CTF</a><span aria-hidden="true">/</span>
       
@@ -445,7 +446,7 @@
 <h3 id="第五部分：利用-BIOS-中断一个字一个字打印字符串"><a href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E5%88%A9%E7%94%A8-BIOS-%E4%B8%AD%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AD%97%E4%B8%80%E4%B8%AA%E5%AD%97%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6%E4%B8%B2" class="headerlink" title="第五部分：利用 BIOS 中断一个字一个字打印字符串"></a>第五部分：利用 BIOS 中断一个字一个字打印字符串</h3><p>; 定义一个新函数<br>new_function:<br>  ; 如你所见，它并不是什么真正的新函数…… 既然空格和标签都会被编译器忽略，我只是在源码文件里标记了一个新位置而已。</p>
 <p>  ; 【终极目标】：<strong>让我们在屏幕上打印一些文字</strong>！</p>
 <p>  ; 第一步：我们需要设置一下屏幕，好让它允许我们显示文本。<br>  mov ax, 0x0003     ; <strong>设置文本显示模式</strong>；相当于ah是0x00，al是0x03<br>  int 0x10          ; 啊哈！新玩意儿登场了！<strong>触发 BIOS 中断</strong>。</p>
-<p>ah=0x00时是在说要现在要设置显示器的画面模式，al=0x03是在说把屏幕切成80$*$ 25字符的纯文本黑底模式（首先是设置好ax，所以在后面中断bios的时候才可以达到这个效果）</p>
+<p>ah=0x00时是在说要现在要设置显示器的画面模式，al=0x03是在说把屏幕切成80<span class="note-math-inline">\(*\)</span> 25字符的纯文本黑底模式（首先是设置好ax，所以在后面中断bios的时候才可以达到这个效果）</p>
 <p>  ; 第二步，遇到了一个问题：<strong>我们一次只能打印一个字母</strong>，像这样：<br>  mov al, ‘t’        ; 把字符 ‘t’ 装入 al（把字符t的ascall码值装进al）<br>  mov ah, 0x0e      ; 告诉 BIOS：我要使用“电传打字机模式”打印单个字符！&lt;- 思考题 4（提示：看下面关于 0x0e 功能的解释）<br>  int 0x10          ; 又是这个新东西。好吓人！</p>
 <p>  ; <code>int</code> 代表中断（Interrupt）。退一步站在程序员的角度来看，我们写的代码除了<strong>操纵数据</strong>和<strong>做决定（分支跳转）</strong> 之外，其实什么都干不了。<br>  ; 如果我们想让我们写的东西产生真正的实际影响，我们就必须<strong>和外部环境交互</strong>——把代码里倒腾的数据显现出来，让最终用户能看到。<br>  ; 这意味着我们必须调用系统留给我们的 API。在这个操作系统的世界里，我们需要和<strong>主板的系统——BIOS</strong> 打交道，并拜托它替我们去和<strong>屏幕交互</strong>（以后可能还要和 USB 驱动器之类的交互）。<br>  ; 我们在这里调用的中断号是 0x10。你可以去维基百科查阅 INT 10H 的所有功能。<strong>简而言之，根据 AH 寄存器里的值的不同，这个中断能干完全不同的活。</strong> 当 AH = 0x0e 时，它允许我们把存储在 AL 寄存器里的 8 位 ASCII 码字母直接打印到屏幕上。</p>
 <p>  ; 但这感觉有点鸡肋。一次只能打印一个字母。我们可以写得更高级一点。</p>
@@ -713,44 +714,6 @@ stack_example:
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
-  });
-
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
@@ -810,11 +773,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

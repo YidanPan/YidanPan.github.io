@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-11/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 11</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/chapter-11/">Chapter 11</a><span aria-hidden="true">/</span>
@@ -381,7 +382,7 @@
 <p><strong>1. 二叉查找树 / 二叉搜索树 (Binary Search Trees, BST)</strong></p>
 <ul>
 <li><strong>概念与性质</strong>：二叉查找树是一种用于高效存储和搜索数据的<strong>有序有根二叉树</strong>。它的核心性质是：树中每个顶点都包含一个不重复的键值；对于任意一个顶点，<strong>它左子树中所有顶点的键值都小于它，而右子树中所有顶点的键值都大于它</strong>。</li>
-<li><strong>算法复杂度</strong>：如果一棵包含 $n$ 个元素的二叉查找树是平衡的，那么查找或添加一个新元素所需的最多比较次数不超过 <strong>$\lceil \log (n+1) \rceil$</strong> 次。这里的时间复杂度就是比较次数的问题，一直二分就相当于是深度</li>
+<li><strong>算法复杂度</strong>：如果一棵包含 <span class="note-math-inline">\(n\)</span> 个元素的二叉查找树是平衡的，那么查找或添加一个新元素所需的最多比较次数不超过 <strong><span class="note-math-inline">\(\lceil \log (n+1) \rceil\)</span></strong> 次。这里的时间复杂度就是比较次数的问题，一直二分就相当于是深度</li>
 <li><strong>构建过程与例子</strong>：二叉查找树的形状取决于<strong>元素的插入顺序</strong>。(这个和堆排序不同 堆排序是先全部放入然后向下调整)<ul>
 <li>_例子_：依次插入字母 <code>J</code>, <code>E</code>, <code>F</code>, <code>T</code>, <code>A</code>。<ol>
 <li>第一个值 <code>J</code> 成为根节点。</li>
@@ -468,44 +469,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
-  });
-
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
@@ -565,11 +528,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>CTF</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/ctf/">CTF</a><span aria-hidden="true">/</span>
       
@@ -467,7 +468,7 @@ io.interactive()
 </ul>
 <h3 id="寄存器相关"><a href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%9B%B8%E5%85%B3" class="headerlink" title="寄存器相关"></a>寄存器相关</h3><p>调用约定：参数统一必须放在哪个位置，返回值放在哪里</p>
 <p>Linux x86-64 的规则：</p>
-<table>
+<div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>参数</th>
@@ -498,8 +499,8 @@ io.interactive()
 <td>第6个</td>
 <td>r9</td>
 </tr>
-</tbody></table>
-<table>
+</tbody></table></div>
+<div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>通用寄存器</th>
@@ -542,8 +543,8 @@ io.interactive()
 <td><strong>E</strong> 表示 <strong>Extended</strong>（32位扩展）</td>
 <td></td>
 </tr>
-</tbody></table>
-<table>
+</tbody></table></div>
+<div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>32位</th>
@@ -590,8 +591,8 @@ io.interactive()
 <td>rax是返回值寄存器，r是代表64位，rax的低32位是eax</td>
 <td></td>
 </tr>
-</tbody></table>
-<table>
+</tbody></table></div>
+<div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>类型</th>
@@ -619,7 +620,7 @@ io.interactive()
 <td><code>RIP</code></td>
 <td>指向下一条将要执行的指令（程序计数器）</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p>pwn题主要就是知道怎么接收参数，怎么返回结果、怎么调用系统内核（syscall）</p>
 <p><strong>setvbuf 关闭缓冲</strong>是为了让 pwntools 这类工具能实时读到输出，不至于数据卡在缓冲区里。alarm(60) 意味着你要在 60 秒内完成所有交互，否则进程被 SIGALRM 杀死。<br>对应代码如下：</p>
 <pre><code>void prepare()
@@ -638,7 +639,7 @@ io.interactive()
 <p>  ┌──────┬─────────────────────────────────────┐<br>  │ 编号 │                服务                 │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 0    │ read — 读数据                       │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 1    │ write — 写数据                      │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 2    │ open — 打开文件                     │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 59   │ execve — 启动新程序（比如 /bin/sh） │<br>  ├──────┼─────────────────────────────────────┤<br>  │ 60   │ exit — 退出程序                     │<br>  └──────┴─────────────────────────────────────┘</p>
 <p>  调用的方式：<br>  asm<br>  mov  eax, 2       ; 告诉操作系统：我要服务编号2（open）<br>  ; 参数放在 rdi, rsi, rdx 里<br>  syscall           ; 提交申请！<br>  ; 返回值在 rax 里</p>
 <p>Linux常用系统调用</p>
-<table>
+<div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>系统调用</th>
@@ -711,7 +712,7 @@ io.interactive()
 <td align="right">63</td>
 <td>获取系统信息</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li><strong>PID</strong>（Process ID）就是进程的身份证号。fork（）会返回PID值。所以不同进程就可以通过返回值来确定。</li>
 </ul>
@@ -806,7 +807,7 @@ mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
 <h3 id="函数内容补充"><a href="#%E5%87%BD%E6%95%B0%E5%86%85%E5%AE%B9%E8%A1%A5%E5%85%85" class="headerlink" title="函数内容补充"></a>函数内容补充</h3><ul>
 <li><strong><code>gets()</code></strong> 会从标准输入（键盘）读取字符，直到遇到<strong>换行符</strong>为止，但它完全不知道目标缓冲区有多大，因此极易造成缓冲区溢出（Buffer Overflow）。</li>
 <li><code>read()</code> 用于从一个文件（或设备）中读取数据到内存。<ul>
-<li>ssize_t read(int fd, void $*$buf, size_t count); </li>
+<li>ssize_t read(int fd, void <span class="note-math-inline">\(*\)</span>buf, size_t count); </li>
 <li>fd:从哪里开始读 fd=0代表标准输入</li>
 <li>buf：读取后放到哪里</li>
 <li>count：读多少个字节</li>
@@ -817,7 +818,7 @@ mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
 <li>字符串结束都是/0</li>
 <li><code>getenv()</code> 返回的是字符串，<code>sscanf()</code> 负责把字符串变成整数。去掉末尾的/0</li>
 <li>Linux：<strong>一页（Page）就是 4096 Byte（0x1000）</strong> 因为在 Linux 操作系统中，内存管理是以页（Page）为单位的，一页的大小刚好就是 <strong>4096 字节</strong>（也就是十六进制的 <code>0x1000</code>）。<code>mmap</code> 申请内存时，起始地址必须是 4096 的倍数（也就是<strong>对齐到页边界</strong>）。</li>
-<li>函数开辟空间是向低地址开辟，<strong>栈向下长</strong>，决定了“后进栈的函数（局部变量）”处于比“先进栈的数据（返回地址）”更低的地址。但是在每一块区域填入数据的时候是向上填入的。<br>【高地址】 ↑<br>    │  …<br>    ├────────────────────────────┤<br>    │  返回地址 (main 函数的 ret) │  ← 你的终极目标<br>    ├────────────────────────────┤<br>    │  旧的 RBP 值                │<br>    ├────────────────────────────┤<br>    │  局部变量 / 其他数据         │<br>    ├────────────────────────────┤<br>    │  buf$[63]$                   │  ▲<br>    │  …                       │  │  gets() 写入的方向<br>    │  buf$[1]$                    │  │ (从低地址往高地址填)<br>    │  buf$[0]$                    │  │<br>    ├────────────────────────────┤<br>    │  (栈顶剩余的16字节空闲)       │</li>
+<li>函数开辟空间是向低地址开辟，<strong>栈向下长</strong>，决定了“后进栈的函数（局部变量）”处于比“先进栈的数据（返回地址）”更低的地址。但是在每一块区域填入数据的时候是向上填入的。<br>【高地址】 ↑<br>    │  …<br>    ├────────────────────────────┤<br>    │  返回地址 (main 函数的 ret) │  ← 你的终极目标<br>    ├────────────────────────────┤<br>    │  旧的 RBP 值                │<br>    ├────────────────────────────┤<br>    │  局部变量 / 其他数据         │<br>    ├────────────────────────────┤<br>    │  buf<span class="note-math-inline">\([63]\)</span>                   │  ▲<br>    │  …                       │  │  gets() 写入的方向<br>    │  buf<span class="note-math-inline">\([1]\)</span>                    │  │ (从低地址往高地址填)<br>    │  buf<span class="note-math-inline">\([0]\)</span>                    │  │<br>    ├────────────────────────────┤<br>    │  (栈顶剩余的16字节空闲)       │</li>
 </ul>
 <p>【低地址】 └────────────────────────────┘  ← RSP 此时指向这里</p>
 <ul>
@@ -829,7 +830,7 @@ mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
 </ul>
 <h3 id="libc-start-main"><a href="#libc-start-main" class="headerlink" title="__libc_start_main"></a>__libc_start_main</h3><p>在我们的认知里，<code>main</code> 函数是程序的起点。但实际上，在 Linux 系统中，<code>main</code> 并不是第一个执行的函数。</p>
 <p>当程序启动时，操作系统首先会调用 C 语言运行库（glibc）的初始化函数，即 <code>__libc_start_main</code>。这个函数做完准备工作后，再去调用你的 <code>main</code> 函数：</p>
-<p>$$\text{__libc_start_main} \longrightarrow \text{调用} \longrightarrow \text{main()}$$</p>
+<div class="note-math-display">\[\text{\_\_libc\_start\_main} \longrightarrow \text{调用} \longrightarrow \text{main()}\]</div>
 <p>因此，**<code>__libc_start_main</code> 是 <code>main</code> 的“爸爸”（调用者）**。</p>
 <h3 id="valgrind"><a href="#valgrind" class="headerlink" title="valgrind"></a>valgrind</h3><p>它是一个<strong>用于内存调试、内存泄漏检测以及性能分析的开源工具套件</strong>。</p>
 <ul>
@@ -893,44 +894,6 @@ mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
-  });
-
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
@@ -990,11 +953,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

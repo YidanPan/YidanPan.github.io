@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-4/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 4</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/chapter-4/">Chapter 4</a><span aria-hidden="true">/</span>
@@ -377,15 +378,15 @@
       <h1>整除和模运算</h1>
       <span class="notes-source-path">math/Discrete Math/Chapter 4/整除和模运算.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><p>根据提供的资料，这一节的核心主题是**整除与模算术 (Divisibility and Modular Arithmetic)**，内容涵盖了整除的基本定义、除法算法、模同余的核心定理，以及模 $m$ 算术的代数性质。以下是详细的知识点总结整理：</p>
+    <div class="notes-article-content" id="notesArticleContent"><p>根据提供的资料，这一节的核心主题是**整除与模算术 (Divisibility and Modular Arithmetic)**，内容涵盖了整除的基本定义、除法算法、模同余的核心定理，以及模 <span class="note-math-inline">\(m\)</span> 算术的代数性质。以下是详细的知识点总结整理：</p>
 <h3 id="1-整除-Divisibility"><a href="#1-%E6%95%B4%E9%99%A4-Divisibility" class="headerlink" title="1. 整除 (Divisibility)"></a>1. 整除 (Divisibility)</h3><ul>
-<li><strong>基本定义</strong>：如果存在整数 $c$ 使得 $b = ac$（其中 $a \neq 0$），那么就称 **$a$ 整除 $b$**，记作 **$a \mid b$**。在这种关系中，$a$ 是 $b$ 的因数（或因子），$b$ 是 $a$ 的倍数。</li>
-<li><strong>整除数量</strong>：对于正整数 $n$ 和 $d$，在不超过 $n$ 的正整数中，共有 $\lfloor \frac{n}{d} \rfloor$ 个数能被 $d$ 整除。</li>
-<li><strong>整除的性质（定理 1 及其推论）</strong>：令 $a, b, c$ 为整数且 $a \neq 0$，则有以下规律成立：<ol>
-<li>如果 $a \mid b$ 且 $a \mid c$，则 $a \mid (b+c)$。</li>
-<li>如果 $a \mid b$，那么对于任意整数 $c$，均有 $a \mid bc$。</li>
-<li>（传递性）如果 $a \mid b$ 且 $b \mid c$，则 $a \mid c$。</li>
-<li><strong>推论 1</strong>：基于前两条，如果 $a \mid b$ 且 $a \mid c$，那么对于任意整数 $m, n$，都有 <strong>$a \mid mb+nc$</strong> 成立。</li>
+<li><strong>基本定义</strong>：如果存在整数 <span class="note-math-inline">\(c\)</span> 使得 <span class="note-math-inline">\(b = ac\)</span>（其中 <span class="note-math-inline">\(a \neq 0\)</span>），那么就称 **<span class="note-math-inline">\(a\)</span> 整除 <span class="note-math-inline">\(b\)</span>**，记作 **<span class="note-math-inline">\(a \mid b\)</span>**。在这种关系中，<span class="note-math-inline">\(a\)</span> 是 <span class="note-math-inline">\(b\)</span> 的因数（或因子），<span class="note-math-inline">\(b\)</span> 是 <span class="note-math-inline">\(a\)</span> 的倍数。</li>
+<li><strong>整除数量</strong>：对于正整数 <span class="note-math-inline">\(n\)</span> 和 <span class="note-math-inline">\(d\)</span>，在不超过 <span class="note-math-inline">\(n\)</span> 的正整数中，共有 <span class="note-math-inline">\(\lfloor \frac{n}{d} \rfloor\)</span> 个数能被 <span class="note-math-inline">\(d\)</span> 整除。</li>
+<li><strong>整除的性质（定理 1 及其推论）</strong>：令 <span class="note-math-inline">\(a, b, c\)</span> 为整数且 <span class="note-math-inline">\(a \neq 0\)</span>，则有以下规律成立：<ol>
+<li>如果 <span class="note-math-inline">\(a \mid b\)</span> 且 <span class="note-math-inline">\(a \mid c\)</span>，则 <span class="note-math-inline">\(a \mid (b+c)\)</span>。</li>
+<li>如果 <span class="note-math-inline">\(a \mid b\)</span>，那么对于任意整数 <span class="note-math-inline">\(c\)</span>，均有 <span class="note-math-inline">\(a \mid bc\)</span>。</li>
+<li>（传递性）如果 <span class="note-math-inline">\(a \mid b\)</span> 且 <span class="note-math-inline">\(b \mid c\)</span>，则 <span class="note-math-inline">\(a \mid c\)</span>。</li>
+<li><strong>推论 1</strong>：基于前两条，如果 <span class="note-math-inline">\(a \mid b\)</span> 且 <span class="note-math-inline">\(a \mid c\)</span>，那么对于任意整数 <span class="note-math-inline">\(m, n\)</span>，都有 <strong><span class="note-math-inline">\(a \mid mb+nc\)</span></strong> 成立。</li>
 </ol>
 </li>
 </ul>
@@ -395,45 +396,45 @@
 <li>默念a整除b是b除以a，a是因子，b是a的倍数</li>
 </ul>
 <h3 id="2-除法算法-The-Division-Algorithm"><a href="#2-%E9%99%A4%E6%B3%95%E7%AE%97%E6%B3%95-The-Division-Algorithm" class="headerlink" title="2. 除法算法 (The Division Algorithm)"></a>2. 除法算法 (The Division Algorithm)</h3><ul>
-<li><strong>定理 2（除法算法）</strong>：对于任意整数 $a$（被除数）和正整数 $d$（除数），都<strong>存在唯一</strong>的整数商 $q$ 和余数 $r$（满足 $0 \le r &lt; d$），使得 **$a = dq + r$**。</li>
+<li><strong>定理 2（除法算法）</strong>：对于任意整数 <span class="note-math-inline">\(a\)</span>（被除数）和正整数 <span class="note-math-inline">\(d\)</span>（除数），都<strong>存在唯一</strong>的整数商 <span class="note-math-inline">\(q\)</span> 和余数 <span class="note-math-inline">\(r\)</span>（满足 <span class="note-math-inline">\(0 \le r &lt; d\)</span>），使得 **<span class="note-math-inline">\(a = dq + r\)</span>**。</li>
 <li><strong>计算公式</strong>：<ul>
-<li>商：$q = a \text{ div } d = \lfloor \frac{a}{d} \rfloor$。</li>
-<li>余数：$r = a \text{ mod } d = a - d\lfloor \frac{a}{d} \rfloor$。</li>
+<li>商：<span class="note-math-inline">\(q = a \text{ div } d = \lfloor \frac{a}{d} \rfloor\)</span>。</li>
+<li>余数：<span class="note-math-inline">\(r = a \text{ mod } d = a - d\lfloor \frac{a}{d} \rfloor\)</span>。</li>
 </ul>
 </li>
-<li><strong>⚠️ 关键原则</strong>：当被除数 $a$ 为负数时，<strong>余数 $r$ 不能是负数</strong>，必须满足 $0 \le r &lt; d$。</li>
+<li><strong>⚠️ 关键原则</strong>：当被除数 <span class="note-math-inline">\(a\)</span> 为负数时，<strong>余数 <span class="note-math-inline">\(r\)</span> 不能是负数</strong>，必须满足 <span class="note-math-inline">\(0 \le r &lt; d\)</span>。</li>
 </ul>
 <p>除法算法就是讲了什么是被除数什么是除数什么是商以及什么是余数，且在被除数和除数确定的条件下，商和余数是唯一确定的。<br>注意商是向下取整，余数不能为负数。</p>
 <h3 id="3-模同余定理-Modular-Arithmetic-Congruence"><a href="#3-%E6%A8%A1%E5%90%8C%E4%BD%99%E5%AE%9A%E7%90%86-Modular-Arithmetic-Congruence" class="headerlink" title="3. 模同余定理 (Modular Arithmetic &amp; Congruence)"></a>3. 模同余定理 (Modular Arithmetic &amp; Congruence)</h3><ul>
-<li><strong>同余的定义</strong>：对于整数 $a, b$ 和正整数 $m$，如果 **$m$ 能整除 $a-b$**，则称 $a$ 和 $b$ 模 $m$ 同余，记作 <strong>$a \equiv b \pmod m$<strong>。所有与 $a$ 模 $m$ 同余的整数构成了一个等价类，称为</strong>同余类</strong>。</li>
+<li><strong>同余的定义</strong>：对于整数 <span class="note-math-inline">\(a, b\)</span> 和正整数 <span class="note-math-inline">\(m\)</span>，如果 **<span class="note-math-inline">\(m\)</span> 能整除 <span class="note-math-inline">\(a-b\)</span>**，则称 <span class="note-math-inline">\(a\)</span> 和 <span class="note-math-inline">\(b\)</span> 模 <span class="note-math-inline">\(m\)</span> 同余，记作 <strong><span class="note-math-inline">\(a \equiv b \pmod m\)</span><strong>。所有与 <span class="note-math-inline">\(a\)</span> 模 <span class="note-math-inline">\(m\)</span> 同余的整数构成了一个等价类，称为</strong>同余类</strong>。</li>
 <li><strong>同余的等价判定</strong>：<ul>
-<li><strong>定理 3</strong>：$a \equiv b \pmod m$ 成立的充要条件是 **$a \bmod m = b \bmod m$**。</li>
-<li><strong>定理 4</strong>：$a \equiv b \pmod m$ 成立的充要条件是存在某个整数 $k$，使得 **$a = b + km$**。</li>
+<li><strong>定理 3</strong>：<span class="note-math-inline">\(a \equiv b \pmod m\)</span> 成立的充要条件是 **<span class="note-math-inline">\(a \bmod m = b \bmod m\)</span>**。</li>
+<li><strong>定理 4</strong>：<span class="note-math-inline">\(a \equiv b \pmod m\)</span> 成立的充要条件是存在某个整数 <span class="note-math-inline">\(k\)</span>，使得 **<span class="note-math-inline">\(a = b + km\)</span>**。</li>
 </ul>
 </li>
-<li><strong>同余的运算规律（定理 5 &amp; 推论 2）</strong>：如果 $a \equiv b \pmod m$ 且 $c \equiv d \pmod m$，那么在加法和乘法上都保持同余关系：<ol>
-<li>**$a+c \equiv b+d \pmod m$**。</li>
-<li>**$ac \equiv bd \pmod m$**。</li>
-<li>在取模计算中，可以先对每部分取模：$(a+b) \bmod m = ((a \bmod m) + (b \bmod m)) \bmod m$；$(a \cdot b) \bmod m = ((a \bmod m)(b \bmod m)) \bmod m$。</li>
+<li><strong>同余的运算规律（定理 5 &amp; 推论 2）</strong>：如果 <span class="note-math-inline">\(a \equiv b \pmod m\)</span> 且 <span class="note-math-inline">\(c \equiv d \pmod m\)</span>，那么在加法和乘法上都保持同余关系：<ol>
+<li>**<span class="note-math-inline">\(a+c \equiv b+d \pmod m\)</span>**。</li>
+<li>**<span class="note-math-inline">\(ac \equiv bd \pmod m\)</span>**。</li>
+<li>在取模计算中，可以先对每部分取模：<span class="note-math-inline">\((a+b) \bmod m = ((a \bmod m) + (b \bmod m)) \bmod m\)</span>；<span class="note-math-inline">\((a \cdot b) \bmod m = ((a \bmod m)(b \bmod m)) \bmod m\)</span>。</li>
 </ol>
 </li>
 </ul>
-<p>总结：$m|(a-b)$ 是m能整除a-b的概念。<br>m能整除a-b代表a和bmod m余数相同。<br>定理3 4 与基础定义相同<br>运算规律的推论的基础是$a=r_a(mod\ m)$ 也就是$a\ mod\ m =r_a\ mod\ m(mod\ m)$</p>
-<h3 id="4-模-m-的算术与代数结构-Arithmetic-Modulo-m"><a href="#4-%E6%A8%A1-m-%E7%9A%84%E7%AE%97%E6%9C%AF%E4%B8%8E%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84-Arithmetic-Modulo-m" class="headerlink" title="4. 模 $m$ 的算术与代数结构 (Arithmetic Modulo $m$)"></a>4. 模 $m$ 的算术与代数结构 (Arithmetic Modulo $m$)</h3><ul>
-<li><strong>基本定义</strong>：将算术运算的域限定在一个不超过 $m$ 的非负数集合 <strong>$Z_m = {0, 1, \dots, m-1}$</strong> 中。<ul>
-<li><strong>模 $m$ 加法</strong>：$a +_m b = (a+b) \bmod m$。</li>
-<li><strong>模 $m$ 乘法</strong>：$a \cdot_m b = (a \cdot b) \bmod m$。</li>
+<p>总结：<span class="note-math-inline">\(m|(a-b)\)</span> 是m能整除a-b的概念。<br>m能整除a-b代表a和bmod m余数相同。<br>定理3 4 与基础定义相同<br>运算规律的推论的基础是<span class="note-math-inline">\(a=r_a(mod\ m)\)</span> 也就是<span class="note-math-inline">\(a\ mod\ m =r_a\ mod\ m(mod\ m)\)</span></p>
+<h3 id="4-模-m-的算术与代数结构-Arithmetic-Modulo-m"><a href="#4-%E6%A8%A1-m-%E7%9A%84%E7%AE%97%E6%9C%AF%E4%B8%8E%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84-Arithmetic-Modulo-m" class="headerlink" title="4. 模 \(m\) 的算术与代数结构 (Arithmetic Modulo \(m\))"></a>4. 模 <span class="note-math-inline">\(m\)</span> 的算术与代数结构 (Arithmetic Modulo <span class="note-math-inline">\(m\)</span>)</h3><ul>
+<li><strong>基本定义</strong>：将算术运算的域限定在一个不超过 <span class="note-math-inline">\(m\)</span> 的非负数集合 <strong><span class="note-math-inline">\(Z_m = {0, 1, \dots, m-1}\)</span></strong> 中。<ul>
+<li><strong>模 <span class="note-math-inline">\(m\)</span> 加法</strong>：<span class="note-math-inline">\(a +_m b = (a+b) \bmod m\)</span>。</li>
+<li><strong>模 <span class="note-math-inline">\(m\)</span> 乘法</strong>：<span class="note-math-inline">\(a \cdot_m b = (a \cdot b) \bmod m\)</span>。</li>
 </ul>
 </li>
 <li><strong>运算性质</strong>：<ul>
-<li><strong>封闭性、可结合性、可交换性、分配性</strong>：模 $m$ 的加法和乘法都满足这些基本的算术规律。</li>
-<li><strong>单位元素</strong>：<strong>0</strong> 是模 $m$ 加法的单位元素（$a +_m 0 = a$），<strong>1</strong> 是模 $m$ 乘法的单位元素（$a \cdot_m 1 = a$）。</li>
-<li><strong>可加逆元</strong>：对于 $Z_m$ 中<em>非零</em>的 $a$，它的可加逆元是 **$m-a$*<em>（因为 $a +_m (m-a) = 0$）；</em>0 的可加逆元是 0 自身。*<br>可加逆是找一个数字使得它与原本的数字相加之后模m得到0。简单来说就是希望能找到一个数字能和原来数字互补，然后模m能清零。<br>举个例子，在m=12时，Zm限制在0-11，假如a是5，它的可加逆就是7</li>
+<li><strong>封闭性、可结合性、可交换性、分配性</strong>：模 <span class="note-math-inline">\(m\)</span> 的加法和乘法都满足这些基本的算术规律。</li>
+<li><strong>单位元素</strong>：<strong>0</strong> 是模 <span class="note-math-inline">\(m\)</span> 加法的单位元素（<span class="note-math-inline">\(a +_m 0 = a\)</span>），<strong>1</strong> 是模 <span class="note-math-inline">\(m\)</span> 乘法的单位元素（<span class="note-math-inline">\(a \cdot_m 1 = a\)</span>）。</li>
+<li><strong>可加逆元</strong>：对于 <span class="note-math-inline">\(Z_m\)</span> 中<em>非零</em>的 <span class="note-math-inline">\(a\)</span>，它的可加逆元是 **<span class="note-math-inline">\(m-a\)</span>*<em>（因为 <span class="note-math-inline">\(a +_m (m-a) = 0\)</span>）；</em>0 的可加逆元是 0 自身。*<br>可加逆是找一个数字使得它与原本的数字相加之后模m得到0。简单来说就是希望能找到一个数字能和原来数字互补，然后模m能清零。<br>举个例子，在m=12时，Zm限制在0-11，假如a是5，它的可加逆就是7</li>
 </ul>
 </li>
 <li><strong>构成的代数系统</strong>：<ul>
-<li>带有模加法的 $Z_m$ 构成了一个**可交换组 (commutative group)**。</li>
-<li>同时带有模加法和模乘法的 $Z_m$ 构成了一个**可交换环 (commutative ring)**。<br>所谓代数系统简单来说就是新定义，规定一个新的数集和运算符号方法，要求计算只能用规定的数集和规定的运算规律，这样就构成了一个系统。</li>
+<li>带有模加法的 <span class="note-math-inline">\(Z_m\)</span> 构成了一个**可交换组 (commutative group)**。</li>
+<li>同时带有模加法和模乘法的 <span class="note-math-inline">\(Z_m\)</span> 构成了一个**可交换环 (commutative ring)**。<br>所谓代数系统简单来说就是新定义，规定一个新的数集和运算符号方法，要求计算只能用规定的数集和规定的运算规律，这样就构成了一个系统。</li>
 </ul>
 </li>
 </ul>
@@ -481,44 +482,6 @@
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
   });
 
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
@@ -580,11 +543,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

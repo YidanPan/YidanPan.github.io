@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/general-education/molecules/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>奇妙分子</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      
       <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/general-education/molecules/">奇妙分子</a><span aria-hidden="true">/</span>
       
@@ -397,7 +398,7 @@
 <li><strong>蛋白质分子的区别（氨基酸替换）：</strong> 由于DNA密码子发生了一个字母的改变，导致翻译出的血红蛋白β链上第6位的氨基酸，由原本亲水性的<strong>谷氨酸</strong>，错误地替换成了疏水性的<strong>缬氨酸</strong>。</li>
 <li><strong>宏观后果：</strong> 这种含有疏水性缬氨酸的异常血红蛋白（HbS）在红细胞缺氧时，会相互吸引并聚集成坚硬的纤维状多聚体，像冰棍棍一样将原本柔软、呈圆饼状的红细胞强行撑成细长的“镰刀状”。这些变形的红细胞极易破裂溶血，且容易堵塞微血管。<br>6.简述你作业中选择的分子及其奇妙之处(_本课程的一项作业是做一个ppt介绍一种或一类你认为的奇妙分子，本题所指的应该就是这个_）</li>
 </ul>
-<h2 id="三、说明填空题（共5题，每题4分）"><a href="#%E4%B8%89%E3%80%81%E8%AF%B4%E6%98%8E%E5%A1%AB%E7%A9%BA%E9%A2%98%EF%BC%88%E5%85%B15%E9%A2%98%EF%BC%8C%E6%AF%8F%E9%A2%984%E5%88%86%EF%BC%89" class="headerlink" title="三、说明填空题（共5题，每题4分）"></a>三、说明填空题（共5题，每题4分）</h2><table>
+<h2 id="三、说明填空题（共5题，每题4分）"><a href="#%E4%B8%89%E3%80%81%E8%AF%B4%E6%98%8E%E5%A1%AB%E7%A9%BA%E9%A2%98%EF%BC%88%E5%85%B15%E9%A2%98%EF%BC%8C%E6%AF%8F%E9%A2%984%E5%88%86%EF%BC%89" class="headerlink" title="三、说明填空题（共5题，每题4分）"></a>三、说明填空题（共5题，每题4分）</h2><div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>序号</th>
@@ -436,7 +437,7 @@
 <td>硝化甘油</td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h2 id="四、论述题-（共2题，每题10分）"><a href="#%E5%9B%9B%E3%80%81%E8%AE%BA%E8%BF%B0%E9%A2%98-%EF%BC%88%E5%85%B12%E9%A2%98%EF%BC%8C%E6%AF%8F%E9%A2%9810%E5%88%86%EF%BC%89" class="headerlink" title="四、论述题 （共2题，每题10分）"></a>四、论述题 （共2题，每题10分）</h2><p>1.评述米勒、波南帕鲁玛、福克斯在探索生命起源的过程中发现的关键分子，他们体现的创新思想与做出的科学贡献（_疑似是课程第一次作业的原题_）<br>2.简要评述沃森、克里克发现DNA分子双螺旋结构这一事件对科学发展的意义。<br>沃森（James Watson）和克里克（Francis Crick）于1953年发现DNA双螺旋结构，被誉为20世纪生物学最伟大的成就，甚至被认为是现代生物学的开端。这一发现对科学发展的意义可以从以下几个维度来评述：</p>
 <ol>
 <li>揭示了生命的分子基础<br>DNA双螺旋结构的发现，首次在分子水平上阐明了遗传信息的存储、复制和传递机制。它完美地解释了生物体如何保持性状的稳定性（通过半保留复制）以及如何产生变异，使生物学从宏观描述走向了本质探究。</li>
@@ -499,44 +500,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
-  });
-
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
@@ -596,11 +559,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/general-education/molecules/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>奇妙分子</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      
       <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/general-education/molecules/">奇妙分子</a><span aria-hidden="true">/</span>
       
@@ -393,7 +394,7 @@
 <h3 id="3-碳六十（C60）的导电性如何？"><a href="#3-%E7%A2%B3%E5%85%AD%E5%8D%81%EF%BC%88C60%EF%BC%89%E7%9A%84%E5%AF%BC%E7%94%B5%E6%80%A7%E5%A6%82%E4%BD%95%EF%BC%9F" class="headerlink" title="3. 碳六十（C60）的导电性如何？"></a>3. 碳六十（C60）的导电性如何？</h3><p>碳六十（也被称为富勒烯或足球烯）的导电性非常奇妙，<strong>它本身不导电，但可以通过“改造”变成导电体甚至超导体</strong>：</p>
 <ul>
 <li><strong>常态下（绝缘体/半导体）：</strong> 纯粹的 C60 晶体由于分子间的电子极难自由移动，常温下导电性极差，基本相当于绝缘体或极弱的半导体。</li>
-<li><strong>掺杂后（良导体/超导体）：</strong> 科学家发现，如果将碱金属原子（如钾、铷）掺杂进 C60 晶体的空隙中（例如制成 $K_3C_{60}$），它不仅会变成良好的导体，在极低温度下甚至会转变为<strong>超导体</strong>（电阻为零）。</li>
+<li><strong>掺杂后（良导体/超导体）：</strong> 科学家发现，如果将碱金属原子（如钾、铷）掺杂进 C60 晶体的空隙中（例如制成 <span class="note-math-inline">\(K_3C_{60}\)</span>），它不仅会变成良好的导体，在极低温度下甚至会转变为<strong>超导体</strong>（电阻为零）。</li>
 </ul>
 <h3 id="4-人造羊毛是什么？"><a href="#4-%E4%BA%BA%E9%80%A0%E7%BE%8A%E6%AF%9B%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F" class="headerlink" title="4. 人造羊毛是什么？"></a>4. 人造羊毛是什么？</h3><p>“人造羊毛”在化学和纺织工业中指的是<strong>聚丙烯腈纤维</strong>，也就是我们常说的<strong>腈纶（Acrylic fiber）</strong>。</p>
 <ul>
@@ -547,44 +548,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
-  });
-
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
   if (!headings.length) {
     toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
@@ -644,11 +607,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

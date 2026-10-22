@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/math/discrete-math/chapter-2/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>Chapter 2</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/chapter-2/">Chapter 2</a><span aria-hidden="true">/</span>
@@ -378,47 +379,53 @@
       <span class="notes-source-path">math/Discrete Math/Chapter 2/函数 Functions.md</span>
     </header>
     <div class="notes-article-content" id="notesArticleContent"><p>Before this ,you can read <a href="/Notes/article/math/Discrete%20Math/Chapter%202/functions%E7%9A%84%E7%AE%80%E7%95%A5%E9%A2%84%E4%B9%A0/">functions的简略预习</a></p>
-<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h1><h2 id="Define"><a href="#Define" class="headerlink" title="Define"></a>Define</h2><h3 id="形式"><a href="#%E5%BD%A2%E5%BC%8F" class="headerlink" title="形式"></a>形式</h3><p>Let&nbsp;A&nbsp;and&nbsp;B&nbsp;be&nbsp;<em>nonempty</em>&nbsp;sets. A&nbsp;<strong>函数(function)</strong>&nbsp;(mapping or transformations)&nbsp;$f$&nbsp;from&nbsp;<strong>A</strong>&nbsp;to&nbsp;<strong>B</strong>:</p>
-<p>$$f:A→B$$<br>$$∀a(a∈A→∃!b(b∈B∧f(a)=b))$$<br>tips：也就是说，对于A中的每一个x，有且仅有一个b在B中，不能一个x对应两个y。</p>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h1><h2 id="Define"><a href="#Define" class="headerlink" title="Define"></a>Define</h2><h3 id="形式"><a href="#%E5%BD%A2%E5%BC%8F" class="headerlink" title="形式"></a>形式</h3><p>Let&nbsp;A&nbsp;and&nbsp;B&nbsp;be&nbsp;<em>nonempty</em>&nbsp;sets. A&nbsp;<strong>函数(function)</strong>&nbsp;(mapping or transformations)&nbsp;<span class="note-math-inline">\(f\)</span>&nbsp;from&nbsp;<strong>A</strong>&nbsp;to&nbsp;<strong>B</strong>:</p>
+<div class="note-math-display">\[f:A→B\]</div>
+<div class="note-math-display">\[∀a(a∈A→∃!b(b∈B∧f(a)=b))\]</div>
+<p>tips：也就是说，对于A中的每一个x，有且仅有一个b在B中，不能一个x对应两个y。</p>
 <p><strong>一些基本概念</strong>：</p>
 <ul>
-<li>A&nbsp;is called the&nbsp;<strong>定义域(domain)</strong>&nbsp;of&nbsp;$f$</li>
-<li>B&nbsp;is called the&nbsp;<strong>值域(codomain)</strong>&nbsp;of&nbsp;$f$</li>
+<li>A&nbsp;is called the&nbsp;<strong>定义域(domain)</strong>&nbsp;of&nbsp;<span class="note-math-inline">\(f\)</span></li>
+<li>B&nbsp;is called the&nbsp;<strong>值域(codomain)</strong>&nbsp;of&nbsp;<span class="note-math-inline">\(f\)</span></li>
 </ul>
-<p>If $f(a)=b$,</p>
+<p>If <span class="note-math-inline">\(f(a)=b\)</span>,</p>
 <ul>
-<li>b&nbsp;is called the <em><strong>image</strong></em> of&nbsp;a&nbsp;under&nbsp;$f$.</li>
-<li>a&nbsp;is called a <em><strong>preimage</strong></em> of&nbsp;b.<br>Let&nbsp;$f$&nbsp;be a function from the set&nbsp;<em><strong>A</strong></em>&nbsp;to the set&nbsp;<em><strong>B</strong></em>. The&nbsp;<strong>图(graph)</strong>&nbsp;of the function&nbsp;<em><strong>f</strong></em>&nbsp;is the&nbsp;<em>set</em>&nbsp;of ordered pairs:</li>
+<li>b&nbsp;is called the <em><strong>image</strong></em> of&nbsp;a&nbsp;under&nbsp;<span class="note-math-inline">\(f\)</span>.</li>
+<li>a&nbsp;is called a <em><strong>preimage</strong></em> of&nbsp;b.<br>Let&nbsp;<span class="note-math-inline">\(f\)</span>&nbsp;be a function from the set&nbsp;<em><strong>A</strong></em>&nbsp;to the set&nbsp;<em><strong>B</strong></em>. The&nbsp;<strong>图(graph)</strong>&nbsp;of the function&nbsp;<em><strong>f</strong></em>&nbsp;is the&nbsp;<em>set</em>&nbsp;of ordered pairs:</li>
 </ul>
-<h2 id="a-b-∣a∈A∧f-a-b"><a href="#a-b-%E2%88%A3a%E2%88%88A%E2%88%A7f-a-b" class="headerlink" title="$${(a,b)∣a∈A∧f(a)=b}$$"></a>$${(a,b)∣a∈A∧f(a)=b}$$</h2><h1 id="2-特征"><a href="#2-%E7%89%B9%E5%BE%81" class="headerlink" title="2. 特征"></a>2. 特征</h1><h2 id="2-1-单射-one-to-one-function-injection"><a href="#2-1-%E5%8D%95%E5%B0%84-one-to-one-function-injection" class="headerlink" title="2.1 单射 (one-to-one function = injection)"></a>2.1 单射 (one-to-one function = injection)</h2><ul>
-<li>define:<br>  A function f is&nbsp;<strong>单射函数(one-to-one function = injection)</strong>&nbsp;(denoted 1-1), or&nbsp;<strong>单射的(injective)</strong>&nbsp;if<br>  $$∀a∀b(f(a)=f(b)→a=b)$$<br>  tip：简单而言，一个y不能对应两个x，举个反例：$f(x)=x^2$,这里一个y值对应过去有两个x相符合，不能说是单射。<br>  且单射不一定是单调的，可以是离散的点.<br>  e.g.考虑两个集合：$A={1,2,3}$，$B={1,2,3}$,let $f(1)=3,f(2)=1,f(3)=2$,这样的对应关系使之不是单调的。</li>
+<div class="note-math-display">\[{(a,b)∣a∈A∧f(a)=b}\]</div>
+<hr>
+<h1 id="2-特征"><a href="#2-%E7%89%B9%E5%BE%81" class="headerlink" title="2. 特征"></a>2. 特征</h1><h2 id="2-1-单射-one-to-one-function-injection"><a href="#2-1-%E5%8D%95%E5%B0%84-one-to-one-function-injection" class="headerlink" title="2.1 单射 (one-to-one function = injection)"></a>2.1 单射 (one-to-one function = injection)</h2><ul>
+<li>define:<br>  A function f is&nbsp;<strong>单射函数(one-to-one function = injection)</strong>&nbsp;(denoted 1-1), or&nbsp;<strong>单射的(injective)</strong>&nbsp;if<br>  <span class="note-math-inline">\[∀a∀b(f(a)=f(b)→a=b)\]</span><br>  tip：简单而言，一个y不能对应两个x，举个反例：<span class="note-math-inline">\(f(x)=x^2\)</span>,这里一个y值对应过去有两个x相符合，不能说是单射。<br>  且单射不一定是单调的，可以是离散的点.<br>  e.g.考虑两个集合：<span class="note-math-inline">\(A=\{1,2,3\}\)</span>，<span class="note-math-inline">\(B=\{1,2,3\}\)</span>,let <span class="note-math-inline">\(f(1)=3,f(2)=1,f(3)=2\)</span>,这样的对应关系使之不是单调的。</li>
 </ul>
 <h2 id="2-2-满射-onto"><a href="#2-2-%E6%BB%A1%E5%B0%84-onto" class="headerlink" title="2.2 满射(onto)"></a>2.2 满射(onto)</h2><ul>
-<li>define:<br>  A function&nbsp;$f$ from&nbsp;A&nbsp;to&nbsp;B&nbsp;is called&nbsp;<strong>满射函数(onto function = surjection)</strong>, or&nbsp;<strong>满射的(surjective)</strong>&nbsp;if</li>
+<li>define:<br>  A function&nbsp;<span class="note-math-inline">\(f\)</span> from&nbsp;A&nbsp;to&nbsp;B&nbsp;is called&nbsp;<strong>满射函数(onto function = surjection)</strong>, or&nbsp;<strong>满射的(surjective)</strong>&nbsp;if</li>
 </ul>
-<p>$$∀ b\in B ∃ a\in A(f(a)=b)$$<br>    tip:满射也就是每一个y值都能在A中知道啊一个x与之对应。也就是满足：$|A|&lt;=|B|$。</p>
+<div class="note-math-display">\[∀ b\in B ∃ a\in A(f(a)=b)\]</div>
+<pre><code>tip:满射也就是每一个y值都能在A中知道啊一个x与之对应。也就是满足：$|A|&lt;=|B|$。
+</code></pre>
 <h2 id="2-3-双射-bijection"><a href="#2-3-%E5%8F%8C%E5%B0%84-bijection" class="headerlink" title="2.3 双射(bijection)"></a>2.3 双射(bijection)</h2><ul>
 <li>define:<br>  The function f is a&nbsp;<strong>一一对应的(one-to-one correspondence)</strong>, or a&nbsp;<strong>双射(bijection)</strong>, if it is both&nbsp;<em>one-to-one</em>&nbsp;and&nbsp;<em>onto</em></li>
 </ul>
-<blockquote>
-<p>[!note]  Showing that $f$ is one-to-one or onto</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">Showing that <span class="note-math-inline">\(f\)</span> is one-to-one or onto</div>
 <p><img src="https://img.memset0.cn/2024/03/19/OoeOyjuL.png" srcset="/img/loading.gif" lazyload alt="Showing that&nbsp;ff&nbsp;is one-to-one or onto"></p>
 </blockquote>
 <hr>
-<h1 id="3-反函数-Inverse-Functions"><a href="#3-%E5%8F%8D%E5%87%BD%E6%95%B0-Inverse-Functions" class="headerlink" title="3.反函数 Inverse Functions"></a>3.反函数 Inverse Functions</h1><p>Let&nbsp;$f$&nbsp;be a bijection from A&nbsp;to&nbsp;B. Then the&nbsp;<strong>反函数(inverse function)</strong>&nbsp;of&nbsp;f, denoted as&nbsp;f−1, is the function from&nbsp;B&nbsp;to&nbsp;A&nbsp;defined as</p>
-<p>$$f^{-1}(y)=x&nbsp;\iff&nbsp;f(x)=y$$</p>
+<h1 id="3-反函数-Inverse-Functions"><a href="#3-%E5%8F%8D%E5%87%BD%E6%95%B0-Inverse-Functions" class="headerlink" title="3.反函数 Inverse Functions"></a>3.反函数 Inverse Functions</h1><p>Let&nbsp;<span class="note-math-inline">\(f\)</span>&nbsp;be a bijection from A&nbsp;to&nbsp;B. Then the&nbsp;<strong>反函数(inverse function)</strong>&nbsp;of&nbsp;f, denoted as&nbsp;f−1, is the function from&nbsp;B&nbsp;to&nbsp;A&nbsp;defined as</p>
+<div class="note-math-display">\[f^{-1}(y)=x&nbsp;\iff&nbsp;f(x)=y\]</div>
 <ul>
 <li>函数&nbsp;f&nbsp;的反函数存在当且仅当函数&nbsp;f&nbsp;是双射函数。<br>  Function&nbsp;f&nbsp;is&nbsp;<strong>可逆的(invertible)</strong>&nbsp;if and only if&nbsp;f&nbsp;is bijective. No inverse function exists unless&nbsp;f&nbsp;is a bijection.</li>
 </ul>
 <hr>
-<h1 id="4-函数的复合-Compositions-of-Functions"><a href="#4-%E5%87%BD%E6%95%B0%E7%9A%84%E5%A4%8D%E5%90%88-Compositions-of-Functions" class="headerlink" title="4.函数的复合 Compositions of Functions"></a>4.函数的复合 Compositions of Functions</h1><p>Let&nbsp;<strong>g</strong>&nbsp;be a function from the <strong>set&nbsp;A&nbsp;to the set&nbsp;B</strong>&nbsp;and let<strong>f</strong>&nbsp;be a function form the <strong>set&nbsp;B&nbsp;to the set&nbsp;C</strong>. The composition of the functions&nbsp;f&nbsp;and&nbsp;g&nbsp;denoted by&nbsp;$f∘g$&nbsp;is defined by:</p>
-<p><strong>$$f∘g(a)=f(g(a))$$</strong></p>
+<h1 id="4-函数的复合-Compositions-of-Functions"><a href="#4-%E5%87%BD%E6%95%B0%E7%9A%84%E5%A4%8D%E5%90%88-Compositions-of-Functions" class="headerlink" title="4.函数的复合 Compositions of Functions"></a>4.函数的复合 Compositions of Functions</h1><p>Let&nbsp;<strong>g</strong>&nbsp;be a function from the <strong>set&nbsp;A&nbsp;to the set&nbsp;B</strong>&nbsp;and let<strong>f</strong>&nbsp;be a function form the <strong>set&nbsp;B&nbsp;to the set&nbsp;C</strong>. The composition of the functions&nbsp;f&nbsp;and&nbsp;g&nbsp;denoted by&nbsp;<span class="note-math-inline">\(f∘g\)</span>&nbsp;is defined by:</p>
+<p><strong><span class="note-math-inline">\[f∘g(a)=f(g(a))\]</span></strong></p>
 <ul>
-<li>$f∘g$&nbsp;can’t be defined unless the range of&nbsp;g&nbsp;is a subset of the domain of&nbsp;f</li>
+<li><span class="note-math-inline">\(f∘g\)</span>&nbsp;can’t be defined unless the range of&nbsp;g&nbsp;is a subset of the domain of&nbsp;f</li>
 </ul>
 <hr>
-<h1 id="5-高斯函数-Floor-and-Ceiling-Functions"><a href="#5-%E9%AB%98%E6%96%AF%E5%87%BD%E6%95%B0-Floor-and-Ceiling-Functions" class="headerlink" title="5.高斯函数 Floor and Ceiling Functions"></a>5.高斯函数 Floor and Ceiling Functions</h1><blockquote>
-<p>[!note] 高斯函数的实用性质（ceiling &amp; floor）</p>
+<h1 id="5-高斯函数-Floor-and-Ceiling-Functions"><a href="#5-%E9%AB%98%E6%96%AF%E5%87%BD%E6%95%B0-Floor-and-Ceiling-Functions" class="headerlink" title="5.高斯函数 Floor and Ceiling Functions"></a>5.高斯函数 Floor and Ceiling Functions</h1><blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">高斯函数的实用性质（ceiling &amp; floor）</div>
 <p><img src="https://img.memset0.cn/2024/03/19/bw4HXnEf.png" srcset="/img/loading.gif" lazyload alt="image"></p>
 </blockquote>
 <ul>
@@ -427,28 +434,30 @@
 <li>tip：在系列1中这些等式都可以相互推导。</li>
 </ul>
 <hr>
-<h1 id="6-特殊的函数（数列-Sequence）"><a href="#6-%E7%89%B9%E6%AE%8A%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%88%E6%95%B0%E5%88%97-Sequence%EF%BC%89" class="headerlink" title="6.特殊的函数（数列 Sequence）"></a>6.特殊的函数（数列 Sequence）</h1><p>A&nbsp;<strong>数列(sequence)</strong>&nbsp;is a function from a subset of the set of integers (usually either the set&nbsp;{0,1,2,…}&nbsp;or the set&nbsp;{1,2,3,…}) to a set&nbsp;S. We use the notation&nbsp;$a_n$​&nbsp;to denote the image of the integer&nbsp;$n$. We call an a term of the sequence.</p>
+<h1 id="6-特殊的函数（数列-Sequence）"><a href="#6-%E7%89%B9%E6%AE%8A%E7%9A%84%E5%87%BD%E6%95%B0%EF%BC%88%E6%95%B0%E5%88%97-Sequence%EF%BC%89" class="headerlink" title="6.特殊的函数（数列 Sequence）"></a>6.特殊的函数（数列 Sequence）</h1><p>A&nbsp;<strong>数列(sequence)</strong>&nbsp;is a function from a subset of the set of integers (usually either the set&nbsp;{0,1,2,…}&nbsp;or the set&nbsp;{1,2,3,…}) to a set&nbsp;S. We use the notation&nbsp;<span class="note-math-inline">\(a_n\)</span>​&nbsp;to denote the image of the integer&nbsp;<span class="note-math-inline">\(n\)</span>. We call an a term of the sequence.</p>
 <ul>
 <li><p>A&nbsp;<strong>等比数列(geometric progression)</strong>&nbsp;is a sequence of the form</p>
 <blockquote>
-<p>$$a,&nbsp;ar,&nbsp;ar^2,&nbsp;…,&nbsp;ar^n$$<br>where the initial term&nbsp;a&nbsp;and the&nbsp;<strong>公比(common ratio)</strong>&nbsp;r&nbsp;are real numbers.</p>
+<div class="note-math-display">\[a,&nbsp;ar,&nbsp;ar^2,&nbsp;…,&nbsp;ar^n\]</div>
+<p>where the initial term&nbsp;a&nbsp;and the&nbsp;<strong>公比(common ratio)</strong>&nbsp;r&nbsp;are real numbers.</p>
 </blockquote>
 </li>
 <li><p>An&nbsp;<strong>等差数列(arithmetic progression)</strong>&nbsp;is a sequence of the form</p>
 </li>
 </ul>
 <blockquote>
-<p>$$a,&nbsp;a+d,&nbsp;a+2d …,&nbsp;a+nd$$<br>where the initial term&nbsp;<strong>a</strong>&nbsp;and the&nbsp;<strong>公差(common difference)</strong>&nbsp;<strong>d</strong>&nbsp;are real numbers.</p>
+<div class="note-math-display">\[a,&nbsp;a+d,&nbsp;a+2d …,&nbsp;a+nd\]</div>
+<p>where the initial term&nbsp;<strong>a</strong>&nbsp;and the&nbsp;<strong>公差(common difference)</strong>&nbsp;<strong>d</strong>&nbsp;are real numbers.</p>
 </blockquote>
 <ul>
 <li><strong>和式 Summations:</strong><blockquote>
-<p>$$\sum_{s \in S}f(s)$$</p>
+<div class="note-math-display">\[\sum_{s \in S}f(s)\]</div>
 </blockquote>
 </li>
 </ul>
 <hr>
-<blockquote>
-<p>[!note] 常用的求和公式：</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">常用的求和公式：</div>
 </blockquote>
 <p><img src="https://img.memset0.cn/2024/03/19/nO5YyxEI.png" srcset="/img/loading.gif" lazyload alt="image"></p>
 <hr>
@@ -497,44 +506,6 @@
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
   });
 
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
@@ -596,11 +567,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

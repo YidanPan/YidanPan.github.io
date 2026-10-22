@@ -367,6 +367,7 @@
     <a class="notes-breadcrumb" href="/Notes/category/cs/ctf/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>CTF</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/ctf/">CTF</a><span aria-hidden="true">/</span>
       
@@ -382,7 +383,7 @@
 <ul>
 <li>置换密码：把明文中的某些字符按照某种规则重新排列（通过排一张置换表）</li>
 <li>凯撒密码：将明文的每个字母按字母表循环移动固定位数得到密文（密钥：将字母移动几位）</li>
-<li>仿射密码：(x$*$key1+key2)mod 26</li>
+<li>仿射密码：(x<span class="note-math-inline">\(*\)</span>key1+key2)mod 26</li>
 <li>频率分析：quipquip网站可以直接分析</li>
 </ul>
 <h1 id="多表替换：维吉尼亚密码"><a href="#%E5%A4%9A%E8%A1%A8%E6%9B%BF%E6%8D%A2%EF%BC%9A%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81" class="headerlink" title="多表替换：维吉尼亚密码"></a>多表替换：维吉尼亚密码</h1><p>密钥key的作用<br>密钥任意长，并且可以循环使用<br>第i个字符使用第i个密钥进行偏移（一定程度抵御了频率分析）</p>
@@ -405,26 +406,26 @@
 <p>听下来还是非常考验数学基础的，这个东西还是很绕的，死去的离散还在追着我。。。</p>
 <h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><p>RSA 的安全性并非凭空而来，而是建立在数论中一个非常经典且简单的数学难题之上：<strong>大数质因数分解的困难性</strong><br>它的核心数学逻辑如下：</p>
 <ol>
-<li><p><strong>选素数：</strong> 随机选择两个非常大的质数 $p$ 和 $q$。</p>
+<li><p><strong>选素数：</strong> 随机选择两个非常大的质数 <span class="note-math-inline">\(p\)</span> 和 <span class="note-math-inline">\(q\)</span>。</p>
 </li>
-<li><p><strong>算模数：</strong> 计算它们的乘积 $n = p \times q$。这个 $n$ 的二进制长度就是我们常说的“密钥长度”（如 2048 位）。</p>
+<li><p><strong>算模数：</strong> 计算它们的乘积 <span class="note-math-inline">\(n = p \times q\)</span>。这个 <span class="note-math-inline">\(n\)</span> 的二进制长度就是我们常说的“密钥长度”（如 2048 位）。</p>
 </li>
-<li><p><strong>算欧拉函数：</strong> 计算 $\phi(n) = (p-1)(q-1)$。</p>
+<li><p><strong>算欧拉函数：</strong> 计算 <span class="note-math-inline">\(\phi(n) = (p-1)(q-1)\)</span>。</p>
 </li>
-<li><p><strong>选公钥指数 $e$：</strong> 挑选一个与 $\phi(n)$ 互质的数 $e$（通常固定使用 $65537$）。</p>
+<li><p><strong>选公钥指数 <span class="note-math-inline">\(e\)</span>：</strong> 挑选一个与 <span class="note-math-inline">\(\phi(n)\)</span> 互质的数 <span class="note-math-inline">\(e\)</span>（通常固定使用 <span class="note-math-inline">\(65537\)</span>）。</p>
 </li>
-<li><p><strong>算私钥指数 $d$：</strong> 计算 $d$，使得 $(e \times d) \pmod{\phi(n)} = 1$。</p>
+<li><p><strong>算私钥指数 <span class="note-math-inline">\(d\)</span>：</strong> 计算 <span class="note-math-inline">\(d\)</span>，使得 <span class="note-math-inline">\((e \times d) \pmod{\phi(n)} = 1\)</span>。</p>
 </li>
 <li><p><strong>生成密钥对：</strong></p>
 <ul>
-<li><strong>公钥</strong>为 $(e, n)$</li>
-<li><strong>私钥</strong>为 $(d, n)$</li>
+<li><strong>公钥</strong>为 <span class="note-math-inline">\((e, n)\)</span></li>
+<li><strong>私钥</strong>为 <span class="note-math-inline">\((d, n)\)</span></li>
 </ul>
 </li>
 </ol>
 <h4 id="加密与解密过程"><a href="#%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B" class="headerlink" title="加密与解密过程"></a>加密与解密过程</h4><ul>
-<li><strong>加密：</strong> 假设明文为 $m$，密文为 $c$，加密公式为：$$c = m^e \pmod n$$</li>
-<li><strong>解密：</strong> 收到密文 $c$ 后，使用私钥 $d$ 还原出明文 $m$：<br>  $$m = c^d \pmod n$$</li>
+<li><strong>加密：</strong> 假设明文为 <span class="note-math-inline">\(m\)</span>，密文为 <span class="note-math-inline">\(c\)</span>，加密公式为：<span class="note-math-inline">\[c = m^e \pmod n\]</span></li>
+<li><strong>解密：</strong> 收到密文 <span class="note-math-inline">\(c\)</span> 后，使用私钥 <span class="note-math-inline">\(d\)</span> 还原出明文 <span class="note-math-inline">\(m\)</span>：<br>  <span class="note-math-inline">\[m = c^d \pmod n\]</span></li>
 </ul>
 </div>
     <section class="notes-article-comments" aria-label="Comments">
@@ -470,44 +471,6 @@
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  var calloutLabels = {
-    note: 'Note',
-    tip: 'Tip',
-    quote: 'Quote',
-    info: 'Info',
-    warning: 'Warning',
-    danger: 'Important',
-    example: 'Example'
-  };
-
-  Array.prototype.slice.call(content.querySelectorAll('blockquote')).forEach(function(blockquote) {
-    var firstParagraph = blockquote.querySelector(':scope > p');
-    if (!firstParagraph) return;
-    var match = firstParagraph.textContent.match(/^\s*\[!([\w-]+)\]\s*(.*?)\s*$/i);
-    if (!match) return;
-
-    var type = match[1].toLowerCase();
-    var title = match[2] || calloutLabels[type] || type;
-    var header = document.createElement('div');
-    var icon = document.createElement('span');
-    var label = document.createElement('strong');
-    var detail = document.createElement('span');
-
-    blockquote.classList.add('obsidian-callout', 'obsidian-callout-' + type);
-    icon.className = 'obsidian-callout-icon';
-    icon.setAttribute('aria-hidden', 'true');
-    icon.textContent = type === 'tip' ? '✦' : type === 'quote' ? '“' : type === 'warning' || type === 'danger' ? '!' : 'i';
-    label.textContent = calloutLabels[type] || type;
-    detail.className = 'obsidian-callout-title';
-    detail.textContent = title;
-    header.className = 'obsidian-callout-header';
-    header.appendChild(icon);
-    header.appendChild(label);
-    if (match[2]) header.appendChild(detail);
-    blockquote.insertBefore(header, firstParagraph);
-    firstParagraph.remove();
   });
 
   var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
@@ -569,11 +532,11 @@ window.MathJax = {
     skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   },
   startup: {
-    typeset: false
+    typeset: true
   }
 };
 </script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise();"></script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     
 

@@ -669,9 +669,17 @@
 /* Native fragment navigation preserves reload, Back and modified clicks. */
 html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-.notes-search { margin-top: 28px; }
-.notes-search label { display: block; margin-bottom: 8px; font-weight: 600; }
-.notes-search input { width: 100%; max-width: 620px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-elev); color: var(--ink); }
-.notes-search-result { display: grid; gap: 5px; padding: 15px 0; border-bottom: 1px solid var(--line); }
-.notes-search-result small { color: var(--ink-3); }
-.notes-page [hidden] { display: none !important; }
+/* Keep the original rose gradients and use three cards per section. */
+.notes-page .notes-tech-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 960px) { .notes-page .notes-tech-grid { grid-template-columns: 1fr; } }
+@media (max-width: 720px) { .notes-page .notes-card-grid-course { grid-template-columns: 1fr; } }
+.notes-article-page { min-width: 0; }
+.notes-article-content pre { overflow-x: auto; padding: 16px; border-radius: 12px; background: var(--bg-tint); }
+.notes-article-content pre code { white-space: pre; overflow-wrap: normal; }
+.notes-table-scroll { max-width: 100%; overflow-x: auto; margin: 1.4em 0; }
+.notes-table-scroll table { width: 100%; border-collapse: collapse; }
+.notes-table-scroll th, .notes-table-scroll td { padding: 10px 14px; border: 1px solid var(--line); }
+.notes-table-scroll th { background: var(--bg-tint); }
+.note-math-display { overflow-x: auto; margin: 1.2em 0; }
+.notes-missing-image { display: block; padding: 16px; margin: 16px 0; border: 1px dashed var(--line); border-radius: 12px; color: var(--ink-3); overflow-wrap: anywhere; }
+[data-user-color-scheme="dark"] .notes-article-content blockquote.obsidian-callout { background: var(--bg-tint); color: var(--ink); }

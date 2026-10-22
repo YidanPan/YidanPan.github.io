@@ -1,4 +1,31 @@
 /* Notes archive pages generated from source/_notes. */
+.notes-page,
+.notes-archive-container {
+  --notes-system-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+  --font-body: var(--notes-system-font);
+  --font-serif: var(--notes-system-font);
+  --font-display: var(--notes-system-font);
+  --font-mono: var(--notes-system-font);
+  font-family: var(--notes-system-font);
+}
+
+.notes-article-content pre,
+.notes-article-content code,
+.notes-article-content kbd,
+.notes-article-content samp {
+  font-family: ui-monospace, Consolas, "Courier New", monospace;
+}
+
+.notes-page .notes-title,
+.notes-page .notes-kicker,
+.notes-page .notes-section-title,
+.notes-archive-container .notes-category-kicker,
+.notes-archive-container .notes-source-path,
+.notes-archive-container .notes-article-toc-kicker,
+.notes-archive-container .notes-article-content :is(h1, h2, h3, h4, h5, h6) {
+  letter-spacing: normal;
+}
+
 .notes-archive-container {
   width: min(1600px, calc(100% - 80px));
   margin: 0 auto 64px;

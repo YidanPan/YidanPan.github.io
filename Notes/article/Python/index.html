@@ -677,6 +677,27 @@ def set_contain(s,v): #检测s的集合中是否包含了v这个元素
 
   var headerOffset = 110;
 
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
+
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });

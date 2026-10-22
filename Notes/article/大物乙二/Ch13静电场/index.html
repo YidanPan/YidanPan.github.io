@@ -799,7 +799,7 @@ C\]</div>
 <p>则：</p>
 <div class="note-math-display">\[\sigma_b=0\]</div>
 <hr>
-<h1 id="13-4-例：均匀极化棒"><a href="#13-4-%E4%BE%8B%EF%BC%9A%E5%9D%87%E5%8C%80%E6%9E%81%E5%8C%96%E6%A3%92" class="headerlink" title="13.4 例：均匀极化棒"></a>13.4 例：均匀极化棒</h1><p>假设：</p>
+<details class="notes-example"><summary><h1 id="13-4-例：均匀极化棒"><a href="#13-4-%E4%BE%8B%EF%BC%9A%E5%9D%87%E5%8C%80%E6%9E%81%E5%8C%96%E6%A3%92" class="headerlink" title="13.4 例：均匀极化棒"></a>13.4 例：均匀极化棒</h1></summary><div class="notes-example-body"><p>假设：</p>
 <div class="note-math-display">\[\vec P=P\hat x\]</div>
 <p>方向：</p>
 <p>从左向右。</p>
@@ -812,7 +812,7 @@ C\]</div>
 <p>侧面：</p>
 <div class="note-math-display">\[\sigma_b=0\]</div>
 <hr>
-<h1 id="14-体束缚电荷-Volume-Bound-Charge"><a href="#14-%E4%BD%93%E6%9D%9F%E7%BC%9A%E7%94%B5%E8%8D%B7-Volume-Bound-Charge" class="headerlink" title="14. 体束缚电荷 Volume Bound Charge"></a>14. 体束缚电荷 Volume Bound Charge</h1><h2 id="14-1-定义"><a href="#14-1-%E5%AE%9A%E4%B9%89" class="headerlink" title="14.1 定义"></a>14.1 定义</h2><p>单位体积内的束缚电荷：</p>
+</div></details><h1 id="14-体束缚电荷-Volume-Bound-Charge"><a href="#14-%E4%BD%93%E6%9D%9F%E7%BC%9A%E7%94%B5%E8%8D%B7-Volume-Bound-Charge" class="headerlink" title="14. 体束缚电荷 Volume Bound Charge"></a>14. 体束缚电荷 Volume Bound Charge</h1><h2 id="14-1-定义"><a href="#14-1-%E5%AE%9A%E4%B9%89" class="headerlink" title="14.1 定义"></a>14.1 定义</h2><p>单位体积内的束缚电荷：</p>
 <div class="note-math-display">\[\rho_b\]</div>
 <p>单位：</p>
 <div class="note-math-display">\[C/m^3\]</div>
@@ -1789,6 +1789,27 @@ P
   if (!content || !toc || !topButton) return;
 
   var headerOffset = 110;
+
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

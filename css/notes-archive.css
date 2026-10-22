@@ -711,4 +711,14 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 .notes-missing-image { display: block; padding: 16px; margin: 16px 0; border: 1px dashed var(--line); border-radius: 12px; color: var(--ink-3); overflow-wrap: anywhere; }
 .notes-article-content mark { padding: .08em .18em; border-radius: .2em; background: #f5e3a6; color: inherit; }
 [data-user-color-scheme="dark"] .notes-article-content mark { background: #675631; }
+.notes-example { margin: 1.2em 0; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-elev); }
+.notes-example > summary { padding: 14px 18px; cursor: pointer; font-weight: 600; color: var(--ink); }
+.notes-example > summary::marker { color: var(--accent-ink); }
+.notes-example > summary:hover { background: var(--bg-tint); border-radius: 12px; }
+.notes-example > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.notes-example > summary > :is(h1,h2,h3,h4,h5,h6,p) { display: inline; margin: 0; padding: 0; border: 0; font: inherit; }
+.notes-example[open] > summary { border-bottom: 1px solid var(--line); }
+.notes-example-body { min-width: 0; padding: 16px 18px; }
+.notes-example-body > :first-child { margin-top: 0; }
+.notes-example-body > :last-child { margin-bottom: 0; }
 [data-user-color-scheme="dark"] .notes-article-content blockquote.obsidian-callout { background: var(--bg-tint); color: var(--ink); }

@@ -427,18 +427,18 @@
 <li><strong>常见证明错误提示</strong>：不能将无限小数的展开式倒转写成整数来证明对应关系，因为<strong>任何合法的整数其位数都必须是有限的</strong>，无限位的“整数”不属于整数集。</li>
 </ul>
 <hr>
-<h2 id="6-经典例题的严格数学推导"><a href="#6-%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E7%9A%84%E4%B8%A5%E6%A0%BC%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC" class="headerlink" title="6. 经典例题的严格数学推导"></a>6. 经典例题的严格数学推导</h2><ul>
+<details class="notes-example"><summary><h2 id="6-经典例题的严格数学推导"><a href="#6-%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E7%9A%84%E4%B8%A5%E6%A0%BC%E6%95%B0%E5%AD%A6%E6%8E%A8%E5%AF%BC" class="headerlink" title="6. 经典例题的严格数学推导"></a>6. 经典例题的严格数学推导</h2></summary><div class="notes-example-body"><ul>
 <li><h3 id="类别-1：证明集合是“可数无限的”（证明-∣A∣-ℵ-0-​）"><a href="#%E7%B1%BB%E5%88%AB-1%EF%BC%9A%E8%AF%81%E6%98%8E%E9%9B%86%E5%90%88%E6%98%AF%E2%80%9C%E5%8F%AF%E6%95%B0%E6%97%A0%E9%99%90%E7%9A%84%E2%80%9D%EF%BC%88%E8%AF%81%E6%98%8E-%E2%88%A3A%E2%88%A3-%E2%84%B5-0-%E2%80%8B%EF%BC%89" class="headerlink" title="类别 1：证明集合是“可数无限的”（证明 \(∣A∣=ℵ_0\)​）"></a>类别 1：证明集合是“可数无限的”（证明 <span class="note-math-inline">\(∣A∣=ℵ_0\)</span>​）</h3><p>  <strong>核心逻辑</strong>：找到一种不重不漏的“列举方法”，即将集合元素排成一个序列（本质是建立与正整数集 <span class="note-math-inline">\(Z^+\)</span> 的双射）。</p>
 <ul>
-<li><strong>例1.1：正偶数集</strong> <span class="note-math-inline">\(\mathbb E\)</span> <strong>与正整数集</strong> <span class="note-math-inline">\(\mathbb Z^+\)</span> <strong>等势</strong><ul>
+<li><details class="notes-example"><summary><strong>例1.1：正偶数集</strong> <span class="note-math-inline">\(\mathbb E\)</span> <strong>与正整数集</strong> <span class="note-math-inline">\(\mathbb Z^+\)</span> <strong>等势</strong></summary><div class="notes-example-body"><ul>
 <li><strong>目标</strong>：证明 <strong><span class="note-math-inline">\(∣\mathbb Z^+∣=∣\mathbb E∣\)</span></strong>。</li>
 <li><strong>构造函数</strong>：定义函数 <span class="note-math-inline">\(f:\mathbb Z^+→\mathbb E\)</span>，规则为 <span class="note-math-inline">\(f(x)=2x\)</span>。</li>
 <li><strong>单射证明</strong>：设 <span class="note-math-inline">\(f(a)=f(b)\)</span>，即 <span class="note-math-inline">\(2a=2b\)</span>，两边除以2得 a=b。故 f 是单射。</li>
 <li><strong>满射证明</strong>：对于任意 y∈E（y 为正偶数），由偶数定义，必然存在正整数 k 使得 <span class="note-math-inline">\(y=2k\)</span>。取 <span class="note-math-inline">\(x=k∈\mathbb Z^+\)</span>，有 <span class="note-math-inline">\(f(x)=2k=y\)</span>。故 f 是满射。</li>
 <li><strong>结论</strong>：f 是双射，因此正偶数与正整数一样多，E 是可数的。</li>
 </ul>
-</li>
-<li><strong>例1.2：有限字符表上的有限长度字符串集合</strong> S <strong>是可数的</strong><ul>
+</div></details></li>
+<li><details class="notes-example"><summary><strong>例1.2：有限字符表上的有限长度字符串集合</strong> S <strong>是可数的</strong></summary><div class="notes-example-body"><ul>
 <li><strong>目标</strong>：证明 <span class="note-math-inline">\(∣S∣=ℵ_0\)</span>​。</li>
 <li><strong>列举策略（Lexicographic Order）</strong>：<ol>
 <li>先按长度（Length）对字符串进行分组：长度为1，长度为2…</li>
@@ -447,27 +447,27 @@
 </li>
 <li><strong>逻辑关系</strong>：因为字符表是有限的，任意长度 n 的字符串数量也是有限的。这种“按长度+字典序”的二维排序法可以保证每一个合法的字符串（包括任何合法的Java程序）都会在有限步内被列举到（即分配到唯一的一个正整数索引），从而建立了到 <span class="note-math-inline">\(Z^+\)</span> 的双射。</li>
 </ul>
-</li>
-<li><strong>例1.3：📝 证明：正有理数集 <span class="note-math-inline">\(\mathbb{Q}_+\)</span> 是可数的。</strong><br>  <strong>(1)&nbsp;<span class="note-math-inline">\(∣\mathbb Q^+∣≤∣\mathbb S∣\)</span>：</strong><span class="note-math-inline">\(x=\frac{p}{q}→(p,q)\)</span><br>  <strong>(2)</strong>&nbsp;<span class="note-math-inline">\(∣\mathbb S∣=∣\mathbb Z^+∣\)</span>：沿着对角线取——TBD<br>  <strong>(3)</strong>&nbsp;<span class="note-math-inline">\(∣\mathbb Z^+∣≤∣\mathbb Q^+∣\)</span>：<span class="note-math-inline">\(x→\frac{x}{1}\)</span></li>
+</div></details></li>
+<li><details class="notes-example"><summary><strong>例1.3：📝 证明：正有理数集 <span class="note-math-inline">\(\mathbb{Q}_+\)</span> 是可数的。</strong></summary><div class="notes-example-body"><br>  <strong>(1)&nbsp;<span class="note-math-inline">\(∣\mathbb Q^+∣≤∣\mathbb S∣\)</span>：</strong><span class="note-math-inline">\(x=\frac{p}{q}→(p,q)\)</span><br>  <strong>(2)</strong>&nbsp;<span class="note-math-inline">\(∣\mathbb S∣=∣\mathbb Z^+∣\)</span>：沿着对角线取——TBD<br>  <strong>(3)</strong>&nbsp;<span class="note-math-inline">\(∣\mathbb Z^+∣≤∣\mathbb Q^+∣\)</span>：<span class="note-math-inline">\(x→\frac{x}{1}\)</span></div></details></li>
 </ul>
 </li>
 <li><h3 id="类别-2：证明区间集合基数相等（实数域内的双射）"><a href="#%E7%B1%BB%E5%88%AB-2%EF%BC%9A%E8%AF%81%E6%98%8E%E5%8C%BA%E9%97%B4%E9%9B%86%E5%90%88%E5%9F%BA%E6%95%B0%E7%9B%B8%E7%AD%89%EF%BC%88%E5%AE%9E%E6%95%B0%E5%9F%9F%E5%86%85%E7%9A%84%E5%8F%8C%E5%B0%84%EF%BC%89" class="headerlink" title="类别 2：证明区间集合基数相等（实数域内的双射）"></a>类别 2：证明区间集合基数相等（实数域内的双射）</h3><p>  <strong>核心逻辑</strong>：利用代数变换或三角函数在区间上建立连续的单调函数，单调连续函数必然是双射。</p>
 <ul>
-<li><strong>例2.1：任意开区间</strong> (a,b) <strong>与</strong> (0,1) <strong>等势</strong><ul>
+<li><details class="notes-example"><summary><strong>例2.1：任意开区间</strong> (a,b) <strong>与</strong> (0,1) <strong>等势</strong></summary><div class="notes-example-body"><ul>
 <li><strong>构造函数</strong>：设 <span class="note-math-inline">\(f:(0,1)→(a,b)\)</span>，我们使用线性缩放平移：<span class="note-math-inline">\(f(x)=a+(b−a)x\)</span>。</li>
 <li><strong>证明</strong>：这是一条直线方程，斜率为 k=b−a&gt;0，因此是严格单调递增的，这保证了单射；同时它的值域完美覆盖了 (a,b)，保证了满射。故 ∣(a,b)∣=∣(0,1)∣。</li>
 </ul>
-</li>
-<li><strong>例2.2：实数集</strong> R <strong>与</strong> (0,1) <strong>等势</strong><ul>
+</div></details></li>
+<li><details class="notes-example"><summary><strong>例2.2：实数集</strong> R <strong>与</strong> (0,1) <strong>等势</strong></summary><div class="notes-example-body"><ul>
 <li><strong>构造函数</strong>：已知正切函数 tan(x) 在 <span class="note-math-inline">\((\frac{−π}{2},\frac{π}{2})\)</span> 上是双射，映射到整条实数轴 R。我们只需再将 (0,1) 线性映射到 <span class="note-math-inline">\((\frac{−π}{2},\frac{π}{2})\)</span>即可。</li>
 <li><strong>复合双射</strong>：<span class="note-math-inline">\(f(x)=tan(πx−\frac{π}{2})\)</span>。由于单调连续，f 构成了从 (0,1) 到 R 的双射，因此 ∣R∣=∣(0,1)∣=c。</li>
 </ul>
-</li>
+</div></details></li>
 </ul>
 </li>
 <li><h3 id="类别-3：证明集合不可数（对角线法与反证法）"><a href="#%E7%B1%BB%E5%88%AB-3%EF%BC%9A%E8%AF%81%E6%98%8E%E9%9B%86%E5%90%88%E4%B8%8D%E5%8F%AF%E6%95%B0%EF%BC%88%E5%AF%B9%E8%A7%92%E7%BA%BF%E6%B3%95%E4%B8%8E%E5%8F%8D%E8%AF%81%E6%B3%95%EF%BC%89" class="headerlink" title="类别 3：证明集合不可数（对角线法与反证法）"></a>类别 3：证明集合不可数（对角线法与反证法）</h3><p>  <strong>核心逻辑</strong>：假设集合可数并将其列举，然后巧妙构造出一个绝对不在列表中的新元素，打破假设。</p>
 <ul>
-<li><strong>例3.1：康托尔对角线法证明</strong> (0,1) <strong>的实数不可数</strong><ul>
+<li><details class="notes-example"><summary><strong>例3.1：康托尔对角线法证明</strong> (0,1) <strong>的实数不可数</strong></summary><div class="notes-example-body"><ul>
 <li><strong>反证假设</strong>：假设 (0,1) 是可数的，那么可以将其所有实数排成一个无限列表 <span class="note-math-inline">\(r_1​,r_2​,…\)</span>。</li>
 <li><strong>列出展开式</strong>：每个数用无限小数表示 <span class="note-math-inline">\(r_i​=0.d_{i1}​d_{i2}​d_{i3}​…\)</span>（其中 <span class="note-math-inline">\(d_{ij}\)</span>​ 是第 i 个数的第 j 位小数）。</li>
 <li><strong>构造新数</strong> x：定义一个新实数 <span class="note-math-inline">\(x=0.x_1​x_2​x_3​…\)</span>，其构造规则如下：<ul>
@@ -478,8 +478,8 @@
 </li>
 <li><strong>得出矛盾</strong>：这个新构造的实数 x 必然介于 0 和 1 之间。但是，它与列表中的第 1 个数在第 1 位不同，与第 2 个数在第 2 位不同……与第 k 个数在第 k 位不同。因此，x <strong>不在我们的全部列举列表中</strong>。这就推翻了“能够全部列举”的假设，证明 (0,1) 是不可数的。</li>
 </ul>
-</li>
-<li><strong>例3.2：康托尔定理——证明</strong> <span class="note-math-inline">\(∣A∣&lt;∣P(A)∣\)</span><strong>（任何集合严格小于其幂集）</strong><ul>
+</div></details></li>
+<li><details class="notes-example"><summary><strong>例3.2：康托尔定理——证明</strong> <span class="note-math-inline">\(∣A∣&lt;∣P(A)∣\)</span><strong>（任何集合严格小于其幂集）</strong></summary><div class="notes-example-body"><ul>
 <li><strong>分析</strong>：这是集合论中最深刻的证明之一。我们要证明不存在从 A 到其幂集 P(A) 的满射。</li>
 <li><strong>反证假设</strong>：假设存在一个双射（或至少是满射）<span class="note-math-inline">\(g:A→P(A)\)</span>。这意味着对于每一个元素 x∈A，g(x) 都是 A 的一个子集。</li>
 <li><strong>构造反例（核心动作）</strong>：我们定义一个非常特殊的子集 B⊆A：<span class="note-math-inline">\(B={x∈A∣x \notin g(x)}\)</span> <em>(即：我们检查</em> A <em>中的每个元素</em> x_，看它是否属于它自己映射出的那个子集_ g(x)<em>。如果不属于，我们就把它塞进集合</em> B _里)_。</li>
@@ -490,12 +490,12 @@
 </li>
 <li><strong>结论</strong>：逻辑崩溃。因此这样的满射 g 根本不存在。由于可以轻易建立从 A 到 P(A) 的单射（如 f(x)={x}），因此严格得出 <span class="note-math-inline">\(∣A∣&lt;∣P(A)∣\)</span>。</li>
 </ul>
-</li>
+</div></details></li>
 </ul>
 </li>
 <li><h3 id="类别-4：运用-Schroder-Bernstein-定理（夹逼定理）"><a href="#%E7%B1%BB%E5%88%AB-4%EF%BC%9A%E8%BF%90%E7%94%A8-Schroder-Bernstein-%E5%AE%9A%E7%90%86%EF%BC%88%E5%A4%B9%E9%80%BC%E5%AE%9A%E7%90%86%EF%BC%89" class="headerlink" title="类别 4：运用 Schröder-Bernstein 定理（夹逼定理）"></a>类别 4：运用 Schröder-Bernstein 定理（夹逼定理）</h3><p>  <strong>核心逻辑</strong>：如果要证明 ∣A∣=∣B∣，但直接找双射太难，可以分别找两个单射：一个从 A→B，另一个从 B→A。</p>
 <ul>
-<li><strong>例4.1：证明闭区间</strong> <span class="note-math-inline">\([0,1]\)</span><strong>与开区间</strong> (0,1) <strong>基数相同</strong><ul>
+<li><details class="notes-example"><summary><strong>例4.1：证明闭区间</strong> <span class="note-math-inline">\([0,1]\)</span><strong>与开区间</strong> (0,1) <strong>基数相同</strong></summary><div class="notes-example-body"><ul>
 <li><strong>步骤 1 (<span class="note-math-inline">\([0,1]\)</span>≥∣(0,1)∣)</strong>：(0,1) 本来就是 的真子集，定义恒等映射 f(x)=x，这就是一个从 (0,1) 到 的单射。</li>
 <li><strong>步骤 2 (<span class="note-math-inline">\([0,1]\)</span>≤∣(0,1)∣)</strong>：我们需要找到一个从 完美射入 (0,1) 内部的单射。可以构造函数 g(x)=21​x+41​。<ul>
 <li>当 x∈ 时，<span class="note-math-inline">\(g(x)∈[\frac{1}{4},\frac{3}{4}]\)</span>。</li>
@@ -504,12 +504,12 @@
 </li>
 <li><strong>结论</strong>：根据 Schröder-Bernstein 定理，既然互相都能单射过去，那么必然存在双射，即<span class="note-math-inline">\([0,1]=∣(0,1)∣\)</span>。</li>
 </ul>
-</li>
+</div></details></li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="7-基数证明题的“阶梯解题策略”"><a href="#7-%E5%9F%BA%E6%95%B0%E8%AF%81%E6%98%8E%E9%A2%98%E7%9A%84%E2%80%9C%E9%98%B6%E6%A2%AF%E8%A7%A3%E9%A2%98%E7%AD%96%E7%95%A5%E2%80%9D" class="headerlink" title="7.基数证明题的“阶梯解题策略”"></a>7.基数证明题的“阶梯解题策略”</h2><p>针对离散数学中的基数比较问题，建议采用以下“四步阶梯法”进行思考和作答：</p>
+</div></details><h2 id="7-基数证明题的“阶梯解题策略”"><a href="#7-%E5%9F%BA%E6%95%B0%E8%AF%81%E6%98%8E%E9%A2%98%E7%9A%84%E2%80%9C%E9%98%B6%E6%A2%AF%E8%A7%A3%E9%A2%98%E7%AD%96%E7%95%A5%E2%80%9D" class="headerlink" title="7.基数证明题的“阶梯解题策略”"></a>7.基数证明题的“阶梯解题策略”</h2><p>针对离散数学中的基数比较问题，建议采用以下“四步阶梯法”进行思考和作答：</p>
 <h4 id="第一阶：明确目标关系（判断势的大小）"><a href="#%E7%AC%AC%E4%B8%80%E9%98%B6%EF%BC%9A%E6%98%8E%E7%A1%AE%E7%9B%AE%E6%A0%87%E5%85%B3%E7%B3%BB%EF%BC%88%E5%88%A4%E6%96%AD%E5%8A%BF%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%89" class="headerlink" title="第一阶：明确目标关系（判断势的大小）"></a>第一阶：明确目标关系（判断势的大小）</h4><p>拿到两个集合后，首先凭数学直觉判断它们的关系：</p>
 <ol>
 <li><strong>都是离散的、可数的</strong>（如整数、有理数、字符串） → 目标是建立与 <span class="note-math-inline">\(Z^+\)</span> 的双射（证明 <span class="note-math-inline">\(∣A∣=ℵ_0\)</span>​）。</li>
@@ -577,6 +577,27 @@
   if (!content || !toc || !topButton) return;
 
   var headerOffset = 110;
+
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

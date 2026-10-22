@@ -400,7 +400,7 @@
 </ul>
 <h2 id="异构下的函数栈祯"><a href="#%E5%BC%82%E6%9E%84%E4%B8%8B%E7%9A%84%E5%87%BD%E6%95%B0%E6%A0%88%E7%A5%AF" class="headerlink" title="异构下的函数栈祯"></a>异构下的函数栈祯</h2><p>异构指的是os架构不同</p>
 <p>函数序言尾声<br>不同架构不同函数的分布不同<br>x86架构之下是可以往下栈溢出，arm64的返回地址是在栈顶，所以往下溢出是无法实现栈溢出的效果</p>
-<h2 id="nocrash例子"><a href="#nocrash%E4%BE%8B%E5%AD%90" class="headerlink" title="nocrash例子"></a>nocrash例子</h2><pre><code>from pwn import *
+<details class="notes-example"><summary><h2 id="nocrash例子"><a href="#nocrash%E4%BE%8B%E5%AD%90" class="headerlink" title="nocrash例子"></a>nocrash例子</h2></summary><div class="notes-example-body"><pre><code>from pwn import *
 
   
 
@@ -439,7 +439,7 @@ io.interactive()
 <ul>
 <li>ASLR：地址空间分布随机化（这就导致每次运行同一个程序但是变量的地址并不是唯一的）<br>但是变量之间的相对位置是恒定不变的，唯一通过相对偏移量来计算基地址</li>
 </ul>
-<h2 id="Ret2Libc-逻辑"><a href="#Ret2Libc-%E9%80%BB%E8%BE%91" class="headerlink" title="Ret2Libc 逻辑"></a>Ret2Libc 逻辑</h2><p>【第一阶段：抓取锚点】<br>溢出栈空间 ──&gt; 强行调用 puts(puts@got) ──&gt; 程序在屏幕上打印出 puts 的实时内存地址（捕获当前坐标）</p>
+</div></details><h2 id="Ret2Libc-逻辑"><a href="#Ret2Libc-%E9%80%BB%E8%BE%91" class="headerlink" title="Ret2Libc 逻辑"></a>Ret2Libc 逻辑</h2><p>【第一阶段：抓取锚点】<br>溢出栈空间 ──&gt; 强行调用 puts(puts@got) ──&gt; 程序在屏幕上打印出 puts 的实时内存地址（捕获当前坐标）</p>
 <p>【第二阶段：按图索骥】<br>实时 puts 地址 — 库文件中的固定偏移 = 这一刻的 Libc 内存基地址（推算出整栋建筑的地基坐标）<br>Libc 内存基地址 + 库文件中 system 的固定偏移 = 这一刻 system 的精准绝对地址（算出风景区的实时坐标！）</p>
 <p>【第三阶段：垂直打击】<br>程序重回开头 ──&gt; 第二次溢出栈空间 ──&gt; 把刚刚算出来的 system 真实地址拍在 Saved RIP 上 ──&gt; Get Shell！</p>
 <p>执行 <code>system("/bin/sh")</code> 这行代码，在汇编层面其实是两步动作：</p>
@@ -889,6 +889,27 @@ mov rbp,rsp 函数初始化，同时指向栈顶（栈底）
   if (!content || !toc || !topButton) return;
 
   var headerOffset = 110;
+
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
 
   topButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });

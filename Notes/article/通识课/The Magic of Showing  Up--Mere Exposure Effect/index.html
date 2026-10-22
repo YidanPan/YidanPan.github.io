@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -390,11 +364,11 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>通识课笔记</span></a>
+    <a class="notes-breadcrumb" href="/Notes/category/general-education/psychology-society/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>心理学与社会议题</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
-      <a href="/Notes/category/general-education/general-education/">通识课笔记</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/psychology-society/">心理学与社会议题</a><span aria-hidden="true">/</span>
       
       <span aria-current="page">The Magic of Showing  Up--Mere Exposure Effect</span>
     </nav>
@@ -403,7 +377,7 @@
       <h1>The Magic of Showing  Up--Mere Exposure Effect</h1>
       <span class="notes-source-path">通识课/The Magic of Showing  Up--Mere Exposure Effect.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h1 id="The-Magic-of-Showing-Up–Mere-Exposure-Effect"><a href="#The-Magic-of-Showing-Up–Mere-Exposure-Effect" class="headerlink" title="The Magic of Showing Up–Mere Exposure Effect"></a>The Magic of Showing Up–Mere Exposure Effect</h1><p>Hello, everyone. Today, my topic of speech is the mere exposure effect, which shows the magic of showing up.</p>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="The-Magic-of-Showing-Up–Mere-Exposure-Effect"><a href="#The-Magic-of-Showing-Up%E2%80%93Mere-Exposure-Effect" class="headerlink" title="The Magic of Showing Up–Mere Exposure Effect"></a>The Magic of Showing Up–Mere Exposure Effect</h1><p>Hello, everyone. Today, my topic of speech is the mere exposure effect, which shows the magic of showing up.</p>
 <p>Now, think about that, have you ever hated a pop song first, but when you hear it twenty times, you found yourself humming along. This is the Mere Exposure Effect in action. It’s a psychological phenomenon where people develop a preference for things merely because they are familiar with.</p>
 <p>So here, I want to talk about it by three key words.</p>
 <p>First, <strong>Frequency</strong>. This is the starting point. In the business world, merchants are playing a game of repetition with you, they bet that when you see their brands many times, they can win the top-of-mind position before you even realize it. So they spend millions on ads not just to sell, but to increase the frequency of interaction.</p>
@@ -511,25 +485,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -543,17 +513,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

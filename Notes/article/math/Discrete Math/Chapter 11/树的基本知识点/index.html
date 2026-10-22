@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -420,7 +394,7 @@
 </ul>
 <p><strong>3. 树的分类</strong></p>
 <ul>
-<li><p><strong>$m$ 元树（$m$-ary tree）</strong>：如果一棵有根树的每个内部顶点<strong>最多</strong>有 $m$ 个子节点，则称为 $m$ 元树。当 $m&#x3D;2$ 时即为常见的<strong>二叉树（Binary Tree）</strong>。</p>
+<li><p><strong>$m$ 元树（$m$-ary tree）</strong>：如果一棵有根树的每个内部顶点<strong>最多</strong>有 $m$ 个子节点，则称为 $m$ 元树。当 $m=2$ 时即为常见的<strong>二叉树（Binary Tree）</strong>。</p>
 </li>
 <li><p><strong>满 $m$ 元树（Full $m$-ary tree）</strong>：如果每个内部顶点<strong>恰好</strong>有 $m$ 个子节点，则称为满 $m$ 元树。</p>
 </li>
@@ -432,8 +406,8 @@
 </li>
 <li><p><strong>满 $m$ 元树的节点计算（Theorem 3 &amp; 4）</strong>：对于一棵满 $m$ 元树，如果内部顶点数为 $i$，叶子数为 $l$，总顶点数为 $n$，则它们满足如下关系：</p>
 <ul>
-<li>$n &#x3D; mi + 1$</li>
-<li>$n &#x3D; i + l$ （通过这两个公式，只要已知 $n, i, l$ 中的任意一个，就可以求出另外两个）。</li>
+<li>$n = mi + 1$</li>
+<li>$n = i + l$ （通过这两个公式，只要已知 $n, i, l$ 中的任意一个，就可以求出另外两个）。</li>
 </ul>
 </li>
 <li><p><strong>层与高度</strong>：</p>
@@ -444,7 +418,7 @@
 </li>
 <li><p><strong>平衡树（Balanced）</strong>：如果一棵树的所有叶子节点都位于 $h$ 层或 $h-1$ 层，则这棵树被称为平衡树。(不一定是满树)</p>
 </li>
-<li><p><strong>叶子数量上限（Theorem 5 &amp; Corollary）</strong>：高度为 $h$ 的 $m$ 元树<strong>最多有 $m^h$ 个叶子</strong>。如果一棵 $m$ 元树有 $l$ 个叶子，那么它的高度 $h \ge \lceil \log_m l \rceil$；当且仅当该树是满的且平衡时，$h &#x3D; \lceil \log_m l \rceil$。（叶子数 $l≤m^h$）<br><strong>5. 其他扩展属性与应用</strong></p>
+<li><p><strong>叶子数量上限（Theorem 5 &amp; Corollary）</strong>：高度为 $h$ 的 $m$ 元树<strong>最多有 $m^h$ 个叶子</strong>。如果一棵 $m$ 元树有 $l$ 个叶子，那么它的高度 $h \ge \lceil \log_m l \rceil$；当且仅当该树是满的且平衡时，$h = \lceil \log_m l \rceil$。（叶子数 $l≤m^h$）<br><strong>5. 其他扩展属性与应用</strong></p>
 </li>
 <li><p><strong>应用模型</strong>：树常用于对具有层级结构的事物进行建模，最典型的例子就是<strong>计算机文件系统</strong>（根目录、子目录、普通文件）。</p>
 </li>
@@ -551,25 +525,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -583,17 +553,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

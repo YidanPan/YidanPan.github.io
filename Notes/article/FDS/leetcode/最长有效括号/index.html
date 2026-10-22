@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -390,11 +364,11 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS &amp; LeetCode</span></a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/leetcode/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>LeetCode 算法练习</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
-      <a href="/Notes/category/cs/fds/">FDS &amp; LeetCode</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/leetcode/">LeetCode 算法练习</a><span aria-hidden="true">/</span>
       
       <span aria-current="page">最长有效括号</span>
     </nav>
@@ -403,9 +377,9 @@
       <h1>最长有效括号</h1>
       <span class="notes-source-path">FDS/leetcode/最长有效括号.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h1 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h1><p>给你一个只包含 <code>&#39;(&#39;</code> 和 <code>&#39;)&#39;</code> 的字符串，找出最长有效（格式正确且连续）括号 子串 的长度。</p>
-<p>左右括号匹配，即每个左括号都有对应的右括号将其闭合的字符串是格式正确的，比如 <code>&quot;(()())&quot;</code></p>
-<h1 id="要点解析："><a href="#要点解析：" class="headerlink" title="要点解析："></a>要点解析：</h1><ul>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="题目："><a href="#%E9%A2%98%E7%9B%AE%EF%BC%9A" class="headerlink" title="题目："></a>题目：</h1><p>给你一个只包含&nbsp;<code>'('</code>&nbsp;和&nbsp;<code>')'</code>&nbsp;的字符串，找出最长有效（格式正确且连续）括号&nbsp;子串&nbsp;的长度。</p>
+<p>左右括号匹配，即每个左括号都有对应的右括号将其闭合的字符串是格式正确的，比如&nbsp;<code>"(()())"</code></p>
+<h1 id="要点解析："><a href="#%E8%A6%81%E7%82%B9%E8%A7%A3%E6%9E%90%EF%BC%9A" class="headerlink" title="要点解析："></a>要点解析：</h1><ul>
 <li>打破固有思维 这个stack不用来存括号这种字符，反而是来存储括号的下标，方便后续计算统计需要用到多少括号</li>
 <li>stack第一个存-1（非常巧妙的一个技巧 因为最后这个数组下标直接相减就是子串大小 ）</li>
 <li></li>
@@ -430,8 +404,8 @@
     </section>
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
-      <a class="notes-article-pagination-link is-previous" href="/Notes/article/FDS/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/"><span>← Previous</span><strong>字符串函数</strong></a>
-      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/bonus2/"><span>Next →</span><strong>bonus2</strong></a>
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/FDS/leetcode/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"><span>← Previous</span><strong>有效的括号</strong></a>
+      
     </nav>
     
   </article>
@@ -510,25 +484,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -542,17 +512,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

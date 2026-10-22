@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -405,9 +379,9 @@
     </header>
     <div class="notes-article-content" id="notesArticleContent"><h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><ul>
 <li>LangChain 是一个用于构建 <strong>基于大语言模型（LLM）的应用开发框架</strong>。它的目标是帮助开发者更方便地将 LLM 与外部数据、工具、数据库和业务流程结合起来</li>
-<li>LLM + 数据 + 工具 + 工作流 &#x3D; LangChain 的主要应用场景</li>
+<li>LLM + 数据 + 工具 + 工作流 = LangChain 的主要应用场景</li>
 <li>主要模块:统一管理各种大模型、Prompt参数化、输出解析、读取各种文档、文本切分、向量化、向量数据库、检索器（RAG）、调用Tools、Agent</li>
-<li>优点：模块化程度高、支持大量模型、集成方便、Python 和 JavaScript&#x2F;TypeScript 都有成熟支持。</li>
+<li>优点：模块化程度高、支持大量模型、集成方便、Python 和 JavaScript/TypeScript 都有成熟支持。</li>
 <li>局限性：对于简单调用API官方的SDK更为轻量级</li>
 </ul>
 <h2 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h2><ul>
@@ -421,9 +395,9 @@
 </ul>
 <h2 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h2><ul>
 <li>Langchain中把向量化封装成一个模块进行使用</li>
-<li>embeddings &#x3D; HuggingFaceEmbeddings(</li>
+<li>embeddings = HuggingFaceEmbeddings(</li>
 </ul>
-<p>    model_name&#x3D;”sentence-transformers&#x2F;all-MiniLM-L6-v2”</p>
+<p>&nbsp; &nbsp; model_name=”sentence-transformers/all-MiniLM-L6-v2”</p>
 <p>) ：这里HuggingFaceEmbeddings是用来创建Embedding模型，里面封装了很多功能</p>
 <ul>
 <li>embeddings.embed_documents(…) ：把多个文本文档转换为向量</li>
@@ -433,37 +407,37 @@
 <li>Langchain把FAISS功能封装成统一接口。把chunk和向量储存进FAISS</li>
 </ul>
 <h2 id="Retrieval"><a href="#Retrieval" class="headerlink" title="Retrieval"></a>Retrieval</h2><ul>
-<li>retriever &#x3D; vectorstore.as_retriever(<br>  search_kwargs&#x3D;{“k”: 2}<br>)： 检索功能实现。选出向量距离最接近的前两个</li>
-<li>results &#x3D; retriever.invoke(<br>  “What is Python used for?”<br>)：插入检索对象，也就是问题内容</li>
+<li>retriever = vectorstore.as_retriever(<br>  search_kwargs={“k”: 2}<br>)： 检索功能实现。选出向量距离最接近的前两个</li>
+<li>results = retriever.invoke(<br>  “What is Python used for?”<br>)：插入检索对象，也就是问题内容</li>
 </ul>
 <h2 id="Prompt"><a href="#Prompt" class="headerlink" title="Prompt"></a>Prompt</h2><ul>
 <li>PromptTemplate：该函数用于常见提示语模版，{context}是变量占位符。也是创建模版工具</li>
 <li>prompt.invoke：真正填入需要的内容</li>
 </ul>
-<h2 id="接入LLM"><a href="#接入LLM" class="headerlink" title="接入LLM"></a>接入LLM</h2><ul>
+<h2 id="接入LLM"><a href="#%E6%8E%A5%E5%85%A5LLM" class="headerlink" title="接入LLM"></a>接入LLM</h2><ul>
 <li>from langchain_ollama import ChatOllama 直接引入封装好的ollama</li>
-<li>ChatOllama(model&#x3D;”qwen2.5:3b”)：确定模型名称</li>
+<li>ChatOllama(model=”qwen2.5:3b”)：确定模型名称</li>
 </ul>
-<h1 id="LCEL（LangChain-Expression-Language）"><a href="#LCEL（LangChain-Expression-Language）" class="headerlink" title="LCEL（LangChain Expression Language）"></a>LCEL（LangChain Expression Language）</h1><ul>
+<h1 id="LCEL（LangChain-Expression-Language）"><a href="#LCEL%EF%BC%88LangChain-Expression-Language%EF%BC%89" class="headerlink" title="LCEL（LangChain Expression Language）"></a>LCEL（LangChain Expression Language）</h1><ul>
 <li>解决问题：怎么把这些组件组合起来，让数据自动从一个组件流到下一个组件</li>
 <li>核心思想之一：每个组件都有输入和输出</li>
-<li>chain&#x3D;prompt | llm，这里的|相当于pipeline，把前一个组件的数据传递给下一个组件</li>
+<li>chain=prompt | llm，这里的|相当于pipeline，把前一个组件的数据传递给下一个组件</li>
 <li>之前是靠自己手动完成prompt传递给llm，Langchain把这些步骤封装起来</li>
 <li>把retrieve接入lcel：RunnablePassthrough() 作用是输入是什么，就原样传下去</li>
 <li>FAISS持久化：把document切分后转为embedding存入FAISS之后保存入硬盘</li>
 <li>读取多文档：<pre><code>DirectoryLoader(
-    &quot;data&quot;,
-    glob=&quot;*.txt&quot;,
-    loader_cls=TextLoader,
-    loader_kwargs={
-        &quot;encoding&quot;: &quot;utf-8&quot;
-    }
+&nbsp; &nbsp; "data",
+&nbsp; &nbsp; glob="*.txt",
+&nbsp; &nbsp; loader_cls=TextLoader,
+&nbsp; &nbsp; loader_kwargs={
+&nbsp; &nbsp; &nbsp; &nbsp; "encoding": "utf-8"
+&nbsp; &nbsp; }
 )
 </code></pre>
 </li>
 <li>RunnableParallel:实现同一个输入应用不同的分支</li>
 <li>RunnableLambda：传入参数是一个python函数，返回结果是langchain中传递数据给函数的返回结果</li>
-<li>MMR &#x3D; Maximum Marginal Relevance：既要相关，又要不重复。也就是需要考虑和query的相关性以及和已经选择的chunk的差异性</li>
+<li>MMR = Maximum Marginal Relevance：既要相关，又要不重复。也就是需要考虑和query的相关性以及和已经选择的chunk的差异性</li>
 <li>处理pdf文件：from langchain_community.document_loaders import PyPDFLoader，从社区导入加载pdf文件的工具，通常一个pdf页面对应一个document（content、source、page）</li>
 <li>向量用来判断语义相似，matedata负责结构化筛选</li>
 </ul>
@@ -567,25 +541,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -599,17 +569,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

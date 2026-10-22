@@ -665,3 +665,13 @@
   .notes-article-content h2 { font-size: 24px; }
   .notes-article-content h3 { font-size: 20px; }
 }
+
+/* Native fragment navigation preserves reload, Back and modified clicks. */
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.notes-search { margin-top: 28px; }
+.notes-search label { display: block; margin-bottom: 8px; font-weight: 600; }
+.notes-search input { width: 100%; max-width: 620px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-elev); color: var(--ink); }
+.notes-search-result { display: grid; gap: 5px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.notes-search-result small { color: var(--ink-3); }
+.notes-page [hidden] { display: none !important; }

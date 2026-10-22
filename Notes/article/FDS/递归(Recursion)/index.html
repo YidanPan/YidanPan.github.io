@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -390,11 +364,11 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS &amp; LeetCode</span></a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS 数据结构</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
-      <a href="/Notes/category/cs/fds/">FDS &amp; LeetCode</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/fds/">FDS 数据结构</a><span aria-hidden="true">/</span>
       
       <span aria-current="page">递归(Recursion)</span>
     </nav>
@@ -403,7 +377,7 @@
       <h1>递归(Recursion)</h1>
       <span class="notes-source-path">FDS/递归(Recursion).md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h2 id="1-递归的两个必要条件（缺一不可）"><a href="#1-递归的两个必要条件（缺一不可）" class="headerlink" title="1. 递归的两个必要条件（缺一不可）"></a>1. 递归的两个必要条件（缺一不可）</h2><p>写递归就像下楼梯，你必须知道什么时候停下来，否则就会掉进无限循环，导致<strong>栈溢出（Stack Overflow）</strong>。</p>
+    <div class="notes-article-content" id="notesArticleContent"><h2 id="1-递归的两个必要条件（缺一不可）"><a href="#1-%E9%80%92%E5%BD%92%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6%EF%BC%88%E7%BC%BA%E4%B8%80%E4%B8%8D%E5%8F%AF%EF%BC%89" class="headerlink" title="1. 递归的两个必要条件（缺一不可）"></a>1. 递归的两个必要条件（缺一不可）</h2><p>写递归就像下楼梯，你必须知道什么时候停下来，否则就会掉进无限循环，导致<strong>栈溢出（Stack Overflow）</strong>。</p>
 <ol>
 <li><p><strong>基准情形 (Base Case)：</strong> 也就是“停止条件”。必须有一个情况是不再递归，直接返回结果。</p>
 <ul>
@@ -417,14 +391,14 @@
 </li>
 </ol>
 <hr>
-<h2 id="2-递归的执行过程：函数调用栈"><a href="#2-递归的执行过程：函数调用栈" class="headerlink" title="2. 递归的执行过程：函数调用栈"></a>2. 递归的执行过程：函数调用栈</h2><p>理解递归的关键在于理解<strong>“递”去和“归”来</strong>。</p>
+<h2 id="2-递归的执行过程：函数调用栈"><a href="#2-%E9%80%92%E5%BD%92%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9A%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88" class="headerlink" title="2. 递归的执行过程：函数调用栈"></a>2. 递归的执行过程：函数调用栈</h2><p>理解递归的关键在于理解<strong>“递”去和“归”来</strong>。</p>
 <ul>
 <li><p><strong>递 (Forward)：</strong> 每次调用函数，系统都会在内存中开辟一块空间（栈帧），保存当前的变量、返回地址等。</p>
 </li>
 <li><p><strong>归 (Backward)：</strong> 当遇到基准情形时，函数开始层层返回，释放栈空间，并将结果带回给上一层调用者。</p>
 </li>
 </ul>
-<h2 id="3-写好递归的小技巧"><a href="#3-写好递归的小技巧" class="headerlink" title="3. 写好递归的小技巧"></a>3. 写好递归的小技巧</h2><ol>
+<h2 id="3-写好递归的小技巧"><a href="#3-%E5%86%99%E5%A5%BD%E9%80%92%E5%BD%92%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7" class="headerlink" title="3. 写好递归的小技巧"></a>3. 写好递归的小技巧</h2><ol>
 <li><p><strong>不要试图在脑子里人肉模拟超过 3 层的递归！</strong> 这样会晕。</p>
 </li>
 <li><p><strong>信任你的函数：</strong> 在写 <code>root-&gt;left = buildTree(...)</code> 时，你要假设这个函数已经写好了，它一定能返回正确的左子树给你，你只需要关注当前这一层怎么组合即可。</p>
@@ -433,7 +407,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="4-掌握递归思维：“雇佣兵思维”"><a href="#4-掌握递归思维：“雇佣兵思维”" class="headerlink" title="4.掌握递归思维：“雇佣兵思维”"></a>4.掌握递归思维：“雇佣兵思维”</h2><h3 id="4-1-思维核心：信任与分工"><a href="#4-1-思维核心：信任与分工" class="headerlink" title="4.1.思维核心：信任与分工"></a>4.1.思维核心：信任与分工</h3><p>假设你是一个包工头（当前函数），你的任务是给一棵大树数有多少个果子。</p>
+<h2 id="4-掌握递归思维：“雇佣兵思维”"><a href="#4-%E6%8E%8C%E6%8F%A1%E9%80%92%E5%BD%92%E6%80%9D%E7%BB%B4%EF%BC%9A%E2%80%9C%E9%9B%87%E4%BD%A3%E5%85%B5%E6%80%9D%E7%BB%B4%E2%80%9D" class="headerlink" title="4.掌握递归思维：“雇佣兵思维”"></a>4.掌握递归思维：“雇佣兵思维”</h2><h3 id="4-1-思维核心：信任与分工"><a href="#4-1-%E6%80%9D%E7%BB%B4%E6%A0%B8%E5%BF%83%EF%BC%9A%E4%BF%A1%E4%BB%BB%E4%B8%8E%E5%88%86%E5%B7%A5" class="headerlink" title="4.1.思维核心：信任与分工"></a>4.1.思维核心：信任与分工</h3><p>假设你是一个包工头（当前函数），你的任务是给一棵大树数有多少个果子。</p>
 <ul>
 <li><p><strong>你的原则：</strong> 我很懒，我只数根节点上那<strong>一个</strong>果子。</p>
 </li>
@@ -454,7 +428,7 @@
 </ol>
 </li>
 <li><ol start="4">
-<li><strong>汇总：</strong> 最终结果 &#x3D; 左分身的数 + 右分身的数 + 我手里的这 1 个。</li>
+<li><strong>汇总：</strong> 最终结果 = 左分身的数 + 右分身的数 + 我手里的这 1 个。</li>
 </ol>
 </li>
 <li><ol start="5">
@@ -465,7 +439,7 @@
 </li>
 </ul>
 <p><strong>什么时候用？</strong> 只要你发现一个大问题的子问题，<strong>长得跟大问题一模一样</strong>，就可以雇佣分身。</p>
-<h3 id="4-2-三个经典场景：帮你找到“调用时机”"><a href="#4-2-三个经典场景：帮你找到“调用时机”" class="headerlink" title="4.2.三个经典场景：帮你找到“调用时机”"></a>4.2.三个经典场景：帮你找到“调用时机”</h3><h4 id="场景-A：当你需要“拆地雷”-类似本题建树"><a href="#场景-A：当你需要“拆地雷”-类似本题建树" class="headerlink" title="场景 A：当你需要“拆地雷” (类似本题建树)"></a>场景 A：当你需要“拆地雷” (类似本题建树)</h4><p>如果你发现要解决当前问题，必须先知道“左边”和“右边”的结果。</p>
+<h3 id="4-2-三个经典场景：帮你找到“调用时机”"><a href="#4-2-%E4%B8%89%E4%B8%AA%E7%BB%8F%E5%85%B8%E5%9C%BA%E6%99%AF%EF%BC%9A%E5%B8%AE%E4%BD%A0%E6%89%BE%E5%88%B0%E2%80%9C%E8%B0%83%E7%94%A8%E6%97%B6%E6%9C%BA%E2%80%9D" class="headerlink" title="4.2.三个经典场景：帮你找到“调用时机”"></a>4.2.三个经典场景：帮你找到“调用时机”</h3><h4 id="场景-A：当你需要“拆地雷”-类似本题建树"><a href="#%E5%9C%BA%E6%99%AF-A%EF%BC%9A%E5%BD%93%E4%BD%A0%E9%9C%80%E8%A6%81%E2%80%9C%E6%8B%86%E5%9C%B0%E9%9B%B7%E2%80%9D-%E7%B1%BB%E4%BC%BC%E6%9C%AC%E9%A2%98%E5%BB%BA%E6%A0%91" class="headerlink" title="场景 A：当你需要“拆地雷” (类似本题建树)"></a>场景 A：当你需要“拆地雷” (类似本题建树)</h4><p>如果你发现要解决当前问题，必须先知道“左边”和“右边”的结果。</p>
 <ul>
 <li><p><strong>例子：</strong> 判断两棵树是否完全相同。</p>
 </li>
@@ -480,7 +454,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="场景-B：当你遇到“套娃”结构-路径问题"><a href="#场景-B：当你遇到“套娃”结构-路径问题" class="headerlink" title="场景 B：当你遇到“套娃”结构 (路径问题)"></a>场景 B：当你遇到“套娃”结构 (路径问题)</h4><p>如果你发现每走一步，剩下的路虽然变短了，但规则没变。</p>
+<h4 id="场景-B：当你遇到“套娃”结构-路径问题"><a href="#%E5%9C%BA%E6%99%AF-B%EF%BC%9A%E5%BD%93%E4%BD%A0%E9%81%87%E5%88%B0%E2%80%9C%E5%A5%97%E5%A8%83%E2%80%9D%E7%BB%93%E6%9E%84-%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98" class="headerlink" title="场景 B：当你遇到“套娃”结构 (路径问题)"></a>场景 B：当你遇到“套娃”结构 (路径问题)</h4><p>如果你发现每走一步，剩下的路虽然变短了，但规则没变。</p>
 <ul>
 <li><p><strong>例子：</strong> 走迷宫。</p>
 </li>
@@ -493,7 +467,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="场景-C：当你需要“事后处理”-类似本题后序遍历"><a href="#场景-C：当你需要“事后处理”-类似本题后序遍历" class="headerlink" title="场景 C：当你需要“事后处理” (类似本题后序遍历)"></a>场景 C：当你需要“事后处理” (类似本题后序遍历)</h4><p>如果你必须等手下把事情全办完了，你才能做决定。</p>
+<h4 id="场景-C：当你需要“事后处理”-类似本题后序遍历"><a href="#%E5%9C%BA%E6%99%AF-C%EF%BC%9A%E5%BD%93%E4%BD%A0%E9%9C%80%E8%A6%81%E2%80%9C%E4%BA%8B%E5%90%8E%E5%A4%84%E7%90%86%E2%80%9D-%E7%B1%BB%E4%BC%BC%E6%9C%AC%E9%A2%98%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86" class="headerlink" title="场景 C：当你需要“事后处理” (类似本题后序遍历)"></a>场景 C：当你需要“事后处理” (类似本题后序遍历)</h4><p>如果你必须等手下把事情全办完了，你才能做决定。</p>
 <ul>
 <li><p><strong>例子：</strong> 删除一棵树。</p>
 </li>
@@ -507,18 +481,18 @@
 </li>
 </ul>
 <hr>
-<h2 id="5-经典例题"><a href="#5-经典例题" class="headerlink" title="5. 经典例题"></a>5. 经典例题</h2><h3 id="5-1-数学逻辑型：阶乘-Factorial"><a href="#5-1-数学逻辑型：阶乘-Factorial" class="headerlink" title="5.1. 数学逻辑型：阶乘 (Factorial)"></a>5.1. 数学逻辑型：阶乘 (Factorial)</h3><p>这是最简单的递归，用来理解<strong>“传递”与“回溯”</strong>。</p>
+<h2 id="5-经典例题"><a href="#5-%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98" class="headerlink" title="5. 经典例题"></a>5. 经典例题</h2><h3 id="5-1-数学逻辑型：阶乘-Factorial"><a href="#5-1-%E6%95%B0%E5%AD%A6%E9%80%BB%E8%BE%91%E5%9E%8B%EF%BC%9A%E9%98%B6%E4%B9%98-Factorial" class="headerlink" title="5.1. 数学逻辑型：阶乘 (Factorial)"></a>5.1. 数学逻辑型：阶乘 (Factorial)</h3><p>这是最简单的递归，用来理解<strong>“传递”与“回溯”</strong>。</p>
 <ul>
-<li><p><strong>问题：</strong> 计算 $n! &#x3D; n \times (n-1) \times \dots \times 1$。</p>
+<li><p><strong>问题：</strong> 计算 $n! = n \times (n-1) \times \dots \times 1$。</p>
 </li>
-<li><p><strong>关系式：</strong> $n! &#x3D; n \times (n-1)!$</p>
+<li><p><strong>关系式：</strong> $n! = n \times (n-1)!$</p>
 </li>
 <li><p><strong>分身逻辑：</strong> * 我（计算 $n$ 的阶乘）只管把 $n$ 乘上“分身”算出来的结果。</p>
 <ul>
 <li>分身（计算 $n-1$ 的阶乘）再去管他的分身。</li>
 </ul>
 </li>
-<li><p><strong>出口：</strong> 当 $n &#x3D; 1$ 时，别再找分身了，直接告诉上级结果是 $1$。</p>
+<li><p><strong>出口：</strong> 当 $n = 1$ 时，别再找分身了，直接告诉上级结果是 $1$。</p>
 </li>
 </ul>
 <blockquote>
@@ -530,7 +504,7 @@
 </code></pre>
 </blockquote>
 <hr>
-<h3 id="5-2-数组搜索型：二分查找-Binary-Search"><a href="#5-2-数组搜索型：二分查找-Binary-Search" class="headerlink" title="5.2. 数组搜索型：二分查找 (Binary Search)"></a>5.2. 数组搜索型：二分查找 (Binary Search)</h3><p>这是理解“缩小规模”的典型例子。</p>
+<h3 id="5-2-数组搜索型：二分查找-Binary-Search"><a href="#5-2-%E6%95%B0%E7%BB%84%E6%90%9C%E7%B4%A2%E5%9E%8B%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-Binary-Search" class="headerlink" title="5.2. 数组搜索型：二分查找 (Binary Search)"></a>5.2. 数组搜索型：二分查找 (Binary Search)</h3><p>这是理解“缩小规模”的典型例子。</p>
 <ul>
 <li><p><strong>问题：</strong> 在有序数组中找数字 <code>target</code>。</p>
 </li>
@@ -565,7 +539,7 @@ if (L &gt; R) return -1; // 出口：找不到了
 }
 </code></pre>
 </blockquote>
-<h3 id="5-3-翻转二叉树（把所有节点的左右子树对调）"><a href="#5-3-翻转二叉树（把所有节点的左右子树对调）" class="headerlink" title="5.3.翻转二叉树（把所有节点的左右子树对调）"></a>5.3.翻转二叉树（把所有节点的左右子树对调）</h3><p><strong>逻辑应该是：</strong></p>
+<h3 id="5-3-翻转二叉树（把所有节点的左右子树对调）"><a href="#5-3-%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88%E6%8A%8A%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9%E7%9A%84%E5%B7%A6%E5%8F%B3%E5%AD%90%E6%A0%91%E5%AF%B9%E8%B0%83%EF%BC%89" class="headerlink" title="5.3.翻转二叉树（把所有节点的左右子树对调）"></a>5.3.翻转二叉树（把所有节点的左右子树对调）</h3><p><strong>逻辑应该是：</strong></p>
 <ol>
 <li><p><strong>信任：</strong> 我有一个函数 <code>invert(node)</code>，它能把一棵树变镜像。</p>
 </li>
@@ -606,7 +580,7 @@ if (L &gt; R) return -1; // 出口：找不到了
 <li><p><strong>事后处理（后序）：</strong> 先处理完两个子树，最后处理根（如：计算树的高度、删除整棵树）。</p>
 </li>
 </ol>
-<h2 id="6-递归的精髓：不要越级指挥"><a href="#6-递归的精髓：不要越级指挥" class="headerlink" title="6. 递归的精髓：不要越级指挥"></a>6. 递归的精髓：不要越级指挥</h2><p>很多初学者容易犯的错误是：<strong>试图在这一层就把下一层的事儿给干了。</strong></p>
+<h2 id="6-递归的精髓：不要越级指挥"><a href="#6-%E9%80%92%E5%BD%92%E7%9A%84%E7%B2%BE%E9%AB%93%EF%BC%9A%E4%B8%8D%E8%A6%81%E8%B6%8A%E7%BA%A7%E6%8C%87%E6%8C%A5" class="headerlink" title="6. 递归的精髓：不要越级指挥"></a>6. 递归的精髓：不要越级指挥</h2><p>很多初学者容易犯的错误是：<strong>试图在这一层就把下一层的事儿给干了。</strong></p>
 <ul>
 <li><p><strong>错误思维：</strong> 我要交换 <code>root-&gt;left</code> 和 <code>root-&gt;right</code>，然后我还要交换 <code>root-&gt;left-&gt;left</code> 和 <code>root-&gt;left-&gt;right</code>……</p>
 </li>
@@ -635,7 +609,7 @@ if (L &gt; R) return -1; // 出口：找不到了
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
       <span></span>
-      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/%E6%9E%84%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91&amp;Z%E5%AD%97%E5%BD%A2%E9%81%8D%E5%8E%86/"><span>Next →</span><strong>构建二叉树&amp;Z字形遍历</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><span>Next →</span><strong>排序算法</strong></a>
     </nav>
     
   </article>
@@ -714,25 +688,21 @@ if (L &gt; R) return -1; // 出口：找不到了
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -746,17 +716,6 @@ if (L &gt; R) return -1; // 出口：找不到了
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

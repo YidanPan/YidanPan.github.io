@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -403,9 +377,9 @@
       <h1>图论</h1>
       <span class="notes-source-path">math/Discrete Math/Chapter 10/图论.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h3 id="10-6-最短路径问题-Shortest-Path-Problems"><a href="#10-6-最短路径问题-Shortest-Path-Problems" class="headerlink" title="10.6 最短路径问题 (Shortest Path Problems)"></a>10.6 最短路径问题 (Shortest Path Problems)</h3><p><strong>1. 基础知识点</strong></p>
+    <div class="notes-article-content" id="notesArticleContent"><h3 id="10-6-最短路径问题-Shortest-Path-Problems"><a href="#10-6-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98-Shortest-Path-Problems" class="headerlink" title="10.6 最短路径问题 (Shortest Path Problems)"></a>10.6 最短路径问题 (Shortest Path Problems)</h3><p><strong>1. 基础知识点</strong></p>
 <ul>
-<li><strong>带权图 (Weighted Graph)：</strong> 图的边被赋予了权重，记作 $G &#x3D; (V, E, W)$。如果边 $(x, y)$ 存在，则它具有特定的权重。</li>
+<li><strong>带权图 (Weighted Graph)：</strong> 图的边被赋予了权重，记作 $G = (V, E, W)$。如果边 $(x, y)$ 存在，则它具有特定的权重。</li>
 <li><strong>路径长度：</strong> 在带权图中，一条路径的长度是组成该路径的所有边的权重之和。</li>
 </ul>
 <p><strong>2. Dijkstra 算法详解</strong></p>
@@ -416,15 +390,15 @@
 </li>
 <li><p><strong>具体步骤与公式：</strong></p>
 <ul>
-<li><strong>步骤 0（初始化）：</strong> 起点 $a$ 的标签 $L_0(a)&#x3D;0$，其余所有顶点的标签为 $\infty$（表示未知），初始集合 $S_0 &#x3D; \emptyset$。</li>
+<li><strong>步骤 0（初始化）：</strong> 起点 $a$ 的标签 $L_0(a)=0$，其余所有顶点的标签为 $\infty$（表示未知），初始集合 $S_0 = \emptyset$。</li>
 <li><strong>步骤 k（迭代）：</strong> 将不在集合 $S_{k-1}$ 中且标签值最小的顶点 $u$ 加入集合，形成 $S_k$。随后更新其余不在 $S_k$ 中的顶点 $v$ 的标签。</li>
-<li><strong>更新公式：</strong> $L_k(v) &#x3D; \min{L_{k-1}(v), L_{k-1}(u) + w(u,v)}$。这代表到达 $v$ 的最短路径要么是前一阶段找到的路径，要么是先经过新加入的顶点 $u$ 再走边 $(u,v)$ 到达 $v$ 的路径。</li>
+<li><strong>更新公式：</strong> $L_k(v) = \min{L_{k-1}(v), L_{k-1}(u) + w(u,v)}$。这代表到达 $v$ 的最短路径要么是前一阶段找到的路径，要么是先经过新加入的顶点 $u$ 再走边 $(u,v)$ 到达 $v$ 的路径。</li>
 </ul>
 </li>
 <li><p><strong>【例题 1】</strong> 求图（含顶点 a, b, c, d, e, z）中从 $a$ 到 $z$ 的最短路径。</p>
 <ul>
 <li><strong>计算过程（列表法）：</strong> 算法使用表格记录每次迭代的标签变化。</li>
-<li>初始：$L_0(a)&#x3D;0$，其余为 $\infty$。</li>
+<li>初始：$L_0(a)=0$，其余为 $\infty$。</li>
 <li>将 $a$ 加入集合，更新相连点 $b(4), c(2)$。</li>
 <li>$c$ 标签最小(2)，加入集合，通过 $c$ 更新 $b(3), d(10), e(12)$。</li>
 <li>接着依次将 $b, d, e$ 加入集合并更新。</li>
@@ -449,7 +423,7 @@
 <li><strong>等价描述：</strong> 这等价于在完全图中寻找一条总权重最小的**哈密顿回路 (Hamilton circuit)**。</li>
 </ul>
 <hr>
-<h3 id="10-7-平面图-Planar-Graphs"><a href="#10-7-平面图-Planar-Graphs" class="headerlink" title="10.7 平面图 (Planar Graphs)"></a>10.7 平面图 (Planar Graphs)</h3><p><strong>1. 基础知识点</strong></p>
+<h3 id="10-7-平面图-Planar-Graphs"><a href="#10-7-%E5%B9%B3%E9%9D%A2%E5%9B%BE-Planar-Graphs" class="headerlink" title="10.7 平面图 (Planar Graphs)"></a>10.7 平面图 (Planar Graphs)</h3><p><strong>1. 基础知识点</strong></p>
 <ul>
 <li><strong>定义：</strong> 如果一个图可以在平面上画出，且没有任何边相互交叉，则它是平面图。这种画法称为该图的平面表示。</li>
 <li><strong>应用拓展：</strong> 所有的地图表示都是平面图；电子电路通常也被表示为平面图。</li>
@@ -459,7 +433,7 @@
 <ul>
 <li><strong>区域 (Region)：</strong> 平面图中被边完全隔开的平面部分。分为有界区域 (Bounded region) 和无界区域 (Unbounded region)。<strong>注意：任何平面图都必定包含且仅包含 1 个无界区域。</strong></li>
 <li><strong>【例题 2】</strong> 计算给定平面图的区域数。PPT中展示了如何清点，例如某些图例分别被划分为 4 个和 6 个区域（包含最外围的无界区域）。</li>
-<li><strong>【定理 1】欧拉公式：</strong> 对于有 $e$ 条边、$v$ 个顶点的连通平面简单图，其区域数 $r$ 满足：**$r &#x3D; e - v + 2$**。</li>
+<li><strong>【定理 1】欧拉公式：</strong> 对于有 $e$ 条边、$v$ 个顶点的连通平面简单图，其区域数 $r$ 满足：**$r = e - v + 2$**。</li>
 <li><strong>欧拉公式的三大推论：</strong><ul>
 <li>推论 1：如果 $v \ge 3$，则边数 $e \le 3v - 6$。</li>
 <li>推论 2：任何连通平面简单图中，必定存在一个度数不超过 5 的顶点。</li>
@@ -478,7 +452,7 @@
 <li><strong>【定理 2】内容：</strong> 一个图是非平面图，当且仅当它包含一个同胚于 $K_{3,3}$（完全二分图）或 $K_5$（完全图）的子图。</li>
 </ul>
 <hr>
-<h3 id="10-8-图着色-Graph-Coloring"><a href="#10-8-图着色-Graph-Coloring" class="headerlink" title="10.8 图着色 (Graph Coloring)"></a>10.8 图着色 (Graph Coloring)</h3><p><strong>1. 基础知识与图的转化</strong></p>
+<h3 id="10-8-图着色-Graph-Coloring"><a href="#10-8-%E5%9B%BE%E7%9D%80%E8%89%B2-Graph-Coloring" class="headerlink" title="10.8 图着色 (Graph Coloring)"></a>10.8 图着色 (Graph Coloring)</h3><p><strong>1. 基础知识与图的转化</strong></p>
 <ul>
 <li><strong>地图着色问题：</strong> 探讨最少需要多少种颜色来给地图上色，使得任意两个相邻区域的颜色都不相同。</li>
 <li><strong>对偶图转化 (Dual Graph)：</strong> 这个地图着色问题可以转化为图论问题。<ul>
@@ -605,25 +579,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -637,17 +607,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

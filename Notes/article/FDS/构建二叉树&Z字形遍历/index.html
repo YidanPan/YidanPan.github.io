@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -390,11 +364,11 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS &amp; LeetCode</span></a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds-projects/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS 项目与作业</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
-      <a href="/Notes/category/cs/fds/">FDS &amp; LeetCode</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/fds-projects/">FDS 项目与作业</a><span aria-hidden="true">/</span>
       
       <span aria-current="page">构建二叉树&amp;Z字形遍历</span>
     </nav>
@@ -403,11 +377,11 @@
       <h1>构建二叉树&amp;Z字形遍历</h1>
       <span class="notes-source-path">FDS/构建二叉树&amp;Z字形遍历.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h1 id="题目-HW4-–-2026-5-28"><a href="#题目-HW4-–-2026-5-28" class="headerlink" title="题目(HW4) – 2026.5.28"></a>题目(HW4) – 2026.5.28</h1><p>Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences. And it is a simple standard routine to print the numbers in level-order. However, if you think the problem is too simple, then you are too naive. This time you are supposed to print the numbers in “zigzagging order” – that is, starting from the root, print the numbers level-by-level, alternating between left to right and right to left. For example, for the following tree you must output: 1 11 5 8 17 12 20 15.</p>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="题目-HW4-–-2026-5-28"><a href="#%E9%A2%98%E7%9B%AE-HW4-%E2%80%93-2026-5-28" class="headerlink" title="题目(HW4) – 2026.5.28"></a>题目(HW4) – 2026.5.28</h1><p>Suppose that all the keys in a binary tree are distinct positive integers. A unique binary tree can be determined by a given pair of postorder and inorder traversal sequences. And it is a simple standard routine to print the numbers in level-order. However, if you think the problem is too simple, then you are too naive. This time you are supposed to print the numbers in “zigzagging order” – that is, starting from the root, print the numbers level-by-level, alternating between left to right and right to left. For example, for the following tree you must output: 1 11 5 8 17 12 20 15.</p>
 <p><img src="https://images.ptausercontent.com/337cbfb0-a7b2-4500-9664-318e9ffc870e.jpg" srcset="/img/loading.gif" lazyload alt="zigzag.jpg"></p>
 <h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. For each case, the first line gives a positive integer N (≤30), the total number of nodes in the binary tree. The second line gives the inorder sequence and the third line gives the postorder sequence. All the numbers in a line are separated by a space.</p>
 <h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, print the zigzagging sequence of the tree in a line. All the numbers in a line must be separated by exactly one space, and there must be no extra space at the end of the line.</p>
-<h1 id="构建二叉树"><a href="#构建二叉树" class="headerlink" title="构建二叉树"></a>构建二叉树</h1><ul>
+<h1 id="构建二叉树"><a href="#%E6%9E%84%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91" class="headerlink" title="构建二叉树"></a>构建二叉树</h1><ul>
 <li>存储中序序列&amp;后序序列</li>
 <li>函数返回值应该是根节点</li>
 <li>后序序列确定根节点</li>
@@ -415,7 +389,7 @@
 <li>递归构建左右子树</li>
 <li>注意函数传入的值应该是这次要找的中序序列的左右值以及后序序列的左右边界值</li>
 </ul>
-<h1 id="Z字形遍历"><a href="#Z字形遍历" class="headerlink" title="Z字形遍历"></a>Z字形遍历</h1><ul>
+<h1 id="Z字形遍历"><a href="#Z%E5%AD%97%E5%BD%A2%E9%81%8D%E5%8E%86" class="headerlink" title="Z字形遍历"></a>Z字形遍历</h1><ul>
 <li>5.18第二次写的时候依然还是痛苦且依靠AI的</li>
 <li>本质其实就是层序遍历</li>
 <li>利用队列的结构实现层序遍历</li>
@@ -424,7 +398,7 @@
 <li>如果是要实现一维数组的反转，利用双指针去把头尾swap，然后一个–，一个++</li>
 <li>在拿到二维数组之后，遍历时只要确认层数是奇数还是偶数层，奇数层从后向前遍历，偶数层从头开始遍历，对应的变量范围不要搞错了。</li>
 </ul>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="c">#include&lt;stdio.h&gt;
+<h1 id="代码"><a href="#%E4%BB%A3%E7%A0%81" class="headerlink" title="代码"></a>代码</h1><pre><code class="c">#include&lt;stdio.h&gt;
 
 #include&lt;stdlib.h&gt;
 
@@ -440,11 +414,11 @@ int postorder[MAX]={-1};
 
 typedef struct Node{
 
-    int key;
+&nbsp; &nbsp; int key;
 
-    struct Node* left;
+&nbsp; &nbsp; struct Node* left;
 
-    struct Node* right;
+&nbsp; &nbsp; struct Node* right;
 
 }Node;//树的每一个节点
 
@@ -452,49 +426,49 @@ typedef struct Node{
 
 Node* BuildBST(int inl,int inr,int postl,int postr){//返回的是根节点
 
-    //找到递归出口
+&nbsp; &nbsp; //找到递归出口
 
-    if(inl&gt;inr||postl&gt;postr)return NULL;
+&nbsp; &nbsp; if(inl&gt;inr||postl&gt;postr)return NULL;
 
-    //初始化一个根节点
+&nbsp; &nbsp; //初始化一个根节点
 
-    Node* root=NULL;
+&nbsp; &nbsp; Node* root=NULL;
 
-    root=malloc(sizeof(Node));
+&nbsp; &nbsp; root=malloc(sizeof(Node));
 
-    root-&gt;key=postorder[postr];
+&nbsp; &nbsp; root-&gt;key=postorder[postr];
 
-    root-&gt;left=NULL;
+&nbsp; &nbsp; root-&gt;left=NULL;
 
-    root-&gt;right=NULL;
+&nbsp; &nbsp; root-&gt;right=NULL;
 
-    //在中序序列中划分左右子树，输出每个子树的节点数量
+&nbsp; &nbsp; //在中序序列中划分左右子树，输出每个子树的节点数量
 
-    int i;
+&nbsp; &nbsp; int i;
 
-    int temp=root-&gt;key;
+&nbsp; &nbsp; int temp=root-&gt;key;
 
-    for(i=inl;i&lt;=inr;i++){
+&nbsp; &nbsp; for(i=inl;i&lt;=inr;i++){
 
-        if(inorder[i]==temp){
+&nbsp; &nbsp; &nbsp; &nbsp; if(inorder[i]==temp){
 
-            break;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; break;
 
-        }
+&nbsp; &nbsp; &nbsp; &nbsp; }
 
-    }
+&nbsp; &nbsp; }
 
-    int num_left=i-inl;
+&nbsp; &nbsp; int num_left=i-inl;
 
-    //构建左右子树
+&nbsp; &nbsp; //构建左右子树
 
-    root-&gt;left=BuildBST(inl,i-1,postl,postl+num_left-1);
+&nbsp; &nbsp; root-&gt;left=BuildBST(inl,i-1,postl,postl+num_left-1);
 
-    root-&gt;right=BuildBST(i+1,inr,postl+num_left,postr-1);
+&nbsp; &nbsp; root-&gt;right=BuildBST(i+1,inr,postl+num_left,postr-1);
 
   
 
-    return root;
+&nbsp; &nbsp; return root;
 
 }
 
@@ -502,113 +476,113 @@ Node* BuildBST(int inl,int inr,int postl,int postr){//返回的是根节点
 
 void zigzag(Node* tree){//层序遍历（队列），遇到奇数层反转，偶数层正常输出
 
-    if(tree==NULL)return;
+&nbsp; &nbsp; if(tree==NULL)return;
 
-    int level[MAX][MAX]={0};
+&nbsp; &nbsp; int level[MAX][MAX]={0};
 
-    int layer_size[MAX]={0};
+&nbsp; &nbsp; int layer_size[MAX]={0};
 
-    int layer=1;
+&nbsp; &nbsp; int layer=1;
 
-    //初始化一个队列
+&nbsp; &nbsp; //初始化一个队列
 
-    Node* queue[MAX]={NULL};
+&nbsp; &nbsp; Node* queue[MAX]={NULL};
 
-    int front=1;
+&nbsp; &nbsp; int front=1;
 
-    int rear=1;
+&nbsp; &nbsp; int rear=1;
 
-    queue[rear++]=tree;
+&nbsp; &nbsp; queue[rear++]=tree;
 
   
 
-    //层序输出保存在二维数组中
+&nbsp; &nbsp; //层序输出保存在二维数组中
 
-    while(front&lt;rear){
+&nbsp; &nbsp; while(front&lt;rear){
 
-       int current_layer_size=rear-front;
+&nbsp; &nbsp; &nbsp; &nbsp;int current_layer_size=rear-front;
 
-       layer_size[layer]=current_layer_size;
+&nbsp; &nbsp; &nbsp; &nbsp;layer_size[layer]=current_layer_size;
 
-       int i;
+&nbsp; &nbsp; &nbsp; &nbsp;int i;
 
-       for(i=1;i&lt;=current_layer_size;i++){
+&nbsp; &nbsp; &nbsp; &nbsp;for(i=1;i&lt;=current_layer_size;i++){
 
-            Node* current=queue[front++];
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Node* current=queue[front++];
 
-            level[layer][i]=current-&gt;key;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; level[layer][i]=current-&gt;key;
 
-            if(current-&gt;left!=NULL){
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(current-&gt;left!=NULL){
 
-                queue[rear++]=current-&gt;left;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; queue[rear++]=current-&gt;left;
 
-            }
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
 
-            if(current-&gt;right!=NULL){
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(current-&gt;right!=NULL){
 
-                queue[rear++]=current-&gt;right;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; queue[rear++]=current-&gt;right;
 
-            }
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
 
-       }
+&nbsp; &nbsp; &nbsp; &nbsp;}
 
-       layer++;
+&nbsp; &nbsp; &nbsp; &nbsp;layer++;
 
-    }
+&nbsp; &nbsp; }
 
-    //按要求输出
+&nbsp; &nbsp; //按要求输出
 
-    int i=1;
+&nbsp; &nbsp; int i=1;
 
-    int first=1;
+&nbsp; &nbsp; int first=1;
 
-    for(i=1;i&lt;=layer-1;i++){
+&nbsp; &nbsp; for(i=1;i&lt;=layer-1;i++){
 
-        if(i%2==1){//奇数层反转
+&nbsp; &nbsp; &nbsp; &nbsp; if(i%2==1){//奇数层反转
 
-            int k=layer_size[i];
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int k=layer_size[i];
 
-            for(;k&gt;=1;k--){
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(;k&gt;=1;k--){
 
-                if(first==1){
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(first==1){
 
-                    printf(&quot;%d&quot;,level[i][k]);
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printf("%d",level[i][k]);
 
-                    first=0;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; first=0;
 
-                }else{
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }else{
 
-                    printf(&quot; %d&quot;,level[i][k]);
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printf(" %d",level[i][k]);
 
-                }
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
 
-            }        
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } &nbsp; &nbsp; &nbsp; &nbsp;
 
-        }else{
+&nbsp; &nbsp; &nbsp; &nbsp; }else{
 
-            int k;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int k;
 
-            for(k=1;k&lt;=layer_size[i];k++){
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for(k=1;k&lt;=layer_size[i];k++){
 
-                if(first==1){
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if(first==1){
 
-                    printf(&quot;%d&quot;,level[i][k]);
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printf("%d",level[i][k]);
 
-                    first=0;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; first=0;
 
-                }else{
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }else{
 
-                    printf(&quot; %d&quot;,level[i][k]);
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; printf(" %d",level[i][k]);
 
-                }
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
 
-            }
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }
 
-        }
+&nbsp; &nbsp; &nbsp; &nbsp; }
 
-    }
+&nbsp; &nbsp; }
 
-    printf(&quot;\n&quot;);
+&nbsp; &nbsp; printf("\n");
 
 }
 
@@ -616,35 +590,35 @@ void zigzag(Node* tree){//层序遍历（队列），遇到奇数层反转，偶
 
 int main(){
 
-    int n;
+&nbsp; &nbsp; int n;
 
-    scanf(&quot;%d&quot;,&amp;n);//总的节点数
+&nbsp; &nbsp; scanf("%d",&amp;n);//总的节点数
 
-    //输入中序和后序序列
+&nbsp; &nbsp; //输入中序和后序序列
 
-    int i=1;
+&nbsp; &nbsp; int i=1;
 
-    for(i=1;i&lt;=n;i++){
+&nbsp; &nbsp; for(i=1;i&lt;=n;i++){
 
-        scanf(&quot;%d&quot;,&amp;inorder[i]);
+&nbsp; &nbsp; &nbsp; &nbsp; scanf("%d",&amp;inorder[i]);
 
-    }
+&nbsp; &nbsp; }
 
-    for(i=1;i&lt;=n;i++){
+&nbsp; &nbsp; for(i=1;i&lt;=n;i++){
 
-        scanf(&quot;%d&quot;,&amp;postorder[i]);
+&nbsp; &nbsp; &nbsp; &nbsp; scanf("%d",&amp;postorder[i]);
 
-    }
+&nbsp; &nbsp; }
 
-    //根据中序和后序序列构建二叉搜索树
+&nbsp; &nbsp; //根据中序和后序序列构建二叉搜索树
 
-    Node* Tree=BuildBST(1,n,1,n);
+&nbsp; &nbsp; Node* Tree=BuildBST(1,n,1,n);
 
-    //z字形遍历二叉树
+&nbsp; &nbsp; //z字形遍历二叉树
 
-    zigzag(Tree);
+&nbsp; &nbsp; zigzag(Tree);
 
-    return 0;
+&nbsp; &nbsp; return 0;
 
 }
 </code></pre>
@@ -668,8 +642,8 @@ int main(){
     </section>
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
-      <a class="notes-article-pagination-link is-previous" href="/Notes/article/FDS/%E9%80%92%E5%BD%92(Recursion)/"><span>← Previous</span><strong>递归(Recursion)</strong></a>
-      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><span>Next →</span><strong>排序算法</strong></a>
+      <span></span>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/bonus2/"><span>Next →</span><strong>bonus2</strong></a>
     </nav>
     
   </article>
@@ -748,25 +722,21 @@ int main(){
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -780,17 +750,6 @@ int main(){
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

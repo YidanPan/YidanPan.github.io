@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -411,13 +385,13 @@
 <li>其中的<code>&lt;style&gt;</code>元素是用来css形式，用来控制网页的外观和布局。能够在html中写css代码。css是有选择器功能的。一般都是放在head中。style可以作为标签放在head中控制全局样式，也可以作为属性只单独控制个别的样式。</li>
 <li>html是框架硬装，css是软装可以实现颜色样式这类，js是把静态变成动态，能够动起来</li>
 <li>clear:both;是style中的属性，是不允许在浮动元素旁边，必须换到下一行</li>
-<li><code>&lt;label for=&quot;name&quot;&gt;用户名:&lt;/label&gt;</code> 效果为： <label for="name">用户名:</label> </li>
+<li><code>&lt;label for="name"&gt;用户名:&lt;/label&gt;</code> 效果为： <label for="name">用户名:</label> </li>
 <li><code>&lt;iframe&gt;</code> 是 HTML 中用来在当前网页中嵌入另一个网页（或网页内容）的标签。 这个实现了在一个页面中显示多个网页的功能。src属性表示嵌入的url地址（还可以嵌入图片和视频、地图链接、支付页面或者在线文档），height和width表示显示的大小和宽度。但有些时候目标网站可能会拒绝读取，防止一个网站偷取另一个网站的内容</li>
 <li>getelementgyld是查找当前网页中html元素，也是通过id属性来查找</li>
 <li>dot是访问对象中属性的作用或者方法调用的作用</li>
 </ul>
-<pre><code>&lt;iframe src=&quot;demo_iframe.htm&quot; name=&quot;iframe_a&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.runoob.com&quot; target=&quot;iframe_a&quot;&gt;RUNOOB.COM&lt;/a&gt;&lt;/p&gt;
+<pre><code>&lt;iframe src="demo_iframe.htm" name="iframe_a"&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href="https://www.runoob.com" target="iframe_a"&gt;RUNOOB.COM&lt;/a&gt;&lt;/p&gt;
 </code></pre>
 <p>这个是在点击链接之后直接在当前页面的而是在指定的 iframe 小窗口中打开。<code>name</code> 给 iframe 起一个名字，<code>target</code> 指定链接要打开到哪个名字的窗口。target翻译是目标，所以其实还蛮好理解的，打开目标网页</p>
 <h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><p>url是网页地址的意思，URL可以由字母组成，如”runoob.com”，或互联网协议（IP）地址： 192.68.20.50。大多数人进入网站使用网站域名来访问，因为 名字比数字更容易记住。<br>一个url的组成一般是协议+域名+端口+地址+参数<br>域名就是服务器的地址，可以理解为网站的名字，DNS解析就是收到这个域名解析为实际IP地址<br>服务器一个机器可以运行多个服务，就有多个端口，每个端口运行不同的服务<br>路径是绝对路径<br>传递参数一般可以作为攻击点注入，也是ctf最常见的方式</p>
@@ -518,25 +492,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -550,17 +520,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

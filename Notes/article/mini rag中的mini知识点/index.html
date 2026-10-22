@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -403,7 +377,7 @@
       <h1>mini rag中的mini知识点</h1>
       <span class="notes-source-path">mini rag中的mini知识点.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h1 id="RAG："><a href="#RAG：" class="headerlink" title="RAG："></a>RAG：</h1><p>名称意思是检索增强生成<br>实现内部的参数化知识和外部的非参数化知识结合。它的运作逻辑是在大模型生成文本之前先通过检索机制在外部知识库中动态获取相关信息，并将这些参考资料融合入生成过程。</p>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="RAG："><a href="#RAG%EF%BC%9A" class="headerlink" title="RAG："></a>RAG：</h1><p>名称意思是检索增强生成<br>实现内部的参数化知识和外部的非参数化知识结合。它的运作逻辑是在大模型生成文本之前先通过检索机制在外部知识库中动态获取相关信息，并将这些参考资料融合入生成过程。</p>
 <p>技术上：提示词工程-&gt;rag-&gt;微调<br>微调是指调整模型严格遵守某种独特的输出格式或者其他特定的格式，或者是将极其复杂的指令蒸馏进入模型中</p>
 <p>主要实现过程是：</p>
 <ul>
@@ -414,7 +388,7 @@
 <ul>
 <li>基础工具：<ul>
 <li>开发模型：langchain  LlamaIndex 等成熟框架</li>
-<li>记忆载体（向量数据库）：既有 <strong>Milvus</strong>、<strong>Pinecone</strong> 等适合大规模数据的方案，也有 <strong>FAISS</strong>、<strong>Chroma</strong> 等轻量级或本地化的选择  后期为了量化效果，还可以引入 <strong>RAGAS</strong> 或 <strong>TruLens</strong> 等自动化<strong>评估工具</strong>。</li>
+<li>记忆载体（向量数据库）：既有&nbsp;<strong>Milvus</strong>、<strong>Pinecone</strong>&nbsp;等适合大规模数据的方案，也有&nbsp;<strong>FAISS</strong>、<strong>Chroma</strong>&nbsp;等轻量级或本地化的选择  后期为了量化效果，还可以引入&nbsp;<strong>RAGAS</strong>&nbsp;或&nbsp;<strong>TruLens</strong>&nbsp;等自动化<strong>评估工具</strong>。</li>
 </ul>
 </li>
 <li>构建步骤：<ul>
@@ -425,7 +399,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="学习Embedding"><a href="#学习Embedding" class="headerlink" title="学习Embedding"></a>学习Embedding</h1><ul>
+<h1 id="学习Embedding"><a href="#%E5%AD%A6%E4%B9%A0Embedding" class="headerlink" title="学习Embedding"></a>学习Embedding</h1><ul>
 <li>理解embedding是什么：作用是能够把文本转换成可以进行比较的数学向量</li>
 <li>文件embed.py是学习成果文件：实现目标为从sentence-&gt;vector（向量）,比较两个句子语义相似度</li>
 <li>embedding dimension是什么：<br>  嵌入维度，具体说是一段文本经过Embedding 模型之后，被表示成的向量有多少个数字。同时，不同模型的 dimension 不一样。</li>
@@ -433,7 +407,7 @@
 <li><code>model.encode()</code>：<br>  <code>model.encode()</code> 就是让 Embedding 模型把文本转换成向量。encode翻译过来就是编码。<br>  model就是调用模型，encode就是编码，实际上就是实现了把输入的文本转换为数学向量表示。但encode作用是把文本通过神经网络映射为向量的</li>
 <li>同一个上下文中要使用同一个大模型：<br>  不同模型中的向量空间是不同的,无法比较</li>
 </ul>
-<h1 id="计算向量相似度"><a href="#计算向量相似度" class="headerlink" title="计算向量相似度"></a>计算向量相似度</h1><ul>
+<h1 id="计算向量相似度"><a href="#%E8%AE%A1%E7%AE%97%E5%90%91%E9%87%8F%E7%9B%B8%E4%BC%BC%E5%BA%A6" class="headerlink" title="计算向量相似度"></a>计算向量相似度</h1><ul>
 <li><code>numpy</code>：Python 中专门进行数值计算的库</li>
 <li>np.dot()是计算两个向量点积的值</li>
 <li>np.linalg.norm是计算一个向量的模<blockquote>
@@ -441,13 +415,13 @@
 </blockquote>
 </li>
 </ul>
-<h1 id="学习Chunking"><a href="#学习Chunking" class="headerlink" title="学习Chunking"></a>学习Chunking</h1><ul>
+<h1 id="学习Chunking"><a href="#%E5%AD%A6%E4%B9%A0Chunking" class="headerlink" title="学习Chunking"></a>学习Chunking</h1><ul>
 <li>中文是文本切分。作用是把一整个文档切分成一个一个的chunk，然后单独对每个chunk进行embedding</li>
 <li>chunk overlap：chunk可以有重叠。防止重要信息被切分在chunk边缘。但是也会导致切断单词或者段落，进一步需要根据自然语言的结构切分</li>
 <li>自然语言的结构：文档、段落、句子、单词、字母</li>
 <li>自然语言结构的划分方法（手搓版）：先按照段落划分，如果还是大于chunk—size，再按照句号进行句子划分。</li>
 </ul>
-<h1 id="学习FAISS"><a href="#学习FAISS" class="headerlink" title="学习FAISS"></a>学习FAISS</h1><ul>
+<h1 id="学习FAISS"><a href="#%E5%AD%A6%E4%B9%A0FAISS" class="headerlink" title="学习FAISS"></a>学习FAISS</h1><ul>
 <li>为何要引入FAISS：因为原来切分转换好的向量存储在embedding这个python变量中,但不能每次用户需要查询的时候都调用vector进行顺序遍历来计算相似度</li>
 <li>Facebook AI Similarity Search  词义解释：一个专门用来存储和搜索向量的索引。这是一个高效进行向量相似度搜索的库。通过问题在数据库中找最相似的向量</li>
 <li>针对向量相似度搜索进行了专门的高性能优化。比起手动进行for循环效率会高很多</li>
@@ -455,12 +429,12 @@
 <li>其他的搜索方式：IndexFlatIP、HNSW、IVF、PQ</li>
 <li>这个过程也就是retrieval中的一环。把用户问题通过Embedding转换成向量，通过FAISS存储最相关的向量索引返回。</li>
 </ul>
-<h1 id="接入-LLM"><a href="#接入-LLM" class="headerlink" title="接入 LLM"></a>接入 LLM</h1><ul>
+<h1 id="接入-LLM"><a href="#%E6%8E%A5%E5%85%A5-LLM" class="headerlink" title="接入 LLM"></a>接入 LLM</h1><ul>
 <li>计划先采用免费方案：install ollama和qwen来使用</li>
 <li>ollama：Ollama 是一个<strong>让你在自己电脑上本地运行大语言模型（LLM）的工具</strong>。它帮你下载、管理和运行 Llama、Qwen、DeepSeek、Gemma 等模型，不需要自己折腾复杂的推理环境。运行地点在本地电脑，是本地模拟运行llm的工具，可以自己选择模型，适合本地体验AI</li>
 </ul>
-<h1 id="引入Langchain"><a href="#引入Langchain" class="headerlink" title="引入Langchain"></a>引入Langchain</h1><ul>
-<li>创建虚拟环境：python -m venv .venv 单独在项目目录下创建一个.venv&#x2F;目录，这里单独安装该项目需要的python包。(.venv) PS C:\Users\admin\Desktop\mini_RAG&gt;出现这个样式说明已经进入了创建好的虚拟环境，接下来进行python的命令会优先在这个环境中执行。</li>
+<h1 id="引入Langchain"><a href="#%E5%BC%95%E5%85%A5Langchain" class="headerlink" title="引入Langchain"></a>引入Langchain</h1><ul>
+<li>创建虚拟环境：python -m venv .venv 单独在项目目录下创建一个.venv/目录，这里单独安装该项目需要的python包。(.venv) PS C:\Users\admin\Desktop\mini_RAG&gt;出现这个样式说明已经进入了创建好的虚拟环境，接下来进行python的命令会优先在这个环境中执行。</li>
 <li>激活虚拟环境：<code>.\.venv\Scripts\Activate.ps1</code></li>
 </ul>
 <h1 id="Conversation-RAG"><a href="#Conversation-RAG" class="headerlink" title="Conversation RAG"></a>Conversation RAG</h1><p>流程为：</p>
@@ -472,7 +446,7 @@
    ↓
 把问题改写成完整问题
 
-&quot;What are the main stages of RAG?&quot;
+"What are the main stages of RAG?"
    ↓
 Retriever
    ↓
@@ -487,12 +461,12 @@ RAG
 </li>
 <li><p>作用是用户体感上延迟更低，更早看到内容。LangChain 官方也把 streaming 的主要意义描述为实时反馈和改善长回答的交互体验。</p>
 </li>
-<li><p>区分invoke和stream：<br>  response &#x3D; llm.invoke(prompt)<br>  invoke中是把内容直接给llm，然后直接printresponse.content</p>
+<li><p>区分invoke和stream：<br>  response = llm.invoke(prompt)<br>  invoke中是把内容直接给llm，然后直接printresponse.content</p>
 <p>  llm.stream(prompt)<br>  stream返回的是一个迭代器，会不断产出 <code>AIMessageChunk</code>。</p>
 </li>
 <li><p>同步stream和异步stream（多人请求时候才会使用：astream(））</p>
 </li>
-<li><p>Token streaming&#x2F;Progress streaming:一个是流式显示模型内容，一个是流式显示系统执行过程</p>
+<li><p>Token streaming/Progress streaming:一个是流式显示模型内容，一个是流式显示系统执行过程</p>
 </li>
 </ul>
 <h1 id="Agentic-RAG"><a href="#Agentic-RAG" class="headerlink" title="Agentic RAG"></a>Agentic RAG</h1><ul>
@@ -512,7 +486,7 @@ RAG
 <li><strong><code>InMemorySaver</code></strong> 是 LangGraph 提供的一个内存型 checkpointer。它负责保存 Agent 的状态，比如当前对话里的 <code>messages</code>。相当于agent的短期会话记忆</li>
 <li><strong>Multi-tool Agent</strong>：一个任务中连续调用多个工具。实现关键是下一个 Tool 的调用参数，经常来自前一个 Tool 的结果。agent调用完一个工具，结果返回给agent，由agent整合信息继续判断是否需要进一步调用工具 </li>
 <li><strong>Agent Streaming</strong>：把 Agent 的决策、Tool 调用、Tool 返回和最终答案实时展示出来。区别普通streaming，只是llm把token一个个输出。agent streaming需要显示的是progress streaming</li>
-<li><strong>updates</strong>：可以看到agent执行到哪一步了。一般写成：stream_mode&#x3D;”updates”</li>
+<li><strong>updates</strong>：可以看到agent执行到哪一步了。一般写成：stream_mode=”updates”</li>
 <li>Custom Streaming：LangChain 支持 Tool 自己发送 <code>custom</code> stream event，通过 <code>get_stream_writer()</code> 输出自定义进度，获取一个向streaming通道发送信息的对象。Custom Streaming 就是让 Tool 自己在执行过程中发消息。</li>
 <li>进一步更新agent：当程序查找失败时候不直接退出，反而把失败信息返回给agent，再重新调用tool进行再次执行。当agent尝试失败后也agentic retry。当某条路径失败后换用另一条路径。</li>
 <li>Structured Tool Error：Tool 出错时，不返回一句随意文本，而是返回一个统一结构</li>
@@ -528,10 +502,10 @@ RAG
 <li>不需要的参数可以直接用下划线替代</li>
 <li>json.load(response)能把json格式转换为python数据结构</li>
 <li>from urllib.request import urlopen：发送HTTP请求的工具</li>
-<li><code>DATA_PATH.rglob(&quot;*&quot;)</code> :递归查找data目录下的所有文件</li>
-<li><code>sys</code> 是 Python 的<strong>标准库模块</strong>，主要负责让 Python 程序和“Python 解释器 &#x2F; 运行环境”打交道。<ul>
+<li><code>DATA_PATH.rglob("*")</code> :递归查找data目录下的所有文件</li>
+<li><code>sys</code> 是 Python 的<strong>标准库模块</strong>，主要负责让 Python 程序和“Python 解释器 / 运行环境”打交道。<ul>
 <li><code>sys.argv</code>：获取命令行参数</li>
-<li><code>sys.path</code>：查看&#x2F;修改 Python 查找模块的路径</li>
+<li><code>sys.path</code>：查看/修改 Python 查找模块的路径</li>
 <li><code>sys.exit()</code>：退出程序</li>
 <li><code>sys.stdin / sys.stdout / sys.stderr</code>：处理输入、正常输出、错误输出</li>
 <li><code>sys.version</code>：查看 Python 版本</li>
@@ -639,25 +613,21 @@ RAG
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -671,17 +641,6 @@ RAG
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

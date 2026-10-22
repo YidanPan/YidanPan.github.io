@@ -21,7 +21,7 @@
   
     <meta name="description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="生成树 · Notes">
+<meta property="og:title" content="生成树与最小生成树 · Notes">
 <meta property="og:url" content="https://yidanpan.github.io/Notes/article/math/Discrete%20Math/Chapter%2011/%E7%94%9F%E6%88%90%E6%A0%91/index.html">
 <meta property="og:site_name" content="Dan&#39;s Blog">
 <meta property="og:description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
@@ -37,7 +37,7 @@
   
   
   
-  <title>生成树 · Notes - Dan&#39;s Blog</title>
+  <title>生成树与最小生成树 · Notes - Dan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -338,7 +312,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="生成树 · Notes"></span>
+            <span id="subtitle" data-typed-text="生成树与最小生成树 · Notes"></span>
           
         </div>
 
@@ -396,15 +370,15 @@
       <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/">离散数学</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/math/discrete-math/chapter-11/">Chapter 11</a><span aria-hidden="true">/</span>
-      <span aria-current="page">生成树</span>
+      <span aria-current="page">生成树与最小生成树</span>
     </nav>
     <header class="notes-article-header">
       <span class="notes-category-kicker">数学</span>
-      <h1>生成树</h1>
+      <h1>生成树与最小生成树</h1>
       <span class="notes-source-path">math/Discrete Math/Chapter 11/生成树.md</span>
     </header>
     <div class="notes-article-content" id="notesArticleContent"><p>这份PPT（DM11.4-11.5）主要介绍了<strong>生成树（Spanning Trees）</strong>和<strong>最小生成树（Minimum Spanning Trees）</strong>的相关理论、构造算法及其实际应用。以下是详细的知识点、例题以及拓展总结：</p>
-<h3 id="1-生成树-Spanning-Trees-11-4节"><a href="#1-生成树-Spanning-Trees-11-4节" class="headerlink" title="1. 生成树 (Spanning Trees, 11.4节)"></a>1. 生成树 (Spanning Trees, 11.4节)</h3><p><strong>核心知识点：</strong></p>
+<h3 id="1-生成树-Spanning-Trees-11-4节"><a href="#1-%E7%94%9F%E6%88%90%E6%A0%91-Spanning-Trees-11-4%E8%8A%82" class="headerlink" title="1. 生成树 (Spanning Trees, 11.4节)"></a>1. 生成树 (Spanning Trees, 11.4节)</h3><p><strong>核心知识点：</strong></p>
 <ul>
 <li><strong>基本定义</strong>：设 $G$ 是一个简单图，$G$ 的生成树是 $G$ 的一个子图，并且这个子图是一棵<strong>包含 $G$ 中所有顶点</strong>的树。</li>
 <li>**连通性定理 (Theorem 1)**：一个简单图是连通的，当且仅当它拥有一棵生成树。</li>
@@ -413,7 +387,7 @@
 <li><strong>加边法</strong>：通过不断添加边来构建。最常用的两种系统化算法是<strong>深度优先搜索 (DFS)</strong> 和 **广度优先搜索 (BFS)**。</li>
 </ol>
 </li>
-<li>**深度优先搜索 (DFS &#x2F; Backtracking)**：也叫回溯<ul>
+<li>**深度优先搜索 (DFS / Backtracking)**：也叫回溯<ul>
 <li>任选一个顶点作为根，通过不断添加连接到新顶点的边来形成一条路径，直到无法继续。</li>
 <li>如果路径没有覆盖所有顶点，则<strong>回溯 (Backtracking)</strong> 到路径上的前一个顶点，寻找未访问的分支继续深入，重复此过程直至覆盖所有顶点。</li>
 </ul>
@@ -441,7 +415,7 @@
 </li>
 </ul>
 <hr>
-<h3 id="2-最小生成树-Minimum-Spanning-Trees-11-5节"><a href="#2-最小生成树-Minimum-Spanning-Trees-11-5节" class="headerlink" title="2. 最小生成树 (Minimum Spanning Trees, 11.5节)"></a>2. 最小生成树 (Minimum Spanning Trees, 11.5节)</h3><p><strong>核心知识点：</strong></p>
+<h3 id="2-最小生成树-Minimum-Spanning-Trees-11-5节"><a href="#2-%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91-Minimum-Spanning-Trees-11-5%E8%8A%82" class="headerlink" title="2. 最小生成树 (Minimum Spanning Trees, 11.5节)"></a>2. 最小生成树 (Minimum Spanning Trees, 11.5节)</h3><p><strong>核心知识点：</strong></p>
 <ul>
 <li><strong>基本定义</strong>：在连通的加权图中，最小生成树是一棵使得<strong>其所有边的权重之和尽可能小</strong>的生成树。</li>
 <li>**贪心算法 (Greedy Algorithms)**：构造最小生成树的算法通常是贪心算法，即在每一步都做出当前看似最优的选择（挑选权重最小的边）。这里介绍了两种算法。</li>
@@ -553,25 +527,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -585,17 +555,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

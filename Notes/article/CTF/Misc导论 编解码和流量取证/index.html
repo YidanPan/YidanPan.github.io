@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -404,7 +378,7 @@
       <span class="notes-source-path">CTF/Misc导论 编解码和流量取证.md</span>
     </header>
     <div class="notes-article-content" id="notesArticleContent"><p>misc就是一些杂项，包括隐写、取证、各种杂项</p>
-<h1 id="编解码基础"><a href="#编解码基础" class="headerlink" title="编解码基础"></a>编解码基础</h1><p>关于图片解码 可以使用指令strings &lt;文件名&gt;<br>一个非常常用的编解码工具：cyberchef<br>一些01串经过一些特定规则转换，计算机通过字符编码规则将01串转换为可见字符</p>
+<h1 id="编解码基础"><a href="#%E7%BC%96%E8%A7%A3%E7%A0%81%E5%9F%BA%E7%A1%80" class="headerlink" title="编解码基础"></a>编解码基础</h1><p>关于图片解码 可以使用指令strings &lt;文件名&gt;<br>一个非常常用的编解码工具：cyberchef<br>一些01串经过一些特定规则转换，计算机通过字符编码规则将01串转换为可见字符</p>
 <ul>
 <li>编解码：通过一些特定规则来加密解密</li>
 <li>加解密：通过加入一个key来加密</li>
@@ -427,36 +401,36 @@
 </ul>
 </li>
 </ul>
-<h2 id="base系列"><a href="#base系列" class="headerlink" title="base系列"></a>base系列</h2><p>01串跟01串转换</p>
+<h2 id="base系列"><a href="#base%E7%B3%BB%E5%88%97" class="headerlink" title="base系列"></a>base系列</h2><p>01串跟01串转换</p>
 <ul>
 <li>base16：十六进制来表示字节流</li>
-<li>base32：5bit一组，长度必须是5的倍数，不足用&#x3D;补齐</li>
+<li>base32：5bit一组，长度必须是5的倍数，不足用=补齐</li>
 <li>base64：6bit一组，按照字符表映射<br>字节流-&gt;整数-&gt; n进制-&gt;查表</li>
 </ul>
-<h1 id="流量取证"><a href="#流量取证" class="headerlink" title="流量取证"></a>流量取证</h1><p>通过网络分析在shack上找到目标的流量包，分析数据包来获得flag，有点暴力破解的意思，也挺ticky</p>
-<h3 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h3><p>最终传输的仍然是二进制数据<br>捕获这些数据就可以分析得到正在进行的通信内容<br>流量取证就是拿到这些数据包进行分析</p>
+<h1 id="流量取证"><a href="#%E6%B5%81%E9%87%8F%E5%8F%96%E8%AF%81" class="headerlink" title="流量取证"></a>流量取证</h1><p>通过网络分析在shack上找到目标的流量包，分析数据包来获得flag，有点暴力破解的意思，也挺ticky</p>
+<h3 id="计算机网络"><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C" class="headerlink" title="计算机网络"></a>计算机网络</h3><p>最终传输的仍然是二进制数据<br>捕获这些数据就可以分析得到正在进行的通信内容<br>流量取证就是拿到这些数据包进行分析</p>
 <p>网络流量传输有五层：应用层、表示层、会话层、<br>tcp三次握手、http协议、icmp协议（ping）<br>http和tcp基本都是连在一起的</p>
 <p>工具：</p>
 <ul>
 <li>wireshack：直接抓包拿到数据包 过滤器</li>
 </ul>
-<h3 id="HTTP流量分析"><a href="#HTTP流量分析" class="headerlink" title="HTTP流量分析"></a>HTTP流量分析</h3><p>protocol可以统计所有情况</p>
+<h3 id="HTTP流量分析"><a href="#HTTP%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90" class="headerlink" title="HTTP流量分析"></a>HTTP流量分析</h3><p>protocol可以统计所有情况</p>
 <p>http请求方法有GET、post等</p>
 <p>extension后缀</p>
-<h3 id="UDP协议分析"><a href="#UDP协议分析" class="headerlink" title="UDP协议分析"></a>UDP协议分析</h3><ul>
+<h3 id="UDP协议分析"><a href="#UDP%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90" class="headerlink" title="UDP协议分析"></a>UDP协议分析</h3><ul>
 <li>DNS：域名系统，通过dns查询到ip，然后发送请求，在浏览器端可以渲染出来</li>
 </ul>
-<h1 id="Lua"><a href="#Lua" class="headerlink" title="Lua"></a>Lua</h1><p><code>.lua</code> 文件就是 <strong>Lua 脚本语言的源代码文件</strong>。它本质上是普通文本，记录的是 Lua 代码，可以直接用文本编辑器查看和修改。Lua 因为体积小、速度快、易于嵌入，广泛用于游戏开发、软件扩展、自动化脚本以及 CTF 和逆向工程中。如果你在逆向一个程序时看到很多 <code>.lua</code> 文件，通常意味着程序把业务逻辑或脚本放在 Lua 中，而不是全部编译进 C&#x2F;C++ 可执行文件里。</p>
-<h1 id="Base64编码"><a href="#Base64编码" class="headerlink" title="Base64编码"></a>Base64编码</h1><p>base64只是一种编码规则，不是加密手段。它是负责把任意二进制字符串转化为可打印的64个字符。大小写的26个字母加上是个数字加上+ &#x2F;，共64个。还有一个特殊字符&#x3D;，它是当做补位符号，用来对齐的符号。<br>它是每6bit处理，但是一般转化为ASCII码是为8位，这种转化后如果不是6的倍数，就在后面补0凑成6的倍数，多余用&#x3D;补位。</p>
-<h1 id="计算机网络问题"><a href="#计算机网络问题" class="headerlink" title="计算机网络问题"></a>计算机网络问题</h1><h3 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h3><p>既然服务器永远是个扑克脸（既不报错，也不改变提示文字），黑客发出的恶意探测代码就像石沉大海，完全得不到任何<strong>视觉上</strong>的反馈。</p>
+<h1 id="Lua"><a href="#Lua" class="headerlink" title="Lua"></a>Lua</h1><p><code>.lua</code> 文件就是 <strong>Lua 脚本语言的源代码文件</strong>。它本质上是普通文本，记录的是 Lua 代码，可以直接用文本编辑器查看和修改。Lua 因为体积小、速度快、易于嵌入，广泛用于游戏开发、软件扩展、自动化脚本以及 CTF 和逆向工程中。如果你在逆向一个程序时看到很多 <code>.lua</code> 文件，通常意味着程序把业务逻辑或脚本放在 Lua 中，而不是全部编译进 C/C++ 可执行文件里。</p>
+<h1 id="Base64编码"><a href="#Base64%E7%BC%96%E7%A0%81" class="headerlink" title="Base64编码"></a>Base64编码</h1><p>base64只是一种编码规则，不是加密手段。它是负责把任意二进制字符串转化为可打印的64个字符。大小写的26个字母加上是个数字加上+ /，共64个。还有一个特殊字符=，它是当做补位符号，用来对齐的符号。<br>它是每6bit处理，但是一般转化为ASCII码是为8位，这种转化后如果不是6的倍数，就在后面补0凑成6的倍数，多余用=补位。</p>
+<h1 id="计算机网络问题"><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98" class="headerlink" title="计算机网络问题"></a>计算机网络问题</h1><h3 id="盲注"><a href="#%E7%9B%B2%E6%B3%A8" class="headerlink" title="盲注"></a>盲注</h3><p>既然服务器永远是个扑克脸（既不报错，也不改变提示文字），黑客发出的恶意探测代码就像石沉大海，完全得不到任何<strong>视觉上</strong>的反馈。</p>
 <p>在这个系统面前，黑客仿佛是个“盲人”，完全看不到数据库内部执行的结果，这就叫“盲注（Blind Injection）”。</p>
-<h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>在这个局限下，攻击者利用了数据库自带的休眠函数 <code>SLEEP(0.8)</code>，对数据库下达了一个带有条件判断（布尔值 True &#x2F; False）的指令。把 Payload 翻译成大白话，就是黑客在对数据库说：</p>
+<h3 id="时间盲注"><a href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>在这个局限下，攻击者利用了数据库自带的休眠函数 <code>SLEEP(0.8)</code>，对数据库下达了一个带有条件判断（布尔值 True / False）的指令。把 Payload 翻译成大白话，就是黑客在对数据库说：</p>
 <blockquote>
 <p>“数据库，如果你藏着的那个 Flag 的第一个字母 ASCII 码大于 79，你就给我去睡 0.8 秒钟，醒了再把网页发给我；如果不大于 79，你就立刻把网页发给我。”<br>这时候，<strong>“时间”就成了 True 和 False 的唯一载体：</strong></p>
 </blockquote>
 <ul>
-<li><strong>情况 A（假 &#x2F; False）：</strong> 如果字母 ASCII 码不大于 79，数据库立刻执行完毕。黑客看到网页瞬间（例如 0.05 秒）就加载出来了。虽然页面上还是那句熟悉的 <code>Invalid credentials</code>，但黑客通过时间立刻明白：<strong>刚才猜错了。</strong></li>
-<li><strong>情况 B（真 &#x2F; True）：</strong> 如果字母 ASCII 码真的大于 79，数据库就会乖乖去睡 0.8 秒。黑客发包后掐着秒表，发现等了将近 1 秒钟网页才弹出来。虽然页面上依旧写着 <code>Invalid credentials</code>，但黑客心里清楚：<strong>刚才猜对了。</strong></li>
+<li><strong>情况 A（假 / False）：</strong> 如果字母 ASCII 码不大于 79，数据库立刻执行完毕。黑客看到网页瞬间（例如 0.05 秒）就加载出来了。虽然页面上还是那句熟悉的 <code>Invalid credentials</code>，但黑客通过时间立刻明白：<strong>刚才猜错了。</strong></li>
+<li><strong>情况 B（真 / True）：</strong> 如果字母 ASCII 码真的大于 79，数据库就会乖乖去睡 0.8 秒。黑客发包后掐着秒表，发现等了将近 1 秒钟网页才弹出来。虽然页面上依旧写着 <code>Invalid credentials</code>，但黑客心里清楚：<strong>刚才猜对了。</strong></li>
 </ul>
 <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>SQL（Structured Query Language，结构化查询语言）是专门用于与关系型数据库进行“沟通”的标准编程语言。<br>SQL 的应用几乎涵盖了所有涉及数据存储的系统（如网站用户信息、银行账户明细、电商订单记录等）。它主要用于执行以下四种基本操作，在业界常被称为 CRUD：主要进行创建，读取，删除，更新操作。无论是 MySQL、PostgreSQL、SQL Server 还是 Oracle，它们都遵循基本的 SQL 标准。也就是一种指挥数据库做什么操作的指令语句。</p>
 <ul>
@@ -576,25 +550,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -608,17 +578,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

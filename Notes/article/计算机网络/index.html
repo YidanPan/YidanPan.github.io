@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -403,7 +377,7 @@
       <h1>计算机网络</h1>
       <span class="notes-source-path">计算机网络.md</span>
     </header>
-    <div class="notes-article-content" id="notesArticleContent"><h1 id="MAC地址-IP地址"><a href="#MAC地址-IP地址" class="headerlink" title="MAC地址 IP地址"></a>MAC地址 IP地址</h1><ul>
+    <div class="notes-article-content" id="notesArticleContent"><h1 id="MAC地址-IP地址"><a href="#MAC%E5%9C%B0%E5%9D%80-IP%E5%9C%B0%E5%9D%80" class="headerlink" title="MAC地址 IP地址"></a>MAC地址 IP地址</h1><ul>
 <li>mac地址是物理绝对地址，是收件地址，处于数据链路层中，是全球唯一的地址。表示网卡在网络中的绝对位置</li>
 <li>ip地址是网络局给的地址，是收件人，是在网络层中，网卡上需要配置好ip地址才能工作<ul>
 <li>ipv4：198.168.1.1  由四位0-255的数字构成，小数点隔开</li>
@@ -414,20 +388,20 @@
 <li>DHCP协议：能够动态分配IP地址。当设备连上网线，会自动向路由器发送DHCP协议请求分配IP地址。路由器通过dhcp回复报文发送回去。在一个局域网中一个ip地址也是唯一的。</li>
 <li>ARP协议：计算机a向计算机b发送信息，需要先通过arp协议发送给所有设备，只有计算机b能返回它的mac地址，a就会收到并缓存它的mac地址，然后通过网卡发送出去。</li>
 </ul>
-<h1 id="路由器-交换机"><a href="#路由器-交换机" class="headerlink" title="路由器 交换机"></a>路由器 交换机</h1><ul>
+<h1 id="路由器-交换机"><a href="#%E8%B7%AF%E7%94%B1%E5%99%A8-%E4%BA%A4%E6%8D%A2%E6%9C%BA" class="headerlink" title="路由器 交换机"></a>路由器 交换机</h1><ul>
 <li>交换机：把数据包发送到正确位置。交换机根据数据包中的mac地址找到对应的物理端口。一台交换机有很多个端口，他们都有自己的编号。</li>
 <li>计算机网卡通过网线连接到交换的网口上，就能确定一个物理端口。交换机每次通过查询mac地址表来查询对应端口，再从这个端口发送出去。</li>
 <li>每个数据包有两个mac地址。一个是发送方的mac地址，为源地址。还有一个接收方的mac地址，为目标mac</li>
 <li>路由器有两种接口：LAN口（多个）连接家庭网络设备。WAN口只有一个，用来接入运营商网络来接入因特网</li>
-<li>子网划分：IP和子网掩码取与，结果相同的是在同一子网之下，反之则不同。用1的数量表示掩码，如255.255.255.0&#x3D;24 用IP&#x2F;掩码来表示子网</li>
-<li>TCP&#x2F;IP协议规定不同子网不能够交流，得通过网关来转发。网关上有两个网卡，配置了两个IP地址。一台计算机发送数据包的时候先判断对方是否和自己在同一子网下，若是，则直接从网卡发出。反之，则把mac地址改为网关的mac地址发出，网关拿到数据后查询接收方是属于子网2，网关修改mac地址发出</li>
+<li>子网划分：IP和子网掩码取与，结果相同的是在同一子网之下，反之则不同。用1的数量表示掩码，如255.255.255.0=24 用IP/掩码来表示子网</li>
+<li>TCP/IP协议规定不同子网不能够交流，得通过网关来转发。网关上有两个网卡，配置了两个IP地址。一台计算机发送数据包的时候先判断对方是否和自己在同一子网下，若是，则直接从网卡发出。反之，则把mac地址改为网关的mac地址发出，网关拿到数据后查询接收方是属于子网2，网关修改mac地址发出</li>
 <li>路由：根据目标IP决定如何发送数据包。这是一种行为。</li>
 <li>SNAT（源地址转换技术）：路由器发送的时候改变IP地址</li>
 <li>TCP传输层协议：源端口和目标端口。SNAT就需要修改源端口和目标端口。UDP协议同理</li>
 <li>ICMP协议（常用来ping命令检测网络联通性）：IP地址+type code，无端口信息</li>
 <li>DNAT（目标地址转换）：作用是向内网转发请求</li>
 </ul>
-<h1 id="TCP协议-UDP协议"><a href="#TCP协议-UDP协议" class="headerlink" title="TCP协议 UDP协议"></a>TCP协议 UDP协议</h1><ul>
+<h1 id="TCP协议-UDP协议"><a href="#TCP%E5%8D%8F%E8%AE%AE-UDP%E5%8D%8F%E8%AE%AE" class="headerlink" title="TCP协议 UDP协议"></a>TCP协议 UDP协议</h1><ul>
 <li>两者均工作在传输层，负责程序间的数据传输</li>
 <li>TCP协议是基于连接，类比打电话，可以收到实时的反馈<ul>
 <li>三次握手：确认连接的过程。客户端向服务端发送连接请求（SYN包）-&gt;若对方同意则返回一包SYN+ACK包 -&gt; 我方确认后返回SYN包。<br>  本质上解决网络信道不可靠问题，在不可靠的信道上建立可靠的连接<br>  如果是两次握手，当客户端向服务端发送一次数据包，结果数据包1在网络中阻塞了，于是第二次发送了数据包2，接收成功返回SYN+ACK建立一次连接，这时数据包1成功到达服务端，服务器误以为是客户端再次发送连接请求，于是处于等待数据的阶段，这样两者的状态不一致。</li>
@@ -437,7 +411,7 @@
 </li>
 <li>UDP协议是基于非连接，类比写信，很多都是未知的</li>
 </ul>
-<h1 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h1><ul>
+<h1 id="DNS协议"><a href="#DNS%E5%8D%8F%E8%AE%AE" class="headerlink" title="DNS协议"></a>DNS协议</h1><ul>
 <li><p>访问一个网站最重要的就是访问这个网站的域名。但其实通过IP地址或者域名都是可以访问网站的。</p>
 </li>
 <li><p>域名是和IP地址一一对应的，是为了方便使用记忆。</p>
@@ -446,7 +420,7 @@
 <p>  浏览器知道对应IP地址后会构建HTTP协议数据包，通过HTTP协议最终获取需要的网页。浏览器为了方便快速查询，也会缓存一些域名对应的IP地址进行快速查询。</p>
 </li>
 </ul>
-<h1 id="SSH协议"><a href="#SSH协议" class="headerlink" title="SSH协议"></a>SSH协议</h1><ul>
+<h1 id="SSH协议"><a href="#SSH%E5%8D%8F%E8%AE%AE" class="headerlink" title="SSH协议"></a>SSH协议</h1><ul>
 <li>ssh是安全外壳协议，Secure Shell，是一种加密网络协议。最著名的例子就是用户通过该协议进行远程登录到计算机系统。</li>
 <li>SSH 使用非对称加密技术来保护客户端与服务器之间的连接安全。在非对称加密中，需要使用两种密钥：公钥和私钥。公钥用于加密数据，而私钥则用于解密数据。当您连接到 SSH 服务器时，服务器会将其公共密钥发送给客户端。客户端使用这个公共密钥来加密一个随机生成的会话密钥，然后将其返回给服务器。服务器则使用其私有密钥来解密会话密钥，从而建立安全连接。<br><img src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%221200%22%20height%3D%22675%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f6e9ed%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23d9c0c6%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20rx%3D%2236%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2270%22%20y%3D%2270%22%20width%3D%221060%22%20height%3D%22535%22%20rx%3D%2228%22%20fill%3D%22rgba(255%2C255%2C255%2C0.42)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.24)%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22176%22%20cy%3D%22180%22%20r%3D%2246%22%20fill%3D%22rgba(168%2C134%2C140%2C0.22)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22140%22%20width%3D%22630%22%20height%3D%2224%22%20rx%3D%2212%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.18)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22266%22%20y%3D%22184%22%20width%3D%22480%22%20height%3D%2218%22%20rx%3D%229%22%20fill%3D%22rgba(86%2C%2068%2C%2073%2C%200.12)%22%2F%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%22112%22%20y%3D%22288%22%20width%3D%22976%22%20height%3D%22238%22%20rx%3D%2222%22%20fill%3D%22rgba(255%2C255%2C255%2C0.72)%22%20stroke%3D%22rgba(168%2C134%2C140%2C0.18)%22%2F%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22398%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2238%22%20fill%3D%22%237d6368%22%3EObsidian%20image%20not%20found%3C%2Ftext%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%22600%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2226%22%20fill%3D%22%238c7277%22%3EPasted%20image%2020260828103754.png%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E" srcset="/img/loading.gif" lazyload alt="Pasted image 20260828103754.png"></li>
 </ul>
@@ -545,25 +519,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -577,17 +547,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

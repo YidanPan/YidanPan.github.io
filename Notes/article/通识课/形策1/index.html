@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -390,11 +364,11 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/general-education/general-education/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>通识课笔记</span></a>
+    <a class="notes-breadcrumb" href="/Notes/category/general-education/history-politics/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>形势政策与社会发展史</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/general-education/">通识课</a><span aria-hidden="true">/</span>
-      <a href="/Notes/category/general-education/general-education/">通识课笔记</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/general-education/history-politics/">形势政策与社会发展史</a><span aria-hidden="true">/</span>
       
       <span aria-current="page">形策1</span>
     </nav>
@@ -431,7 +405,7 @@
     </section>
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
-      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/%E5%8F%8C%E5%88%9B%E8%AF%BE%E7%A8%8B%E6%84%9F%E6%82%9F/"><span>← Previous</span><strong>双创课程感悟</strong></a>
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/%E7%A4%BE%E5%8F%91%E5%8F%B2%E5%B0%8F%E6%B5%8B/"><span>← Previous</span><strong>社发史小测</strong></a>
       <a class="notes-article-pagination-link is-next" href="/Notes/article/%E9%80%9A%E8%AF%86%E8%AF%BE/%E5%BD%A2%E7%AD%962/"><span>Next →</span><strong>形策2</strong></a>
     </nav>
     
@@ -511,25 +485,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -543,17 +513,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

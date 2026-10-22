@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -390,11 +364,11 @@
     
       <div class="notes-archive-container notes-article-shell">
   <article class="notes-article-page">
-    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS &amp; LeetCode</span></a>
+    <a class="notes-breadcrumb" href="/Notes/category/cs/fds/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>FDS 数据结构</span></a>
     <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
       <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
       <a href="/Notes/category/cs/">计算机专业课</a><span aria-hidden="true">/</span>
-      <a href="/Notes/category/cs/fds/">FDS &amp; LeetCode</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/cs/fds/">FDS 数据结构</a><span aria-hidden="true">/</span>
       
       <span aria-current="page">字符串函数</span>
     </nav>
@@ -404,23 +378,23 @@
       <span class="notes-source-path">FDS/字符串函数.md</span>
     </header>
     <div class="notes-article-content" id="notesArticleContent"><p>用字符串函数的标准库是include&lt;string.h&gt;</p>
-<h1 id="1-基础操作：长度与复制"><a href="#1-基础操作：长度与复制" class="headerlink" title="1.基础操作：长度与复制"></a>1.基础操作：长度与复制</h1><h2 id="strlen-s-——-获取字符串长度"><a href="#strlen-s-——-获取字符串长度" class="headerlink" title="strlen(s) —— 获取字符串长度"></a><code>strlen(s)</code> —— 获取字符串长度</h2><ul>
+<h1 id="1-基础操作：长度与复制"><a href="#1-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%9A%E9%95%BF%E5%BA%A6%E4%B8%8E%E5%A4%8D%E5%88%B6" class="headerlink" title="1.基础操作：长度与复制"></a>1.基础操作：长度与复制</h1><h2 id="strlen-s-——-获取字符串长度"><a href="#strlen-s-%E2%80%94%E2%80%94-%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6" class="headerlink" title="strlen(s) —— 获取字符串长度"></a><code>strlen(s)</code> —— 获取字符串长度</h2><ul>
 <li><p><strong>作用：</strong> 计算字符串的字符个数，<strong>不包括</strong>末尾的 <code>\0</code>。</p>
 </li>
 <li><p><strong>用法：</strong> <code>size_t len = strlen(str);</code></p>
 </li>
 <li><p><strong>例子：</strong></p>
 <blockquote>
-<p>[!note] C<br>&#96;&#96;&#96;c</p>
+<p>[!note] C<br>```c</p>
 </blockquote>
 </li>
 </ul>
 <blockquote>
-<p>char s[] &#x3D; “Hello”;<br>printf(“%zu”, strlen(s)); &#x2F;&#x2F; 输出 5</p>
+<p>char s[] = “Hello”;<br>printf(“%zu”, strlen(s)); // 输出 5</p>
 <pre><code>    
 </code></pre>
 </blockquote>
-<h2 id="strcpy-dest-src-——-字符串拷贝"><a href="#strcpy-dest-src-——-字符串拷贝" class="headerlink" title="strcpy(dest, src) —— 字符串拷贝"></a><code>strcpy(dest, src)</code> —— 字符串拷贝</h2><ul>
+<h2 id="strcpy-dest-src-——-字符串拷贝"><a href="#strcpy-dest-src-%E2%80%94%E2%80%94-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%B7%E8%B4%9D" class="headerlink" title="strcpy(dest, src) —— 字符串拷贝"></a><code>strcpy(dest, src)</code> —— 字符串拷贝</h2><ul>
 <li><p><strong>作用：</strong> 将 <code>src</code> 完整拷贝到 <code>dest</code> 中（包括 <code>\0</code>）。</p>
 </li>
 <li><p><strong>注意：</strong> <code>dest</code> 空间必须足够大，否则会溢出。</p>
@@ -431,16 +405,16 @@
 </ul>
 <blockquote>
 <p>[!note] e.g.</p>
-<pre><code class="c">    char src[] = &quot;Copy Me&quot;;
+<pre><code class="c">    char src[] = "Copy Me";
     char dest[20];
     strcpy(dest, src); 
 </code></pre>
 </blockquote>
-<h2 id="strncpy-dest-src-n-——-安全拷贝"><a href="#strncpy-dest-src-n-——-安全拷贝" class="headerlink" title="* strncpy(dest, src, n) —— 安全拷贝"></a><code>* strncpy(dest, src, n)</code> —— 安全拷贝</h2><ul>
+<h2 id="strncpy-dest-src-n-——-安全拷贝"><a href="#strncpy-dest-src-n-%E2%80%94%E2%80%94-%E5%AE%89%E5%85%A8%E6%8B%B7%E8%B4%9D" class="headerlink" title="* strncpy(dest, src, n) —— 安全拷贝"></a><code>* strncpy(dest, src, n)</code> —— 安全拷贝</h2><ul>
 <li><strong>作用：</strong> 最多拷贝 <code>n</code> 个字符。比 <code>strcpy</code> 更安全，防止溢出。</li>
 </ul>
 <hr>
-<h1 id="2-拼接与比较"><a href="#2-拼接与比较" class="headerlink" title="2. 拼接与比较"></a>2. 拼接与比较</h1><h2 id="strcat-dest-src-——-字符串拼接"><a href="#strcat-dest-src-——-字符串拼接" class="headerlink" title="strcat(dest, src) —— 字符串拼接"></a><code>strcat(dest, src)</code> —— 字符串拼接</h2><ul>
+<h1 id="2-拼接与比较"><a href="#2-%E6%8B%BC%E6%8E%A5%E4%B8%8E%E6%AF%94%E8%BE%83" class="headerlink" title="2. 拼接与比较"></a>2. 拼接与比较</h1><h2 id="strcat-dest-src-——-字符串拼接"><a href="#strcat-dest-src-%E2%80%94%E2%80%94-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5" class="headerlink" title="strcat(dest, src) —— 字符串拼接"></a><code>strcat(dest, src)</code> —— 字符串拼接</h2><ul>
 <li><p><strong>作用：</strong> 把 <code>src</code> 接到 <code>dest</code> 的末尾。</p>
 </li>
 <li><p><strong>用法：</strong> <code>dest</code> 必须有足够的剩余空间。</p>
@@ -448,24 +422,24 @@
 <li><p><strong>例子：</strong><br>  C</p>
 <blockquote>
 <p>[!note] e.g. </p>
-<pre><code class="c">    char s1[20] = &quot;High &quot;;
+<pre><code class="c">    char s1[20] = "High ";
 </code></pre>
 </blockquote>
 </li>
 </ul>
 <blockquote>
-<pre><code>char s2[] = &quot;Five&quot;;
-strcat(s1, s2); // s1 变为 &quot;High Five&quot;
+<pre><code>char s2[] = "Five";
+strcat(s1, s2); // s1 变为 "High Five"
 </code></pre>
 <pre><code>
 </code></pre>
 </blockquote>
-<h2 id="strcmp-s1-s2-——-字符串比较"><a href="#strcmp-s1-s2-——-字符串比较" class="headerlink" title="strcmp(s1, s2) —— 字符串比较"></a><code>strcmp(s1, s2)</code> —— 字符串比较</h2><ul>
+<h2 id="strcmp-s1-s2-——-字符串比较"><a href="#strcmp-s1-s2-%E2%80%94%E2%80%94-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83" class="headerlink" title="strcmp(s1, s2) —— 字符串比较"></a><code>strcmp(s1, s2)</code> —— 字符串比较</h2><ul>
 <li><p><strong>作用：</strong> 按照 ASCII 码逐个字符比较。</p>
 </li>
 <li><p><strong>返回值：</strong> </p>
 <ul>
-<li><p>&#x3D;&#x3D; <code>0</code>：相等</p>
+<li><p>== <code>0</code>：相等</p>
 </li>
 <li><p><code> &gt; 0</code>：s1 大于 s2</p>
 </li>
@@ -481,17 +455,17 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
 </ul>
 <blockquote>
 <p>[!note] e.g.</p>
-<pre><code class="c">    if (strcmp(op, &quot;Push&quot;) == 0) { /* 匹配成功 */ }
+<pre><code class="c">    if (strcmp(op, "Push") == 0) { /* 匹配成功 */ }
 </code></pre>
 </blockquote>
 <hr>
-<h1 id="3-查找与分割"><a href="#3-查找与分割" class="headerlink" title="3. 查找与分割"></a>3. 查找与分割</h1><h2 id="strchr-s-c-——-查找字符"><a href="#strchr-s-c-——-查找字符" class="headerlink" title="strchr(s, c) —— 查找字符"></a><code>strchr(s, c)</code> —— 查找字符</h2><ul>
+<h1 id="3-查找与分割"><a href="#3-%E6%9F%A5%E6%89%BE%E4%B8%8E%E5%88%86%E5%89%B2" class="headerlink" title="3. 查找与分割"></a>3. 查找与分割</h1><h2 id="strchr-s-c-——-查找字符"><a href="#strchr-s-c-%E2%80%94%E2%80%94-%E6%9F%A5%E6%89%BE%E5%AD%97%E7%AC%A6" class="headerlink" title="strchr(s, c) —— 查找字符"></a><code>strchr(s, c)</code> —— 查找字符</h2><ul>
 <li><p><strong>作用：</strong> 在字符串中查找字符 <code>c</code> 第一次出现的位置。</p>
 </li>
 <li><p><strong>返回：</strong> 返回指向该字符的指针，找不到则返回 <code>NULL</code>。</p>
 </li>
 </ul>
-<h2 id="strstr-haystack-needle-——-查找子串"><a href="#strstr-haystack-needle-——-查找子串" class="headerlink" title="strstr(haystack, needle) —— 查找子串"></a><code>strstr(haystack, needle)</code> —— 查找子串</h2><ul>
+<h2 id="strstr-haystack-needle-——-查找子串"><a href="#strstr-haystack-needle-%E2%80%94%E2%80%94-%E6%9F%A5%E6%89%BE%E5%AD%90%E4%B8%B2" class="headerlink" title="strstr(haystack, needle) —— 查找子串"></a><code>strstr(haystack, needle)</code> —— 查找子串</h2><ul>
 <li><p><strong>作用：</strong> 在一个长字符串中查找是否包含另一个短字符串。</p>
 </li>
 <li><p><strong>例子：</strong></p>
@@ -500,18 +474,18 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
 </ul>
 <blockquote>
 <p>[!note] e.g.</p>
-<pre><code class="c">    char *p = strstr(&quot;Hello World&quot;, &quot;World&quot;);
-    if(p) printf(&quot;找到了！位置在 %ld&quot;, p - str);
+<pre><code class="c">    char *p = strstr("Hello World", "World");
+    if(p) printf("找到了！位置在 %ld", p - str);
 </code></pre>
 </blockquote>
-<h2 id="strtok-s-delim-——-字符串分割"><a href="#strtok-s-delim-——-字符串分割" class="headerlink" title="strtok(s, delim) —— 字符串分割"></a><code>strtok(s, delim)</code> —— 字符串分割</h2><ul>
+<h2 id="strtok-s-delim-——-字符串分割"><a href="#strtok-s-delim-%E2%80%94%E2%80%94-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E5%89%B2" class="headerlink" title="strtok(s, delim) —— 字符串分割"></a><code>strtok(s, delim)</code> —— 字符串分割</h2><ul>
 <li><p><strong>作用：</strong> 根据分隔符（如空格、逗号）切分字符串。</p>
 </li>
 <li><p><strong>注意：</strong> 它是“有损”的，会修改原字符串（把分隔符换成 <code>\0</code>）。</p>
 </li>
 </ul>
 <hr>
-<h1 id="4-进阶：格式化处理（在-中）"><a href="#4-进阶：格式化处理（在-中）" class="headerlink" title="4. 进阶：格式化处理（在 &lt;stdio.h&gt; 中）"></a>4. 进阶：格式化处理（在 <code>&lt;stdio.h&gt;</code> 中）</h1><p>虽然不在 <code>string.h</code> 里，但这两个函数在处理字符串逻辑时极度常用：</p>
+<h1 id="4-进阶：格式化处理（在-中）"><a href="#4-%E8%BF%9B%E9%98%B6%EF%BC%9A%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%A4%84%E7%90%86%EF%BC%88%E5%9C%A8-%E4%B8%AD%EF%BC%89" class="headerlink" title="4. 进阶：格式化处理（在 <stdio.h> 中）"></a>4. 进阶：格式化处理（在 <code>&lt;stdio.h&gt;</code> 中）</h1><p>虽然不在 <code>string.h</code> 里，但这两个函数在处理字符串逻辑时极度常用：</p>
 <table>
 <thead>
 <tr>
@@ -523,16 +497,16 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
 <tbody><tr>
 <td><strong><code>sprintf</code></strong></td>
 <td>把各种类型“打印”到字符串里（拼接神器）</td>
-<td><code>sprintf(buf, &quot;%d-%d&quot;, year, month);</code></td>
+<td><code>sprintf(buf, "%d-%d", year, month);</code></td>
 </tr>
 <tr>
 <td><strong><code>sscanf</code></strong></td>
 <td>从字符串里“提取”变量（解析神器）</td>
-<td><code>sscanf(&quot;Push 10&quot;, &quot;%s %d&quot;, op, &amp;val);</code></td>
+<td><code>sscanf("Push 10", "%s %d", op, &amp;val);</code></td>
 </tr>
 </tbody></table>
 <hr>
-<h1 id="综合对比表"><a href="#综合对比表" class="headerlink" title="综合对比表"></a>综合对比表</h1><table>
+<h1 id="综合对比表"><a href="#%E7%BB%BC%E5%90%88%E5%AF%B9%E6%AF%94%E8%A1%A8" class="headerlink" title="综合对比表"></a>综合对比表</h1><table>
 <thead>
 <tr>
 <th><strong>函数名</strong></th>
@@ -572,7 +546,7 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
 <td>中</td>
 </tr>
 </tbody></table>
-<h3 id="💡-一个避坑小贴士"><a href="#💡-一个避坑小贴士" class="headerlink" title="💡 一个避坑小贴士"></a>💡 一个避坑小贴士</h3><p>在做你图中的那道题时，如果要清空字符串变量，最快的方法是： <code>str[0] = &#39;\0&#39;;</code> 这在逻辑上就相当于把字符串清空了，因为所有字符串函数遇到第一个 <code>\0</code> 就会停止。</p>
+<h3 id="💡-一个避坑小贴士"><a href="#%F0%9F%92%A1-%E4%B8%80%E4%B8%AA%E9%81%BF%E5%9D%91%E5%B0%8F%E8%B4%B4%E5%A3%AB" class="headerlink" title="💡 一个避坑小贴士"></a>💡 一个避坑小贴士</h3><p>在做你图中的那道题时，如果要清空字符串变量，最快的方法是： <code>str[0] = '\0';</code> 这在逻辑上就相当于把字符串清空了，因为所有字符串函数遇到第一个 <code>\0</code> 就会停止。</p>
 </div>
     <section class="notes-article-comments" aria-label="Comments">
       <script src="https://giscus.app/client.js"
@@ -593,8 +567,8 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
     </section>
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
-      <a class="notes-article-pagination-link is-previous" href="/Notes/article/FDS/leetcode/%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"><span>← Previous</span><strong>有效的括号</strong></a>
-      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/leetcode/%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/"><span>Next →</span><strong>最长有效括号</strong></a>
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/FDS/%E6%A0%91%20Tree/"><span>← Previous</span><strong>树 Tree</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/FDS/FDS%E5%A4%A7%E7%BA%B2/"><span>Next →</span><strong>FDS大纲</strong></a>
     </nav>
     
   </article>
@@ -673,25 +647,21 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -705,17 +675,6 @@ strcat(s1, s2); // s1 变为 &quot;High Five&quot;
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

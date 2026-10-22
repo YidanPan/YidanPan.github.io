@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -404,7 +378,7 @@
       <span class="notes-source-path">math/Discrete Math/Chapter 11/树的遍历.md</span>
     </header>
     <div class="notes-article-content" id="notesArticleContent"><p>这份PPT（DM11.3）主要讲解了<strong>树的遍历（Tree Traversal）</strong>算法，以及这些遍历算法在<strong>二叉表达式树</strong>中的具体应用。以下是所有知识点、例题及相关拓展的完整整理总结：</p>
-<h3 id="1-树的遍历算法-Traversal-Algorithms"><a href="#1-树的遍历算法-Traversal-Algorithms" class="headerlink" title="1. 树的遍历算法 (Traversal Algorithms)"></a>1. 树的遍历算法 (Traversal Algorithms)</h3><p><strong>核心知识点：</strong></p>
+<h3 id="1-树的遍历算法-Traversal-Algorithms"><a href="#1-%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95-Traversal-Algorithms" class="headerlink" title="1. 树的遍历算法 (Traversal Algorithms)"></a>1. 树的遍历算法 (Traversal Algorithms)</h3><p><strong>核心知识点：</strong></p>
 <ul>
 <li><strong>定义</strong>：遍历算法是一种系统性地访问有序有根树中<strong>每一个顶点</strong>的过程。</li>
 <li><strong>递归特性</strong>：树的遍历通常是<strong>递归</strong>定义的。</li>
@@ -444,7 +418,7 @@
 <p>这一节主要就是学会直接写出树的三种遍历结果，以及会从给定的两种遍历结果构建一棵树然后<br>出相应遍历结果。</p>
 </blockquote>
 <hr>
-<h3 id="2-二叉表达式树-Binary-Expression-Trees"><a href="#2-二叉表达式树-Binary-Expression-Trees" class="headerlink" title="2. 二叉表达式树 (Binary Expression Trees)"></a>2. 二叉表达式树 (Binary Expression Trees)</h3><p><strong>核心知识点：</strong></p>
+<h3 id="2-二叉表达式树-Binary-Expression-Trees"><a href="#2-%E4%BA%8C%E5%8F%89%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91-Binary-Expression-Trees" class="headerlink" title="2. 二叉表达式树 (Binary Expression Trees)"></a>2. 二叉表达式树 (Binary Expression Trees)</h3><p><strong>核心知识点：</strong></p>
 <ul>
 <li><strong>应用场景</strong>：复杂的表达式（如复合命题、集合的组合、算术表达式等）都可以使用有序有根树来表示。</li>
 <li><strong>表达式树的构成规则</strong>：<ol>
@@ -457,12 +431,12 @@
 <li>可以先写出中序表达式然后再去转化成前序后序</li>
 </ul>
 <hr>
-<h3 id="3-表达式的三种记法-Infix-Prefix-Postfix"><a href="#3-表达式的三种记法-Infix-Prefix-Postfix" class="headerlink" title="3. 表达式的三种记法 (Infix, Prefix, Postfix)"></a>3. 表达式的三种记法 (Infix, Prefix, Postfix)</h3><p><strong>核心知识点：</strong> 通过对二叉表达式树进行不同的遍历，可以得到表达式的三种不同书写形式：</p>
+<h3 id="3-表达式的三种记法-Infix-Prefix-Postfix"><a href="#3-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E8%AE%B0%E6%B3%95-Infix-Prefix-Postfix" class="headerlink" title="3. 表达式的三种记法 (Infix, Prefix, Postfix)"></a>3. 表达式的三种记法 (Infix, Prefix, Postfix)</h3><p><strong>核心知识点：</strong> 通过对二叉表达式树进行不同的遍历，可以得到表达式的三种不同书写形式：</p>
 <ul>
 <li><strong>中缀形式 (Infix Form)<strong>：通过对树进行</strong>中序遍历</strong>得到。这是带有完整括号的常规表达式书写习惯。</li>
-<li><strong>前缀形式 (Prefix Form &#x2F; 波兰表达式 Polish notation)<strong>：通过对树进行</strong>前序遍历</strong>得到。在计算机中，前缀表达式可以<strong>从右向左</strong>进行求值，无需括号。</li>
+<li><strong>前缀形式 (Prefix Form / 波兰表达式 Polish notation)<strong>：通过对树进行</strong>前序遍历</strong>得到。在计算机中，前缀表达式可以<strong>从右向左</strong>进行求值，无需括号。</li>
 <li>这里注意从右往左是计算顺序但是单独两个操作数的运算还是从左往右把操作符号放在中间计算</li>
-<li><strong>后缀形式 (Postfix Form &#x2F; 逆波兰表达式 Reverse Polish notation)<strong>：通过对树进行</strong>后序遍历</strong>得到。在计算机中，后缀表达式可以<strong>从左向右</strong>进行求值（利用栈结构非常方便），同样无需括号。</li>
+<li><strong>后缀形式 (Postfix Form / 逆波兰表达式 Reverse Polish notation)<strong>：通过对树进行</strong>后序遍历</strong>得到。在计算机中，后缀表达式可以<strong>从左向右</strong>进行求值（利用栈结构非常方便），同样无需括号。</li>
 </ul>
 <p><strong>例题与拓展：</strong></p>
 <ul>
@@ -470,7 +444,7 @@
 <li>给定一棵表达式树，包含运算符 <code>*</code>, <code>-</code>, <code>/</code>, <code>+</code> 以及操作数 8, 5, 4, 3, 2。</li>
 <li><strong>前缀形式</strong>（前序遍历）：<code>* - 8 5 / + 4 2 3</code>。求值策略是从右向左扫描。</li>
 <li><strong>后缀形式</strong>（后序遍历）：<code>8 5 - 4 2 + 3 / *</code>。求值策略是从左向右扫描。</li>
-<li>_拓展解析（后缀表达式求值过程）_：从左向右扫描 <code>8 5 - 4 2 + 3 / *</code>，遇到数字压入栈中，遇到运算符则取出栈顶两个数字运算。步骤为：8、5入栈 -&gt; 遇到 <code>-</code>，计算 8-5&#x3D;3 -&gt; 4、2入栈 -&gt; 遇到 <code>+</code>，计算 4+2&#x3D;6 -&gt; 3入栈 -&gt; 遇到 <code>/</code>，计算 6&#x2F;3&#x3D;2 -&gt; 最后栈中剩下前一步的 3 和 2，遇到 <code>*</code>，计算 3*2 &#x3D; 6。最终结果为 6。</li>
+<li>_拓展解析（后缀表达式求值过程）_：从左向右扫描 <code>8 5 - 4 2 + 3 / *</code>，遇到数字压入栈中，遇到运算符则取出栈顶两个数字运算。步骤为：8、5入栈 -&gt; 遇到 <code>-</code>，计算 8-5=3 -&gt; 4、2入栈 -&gt; 遇到 <code>+</code>，计算 4+2=6 -&gt; 3入栈 -&gt; 遇到 <code>/</code>，计算 6/3=2 -&gt; 最后栈中剩下前一步的 3 和 2，遇到 <code>*</code>，计算 3*2 = 6。最终结果为 6。</li>
 </ul>
 </li>
 </ul>
@@ -495,7 +469,7 @@
     </section>
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
-      <a class="notes-article-pagination-link is-previous" href="/Notes/article/math/Discrete%20Math/Chapter%2011/%E7%94%9F%E6%88%90%E6%A0%91/"><span>← Previous</span><strong>生成树</strong></a>
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/math/Discrete%20Math/Chapter%2011/%E7%94%9F%E6%88%90%E6%A0%91/"><span>← Previous</span><strong>生成树与最小生成树</strong></a>
       <a class="notes-article-pagination-link is-next" href="/Notes/article/math/Discrete%20Math/Chapter%2011/%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E7%82%B9/"><span>Next →</span><strong>树的基本知识点</strong></a>
     </nav>
     
@@ -575,25 +549,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -607,17 +577,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Blog</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -164,18 +164,6 @@
               <a class="nav-link" href="/Notes/" target="_self">
                 <i class="iconfont icon-edit-fill"></i>
                 <span>Notes</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/Friends/" target="_self">
-                <i class="iconfont icon-link-fill"></i>
-                <span>Friends</span>
               </a>
             </li>
           
@@ -226,7 +214,7 @@
               <a href="/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
-                  <span>Blog</span>
+                  <span>Home</span>
                 </div>
               </a>
             </div>
@@ -269,20 +257,6 @@
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-edit-fill"></i>
                   <span>Notes</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/Friends/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-link-fill"></i>
-                  <span>Friends</span>
                 </div>
               </a>
             </div>
@@ -404,26 +378,26 @@
       <span class="notes-source-path">CTF/Crypto导论.md</span>
     </header>
     <div class="notes-article-content" id="notesArticleContent"><p>crypto is not password<br>一切想要通过数学方法隐藏信息的行为都可以是crypto</p>
-<h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><p>明文和密文间的转换<br>shuffle:python随机数</p>
+<h1 id="古典密码"><a href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81" class="headerlink" title="古典密码"></a>古典密码</h1><p>明文和密文间的转换<br>shuffle:python随机数</p>
 <ul>
 <li>置换密码：把明文中的某些字符按照某种规则重新排列（通过排一张置换表）</li>
 <li>凯撒密码：将明文的每个字母按字母表循环移动固定位数得到密文（密钥：将字母移动几位）</li>
 <li>仿射密码：(x$*$key1+key2)mod 26</li>
 <li>频率分析：quipquip网站可以直接分析</li>
 </ul>
-<h1 id="多表替换：维吉尼亚密码"><a href="#多表替换：维吉尼亚密码" class="headerlink" title="多表替换：维吉尼亚密码"></a>多表替换：维吉尼亚密码</h1><p>密钥key的作用<br>密钥任意长，并且可以循环使用<br>第i个字符使用第i个密钥进行偏移（一定程度抵御了频率分析）</p>
+<h1 id="多表替换：维吉尼亚密码"><a href="#%E5%A4%9A%E8%A1%A8%E6%9B%BF%E6%8D%A2%EF%BC%9A%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81" class="headerlink" title="多表替换：维吉尼亚密码"></a>多表替换：维吉尼亚密码</h1><p>密钥key的作用<br>密钥任意长，并且可以循环使用<br>第i个字符使用第i个密钥进行偏移（一定程度抵御了频率分析）</p>
 <p>但也存在问题：其实还是固定的映射关系 是有循环可以找规律的</p>
-<h1 id="现代密码"><a href="#现代密码" class="headerlink" title="现代密码"></a>现代密码</h1><p>现代密码学比较依赖密钥而不是算法的秘密</p>
+<h1 id="现代密码"><a href="#%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81" class="headerlink" title="现代密码"></a>现代密码</h1><p>现代密码学比较依赖密钥而不是算法的秘密</p>
 <ul>
 <li>克尔克霍夫定律</li>
 <li>非对称加密：使用一对密钥（公钥和私钥）进行加密和解密</li>
 <li>对称加密：使用相同的密钥进行加密和解密</li>
 </ul>
-<h1 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h1><ul>
+<h1 id="对称加密"><a href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86" class="headerlink" title="对称加密"></a>对称加密</h1><ul>
 <li>分组密码：将明文分成固定大小的块进行加密 （AES、DES）<br>  明文块+密钥-&gt;加密算法（复杂的数学变换）-&gt;密钥流</li>
 <li>流密码：密钥-&gt;密钥流生成器-&gt;密钥流 （RC4、ChaCha20)   明文和密钥流进行异或得到密文</li>
 </ul>
-<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><ul>
+<h1 id="非对称加密"><a href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86" class="headerlink" title="非对称加密"></a>非对称加密</h1><ul>
 <li>公钥：别人通过公钥进行加密</li>
 <li>私钥：自己通过私钥进行解密</li>
 </ul>
@@ -433,13 +407,13 @@
 <ol>
 <li><p><strong>选素数：</strong> 随机选择两个非常大的质数 $p$ 和 $q$。</p>
 </li>
-<li><p><strong>算模数：</strong> 计算它们的乘积 $n &#x3D; p \times q$。这个 $n$ 的二进制长度就是我们常说的“密钥长度”（如 2048 位）。</p>
+<li><p><strong>算模数：</strong> 计算它们的乘积 $n = p \times q$。这个 $n$ 的二进制长度就是我们常说的“密钥长度”（如 2048 位）。</p>
 </li>
-<li><p><strong>算欧拉函数：</strong> 计算 $\phi(n) &#x3D; (p-1)(q-1)$。</p>
+<li><p><strong>算欧拉函数：</strong> 计算 $\phi(n) = (p-1)(q-1)$。</p>
 </li>
 <li><p><strong>选公钥指数 $e$：</strong> 挑选一个与 $\phi(n)$ 互质的数 $e$（通常固定使用 $65537$）。</p>
 </li>
-<li><p><strong>算私钥指数 $d$：</strong> 计算 $d$，使得 $(e \times d) \pmod{\phi(n)} &#x3D; 1$。</p>
+<li><p><strong>算私钥指数 $d$：</strong> 计算 $d$，使得 $(e \times d) \pmod{\phi(n)} = 1$。</p>
 </li>
 <li><p><strong>生成密钥对：</strong></p>
 <ul>
@@ -448,9 +422,9 @@
 </ul>
 </li>
 </ol>
-<h4 id="加密与解密过程"><a href="#加密与解密过程" class="headerlink" title="加密与解密过程"></a>加密与解密过程</h4><ul>
-<li><strong>加密：</strong> 假设明文为 $m$，密文为 $c$，加密公式为：$$c &#x3D; m^e \pmod n$$</li>
-<li><strong>解密：</strong> 收到密文 $c$ 后，使用私钥 $d$ 还原出明文 $m$：<br>  $$m &#x3D; c^d \pmod n$$</li>
+<h4 id="加密与解密过程"><a href="#%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86%E8%BF%87%E7%A8%8B" class="headerlink" title="加密与解密过程"></a>加密与解密过程</h4><ul>
+<li><strong>加密：</strong> 假设明文为 $m$，密文为 $c$，加密公式为：$$c = m^e \pmod n$$</li>
+<li><strong>解密：</strong> 收到密文 $c$ 后，使用私钥 $d$ 还原出明文 $m$：<br>  $$m = c^d \pmod n$$</li>
 </ul>
 </div>
     <section class="notes-article-comments" aria-label="Comments">
@@ -552,25 +526,21 @@
     };
   });
 
-  toc.innerHTML = items.map(function(item) {
-    return '<a class="notes-article-toc-link" data-level="' + item.level + '" href="#' + item.id + '">' + item.text + '</a>';
-  }).join('');
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
 
   var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
 
   function setActive(id) {
     links.forEach(function(link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
     });
-  }
-
-  function scrollToHeading(id) {
-    var target = document.getElementById(id);
-    if (!target) return;
-    var top = window.pageYOffset + target.getBoundingClientRect().top - headerOffset;
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-    history.replaceState(null, '', '#' + id);
-    setActive(id);
   }
 
   if ('IntersectionObserver' in window) {
@@ -584,17 +554,6 @@
     headings.forEach(function(heading) { observer.observe(heading); });
   }
 
-  links.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      scrollToHeading(link.getAttribute('href').slice(1));
-    });
-  });
-
-  if (window.location.hash) {
-    var initialId = window.location.hash.slice(1);
-    window.requestAnimationFrame(function() { scrollToHeading(initialId); });
-  }
 })();
 </script>
 

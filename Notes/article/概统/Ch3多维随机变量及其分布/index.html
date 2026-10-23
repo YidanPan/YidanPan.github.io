@@ -1,0 +1,2630 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Computer Science,Agents,Software,Blog,LLM">
+  
+    <meta name="description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ch3多维随机变量及其分布 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/%E6%A6%82%E7%BB%9F/Ch3%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Agents">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Ch3多维随机变量及其分布 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Ch3多维随机变量及其分布 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  
+
+<!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav" data-page-kind="notes">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/" data-nav-kind="home">Home</a>
+      <a class="nav-link" href="/About/" data-nav-kind="about">About</a>
+      <a class="nav-link" href="/Projects/" data-nav-kind="projects">Projects</a>
+      <a class="nav-link" href="/Notes/" data-nav-kind="notes">Notes</a>
+      <a class="nav-link" href="/archives/" data-nav-kind="blog" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/math/probability-statistics/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>概率论与数理统计</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/">数学</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/math/probability-statistics/">概率论与数理统计</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">Ch3多维随机变量及其分布</span>
+    </nav>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">数学</span>
+      <h1>Ch3多维随机变量及其分布</h1>
+      <span class="notes-source-path">概统/Ch3多维随机变量及其分布.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><blockquote class="obsidian-callout obsidian-callout-info">
+<div class="obsidian-callout-header">资料与整理说明</div>
+<ul>
+<li><strong>主线材料</strong>：课程 PPT《ch3new170901.pdf》</li>
+<li><strong>推导与理解参考</strong>：赵敏智老师《概率论与数理统计》2026-10-21 第 3—5 节课堂讲稿（PDF 语音转写）</li>
+<li><strong>辅助材料</strong>：黄炜、张帼奋、张奕、张彩伢《概率论与数理统计》第三章</li>
+<li><strong>整理原则</strong>：以 PPT 的教学顺序、符号和例题为主；用老师讲稿补充直观解释和推导思路；教材内容单独标注为“教材补充”。讲稿存在语音识别误差，遇到公式或符号疑似不准确时，以 PPT 原页和数学检验为准。</li>
+</ul>
+</blockquote>
+<h2 id="目录"><a href="#%E7%9B%AE%E5%BD%95" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E6%80%BB%E8%A7%88">第三章总览</a></li>
+<li><a href="#3-1-%E4%BA%8C%E5%85%83%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">3.1 二元离散型随机变量</a></li>
+<li><a href="#3-2-%E4%BA%8C%E5%85%83%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0">3.2 二元随机变量的分布函数</a></li>
+<li><a href="#3-3-%E4%BA%8C%E5%85%83%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F">3.3 二元连续型随机变量</a></li>
+<li><a href="#3-4-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7">3.4 随机变量的独立性</a></li>
+<li><a href="#3-5-%E4%BA%8C%E5%85%83%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83">3.5 二元随机变量函数的分布</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%85%AC%E5%BC%8F%E9%80%9F%E6%9F%A5">第三章公式速查</a></li>
+<li><a href="#%E6%95%B4%E7%AB%A0%E8%87%AA%E6%A3%80">整章自检</a></li>
+</ul>
+<hr>
+<h2 id="第三章总览"><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E6%80%BB%E8%A7%88" class="headerlink" title="第三章总览"></a>第三章总览</h2><p>本章从研究一个随机变量，扩展到同时研究两个或多个随机变量，核心是刻画它们各自的分布以及变量之间的关系。</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>小节</th>
+<th>核心问题</th>
+<th>主要工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3.1 二元离散型随机变量</td>
+<td>两个离散随机变量同时取值的概率如何表示？</td>
+<td>联合分布律、边际分布律、条件分布律</td>
+</tr>
+<tr>
+<td>3.2 二元随机变量的分布函数</td>
+<td>如何统一描述二元随机变量的分布？</td>
+<td>联合分布函数、边际分布函数、条件分布函数</td>
+</tr>
+<tr>
+<td>3.3 二元连续型随机变量</td>
+<td>如何用密度计算二维区域概率？</td>
+<td>联合密度、边际密度、条件密度、二元均匀/正态分布</td>
+</tr>
+<tr>
+<td>3.4 随机变量的独立性</td>
+<td>两个随机变量之间是否相互影响？</td>
+<td>分布函数、联合概率、联合密度的分解</td>
+</tr>
+<tr>
+<td>3.5 二元随机变量函数的分布</td>
+<td>已知 <span class="note-math-inline">\((X,Y)\)</span>，如何求 <span class="note-math-inline">\(X+Y\)</span>、最大值、最小值等的分布？</td>
+<td>等价事件、全概率公式、卷积、最大最小值分布</td>
+</tr>
+</tbody></table></div>
+<p>贯穿全章的三个概念：</p>
+<ul>
+<li><strong>联合（Joint）</strong>：同时描述 <span class="note-math-inline">\(X,Y\)</span>。</li>
+<li><strong>边际（Marginal）</strong>：只描述其中一个变量，把另一个变量“求和/积分掉”。</li>
+<li><strong>条件（Conditional）</strong>：已知一个变量的信息后，研究另一个变量的分布。</li>
+</ul>
+<hr>
+<h2 id="3-1-二元离散型随机变量"><a href="#3-1-%E4%BA%8C%E5%85%83%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F" class="headerlink" title="3.1 二元离散型随机变量"></a>3.1 二元离散型随机变量</h2><blockquote class="obsidian-callout obsidian-callout-abstract">
+<div class="obsidian-callout-header">本节导读</div><p><strong>PPT 顺序：</strong> 联合概率分布 → 边际分布 → 条件分布。<br>PPT 主要对应第 5—28 页；教材对应第 81—86 页。<br><strong>老师讲稿思路（约 00:07—00:11）：</strong> 先把每一对 <span class="note-math-inline">\((x_i,y_j)\)</span> 的同时概率列出来，再按行、按列求和得到边际分布；条件分布则是在联合概率的基础上除以条件事件的边际概率。</p>
+</blockquote>
+<h3 id="一、二元随机变量与联合分布律"><a href="#%E4%B8%80%E3%80%81%E4%BA%8C%E5%85%83%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8E%E8%81%94%E5%90%88%E5%88%86%E5%B8%83%E5%BE%8B" class="headerlink" title="一、二元随机变量与联合分布律"></a>一、二元随机变量与联合分布律</h3><h4 id="1-定义"><a href="#1-%E5%AE%9A%E4%B9%89" class="headerlink" title="1. 定义"></a>1. 定义</h4><p>设 <span class="note-math-inline">\(X=X(e)\)</span>、<span class="note-math-inline">\(Y=Y(e)\)</span> 是定义在同一样本空间上的两个随机变量。由它们组成的有序对 <span class="note-math-inline">\((X,Y)\)</span> 称为二元随机变量（Bivariate Random Variable）。</p>
+<p>若 <span class="note-math-inline">\((X,Y)\)</span> 的可能取值只有有限个或可列无限个，则称它为二元离散型随机变量。</p>
+<h4 id="2-联合概率分布律"><a href="#2-%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E5%BE%8B" class="headerlink" title="2. 联合概率分布律"></a>2. 联合概率分布律</h4><p>设 <span class="note-math-inline">\((X,Y)\)</span> 的可能取值为 <span class="note-math-inline">\((x_i,y_j)\)</span>，定义</p>
+<div class="note-math-display">\[\boxed{p_{ij}=P(X=x_i,Y=y_j).}\]</div>
+<p><span class="note-math-inline">\(p_{ij}\)</span> 描述 <span class="note-math-inline">\(X=x_i\)</span> 与 <span class="note-math-inline">\(Y=y_j\)</span> <strong>同时发生</strong>的概率。</p>
+<p>联合分布律满足：</p>
+<div class="note-math-display">\[\boxed{p_{ij}\ge0}\]</div>
+<p>以及</p>
+<div class="note-math-display">\[\boxed{\sum_i\sum_j p_{ij}=1.}\]</div>
+<p><strong>为什么总和等于 1？</strong></p>
+<p>所有可能的 <span class="note-math-inline">\((X,Y)=(x_i,y_j)\)</span> 取值事件互不相容，并且它们覆盖全部可能结果。根据互斥事件的概率加法公式，所有联合概率之和为 1。</p>
+<details class="notes-example"><summary>3. PPT 例 1.1：先取 <span class="note-math-inline">\(X\)</span>，再根据 <span class="note-math-inline">\(X\)</span> 取 <span class="note-math-inline">\(Y\)</span></summary><div class="notes-example-body">
+
+<p><span class="note-math-inline">\(X\)</span> 在 <span class="note-math-inline">\(1,2,3,4\)</span> 中等可能地取一个值；给定 <span class="note-math-inline">\(X=i\)</span>，<span class="note-math-inline">\(Y\)</span> 在 <span class="note-math-inline">\(1,\ldots,i\)</span> 中等可能地取一个整数。求联合分布律。</p>
+<p>因为 <span class="note-math-inline">\(X\)</span> 有 4 个等可能值，</p>
+<div class="note-math-display">\[P(X=i)=\frac14,\quad i=1,2,3,4.\]</div>
+<p>给定 <span class="note-math-inline">\(X=i\)</span> 后，<span class="note-math-inline">\(Y\)</span> 在 <span class="note-math-inline">\(i\)</span> 个整数中等可能取值，所以</p>
+<div class="note-math-display">\[P(Y=j\mid X=i)=\frac1i,\quad j=1,\ldots,i.\]</div>
+<p>利用乘法公式：</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X=i,Y=j)
+&amp;=P(X=i)P(Y=j\mid X=i)\\
+&amp;=\frac14\cdot\frac1i.
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{
+p_{ij}=\frac1{4i},\quad i=1,2,3,4,\quad 1\le j\le i.
+}\]</div>
+<p>若 <span class="note-math-inline">\(j&gt;i\)</span>，则 <span class="note-math-inline">\(p_{ij}=0\)</span>。例如：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right"><span class="note-math-inline">\(1/4\)</span></td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right"><span class="note-math-inline">\(1/8\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/8\)</span></td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="right"><span class="note-math-inline">\(1/12\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/12\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/12\)</span></td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="right"><span class="note-math-inline">\(1/16\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/16\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/16\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/16\)</span></td>
+</tr>
+</tbody></table></div>
+<blockquote class="obsidian-callout obsidian-callout-warning">
+<div class="obsidian-callout-header">易错点</div><p>不是所有格子都能取值。必须先看 <span class="note-math-inline">\((X,Y)\)</span> 的实际取值范围。</p>
+</blockquote>
+</div></details>
+<h3 id="二、边际分布律"><a href="#%E4%BA%8C%E3%80%81%E8%BE%B9%E9%99%85%E5%88%86%E5%B8%83%E5%BE%8B" class="headerlink" title="二、边际分布律"></a>二、边际分布律</h3><h4 id="1-定义与公式"><a href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%85%AC%E5%BC%8F" class="headerlink" title="1. 定义与公式"></a>1. 定义与公式</h4><p>已知联合分布律 <span class="note-math-inline">\(p_{ij}\)</span>，则 <span class="note-math-inline">\(X\)</span> 和 <span class="note-math-inline">\(Y\)</span> 的边际分布律分别为</p>
+<div class="note-math-display">\[\boxed{P(X=x_i)=p_{i\cdot}=\sum_j p_{ij}}\]</div>
+<div class="note-math-display">\[\boxed{P(Y=y_j)=p_{\cdot j}=\sum_i p_{ij}.}\]</div>
+<p>记号说明：</p>
+<ul>
+<li><span class="note-math-inline">\(p_{i\cdot}\)</span>：固定 <span class="note-math-inline">\(i\)</span>，把第 <span class="note-math-inline">\(i\)</span> 行所有 <span class="note-math-inline">\(j\)</span> 的概率相加。</li>
+<li><span class="note-math-inline">\(p_{\cdot j}\)</span>：固定 <span class="note-math-inline">\(j\)</span>，把第 <span class="note-math-inline">\(j\)</span> 列所有 <span class="note-math-inline">\(i\)</span> 的概率相加。</li>
+</ul>
+<h4 id="2-推导"><a href="#2-%E6%8E%A8%E5%AF%BC" class="headerlink" title="2. 推导"></a>2. 推导</h4><p>对固定的 <span class="note-math-inline">\(x_i\)</span>，事件 <span class="note-math-inline">\(\{X=x_i\}\)</span> 可以分解成互不相容事件的并：</p>
+<div class="note-math-display">\[\{X=x_i\}=\bigcup_j\{X=x_i,Y=y_j\}.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X=x_i)
+&amp;=\sum_jP(X=x_i,Y=y_j)\\
+&amp;=\sum_jp_{ij}.
+\end{aligned}\]</div>
+<p>同理，</p>
+<div class="note-math-display">\[P(Y=y_j)=\sum_iP(X=x_i,Y=y_j)=\sum_i p_{ij}.\]</div>
+<p>这就是“边际化”的本质：<strong>把另一个变量的所有可能情况加起来。</strong></p>
+<details class="notes-example"><summary>3. PPT 例 1.2：吸烟与呼吸道疾病</summary><div class="notes-example-body">
+
+<p>令 <span class="note-math-inline">\(X\)</span> 表示吸烟程度：</p>
+<ul>
+<li><span class="note-math-inline">\(X=0\)</span>：不吸烟，概率 <span class="note-math-inline">\(0.80\)</span>；</li>
+<li><span class="note-math-inline">\(X=1\)</span>：少量吸烟，概率 <span class="note-math-inline">\(0.15\)</span>；</li>
+<li><span class="note-math-inline">\(X=2\)</span>：吸烟较多，概率 <span class="note-math-inline">\(0.05\)</span>。</li>
+</ul>
+<p>令 <span class="note-math-inline">\(Y=1\)</span> 表示患病，<span class="note-math-inline">\(Y=0\)</span> 表示不患病。已知：</p>
+<div class="note-math-display">\[P(Y=1\mid X=0)=0.05,\]</div>
+<div class="note-math-display">\[P(Y=1\mid X=1)=0.25,\]</div>
+<div class="note-math-display">\[P(Y=1\mid X=2)=0.70.\]</div>
+<p>利用</p>
+<div class="note-math-display">\[P(X=i,Y=1)=P(X=i)P(Y=1\mid X=i),\]</div>
+<p>得到：</p>
+<div class="note-math-display">\[P(X=0,Y=1)=0.80\times0.05=0.04,\]</div>
+<div class="note-math-display">\[P(X=1,Y=1)=0.15\times0.25=0.0375,\]</div>
+<div class="note-math-display">\[P(X=2,Y=1)=0.05\times0.70=0.035.\]</div>
+<p>再用每行的边际概率减去患病概率，得到不患病概率。</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\)</span></th>
+<th align="right"><span class="note-math-inline">\(Y=0\)</span> 不患病</th>
+<th align="right"><span class="note-math-inline">\(Y=1\)</span> 患病</th>
+<th align="right"><span class="note-math-inline">\(P(X=i)\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td align="right">0.7600</td>
+<td align="right">0.0400</td>
+<td align="right">0.80</td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right">0.1125</td>
+<td align="right">0.0375</td>
+<td align="right">0.15</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">0.0150</td>
+<td align="right">0.0350</td>
+<td align="right">0.05</td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(P(Y=j)\)</span></td>
+<td align="right">0.8875</td>
+<td align="right">0.1125</td>
+<td align="right">1</td>
+</tr>
+</tbody></table></div>
+<p>求“患病人群中吸烟者的概率”：</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X\in\{1,2\}\mid Y=1)
+&amp;=\frac{P(X=1,Y=1)+P(X=2,Y=1)}{P(Y=1)}\\
+&amp;=\frac{0.0375+0.035}{0.1125}\\
+&amp;\approx\boxed{0.6444}.
+\end{aligned}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-warning">
+<div class="obsidian-callout-header">易错点</div><p>“吸烟者中患病的概率”与“患病者中吸烟的概率”是不同的条件概率，分母不同。</p>
+</blockquote>
+</div></details>
+<h3 id="三、条件分布律"><a href="#%E4%B8%89%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83%E5%BE%8B" class="headerlink" title="三、条件分布律"></a>三、条件分布律</h3><h4 id="1-定义与公式-1"><a href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%85%AC%E5%BC%8F-1" class="headerlink" title="1. 定义与公式"></a>1. 定义与公式</h4><p>若 <span class="note-math-inline">\(P(Y=y_j)=p_{\cdot j}&gt;0\)</span>，则给定 <span class="note-math-inline">\(Y=y_j\)</span> 时，<span class="note-math-inline">\(X\)</span> 的条件分布律为</p>
+<div class="note-math-display">\[\boxed{
+P(X=x_i\mid Y=y_j)
+=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}
+=\frac{p_{ij}}{p_{\cdot j}}.
+}\]</div>
+<p>同理，若 <span class="note-math-inline">\(P(X=x_i)=p_{i\cdot}&gt;0\)</span>，则</p>
+<div class="note-math-display">\[\boxed{
+P(Y=y_j\mid X=x_i)=\frac{p_{ij}}{p_{i\cdot}}.
+}\]</div>
+<h4 id="2-推导-1"><a href="#2-%E6%8E%A8%E5%AF%BC-1" class="headerlink" title="2. 推导"></a>2. 推导</h4><p>从条件概率定义出发：</p>
+<div class="note-math-display">\[P(A\mid B)=\frac{P(A\cap B)}{P(B)},\quad P(B)&gt;0.\]</div>
+<p>令 <span class="note-math-inline">\(A=\{X=x_i\}\)</span>、<span class="note-math-inline">\(B=\{Y=y_j\}\)</span>，便得到第一个公式。交换 <span class="note-math-inline">\(X,Y\)</span> 得到第二个公式。</p>
+<h4 id="3-条件分布为什么仍是一个分布律？"><a href="#3-%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E5%88%86%E5%B8%83%E5%BE%8B%EF%BC%9F" class="headerlink" title="3. 条件分布为什么仍是一个分布律？"></a>3. 条件分布为什么仍是一个分布律？</h4><p>固定 <span class="note-math-inline">\(y_j\)</span> 后，</p>
+<div class="note-math-display">\[P(X=x_i\mid Y=y_j)\ge0.\]</div>
+<p>并且</p>
+<div class="note-math-display">\[\begin{aligned}
+\sum_iP(X=x_i\mid Y=y_j)
+&amp;=\sum_i\frac{p_{ij}}{p_{\cdot j}}\\
+&amp;=\frac{\sum_i p_{ij}}{p_{\cdot j}}\\
+&amp;=1.
+\end{aligned}\]</div>
+<p>所以条件概率满足分布律的非负性与归一化要求。</p>
+<details class="notes-example"><summary>4. PPT 例 1.3：求未知概率及条件分布</summary><div class="notes-example-body">
+
+<p>联合分布表：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right"><span class="note-math-inline">\(-1\)</span></th>
+<th align="right">0</th>
+<th align="right">1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right"><span class="note-math-inline">\(a\)</span></td>
+<td align="right">0.2</td>
+<td align="right">0.2</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">0.1</td>
+<td align="right">0.1</td>
+<td align="right"><span class="note-math-inline">\(b\)</span></td>
+</tr>
+</tbody></table></div>
+<p>已知</p>
+<div class="note-math-display">\[P(Y\le0\mid X&lt;2)=0.5.\]</div>
+<p>因为 <span class="note-math-inline">\(X&lt;2\)</span> 意味着 <span class="note-math-inline">\(X=1\)</span>，所以</p>
+<div class="note-math-display">\[0.5=\frac{a+0.2}{a+0.4}.\]</div>
+<p>解得</p>
+<div class="note-math-display">\[a=0.\]</div>
+<p>所有联合概率之和为 1：</p>
+<div class="note-math-display">\[a+b+0.6=1,\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{a=0,\quad b=0.4.}\]</div>
+<p>接着求 <span class="note-math-inline">\(Y\mid X=2\)</span>。因为</p>
+<div class="note-math-display">\[P(X=2)=0.1+0.1+0.4=0.6,\]</div>
+<p>所以</p>
+<div class="note-math-display">\[P(Y=-1\mid X=2)=\frac{0.1}{0.6}=\frac16,\]</div>
+<div class="note-math-display">\[P(Y=0\mid X=2)=\frac{0.1}{0.6}=\frac16,\]</div>
+<div class="note-math-display">\[P(Y=1\mid X=2)=\frac{0.4}{0.6}=\frac23.\]</div>
+<p>若已知 <span class="note-math-inline">\(X+Y=2\)</span>，只有 <span class="note-math-inline">\((X,Y)=(1,1)\)</span> 与 <span class="note-math-inline">\((2,0)\)</span> 两种情况：</p>
+<div class="note-math-display">\[P(X+Y=2)=0.2+0.1=0.3.\]</div>
+<p>于是</p>
+<div class="note-math-display">\[P(X=1\mid X+Y=2)=\frac{0.2}{0.3}=\frac23,\]</div>
+<div class="note-math-display">\[P(X=2\mid X+Y=2)=\frac{0.1}{0.3}=\frac13.\]</div>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">解题模板</div><p>先求条件事件的概率作为分母，再找同时满足目标条件的联合概率作为分子。</p>
+</blockquote>
+</div></details>
+<details class="notes-example"><summary>5. PPT 例 1.4：抽球，不放回与放回的区别</summary><div class="notes-example-body">
+
+<p>盒中有 3 只黑球、2 只红球、1 只白球，抽取 2 球。<span class="note-math-inline">\(X\)</span> 为黑球数，<span class="note-math-inline">\(Y\)</span> 为红球数。</p>
+<h5 id="不放回抽样"><a href="#%E4%B8%8D%E6%94%BE%E5%9B%9E%E6%8A%BD%E6%A0%B7" class="headerlink" title="不放回抽样"></a>不放回抽样</h5><p>共有 <span class="note-math-inline">\(\binom62=15\)</span> 种等可能的两球组合。联合分布律为：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right">0</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right"><span class="note-math-inline">\(P(X=i)\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td align="right">0</td>
+<td align="right"><span class="note-math-inline">\(2/15\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/15\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/5\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right"><span class="note-math-inline">\(3/15\)</span></td>
+<td align="right"><span class="note-math-inline">\(6/15\)</span></td>
+<td align="right">0</td>
+<td align="right"><span class="note-math-inline">\(3/5\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right"><span class="note-math-inline">\(3/15\)</span></td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right"><span class="note-math-inline">\(1/5\)</span></td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(P(Y=j)\)</span></td>
+<td align="right"><span class="note-math-inline">\(6/15\)</span></td>
+<td align="right"><span class="note-math-inline">\(8/15\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/15\)</span></td>
+<td align="right">1</td>
+</tr>
+</tbody></table></div>
+<p>例如，<span class="note-math-inline">\(X=1,Y=1\)</span> 意味着一黑一红，有 <span class="note-math-inline">\(3\times2=6\)</span> 种组合，所以概率为 <span class="note-math-inline">\(6/15\)</span>。</p>
+<p>给定 <span class="note-math-inline">\(X=1\)</span>，有</p>
+<div class="note-math-display">\[P(Y=0\mid X=1)=\frac{3/15}{9/15}=\frac13,\]</div>
+<div class="note-math-display">\[P(Y=1\mid X=1)=\frac{6/15}{9/15}=\frac23.\]</div>
+<h5 id="放回抽样"><a href="#%E6%94%BE%E5%9B%9E%E6%8A%BD%E6%A0%B7" class="headerlink" title="放回抽样"></a>放回抽样</h5><p>每次抽球后放回。联合分布律为：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right">0</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right"><span class="note-math-inline">\(P(X=i)\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td align="right"><span class="note-math-inline">\(1/36\)</span></td>
+<td align="right"><span class="note-math-inline">\(4/36\)</span></td>
+<td align="right"><span class="note-math-inline">\(4/36\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/4\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td align="right"><span class="note-math-inline">\(6/36\)</span></td>
+<td align="right"><span class="note-math-inline">\(12/36\)</span></td>
+<td align="right">0</td>
+<td align="right"><span class="note-math-inline">\(1/2\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right"><span class="note-math-inline">\(9/36\)</span></td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right"><span class="note-math-inline">\(1/4\)</span></td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(P(Y=j)\)</span></td>
+<td align="right"><span class="note-math-inline">\(16/36\)</span></td>
+<td align="right"><span class="note-math-inline">\(16/36\)</span></td>
+<td align="right"><span class="note-math-inline">\(4/36\)</span></td>
+<td align="right">1</td>
+</tr>
+</tbody></table></div>
+<p>给定 <span class="note-math-inline">\(Y=0\)</span>，即没有红球：</p>
+<div class="note-math-display">\[P(X=0\mid Y=0)=\frac{1/36}{16/36}=\frac1{16},\]</div>
+<div class="note-math-display">\[P(X=1\mid Y=0)=\frac6{16},\qquad
+P(X=2\mid Y=0)=\frac9{16}.\]</div>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">对比</div><p>抽样机制不同，联合分布律也不同；列出联合概率时要先明确是否放回。</p>
+</blockquote>
+</div></details>
+<details class="notes-example"><summary>6. PPT 例 1.5：射击直到命中两次</summary><div class="notes-example-body">
+
+<p>每次射击命中概率为 <span class="note-math-inline">\(p\)</span>，未命中概率 <span class="note-math-inline">\(q=1-p\)</span>。<span class="note-math-inline">\(X\)</span> 为首次命中时的射击次数，<span class="note-math-inline">\(Y\)</span> 为第二次命中时的总射击次数。</p>
+<p>若 <span class="note-math-inline">\(Y=n\)</span>，<span class="note-math-inline">\(X=m\)</span>，则前 <span class="note-math-inline">\(m-1\)</span> 次未命中、第 <span class="note-math-inline">\(m\)</span> 次命中；从第 <span class="note-math-inline">\(m+1\)</span> 到第 <span class="note-math-inline">\(n-1\)</span> 次未命中、第 <span class="note-math-inline">\(n\)</span> 次命中。因此</p>
+<div class="note-math-display">\[\boxed{P(X=m,Y=n)=p^2q^{n-2},\quad n&gt;m\ge1.}\]</div>
+<p>边际分布：</p>
+<div class="note-math-display">\[P(X=m)=\sum_{n=m+1}^{\infty}p^2q^{n-2}
+=pq^{m-1},\quad m\ge1.\]</div>
+<div class="note-math-display">\[P(Y=n)=\sum_{m=1}^{n-1}p^2q^{n-2}
+=(n-1)p^2q^{n-2},\quad n\ge2.\]</div>
+<p>条件分布：</p>
+<div class="note-math-display">\[\boxed{P(Y=n\mid X=m)=pq^{n-m-1},\quad n=m+1,m+2,\ldots}\]</div>
+<div class="note-math-display">\[\boxed{P(X=m\mid Y=n)=\frac1{n-1},\quad m=1,\ldots,n-1.}\]</div>
+<p>第二个结论说明：已知第二次命中发生在第 <span class="note-math-inline">\(n\)</span> 次时，第一次命中可能出现在前 <span class="note-math-inline">\(n-1\)</span> 次中的任何一次，而且这些位置等可能。</p>
+</div></details>
+<h3 id="四、教材补充：3-1"><a href="#%E5%9B%9B%E3%80%81%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BC%9A3-1" class="headerlink" title="四、教材补充：3.1"></a>四、教材补充：3.1</h3><details class="notes-example"><summary>补充 1：7 个球中抽 3 次，不放回</summary><div class="notes-example-body">
+
+<p>袋中有 4 个白球、1 个红球、2 个黑球。抽 3 次不放回，<span class="note-math-inline">\(X\)</span> 为白球数，<span class="note-math-inline">\(Y\)</span> 为红球数。</p>
+<p>黑球数必为 <span class="note-math-inline">\(3-i-j\)</span>，因此</p>
+<div class="note-math-display">\[\boxed{
+P(X=i,Y=j)=
+\frac{\binom4i\binom1j\binom2{3-i-j}}{\binom73}
+}\]</div>
+<p>其中组合数下标必须合法；不满足球数范围的组合概率为 0。</p>
+<p>这个公式来自超几何计数：分母是从 7 球中选 3 球的总组合数，分子是分别选出 <span class="note-math-inline">\(i\)</span> 个白球、<span class="note-math-inline">\(j\)</span> 个红球、<span class="note-math-inline">\(3-i-j\)</span> 个黑球的组合数。</p>
+</div></details>
+<details class="notes-example"><summary>补充 2：泊松乘客中途下车（Poisson thinning）</summary><div class="notes-example-body">
+
+<p>乘客总数 <span class="note-math-inline">\(X\sim P(\lambda)\)</span>，每位乘客独立地以概率 <span class="note-math-inline">\(p\)</span> 在中途下车。令 <span class="note-math-inline">\(Y\)</span> 为中途下车人数。</p>
+<p>给定 <span class="note-math-inline">\(X=m\)</span>，有</p>
+<div class="note-math-display">\[Y\mid X=m\sim B(m,p),\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X=m,Y=n)
+&amp;=P(X=m)P(Y=n\mid X=m)\\
+&amp;=e^{-\lambda}\frac{\lambda^m}{m!}
+\binom mn p^n(1-p)^{m-n}.
+\end{aligned}\]</div>
+<p>对 <span class="note-math-inline">\(m\ge n\)</span> 求和可得</p>
+<div class="note-math-display">\[\boxed{Y\sim P(\lambda p).}\]</div>
+<p>而给定 <span class="note-math-inline">\(Y=n\)</span>，剩下未中途下车的乘客数 <span class="note-math-inline">\(X-Y\)</span> 服从 <span class="note-math-inline">\(P(\lambda(1-p))\)</span>，因此</p>
+<div class="note-math-display">\[\boxed{X\mid Y=n\ \overset{d}= n+P(\lambda(1-p)).}\]</div>
+</div></details>
+<details class="notes-example"><summary>补充 3：排列彩票的两次中奖时间</summary><div class="notes-example-body">
+
+<p>每期中奖概率 <span class="note-math-inline">\(p=1/100\)</span>，令 <span class="note-math-inline">\(X\)</span> 为第一次中奖期数，<span class="note-math-inline">\(Y\)</span> 为第二次中奖期数。对 <span class="note-math-inline">\(1\le m&lt;n\)</span>，</p>
+<div class="note-math-display">\[P(X=m,Y=n)=p^2(1-p)^{n-2}.\]</div>
+<p>给定 <span class="note-math-inline">\(Y=n\)</span>，有</p>
+<div class="note-math-display">\[\boxed{P(X=m\mid Y=n)=\frac1{n-1},\quad m=1,\ldots,n-1.}\]</div>
+<hr>
+</div></details>
+<h2 id="3-2-二元随机变量的分布函数"><a href="#3-2-%E4%BA%8C%E5%85%83%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" class="headerlink" title="3.2 二元随机变量的分布函数"></a>3.2 二元随机变量的分布函数</h2><blockquote class="obsidian-callout obsidian-callout-abstract">
+<div class="obsidian-callout-header">本节导读</div><p><strong>PPT 顺序：</strong> 联合分布函数及性质 → 边际分布函数 → 条件分布函数。<br>PPT 主要对应第 30—36 页；教材对应第 87—90 页。<br><strong>老师讲稿思路（约 00:11—00:16）：</strong> <span class="note-math-inline">\(F(x,y)\)</span> 是随机点落在 <span class="note-math-inline">\((x,y)\)</span> 左下方区域的概率；把另一个坐标放到 <span class="note-math-inline">\(+\infty\)</span>，就不再限制那个变量，从而得到边际分布函数。连续型变量在单点上的概率为零时，条件分布要通过越来越薄的邻域取极限来理解。</p>
+</blockquote>
+<h3 id="一、联合分布函数"><a href="#%E4%B8%80%E3%80%81%E8%81%94%E5%90%88%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" class="headerlink" title="一、联合分布函数"></a>一、联合分布函数</h3><h4 id="1-定义-1"><a href="#1-%E5%AE%9A%E4%B9%89-1" class="headerlink" title="1. 定义"></a>1. 定义</h4><p>对于任意实数 <span class="note-math-inline">\(x,y\)</span>，定义</p>
+<div class="note-math-display">\[\boxed{F(x,y)=P(X\le x,Y\le y).}\]</div>
+<p>它表示随机点 <span class="note-math-inline">\((X,Y)\)</span> 落入左下区域 <span class="note-math-inline">\((-\infty,x]\times(-\infty,y]\)</span> 的概率。</p>
+<h4 id="2-主要性质"><a href="#2-%E4%B8%BB%E8%A6%81%E6%80%A7%E8%B4%A8" class="headerlink" title="2. 主要性质"></a>2. 主要性质</h4><ol>
+<li><p><strong>单调不减：</strong> 固定 <span class="note-math-inline">\(y\)</span>，<span class="note-math-inline">\(F(x,y)\)</span> 关于 <span class="note-math-inline">\(x\)</span> 单调不减；固定 <span class="note-math-inline">\(x\)</span>，关于 <span class="note-math-inline">\(y\)</span> 单调不减。</p>
+</li>
+<li><p><strong>取值范围：</strong></p>
+<div class="note-math-display">\[0\le F(x,y)\le1.\]</div>
+</li>
+<li><p><strong>极限：</strong></p>
+<div class="note-math-display">\[F(+\infty,+\infty)=1,\]</div>
+<div class="note-math-display">\[F(-\infty,y)=F(x,-\infty)=0.\]</div>
+</li>
+<li><p><strong>右连续：</strong> 对 <span class="note-math-inline">\(x\)</span> 或 <span class="note-math-inline">\(y\)</span> 单独改变时，分布函数具有相应的一维右连续性。</p>
+</li>
+<li><p><strong>矩形增量非负：</strong> 若 <span class="note-math-inline">\(x_1&lt;x_2,\ y_1&lt;y_2\)</span>，则</p>
+<div class="note-math-display">\[\boxed{
+ \begin{aligned}
+ &amp;P(x_1&lt;X\le x_2,\ y_1&lt;Y\le y_2)\\
+ &amp;=F(x_2,y_2)-F(x_1,y_2)\\
+ &amp;\quad-F(x_2,y_1)+F(x_1,y_1)\ge0.
+ \end{aligned}}\]</div>
+</li>
+</ol>
+<h4 id="3-矩形概率公式的推导"><a href="#3-%E7%9F%A9%E5%BD%A2%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F%E7%9A%84%E6%8E%A8%E5%AF%BC" class="headerlink" title="3. 矩形概率公式的推导"></a>3. 矩形概率公式的推导</h4><p>先从 <span class="note-math-inline">\(F(x_2,y_2)\)</span> 中减去 <span class="note-math-inline">\(F(x_1,y_2)\)</span>，得到</p>
+<div class="note-math-display">\[P(x_1&lt;X\le x_2,\ Y\le y_2).\]</div>
+<p>再减去 <span class="note-math-inline">\(F(x_2,y_1)-F(x_1,y_1)\)</span>，就去掉了其中 <span class="note-math-inline">\(Y\le y_1\)</span> 的部分，只留下 <span class="note-math-inline">\(y_1&lt;Y\le y_2\)</span>。因此得到矩形增量公式。</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">直观理解</div><p>用大矩形概率减去左侧与下侧不需要的部分，再加回被重复减去的左下角。</p>
+</blockquote>
+<h3 id="二、边际分布函数"><a href="#%E4%BA%8C%E3%80%81%E8%BE%B9%E9%99%85%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" class="headerlink" title="二、边际分布函数"></a>二、边际分布函数</h3><h4 id="1-定义与公式-2"><a href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%85%AC%E5%BC%8F-2" class="headerlink" title="1. 定义与公式"></a>1. 定义与公式</h4><p>联合分布函数为 <span class="note-math-inline">\(F(x,y)\)</span>，则</p>
+<div class="note-math-display">\[\boxed{F_X(x)=P(X\le x)=F(x,+\infty)}\]</div>
+<div class="note-math-display">\[\boxed{F_Y(y)=P(Y\le y)=F(+\infty,y).}\]</div>
+<h4 id="2-推导-2"><a href="#2-%E6%8E%A8%E5%AF%BC-2" class="headerlink" title="2. 推导"></a>2. 推导</h4><div class="note-math-display">\[\begin{aligned}
+F_X(x)
+&amp;=P(X\le x)\\
+&amp;=P(X\le x,Y&lt;+\infty)\\
+&amp;=\lim_{y\to+\infty}F(x,y).
+\end{aligned}\]</div>
+<p>同理可得 <span class="note-math-inline">\(F_Y(y)=\lim_{x\to+\infty}F(x,y)\)</span>。</p>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">记忆</div><p>求 <span class="note-math-inline">\(X\)</span> 的边际分布函数，就让另一个变量 <span class="note-math-inline">\(Y\)</span> 趋于 <span class="note-math-inline">\(+\infty\)</span>；反之亦然。</p>
+</blockquote>
+<h3 id="三、条件分布函数"><a href="#%E4%B8%89%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" class="headerlink" title="三、条件分布函数"></a>三、条件分布函数</h3><h4 id="1-离散情形"><a href="#1-%E7%A6%BB%E6%95%A3%E6%83%85%E5%BD%A2" class="headerlink" title="1. 离散情形"></a>1. 离散情形</h4><p>如果 <span class="note-math-inline">\(P(X=x_i)&gt;0\)</span>，则</p>
+<div class="note-math-display">\[\boxed{F_{Y\mid X}(y\mid x_i)=P(Y\le y\mid X=x_i).}\]</div>
+<p>它是一维条件分布函数，计算时使用条件概率公式。</p>
+<h4 id="2-连续情形：为什么需要极限？"><a href="#2-%E8%BF%9E%E7%BB%AD%E6%83%85%E5%BD%A2%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%9E%81%E9%99%90%EF%BC%9F" class="headerlink" title="2. 连续情形：为什么需要极限？"></a>2. 连续情形：为什么需要极限？</h4><p>连续型随机变量通常满足 <span class="note-math-inline">\(P(X=x)=0\)</span>，不能直接使用以 <span class="note-math-inline">\(P(X=x)\)</span> 为分母的条件概率公式。</p>
+<p>因此，PPT 和教材用越来越窄的区间逼近 <span class="note-math-inline">\(X=x\)</span>：</p>
+<div class="note-math-display">\[\boxed{
+F_{Y\mid X}(y\mid x)
+=\lim_{\Delta x\to0^+}
+P(Y\le y\mid x&lt;X\le x+\Delta x).
+}\]</div>
+<p>写成概率之比：</p>
+<div class="note-math-display">\[F_{Y\mid X}(y\mid x)
+=\lim_{\Delta x\to0^+}
+\frac{P(Y\le y,\ x&lt;X\le x+\Delta x)}
+{P(x&lt;X\le x+\Delta x)}.\]</div>
+<p>当相关极限存在且边际密度 <span class="note-math-inline">\(f_X(x)&gt;0\)</span> 时，后续可以由这个定义推导出条件密度公式。</p>
+<details class="notes-example"><summary>教材补充：无放回抽样的条件分布函数</summary><div class="notes-example-body">
+
+<p>教材用同一袋球中连续两次抽取的指示变量举例。若总共有 <span class="note-math-inline">\(n=a+b\)</span> 个球，其中 <span class="note-math-inline">\(a\)</span> 个白球、<span class="note-math-inline">\(b\)</span> 个红球，令 <span class="note-math-inline">\(X_i\)</span> 表示第 <span class="note-math-inline">\(i\)</span> 次是否抽到白球（白球记 1，红球记 0），不放回抽样时</p>
+<div class="note-math-display">\[P(X_i=1)=\frac an,\qquad P(X_i=0)=\frac bn.\]</div>
+<p>对于 <span class="note-math-inline">\(i\ne j\)</span>，</p>
+<div class="note-math-display">\[P(X_i=1,X_j=1)=\frac{a(a-1)}{n(n-1)},\]</div>
+<div class="note-math-display">\[P(X_i=1,X_j=0)=P(X_i=0,X_j=1)=\frac{ab}{n(n-1)},\]</div>
+<div class="note-math-display">\[P(X_i=0,X_j=0)=\frac{b(b-1)}{n(n-1)}.\]</div>
+<p>例如</p>
+<div class="note-math-display">\[P(X_j=1\mid X_i=1)=\frac{a-1}{n-1}.\]</div>
+<p>第一次已抽到白球后，剩余白球比例变为 <span class="note-math-inline">\((a-1)/(n-1)\)</span>，这与原来的 <span class="note-math-inline">\(a/n\)</span> 一般不同。</p>
+<hr>
+</div></details>
+<h2 id="3-3-二元连续型随机变量"><a href="#3-3-%E4%BA%8C%E5%85%83%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F" class="headerlink" title="3.3 二元连续型随机变量"></a>3.3 二元连续型随机变量</h2><blockquote class="obsidian-callout obsidian-callout-abstract">
+<div class="obsidian-callout-header">本节导读</div><p><strong>PPT 顺序：</strong> 联合密度 → 边际密度 → 条件密度 → 二元均匀分布 → 二元正态分布。<br>PPT 主要对应第 37—71 页；教材对应第 91—100 页。<br><strong>老师讲稿思路（约 00:16—00:25、01:02—01:19）：</strong> 把联合密度看成曲面高度：全平面下的体积为 1，某个区域上方的体积就是概率；边际密度可以理解为固定一个坐标后，对另一坐标积分得到的截面积；条件密度则是把联合密度除以给定变量的边际密度。</p>
+</blockquote>
+<h3 id="一、联合概率密度函数"><a href="#%E4%B8%80%E3%80%81%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0" class="headerlink" title="一、联合概率密度函数"></a>一、联合概率密度函数</h3><h4 id="1-定义-2"><a href="#1-%E5%AE%9A%E4%B9%89-2" class="headerlink" title="1. 定义"></a>1. 定义</h4><p>若存在非负函数 <span class="note-math-inline">\(f(x,y)\)</span>，使得对任意 <span class="note-math-inline">\(x,y\)</span>，</p>
+<div class="note-math-display">\[\boxed{
+F(x,y)=\int_{-\infty}^{x}\int_{-\infty}^{y}
+f(u,v)\,dv\,du,
+}\]</div>
+<p>则称 <span class="note-math-inline">\((X,Y)\)</span> 为二元连续型随机变量，<span class="note-math-inline">\(f(x,y)\)</span> 为联合概率密度函数（Joint Probability Density Function）。</p>
+<h4 id="2-联合密度的性质"><a href="#2-%E8%81%94%E5%90%88%E5%AF%86%E5%BA%A6%E7%9A%84%E6%80%A7%E8%B4%A8" class="headerlink" title="2. 联合密度的性质"></a>2. 联合密度的性质</h4><div class="note-math-display">\[\boxed{f(x,y)\ge0}\]</div>
+<div class="note-math-display">\[\boxed{
+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}
+f(x,y)\,dx\,dy=1
+}\]</div>
+<p>对平面区域 <span class="note-math-inline">\(G\)</span>，</p>
+<div class="note-math-display">\[\boxed{
+P((X,Y)\in G)=\iint_G f(x,y)\,dx\,dy.
+}\]</div>
+<p>在联合分布函数具有相应偏导数、密度连续的点上，</p>
+<div class="note-math-display">\[\boxed{f(x,y)=\frac{\partial^2F(x,y)}{\partial x\,\partial y}.}\]</div>
+<h4 id="3-为什么区域概率是二重积分？"><a href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8C%BA%E5%9F%9F%E6%A6%82%E7%8E%87%E6%98%AF%E4%BA%8C%E9%87%8D%E7%A7%AF%E5%88%86%EF%BC%9F" class="headerlink" title="3. 为什么区域概率是二重积分？"></a>3. 为什么区域概率是二重积分？</h4><p>在很小的面积 <span class="note-math-inline">\(dx\,dy\)</span> 附近，概率近似为 <span class="note-math-inline">\(f(x,y)\,dx\,dy\)</span>。把区域 <span class="note-math-inline">\(G\)</span> 划分成许多小块并将这些概率相加，极限就得到</p>
+<div class="note-math-display">\[P((X,Y)\in G)=\iint_G f(x,y)\,dx\,dy.\]</div>
+<p>几何上，联合密度曲面 <span class="note-math-inline">\(z=f(x,y)\)</span> 在整个平面上的体积为 1；区域 <span class="note-math-inline">\(G\)</span> 上方的曲面体积就是 <span class="note-math-inline">\((X,Y)\)</span> 落在 <span class="note-math-inline">\(G\)</span> 内的概率。面积为零的集合在连续型二维分布下概率为零。</p>
+<h4 id="老师讲稿特别强调：密度不是点概率"><a href="#%E8%80%81%E5%B8%88%E8%AE%B2%E7%A8%BF%E7%89%B9%E5%88%AB%E5%BC%BA%E8%B0%83%EF%BC%9A%E5%AF%86%E5%BA%A6%E4%B8%8D%E6%98%AF%E7%82%B9%E6%A6%82%E7%8E%87" class="headerlink" title="老师讲稿特别强调：密度不是点概率"></a>老师讲稿特别强调：密度不是点概率</h4><ul>
+<li><p><span class="note-math-inline">\(f(x,y)\)</span> 是点 <span class="note-math-inline">\((x,y)\)</span> 附近的<strong>概率密度</strong>，不是 <span class="note-math-inline">\(P(X=x,Y=y)\)</span>。</p>
+</li>
+<li><p>对足够小的矩形，若密度在附近变化不大，则</p>
+<div class="note-math-display">\[P(x&lt;X\le x+\Delta x,\ y&lt;Y\le y+\Delta y)
+\approx f(x,y)\Delta x\Delta y.\]</div>
+</li>
+<li><p>若 <span class="note-math-inline">\((X,Y)\)</span> 具有联合密度，那么落在一条直线上的概率为 0。例如</p>
+<div class="note-math-display">\[\boxed{P(Y=2X+4)=0.}\]</div>
+<p>因为这条直线在平面上的面积为 0，与具体密度函数的数值无关。</p>
+</li>
+</ul>
+<details class="notes-example"><summary>二、PPT 例 3.1：求归一化常数、联合分布函数与区域概率</summary><div class="notes-example-body">
+
+<p>给定</p>
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+ke^{-(2x+3y)},&amp;x&gt;0,\ y&gt;0,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<h4 id="（1）求-k"><a href="#%EF%BC%881%EF%BC%89%E6%B1%82-k" class="headerlink" title="（1）求 \(k\)"></a>（1）求 <span class="note-math-inline">\(k\)</span></h4><p>由全平面密度积分等于 1：</p>
+<div class="note-math-display">\[\begin{aligned}
+1&amp;=\int_0^\infty\int_0^\infty
+ke^{-(2x+3y)}\,dx\,dy\\
+&amp;=k\left(\int_0^\infty e^{-2x}dx\right)
+\left(\int_0^\infty e^{-3y}dy\right)\\
+&amp;=k\cdot\frac12\cdot\frac13.
+\end{aligned}\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{k=6.}\]</div>
+<h4 id="（2）求联合分布函数"><a href="#%EF%BC%882%EF%BC%89%E6%B1%82%E8%81%94%E5%90%88%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" class="headerlink" title="（2）求联合分布函数"></a>（2）求联合分布函数</h4><p>当 <span class="note-math-inline">\(x&gt;0,y&gt;0\)</span> 时，</p>
+<div class="note-math-display">\[\begin{aligned}
+F(x,y)
+&amp;=\int_0^x\int_0^y6e^{-(2u+3v)}\,dv\,du\\
+&amp;=\left(\int_0^x2e^{-2u}\,du\right)
+\left(\int_0^y3e^{-3v}\,dv\right)\\
+&amp;=(1-e^{-2x})(1-e^{-3y}).
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{
+F(x,y)=
+\begin{cases}
+(1-e^{-2x})(1-e^{-3y}),&amp;x&gt;0,y&gt;0,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<h4 id="（3）求-P-Y-le-X"><a href="#%EF%BC%883%EF%BC%89%E6%B1%82-P-Y-le-X" class="headerlink" title="（3）求 \(P(Y\le X)\)"></a>（3）求 <span class="note-math-inline">\(P(Y\le X)\)</span></h4><p>区域为 <span class="note-math-inline">\(0&lt;y\le x\)</span>，所以</p>
+<div class="note-math-display">\[\begin{aligned}
+P(Y\le X)
+&amp;=\int_0^\infty\int_y^\infty
+6e^{-(2x+3y)}\,dx\,dy\\
+&amp;=\int_0^\infty3e^{-3y}e^{-2y}\,dy\\
+&amp;=\int_0^\infty3e^{-5y}\,dy\\
+&amp;=\boxed{\frac35}.
+\end{aligned}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">积分范围原则</div><p>先画出区域，确定固定外层变量后内层变量的取值范围。</p>
+</blockquote>
+</div></details>
+<details class="notes-example"><summary>三、PPT 例 3.2：非矩形定义域的联合密度</summary><div class="notes-example-body">
+
+<p>给定</p>
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+cy,&amp;0&lt;x&lt;1,\ x^2&lt;y&lt;x,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<h4 id="（1）求-c"><a href="#%EF%BC%881%EF%BC%89%E6%B1%82-c" class="headerlink" title="（1）求 \(c\)"></a>（1）求 <span class="note-math-inline">\(c\)</span></h4><div class="note-math-display">\[\begin{aligned}
+1&amp;=\int_0^1\int_{x^2}^{x}cy\,dy\,dx\\
+&amp;=\frac c2\int_0^1(x^2-x^4)\,dx\\
+&amp;=\frac c2\left(\frac13-\frac15\right)=\frac c{15}.
+\end{aligned}\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{c=15.}\]</div>
+<h4 id="（2）求-P-X-0-5"><a href="#%EF%BC%882%EF%BC%89%E6%B1%82-P-X-0-5" class="headerlink" title="（2）求 \(P(X>0.5)\)"></a>（2）求 <span class="note-math-inline">\(P(X&gt;0.5)\)</span></h4><p>先求 <span class="note-math-inline">\(X\)</span> 的边际密度（下一节会推导一般公式）：</p>
+<div class="note-math-display">\[f_X(x)=\int_{x^2}^{x}15y\,dy
+=\frac{15}{2}(x^2-x^4),\quad 0&lt;x&lt;1.\]</div>
+<p>于是</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X&gt;0.5)
+&amp;=\int_{1/2}^{1}\frac{15}{2}(x^2-x^4)\,dx\\
+&amp;=\boxed{\frac{47}{64}}\approx0.7344.
+\end{aligned}\]</div>
+<h4 id="（3）求-P-Y-le0-5"><a href="#%EF%BC%883%EF%BC%89%E6%B1%82-P-Y-le0-5" class="headerlink" title="（3）求 \(P(Y\le0.5)\)"></a>（3）求 <span class="note-math-inline">\(P(Y\le0.5)\)</span></h4><p>固定 <span class="note-math-inline">\(y\)</span>，由 <span class="note-math-inline">\(x^2&lt;y&lt;x\)</span> 可得</p>
+<div class="note-math-display">\[y&lt;x&lt;\sqrt y,\quad 0&lt;y&lt;1.\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\begin{aligned}
+P(Y\le0.5)
+&amp;=\int_0^{1/2}\int_y^{\sqrt y}15y\,dx\,dy\\
+&amp;=\int_0^{1/2}15y(\sqrt y-y)\,dy\\
+&amp;=\boxed{\frac{6\sqrt2-5}{8}}\approx0.4357.
+\end{aligned}\]</div>
+<h4 id="（4）求-P-X-0-5-Y-le0-5"><a href="#%EF%BC%884%EF%BC%89%E6%B1%82-P-X-0-5-Y-le0-5" class="headerlink" title="（4）求 \(P(X>0.5,Y\le0.5)\)"></a>（4）求 <span class="note-math-inline">\(P(X&gt;0.5,Y\le0.5)\)</span></h4><p>条件 <span class="note-math-inline">\(X&gt;0.5\)</span>、<span class="note-math-inline">\(Y\le0.5\)</span> 与原区域结合后，得到</p>
+<div class="note-math-display">\[\frac12&lt;x&lt;\frac1{\sqrt2},\qquad x^2&lt;y&lt;\frac12.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X&gt;0.5,Y\le0.5)
+&amp;=\int_{1/2}^{1/\sqrt2}\int_{x^2}^{1/2}15y\,dy\,dx\\
+&amp;=\boxed{\frac{48\sqrt2-57}{64}}\approx0.1700.
+\end{aligned}\]</div>
+<p>该结果不等于 <span class="note-math-inline">\(P(X&gt;0.5)P(Y\le0.5)\)</span>，所以这道例题也说明 <span class="note-math-inline">\(X,Y\)</span> 不独立。</p>
+</div></details>
+<h3 id="四、边际概率密度函数"><a href="#%E5%9B%9B%E3%80%81%E8%BE%B9%E9%99%85%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0" class="headerlink" title="四、边际概率密度函数"></a>四、边际概率密度函数</h3><h4 id="1-定义与公式-3"><a href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%85%AC%E5%BC%8F-3" class="headerlink" title="1. 定义与公式"></a>1. 定义与公式</h4><p>若联合密度为 <span class="note-math-inline">\(f(x,y)\)</span>，则</p>
+<div class="note-math-display">\[\boxed{f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\,dy}\]</div>
+<div class="note-math-display">\[\boxed{f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)\,dx.}\]</div>
+<p>求 <span class="note-math-inline">\(f_X(x)\)</span> 时固定 <span class="note-math-inline">\(x\)</span>，对 <span class="note-math-inline">\(y\)</span> 积分；求 <span class="note-math-inline">\(f_Y(y)\)</span> 时固定 <span class="note-math-inline">\(y\)</span>，对 <span class="note-math-inline">\(x\)</span> 积分。</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">老师的切片理解</div><p>固定 <span class="note-math-inline">\(x\)</span> 后，沿着这条竖直切片把联合密度对所有允许的 <span class="note-math-inline">\(y\)</span> 加总，得到的就是 <span class="note-math-inline">\(f_X(x)\)</span>；固定 <span class="note-math-inline">\(y\)</span> 时则沿水平方向切片。积分范围不是永远从 <span class="note-math-inline">\(-\infty\)</span> 到 <span class="note-math-inline">\(+\infty\)</span> 都有贡献，而是要与联合密度的实际定义域相交。</p>
+</blockquote>
+<h4 id="2-完整推导"><a href="#2-%E5%AE%8C%E6%95%B4%E6%8E%A8%E5%AF%BC" class="headerlink" title="2. 完整推导"></a>2. 完整推导</h4><p>由联合分布函数，</p>
+<div class="note-math-display">\[\begin{aligned}
+F_X(x)
+&amp;=F(x,+\infty)\\
+&amp;=\int_{-\infty}^{x}
+\left[\int_{-\infty}^{+\infty}f(u,v)\,dv\right]du.
+\end{aligned}\]</div>
+<p>定义</p>
+<div class="note-math-display">\[f_X(u)=\int_{-\infty}^{+\infty}f(u,v)\,dv,\]</div>
+<p>便得到</p>
+<div class="note-math-display">\[F_X(x)=\int_{-\infty}^{x}f_X(u)\,du.\]</div>
+<p>对 <span class="note-math-inline">\(x\)</span> 求导，根据变上限积分求导公式，</p>
+<div class="note-math-display">\[\boxed{\frac{dF_X(x)}{dx}=f_X(x)
+=\int_{-\infty}^{+\infty}f(x,y)\,dy.}\]</div>
+<p>对称地可得 <span class="note-math-inline">\(f_Y(y)\)</span> 的公式。</p>
+<details class="notes-example"><summary>3. PPT 例 3.3：延续例 3.2 求边际密度</summary><div class="notes-example-body">
+
+<p>原密度为 <span class="note-math-inline">\(15y\)</span>，区域 <span class="note-math-inline">\(0&lt;x&lt;1,\ x^2&lt;y&lt;x\)</span>。</p>
+<p>固定 <span class="note-math-inline">\(x\)</span>：</p>
+<div class="note-math-display">\[\boxed{
+f_X(x)=
+\begin{cases}
+\dfrac{15}{2}(x^2-x^4),&amp;0&lt;x&lt;1,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<p>固定 <span class="note-math-inline">\(y\)</span>，积分范围是 <span class="note-math-inline">\(y&lt;x&lt;\sqrt y\)</span>：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_Y(y)&amp;=\int_y^{\sqrt y}15y\,dx\\
+&amp;=15y(\sqrt y-y).
+\end{aligned}\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{
+f_Y(y)=
+\begin{cases}
+15(y^{3/2}-y^2),&amp;0&lt;y&lt;1,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-warning">
+<div class="obsidian-callout-header">易错点</div><p>联合密度的定义域是弯曲区域时，边际密度的积分上下限可能依赖于固定变量。</p>
+</blockquote>
+</div></details>
+<h3 id="五、条件概率密度函数"><a href="#%E4%BA%94%E3%80%81%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0" class="headerlink" title="五、条件概率密度函数"></a>五、条件概率密度函数</h3><h4 id="1-公式"><a href="#1-%E5%85%AC%E5%BC%8F" class="headerlink" title="1. 公式"></a>1. 公式</h4><p>当 <span class="note-math-inline">\(f_Y(y)&gt;0\)</span> 时，给定 <span class="note-math-inline">\(Y=y\)</span>，<span class="note-math-inline">\(X\)</span> 的条件密度为</p>
+<div class="note-math-display">\[\boxed{f_{X\mid Y}(x\mid y)=\frac{f(x,y)}{f_Y(y)}.}\]</div>
+<p>当 <span class="note-math-inline">\(f_X(x)&gt;0\)</span> 时，给定 <span class="note-math-inline">\(X=x\)</span>，<span class="note-math-inline">\(Y\)</span> 的条件密度为</p>
+<div class="note-math-display">\[\boxed{f_{Y\mid X}(y\mid x)=\frac{f(x,y)}{f_X(x)}.}\]</div>
+<h4 id="2-从条件分布函数推导条件密度"><a href="#2-%E4%BB%8E%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E6%8E%A8%E5%AF%BC%E6%9D%A1%E4%BB%B6%E5%AF%86%E5%BA%A6" class="headerlink" title="2. 从条件分布函数推导条件密度"></a>2. 从条件分布函数推导条件密度</h4><p>以 <span class="note-math-inline">\(f_{X\mid Y}(x\mid y)\)</span> 为例。连续型变量通常有 <span class="note-math-inline">\(P(Y=y)=0\)</span>，所以先用窄区间 <span class="note-math-inline">\(y&lt;Y\le y+\Delta y\)</span> 逼近 <span class="note-math-inline">\(Y=y\)</span>：</p>
+<div class="note-math-display">\[F_{X\mid Y}(x\mid y)
+=\lim_{\Delta y\to0^+}
+\frac{P(X\le x,\ y&lt;Y\le y+\Delta y)}
+{P(y&lt;Y\le y+\Delta y)}.\]</div>
+<p>把分子写成联合密度积分：</p>
+<div class="note-math-display">\[P(X\le x,\ y&lt;Y\le y+\Delta y)
+=\int_y^{y+\Delta y}\int_{-\infty}^{x}f(u,v)\,du\,dv.\]</div>
+<p>分母写成边际密度积分：</p>
+<div class="note-math-display">\[P(y&lt;Y\le y+\Delta y)=\int_y^{y+\Delta y}f_Y(v)\,dv.\]</div>
+<p>于是</p>
+<div class="note-math-display">\[F_{X\mid Y}(x\mid y)
+=\lim_{\Delta y\to0^+}
+\frac{
+\int_y^{y+\Delta y}\int_{-\infty}^{x}f(u,v)\,du\,dv
+}{
+\int_y^{y+\Delta y}f_Y(v)\,dv
+}.\]</div>
+<p>在相应连续性与极限条件下，分子、分母分别除以 <span class="note-math-inline">\(\Delta y\)</span> 后取极限，得到</p>
+<div class="note-math-display">\[\boxed{
+F_{X\mid Y}(x\mid y)
+=\frac{\int_{-\infty}^{x}f(u,y)\,du}{f_Y(y)}.
+}\]</div>
+<p>对 <span class="note-math-inline">\(x\)</span> 求导：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=\frac{\partial}{\partial x}F_{X\mid Y}(x\mid y)\\
+&amp;=\frac{1}{f_Y(y)}
+\frac{d}{dx}\int_{-\infty}^{x}f(u,y)\,du\\
+&amp;=\boxed{\frac{f(x,y)}{f_Y(y)}}.
+\end{aligned}\]</div>
+<p>最后一步使用变上限积分求导公式。另一个条件密度公式通过交换 <span class="note-math-inline">\(X,Y\)</span> 的角色得到。</p>
+<h4 id="条件密度的直观理解：薄片上的条件概率"><a href="#%E6%9D%A1%E4%BB%B6%E5%AF%86%E5%BA%A6%E7%9A%84%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3%EF%BC%9A%E8%96%84%E7%89%87%E4%B8%8A%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87" class="headerlink" title="条件密度的直观理解：薄片上的条件概率"></a>条件密度的直观理解：薄片上的条件概率</h4><p>以给定 <span class="note-math-inline">\(Y=y\)</span> 为例。由于连续型变量通常满足 <span class="note-math-inline">\(P(Y=y)=0\)</span>，不能直接把单点事件当作普通条件概率的分母。老师讲稿的思路是先看薄片 <span class="note-math-inline">\(y&lt;Y\le y+\Delta y\)</span>：</p>
+<ul>
+<li><p>分子是随机点落在一个小矩形里的概率，近似为 <span class="note-math-inline">\(f(x,y)\Delta x\Delta y\)</span>；</p>
+</li>
+<li><p>分母是落在薄片里的概率，近似为 <span class="note-math-inline">\(f_Y(y)\Delta y\)</span>；</p>
+</li>
+<li><p>两者相除后，<span class="note-math-inline">\(\Delta y\)</span> 约掉，剩下</p>
+<div class="note-math-display">\[P(x&lt;X\le x+\Delta x\mid Y\approx y)
+\approx \frac{f(x,y)}{f_Y(y)}\Delta x.\]</div>
+</li>
+</ul>
+<p>因此条件密度自然是</p>
+<div class="note-math-display">\[\boxed{f_{X\mid Y}(x\mid y)=\frac{f(x,y)}{f_Y(y)}}.\]</div>
+<p>这个直觉也解释了为什么分母一定是<strong>已知条件变量</strong>的边际密度。</p>
+<h4 id="3-条件密度的性质"><a href="#3-%E6%9D%A1%E4%BB%B6%E5%AF%86%E5%BA%A6%E7%9A%84%E6%80%A7%E8%B4%A8" class="headerlink" title="3. 条件密度的性质"></a>3. 条件密度的性质</h4><p>以 <span class="note-math-inline">\(f_{X\mid Y}\)</span> 为例：</p>
+<div class="note-math-display">\[f_{X\mid Y}(x\mid y)\ge0,\]</div>
+<div class="note-math-display">\[\int_{-\infty}^{+\infty}f_{X\mid Y}(x\mid y)\,dx=1,\]</div>
+<div class="note-math-display">\[\boxed{P(a&lt;X&lt;b\mid Y=y)=\int_a^b f_{X\mid Y}(x\mid y)\,dx.}\]</div>
+<p>此外，</p>
+<div class="note-math-display">\[\boxed{f(x,y)=f_{X\mid Y}(x\mid y)f_Y(y)}\]</div>
+<p>以及</p>
+<div class="note-math-display">\[\boxed{f(x,y)=f_X(x)f_{Y\mid X}(y\mid x).}\]</div>
+<details class="notes-example"><summary>4. PPT 例 3.4：甲乙接力完成工作</summary><div class="notes-example-body">
+
+<p>甲先工作 <span class="note-math-inline">\(X\)</span> 分钟，甲乙合计用时 <span class="note-math-inline">\(Y\)</span> 分钟。已知</p>
+<div class="note-math-display">\[X\sim U(0,30),\]</div>
+<p>给定 <span class="note-math-inline">\(X=x\)</span> 时，<span class="note-math-inline">\(Y\sim U(x,30)\)</span>。</p>
+<p>因此</p>
+<div class="note-math-display">\[f_X(x)=
+\begin{cases}
+1/30,&amp;0&lt;x&lt;30,\\
+0,&amp;\text{其他},
+\end{cases}\]</div>
+<div class="note-math-display">\[f_{Y\mid X}(y\mid x)=
+\begin{cases}
+\dfrac1{30-x},&amp;x&lt;y&lt;30,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<p>利用联合密度与条件密度的关系：</p>
+<div class="note-math-display">\[f(x,y)=f_X(x)f_{Y\mid X}(y\mid x),\]</div>
+<p>得到</p>
+<div class="note-math-display">\[\boxed{
+f(x,y)=
+\begin{cases}
+\dfrac1{30(30-x)},&amp;0&lt;x&lt;y&lt;30,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<p>先求 <span class="note-math-inline">\(Y\)</span> 的边际密度：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_Y(y)
+&amp;=\int_0^y\frac1{30(30-x)}\,dx\\
+&amp;=\frac1{30}\ln\frac{30}{30-y},\quad 0&lt;y&lt;30.
+\end{aligned}\]</div>
+<p>于是</p>
+<div class="note-math-display">\[\boxed{
+f_{X\mid Y}(x\mid y)=
+\begin{cases}
+\dfrac1{(30-x)\ln\frac{30}{30-y}},&amp;0&lt;x&lt;y&lt;30,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<p>若已知两人总共用了 25 分钟，求甲工作不超过 10 分钟的概率：</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X\le10\mid Y=25)
+&amp;=\int_0^{10}\frac1{(30-x)\ln6}\,dx\\
+&amp;=\frac{\ln30-\ln20}{\ln6}\\
+&amp;=\boxed{\frac{\ln(3/2)}{\ln6}\approx0.2263}.
+\end{aligned}\]</div>
+</div></details>
+<h3 id="六、二元均匀分布"><a href="#%E5%85%AD%E3%80%81%E4%BA%8C%E5%85%83%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83" class="headerlink" title="六、二元均匀分布"></a>六、二元均匀分布</h3><h4 id="1-定义-3"><a href="#1-%E5%AE%9A%E4%B9%89-3" class="headerlink" title="1. 定义"></a>1. 定义</h4><p>若 <span class="note-math-inline">\((X,Y)\)</span> 在有界平面区域 <span class="note-math-inline">\(D\)</span> 上服从均匀分布，则联合密度为</p>
+<div class="note-math-display">\[\boxed{
+f(x,y)=
+\begin{cases}
+\dfrac1{S_D},&amp;(x,y)\in D,\\
+0,&amp;\text{其他},
+\end{cases}}\]</div>
+<p>其中 <span class="note-math-inline">\(S_D\)</span> 是区域 <span class="note-math-inline">\(D\)</span> 的面积。</p>
+<h4 id="2-公式推导"><a href="#2-%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC" class="headerlink" title="2. 公式推导"></a>2. 公式推导</h4><p>假设区域 <span class="note-math-inline">\(D\)</span> 内密度为常数 <span class="note-math-inline">\(c\)</span>。由总概率为 1：</p>
+<div class="note-math-display">\[1=\iint_D c\,dx\,dy=cS_D.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{c=\frac1{S_D}.}\]</div>
+<p>若 <span class="note-math-inline">\(D_1\subseteq D\)</span>，则</p>
+<div class="note-math-display">\[\begin{aligned}
+P((X,Y)\in D_1)
+&amp;=\iint_{D_1}\frac1{S_D}\,dx\,dy\\
+&amp;=\frac{S_{D_1}}{S_D}.
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{\text{区域概率}=\frac{\text{目标区域面积}}{\text{总区域面积}}.}\]</div>
+<p>该面积比方法只适用于区域内密度均匀的情况。</p>
+<details class="notes-example"><summary>3. PPT 例 3.5：区域 <span class="note-math-inline">\(\{|y|&lt;x&lt;1\}\)</span> 上的均匀分布</summary><div class="notes-example-body">
+
+<p>设 <span class="note-math-inline">\((X,Y)\)</span> 在区域</p>
+<div class="note-math-display">\[D=\{(x,y):|y|&lt;x&lt;1\}\]</div>
+<p>上服从均匀分布。这个区域可写成</p>
+<div class="note-math-display">\[0&lt;x&lt;1,\qquad -x&lt;y&lt;x.\]</div>
+<p>区域面积为</p>
+<div class="note-math-display">\[S_D=\int_0^1 2x\,dx=1.\]</div>
+<p>所以联合密度为</p>
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+1,&amp;|y|&lt;x&lt;1,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<h5 id="（1）求-Y-的边际密度"><a href="#%EF%BC%881%EF%BC%89%E6%B1%82-Y-%E7%9A%84%E8%BE%B9%E9%99%85%E5%AF%86%E5%BA%A6" class="headerlink" title="（1）求 \(Y\) 的边际密度"></a>（1）求 <span class="note-math-inline">\(Y\)</span> 的边际密度</h5><p>先确定 <span class="note-math-inline">\(Y\)</span> 的取值范围：<span class="note-math-inline">\(-1&lt;y&lt;1\)</span>。固定 <span class="note-math-inline">\(y\)</span> 后，<span class="note-math-inline">\(x\)</span> 从 <span class="note-math-inline">\(|y|\)</span> 到 1，因此</p>
+<div class="note-math-display">\[f_Y(y)=\int_{|y|}^{1}1\,dx=1-|y|.\]</div>
+<p>即</p>
+<div class="note-math-display">\[\boxed{
+f_Y(y)=
+\begin{cases}
+1-|y|,&amp;-1&lt;y&lt;1,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<h5 id="（2）求条件密度-f-X-mid-Y-x-mid-y"><a href="#%EF%BC%882%EF%BC%89%E6%B1%82%E6%9D%A1%E4%BB%B6%E5%AF%86%E5%BA%A6-f-X-mid-Y-x-mid-y" class="headerlink" title="（2）求条件密度 \(f_{X\mid Y}(x\mid y)\)"></a>（2）求条件密度 <span class="note-math-inline">\(f_{X\mid Y}(x\mid y)\)</span></h5><p>当 <span class="note-math-inline">\(-1&lt;y&lt;1\)</span> 时，</p>
+<div class="note-math-display">\[f_{X\mid Y}(x\mid y)
+=\frac{f(x,y)}{f_Y(y)}
+=\frac1{1-|y|},\quad |y|&lt;x&lt;1.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{
+f_{X\mid Y}(x\mid y)=
+\begin{cases}
+\dfrac1{1-|y|},&amp;|y|&lt;x&lt;1,\ -1&lt;y&lt;1,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<p>这说明给定 <span class="note-math-inline">\(Y=y\)</span> 后，<span class="note-math-inline">\(X\)</span> 在区间 <span class="note-math-inline">\((|y|,1)\)</span> 上服从均匀分布。</p>
+<h5 id="（3）求-P-X-2-3-mid-Y-1-2"><a href="#%EF%BC%883%EF%BC%89%E6%B1%82-P-X-2-3-mid-Y-1-2" class="headerlink" title="（3）求 \(P(X>2/3\mid Y=1/2)\)"></a>（3）求 <span class="note-math-inline">\(P(X&gt;2/3\mid Y=1/2)\)</span></h5><p>当 <span class="note-math-inline">\(Y=1/2\)</span> 时，<span class="note-math-inline">\(X\sim U(1/2,1)\)</span>。因此可以直接使用均匀分布的区间长度比：</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X&gt;2/3\mid Y=1/2)
+&amp;=\frac{1-2/3}{1-1/2}\\
+&amp;=\boxed{\frac23}.
+\end{aligned}\]</div>
+<p>也可以用条件密度积分：</p>
+<div class="note-math-display">\[\int_{2/3}^{1} \frac1{1-1/2}\,dx
+=\int_{2/3}^{1}2\,dx=\frac23.\]</div>
+<h5 id="（4）从图形理解条件分布"><a href="#%EF%BC%884%EF%BC%89%E4%BB%8E%E5%9B%BE%E5%BD%A2%E7%90%86%E8%A7%A3%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83" class="headerlink" title="（4）从图形理解条件分布"></a>（4）从图形理解条件分布</h5><p>固定 <span class="note-math-inline">\(X=x\)</span> 时，<span class="note-math-inline">\(Y\)</span> 的范围为 <span class="note-math-inline">\((-x,x)\)</span>，故</p>
+<div class="note-math-display">\[f_{Y\mid X}(y\mid x)=\frac1{2x},\quad -x&lt;y&lt;x.\]</div>
+<p>所以 <span class="note-math-inline">\(Y\mid X=x\sim U(-x,x)\)</span>。这正是老师讲稿中“横切、竖切”理解二维均匀分布的例子：切片上的条件分布仍为均匀分布，但区间随固定的变量而变化。</p>
+</div></details>
+<h3 id="七、二元正态分布"><a href="#%E4%B8%83%E3%80%81%E4%BA%8C%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83" class="headerlink" title="七、二元正态分布"></a>七、二元正态分布</h3><h4 id="1-联合密度与参数"><a href="#1-%E8%81%94%E5%90%88%E5%AF%86%E5%BA%A6%E4%B8%8E%E5%8F%82%E6%95%B0" class="headerlink" title="1. 联合密度与参数"></a>1. 联合密度与参数</h4><p>若 <span class="note-math-inline">\((X,Y)\)</span> 的联合密度为</p>
+<div class="note-math-display">\[\boxed{
+\begin{aligned}
+f(x,y)
+&amp;=\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}\\
+&amp;\quad\cdot\exp\left\{-\frac1{2(1-\rho^2)}
+\left[
+\frac{(x-\mu_1)^2}{\sigma_1^2}
+-2\rho\frac{(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}
++\frac{(y-\mu_2)^2}{\sigma_2^2}
+\right]\right\},
+\end{aligned}}\]</div>
+<p>其中</p>
+<div class="note-math-display">\[\mu_1,\mu_2\in\mathbb R,\quad
+\sigma_1&gt;0,\ \sigma_2&gt;0,\quad |\rho|&lt;1,\]</div>
+<p>则称 <span class="note-math-inline">\((X,Y)\)</span> 服从二元正态分布，记为</p>
+<div class="note-math-display">\[(X,Y)\sim N(\mu_1,\mu_2;\sigma_1^2,\sigma_2^2;\rho).\]</div>
+<blockquote>
+<p><strong>老师讲稿提示：</strong> 二元正态的联合密度公式较长，老师强调不必机械背诵整条公式；更重要的是理解五个参数的意义、记住边际仍为正态分布，以及条件分布也是正态分布。下面保留推导，是为了看懂结论从哪里来。</p>
+</blockquote>
+<p>参数含义：</p>
+<ul>
+<li><span class="note-math-inline">\(\mu_1,\mu_2\)</span>：分别是 <span class="note-math-inline">\(X,Y\)</span> 的均值；</li>
+<li><span class="note-math-inline">\(\sigma_1,\sigma_2\)</span>：分别是 <span class="note-math-inline">\(X,Y\)</span> 的标准差；</li>
+<li><span class="note-math-inline">\(\rho\)</span>：相关系数，描述线性相关程度。</li>
+</ul>
+<p><span class="note-math-inline">\(\rho&gt;0\)</span> 时分布倾向沿右上方向延伸；<span class="note-math-inline">\(\rho&lt;0\)</span> 时倾向沿左上—右下方向延伸；<span class="note-math-inline">\(\rho=0\)</span> 时联合密度可以分解为两个边际正态密度的乘积。</p>
+<h4 id="2-边际分布：从联合密度积分并配方"><a href="#2-%E8%BE%B9%E9%99%85%E5%88%86%E5%B8%83%EF%BC%9A%E4%BB%8E%E8%81%94%E5%90%88%E5%AF%86%E5%BA%A6%E7%A7%AF%E5%88%86%E5%B9%B6%E9%85%8D%E6%96%B9" class="headerlink" title="2. 边际分布：从联合密度积分并配方"></a>2. 边际分布：从联合密度积分并配方</h4><p>目标是求 <span class="note-math-inline">\(f_X(x)\)</span>：</p>
+<div class="note-math-display">\[f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\,dy.\]</div>
+<p>令</p>
+<div class="note-math-display">\[a=\frac{x-\mu_1}{\sigma_1},\qquad
+b=\frac{y-\mu_2}{\sigma_2}.\]</div>
+<p>指数中的二次项为</p>
+<div class="note-math-display">\[a^2-2\rho ab+b^2.\]</div>
+<p>配方：</p>
+<div class="note-math-display">\[\boxed{a^2-2\rho ab+b^2=(b-\rho a)^2+(1-\rho^2)a^2.}\]</div>
+<p>所以指数可拆成</p>
+<div class="note-math-display">\[-\frac{a^2}{2}-\frac{(b-\rho a)^2}{2(1-\rho^2)}.\]</div>
+<p>第一项不依赖 <span class="note-math-inline">\(y\)</span>，可以提出积分号。对第二项作变量替换</p>
+<div class="note-math-display">\[t=\frac{b-\rho a}{\sqrt{1-\rho^2}},
+\qquad dy=\sigma_2\sqrt{1-\rho^2}\,dt.\]</div>
+<p>使用标准高斯积分</p>
+<div class="note-math-display">\[\int_{-\infty}^{+\infty}e^{-t^2/2}\,dt=\sqrt{2\pi},\]</div>
+<p>积分后得到</p>
+<div class="note-math-display">\[\boxed{
+f_X(x)=\frac1{\sqrt{2\pi}\sigma_1}
+e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}.
+}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{X\sim N(\mu_1,\sigma_1^2).}\]</div>
+<p>同理，</p>
+<div class="note-math-display">\[\boxed{Y\sim N(\mu_2,\sigma_2^2).}\]</div>
+<p>两个边际分布都是一元正态分布，并且不依赖参数 <span class="note-math-inline">\(\rho\)</span>。</p>
+<h4 id="3-条件分布：联合密度除以边际密度"><a href="#3-%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83%EF%BC%9A%E8%81%94%E5%90%88%E5%AF%86%E5%BA%A6%E9%99%A4%E4%BB%A5%E8%BE%B9%E9%99%85%E5%AF%86%E5%BA%A6" class="headerlink" title="3. 条件分布：联合密度除以边际密度"></a>3. 条件分布：联合密度除以边际密度</h4><p>根据条件密度公式，</p>
+<div class="note-math-display">\[f_{Y\mid X}(y\mid x)=\frac{f(x,y)}{f_X(x)}.\]</div>
+<p>利用前面的配方，联合密度的指数部分可以写为</p>
+<div class="note-math-display">\[-\frac{(x-\mu_1)^2}{2\sigma_1^2}
+-\frac{
+\left[y-\mu_2-\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)\right]^2
+}{
+2(1-\rho^2)\sigma_2^2
+}.\]</div>
+<p>除以 <span class="note-math-inline">\(f_X(x)\)</span> 后，第一项以及相应的边际系数被约掉，得到</p>
+<div class="note-math-display">\[\boxed{
+\begin{aligned}
+f_{Y\mid X}(y\mid x)
+&amp;=\frac1{\sqrt{2\pi}\sigma_2\sqrt{1-\rho^2}}\\
+&amp;\quad\cdot\exp\left[
+-\frac{\left(y-\mu_2-\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1)\right)^2}
+{2(1-\rho^2)\sigma_2^2}
+\right].
+\end{aligned}}\]</div>
+<p>与一元正态密度比较可得</p>
+<div class="note-math-display">\[\boxed{
+Y\mid X=x\sim
+N\left(
+\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1),
+(1-\rho^2)\sigma_2^2
+\right).
+}\]</div>
+<p>同理，</p>
+<div class="note-math-display">\[\boxed{
+X\mid Y=y\sim
+N\left(
+\mu_1+\rho\frac{\sigma_1}{\sigma_2}(y-\mu_2),
+(1-\rho^2)\sigma_1^2
+\right).
+}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">重点</div><p>条件均值会随已知变量变化；条件方差不依赖具体的 <span class="note-math-inline">\(x\)</span> 或 <span class="note-math-inline">\(y\)</span>。</p>
+</blockquote>
+<details class="notes-example"><summary>教材补充：上半单位圆上的均匀分布</summary><div class="notes-example-body">
+
+<p>教材例 3.3.4 令 <span class="note-math-inline">\((X,Y)\)</span> 在</p>
+<div class="note-math-display">\[D=\{(x,y):x^2+y^2&lt;1,\ y&gt;0\}\]</div>
+<p>上均匀分布。区域面积为 <span class="note-math-inline">\(\pi/2\)</span>，所以</p>
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+2/\pi,&amp;x^2+y^2&lt;1,\ y&gt;0,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<p>固定 <span class="note-math-inline">\(x\)</span>，<span class="note-math-inline">\(y\)</span> 的范围是 <span class="note-math-inline">\(0&lt;y&lt;\sqrt{1-x^2}\)</span>，故</p>
+<div class="note-math-display">\[\boxed{
+f_X(x)=\frac2\pi\sqrt{1-x^2},\quad |x|&lt;1.
+}\]</div>
+<p>固定 <span class="note-math-inline">\(y\)</span>，<span class="note-math-inline">\(x\)</span> 的范围是 <span class="note-math-inline">\(-\sqrt{1-y^2}&lt;x&lt;\sqrt{1-y^2}\)</span>，故</p>
+<div class="note-math-display">\[\boxed{
+f_Y(y)=\frac4\pi\sqrt{1-y^2},\quad 0&lt;y&lt;1.
+}\]</div>
+<p>给定 <span class="note-math-inline">\(X=x\)</span> 后，<span class="note-math-inline">\(Y\)</span> 在 <span class="note-math-inline">\((0,\sqrt{1-x^2})\)</span> 上均匀：</p>
+<div class="note-math-display">\[\boxed{
+f_{Y\mid X}(y\mid x)=
+\frac1{\sqrt{1-x^2}},\quad 0&lt;y&lt;\sqrt{1-x^2}.
+}\]</div>
+<p>再求 <span class="note-math-inline">\(P(X+Y\le1)\)</span>：在上半单位圆中，满足 <span class="note-math-inline">\(x+y\le1\)</span> 的面积由左半圆面积 <span class="note-math-inline">\(\pi/4\)</span> 与直线下方三角形面积 <span class="note-math-inline">\(1/2\)</span> 组成。因此</p>
+<div class="note-math-display">\[\boxed{
+P(X+Y\le1)=\frac{\pi/4+1/2}{\pi/2}
+=\frac12+\frac1\pi.
+}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">教材补充的学习重点</div><p>曲线区域如何确定积分范围；固定 <span class="note-math-inline">\(x\)</span> 或固定 <span class="note-math-inline">\(y\)</span> 后，边界表达式会不同。</p>
+</blockquote>
+<hr>
+</div></details>
+<h2 id="3-4-随机变量的独立性"><a href="#3-4-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7" class="headerlink" title="3.4 随机变量的独立性"></a>3.4 随机变量的独立性</h2><blockquote class="obsidian-callout obsidian-callout-abstract">
+<div class="obsidian-callout-header">本节导读</div><p><strong>PPT 顺序：</strong> 独立性定义 → 离散型判别 → 连续型判别 → 密度分解定理 → 二元正态独立性 → 多元推广。<br>PPT 主要对应第 72—92 页；教材对应第 101—105 页。<br><strong>老师讲稿思路（约 01:49—02:18）：</strong> 独立的直观含义是“知道 <span class="note-math-inline">\(X\)</span> 的信息不会改变 <span class="note-math-inline">\(Y\)</span> 的分布”。离散型看联合分布律能否逐格拆成边际概率乘积；连续型看联合密度是否几乎处处等于边际密度乘积。判别时，定义域也是联合密度的一部分。</p>
+</blockquote>
+<h3 id="一、独立性的定义"><a href="#%E4%B8%80%E3%80%81%E7%8B%AC%E7%AB%8B%E6%80%A7%E7%9A%84%E5%AE%9A%E4%B9%89" class="headerlink" title="一、独立性的定义"></a>一、独立性的定义</h3><p>若对任意实数集合 <span class="note-math-inline">\(D_1,D_2\)</span>，</p>
+<div class="note-math-display">\[\boxed{
+P(X\in D_1,Y\in D_2)
+=P(X\in D_1)P(Y\in D_2),
+}\]</div>
+<p>则称 <span class="note-math-inline">\(X,Y\)</span> 相互独立。</p>
+<p>直观含义：知道 <span class="note-math-inline">\(X\)</span> 落在哪个集合中，不会改变 <span class="note-math-inline">\(Y\)</span> 落在任意指定集合中的概率，反之亦然。</p>
+<h3 id="二、联合分布函数的判别条件"><a href="#%E4%BA%8C%E3%80%81%E8%81%94%E5%90%88%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%A4%E5%88%AB%E6%9D%A1%E4%BB%B6" class="headerlink" title="二、联合分布函数的判别条件"></a>二、联合分布函数的判别条件</h3><h4 id="公式"><a href="#%E5%85%AC%E5%BC%8F" class="headerlink" title="公式"></a>公式</h4><div class="note-math-display">\[\boxed{
+X,Y\text{ 独立}
+\iff F(x,y)=F_X(x)F_Y(y),\quad\forall x,y.
+}\]</div>
+<h4 id="推导"><a href="#%E6%8E%A8%E5%AF%BC" class="headerlink" title="推导"></a>推导</h4><p>令 <span class="note-math-inline">\(A=\{X\le x\}\)</span>、<span class="note-math-inline">\(B=\{Y\le y\}\)</span>。若 <span class="note-math-inline">\(X,Y\)</span> 独立，则</p>
+<div class="note-math-display">\[P(A\cap B)=P(A)P(B).\]</div>
+<p>换成分布函数记号：</p>
+<div class="note-math-display">\[F(x,y)=F_X(x)F_Y(y).\]</div>
+<p>反过来，若该分解关系对所有 <span class="note-math-inline">\(x,y\)</span> 成立，则联合分布函数等于两个边际分布函数的乘积，两个随机变量独立。故它是充要条件。</p>
+<h3 id="三、离散型随机变量的独立性"><a href="#%E4%B8%89%E3%80%81%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7" class="headerlink" title="三、离散型随机变量的独立性"></a>三、离散型随机变量的独立性</h3><p>联合分布律为 <span class="note-math-inline">\(p_{ij}\)</span>，边际概率为 <span class="note-math-inline">\(p_{i\cdot}\)</span>、<span class="note-math-inline">\(p_{\cdot j}\)</span>。独立的充要条件是</p>
+<div class="note-math-display">\[\boxed{p_{ij}=p_{i\cdot}p_{\cdot j}\quad\text{对所有 }i,j.}\]</div>
+<h4 id="推导-1"><a href="#%E6%8E%A8%E5%AF%BC-1" class="headerlink" title="推导"></a>推导</h4><p>若独立，取事件 <span class="note-math-inline">\(X=x_i\)</span> 与 <span class="note-math-inline">\(Y=y_j\)</span>，便有</p>
+<div class="note-math-display">\[P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j).\]</div>
+<p>即 <span class="note-math-inline">\(p_{ij}=p_{i\cdot}p_{\cdot j}\)</span>。</p>
+<p>反过来，若每个格子都满足该等式，对任意取值集合求和：</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X\in I,Y\in J)
+&amp;=\sum_{i\in I}\sum_{j\in J}p_{ij}\\
+&amp;=\sum_{i\in I}\sum_{j\in J}p_{i\cdot}p_{\cdot j}\\
+&amp;=\left(\sum_{i\in I}p_{i\cdot}\right)
+\left(\sum_{j\in J}p_{\cdot j}\right)\\
+&amp;=P(X\in I)P(Y\in J).
+\end{aligned}\]</div>
+<p>因此独立性成立。</p>
+<details class="notes-example"><summary>PPT 例 4.2：独立</summary><div class="notes-example-body">
+
+<p>联合分布表为：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right">0</th>
+<th align="right">1</th>
+<th align="right"><span class="note-math-inline">\(P(X=i)\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right"><span class="note-math-inline">\(1/6\)</span></td>
+<td align="right"><span class="note-math-inline">\(2/6\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/2\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right"><span class="note-math-inline">\(1/6\)</span></td>
+<td align="right"><span class="note-math-inline">\(2/6\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/2\)</span></td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(P(Y=j)\)</span></td>
+<td align="right"><span class="note-math-inline">\(1/3\)</span></td>
+<td align="right"><span class="note-math-inline">\(2/3\)</span></td>
+<td align="right">1</td>
+</tr>
+</tbody></table></div>
+<p>例如</p>
+<div class="note-math-display">\[P(X=1,Y=0)=\frac16
+=\frac12\cdot\frac13=P(X=1)P(Y=0).\]</div>
+<p>其余三个格子也都满足乘积关系，因此 <span class="note-math-inline">\(X,Y\)</span> 独立。</p>
+</div></details>
+<details class="notes-example"><summary>PPT 例 4.3：不独立</summary><div class="notes-example-body">
+
+<p>若</p>
+<div class="note-math-display">\[P(X=1,Y=0)=\frac16,\]</div>
+<p>但</p>
+<div class="note-math-display">\[P(X=1)P(Y=0)=\frac12\cdot\frac12=\frac14,\]</div>
+<p>则两者不相等，所以</p>
+<div class="note-math-display">\[\boxed{X,Y\text{ 不独立}.}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">技巧</div><p>证明独立要检查所有格子；证明不独立只需找到一个反例。</p>
+</blockquote>
+</div></details>
+<details class="notes-example"><summary>PPT 例 4.4：利用独立性补全联合分布</summary><div class="notes-example-body">
+
+<p>若边际概率为</p>
+<div class="note-math-display">\[P(X=1)=0.25,\qquad P(X=2)=0.75,\]</div>
+<div class="note-math-display">\[P(Y=0)=0.04,\quad P(Y=1)=0.80,\quad P(Y=2)=0.16,\]</div>
+<p>且 <span class="note-math-inline">\(X,Y\)</span> 独立，则每个联合概率由乘积直接得到。例如</p>
+<div class="note-math-display">\[P(X=1,Y=0)=0.25\times0.04=0.01,\]</div>
+<div class="note-math-display">\[P(X=2,Y=1)=0.75\times0.80=0.60.\]</div>
+<p>完整联合表为：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right">0</th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right"><span class="note-math-inline">\(P(X=i)\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right">0.01</td>
+<td align="right">0.20</td>
+<td align="right">0.04</td>
+<td align="right">0.25</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">0.03</td>
+<td align="right">0.60</td>
+<td align="right">0.12</td>
+<td align="right">0.75</td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(P(Y=j)\)</span></td>
+<td align="right">0.04</td>
+<td align="right">0.80</td>
+<td align="right">0.16</td>
+<td align="right">1</td>
+</tr>
+</tbody></table></div>
+</div></details>
+<h3 id="四、连续型随机变量的独立性"><a href="#%E5%9B%9B%E3%80%81%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7" class="headerlink" title="四、连续型随机变量的独立性"></a>四、连续型随机变量的独立性</h3><h4 id="1-密度判别条件"><a href="#1-%E5%AF%86%E5%BA%A6%E5%88%A4%E5%88%AB%E6%9D%A1%E4%BB%B6" class="headerlink" title="1. 密度判别条件"></a>1. 密度判别条件</h4><div class="note-math-display">\[\boxed{
+X,Y\text{ 独立}
+\iff f(x,y)=f_X(x)f_Y(y)\quad\text{几乎处处}.
+}\]</div>
+<p>“几乎处处”指允许等式在面积为零的集合上不成立；在一个正面积区域内不相等，则不能独立。</p>
+<h4 id="老师讲稿中的直观等价理解：条件分布不变"><a href="#%E8%80%81%E5%B8%88%E8%AE%B2%E7%A8%BF%E4%B8%AD%E7%9A%84%E7%9B%B4%E8%A7%82%E7%AD%89%E4%BB%B7%E7%90%86%E8%A7%A3%EF%BC%9A%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83%E4%B8%8D%E5%8F%98" class="headerlink" title="老师讲稿中的直观等价理解：条件分布不变"></a>老师讲稿中的直观等价理解：条件分布不变</h4><p>若离散型 <span class="note-math-inline">\(X,Y\)</span> 独立，且 <span class="note-math-inline">\(P(X=x_i)&gt;0\)</span>，则</p>
+<div class="note-math-display">\[P(Y=y_j\mid X=x_i)
+=\frac{P(X=x_i,Y=y_j)}{P(X=x_i)}
+=\frac{P(X=x_i)P(Y=y_j)}{P(X=x_i)}
+=P(Y=y_j).\]</div>
+<p>也就是说，给定不同的 <span class="note-math-inline">\(X=x_i\)</span>，<span class="note-math-inline">\(Y\)</span> 的条件分布律都等于同一个边际分布律。</p>
+<p>连续型同理：</p>
+<div class="note-math-display">\[f_{Y\mid X}(y\mid x)
+=\frac{f(x,y)}{f_X(x)}
+=\frac{f_X(x)f_Y(y)}{f_X(x)}
+=f_Y(y).\]</div>
+<p>所以独立性也可以理解为：<strong>已知 <span class="note-math-inline">\(X\)</span> 的取值，不会改变 <span class="note-math-inline">\(Y\)</span> 的分布；反过来也一样。</strong></p>
+<h4 id="2-推导思路"><a href="#2-%E6%8E%A8%E5%AF%BC%E6%80%9D%E8%B7%AF" class="headerlink" title="2. 推导思路"></a>2. 推导思路</h4><p>由联合分布函数的独立性条件：</p>
+<div class="note-math-display">\[F(x,y)=F_X(x)F_Y(y).\]</div>
+<p>将三个分布函数写成密度积分：</p>
+<div class="note-math-display">\[\int_{-\infty}^{x}\int_{-\infty}^{y}f(u,v)\,dv\,du
+=
+\left(\int_{-\infty}^{x}f_X(u)\,du\right)
+\left(\int_{-\infty}^{y}f_Y(v)\,dv\right).\]</div>
+<p>两个单重积分的乘积可写成二重积分：</p>
+<div class="note-math-display">\[\int_{-\infty}^{x}\int_{-\infty}^{y}
+f_X(u)f_Y(v)\,dv\,du.\]</div>
+<p>所以对任意 <span class="note-math-inline">\(x,y\)</span>，两个密度在所有左下矩形上的积分相同；由密度与分布函数的关系，得到</p>
+<div class="note-math-display">\[f(x,y)=f_X(x)f_Y(y)\quad\text{几乎处处}.\]</div>
+<p>反过来，对该密度分解式积分就会得到 <span class="note-math-inline">\(F(x,y)=F_X(x)F_Y(y)\)</span>，所以两变量独立。</p>
+<details class="notes-example"><summary>老师讲稿补充：<span class="note-math-inline">\(Y=X^2\)</span> 时，为什么 <span class="note-math-inline">\(X,Y\)</span> 不独立？</summary><div class="notes-example-body">
+
+<p>设 <span class="note-math-inline">\(X\sim U(-1,1)\)</span>，并令 <span class="note-math-inline">\(Y=X^2\)</span>。直观上，<span class="note-math-inline">\(Y\)</span> 完全由 <span class="note-math-inline">\(X\)</span> 决定；一旦知道 <span class="note-math-inline">\(X\)</span>，<span class="note-math-inline">\(Y\)</span> 就确定了，所以它们不独立。</p>
+<p>严格证明时，不要只拿 <span class="note-math-inline">\(X=0\)</span> 这样的单点举例，因为连续型 <span class="note-math-inline">\(X\)</span> 满足 <span class="note-math-inline">\(P(X=0)=0\)</span>。老师建议改用有正概率的区间：</p>
+<p>令</p>
+<div class="note-math-display">\[A=\{0&lt;X&lt;0.1\},\qquad B=\{0.02&lt;Y&lt;0.03\}.\]</div>
+<p>若 <span class="note-math-inline">\(X\in A\)</span>，则 <span class="note-math-inline">\(0&lt;Y=X^2&lt;0.01\)</span>，因此 <span class="note-math-inline">\(A\)</span> 与 <span class="note-math-inline">\(B\)</span> 不可能同时发生：</p>
+<div class="note-math-display">\[P(X\in A,Y\in B)=0.\]</div>
+<p>但 <span class="note-math-inline">\(P(X\in A)&gt;0\)</span>，且 <span class="note-math-inline">\(P(Y\in B)&gt;0\)</span>，于是</p>
+<div class="note-math-display">\[P(X\in A,Y\in B)\ne P(X\in A)P(Y\in B).\]</div>
+<p>这就找到了独立性定义的一个反例，所以 <span class="note-math-inline">\(X,Y\)</span> 不独立。</p>
+<p>补充：<span class="note-math-inline">\((X,X^2)\)</span> 的概率全部落在抛物线 <span class="note-math-inline">\(y=x^2\)</span> 上；它既不是二维离散型随机变量，也不具有二维联合密度，是一个集中在曲线上的特殊分布。</p>
+</div></details>
+<h3 id="五、密度分解定理"><a href="#%E4%BA%94%E3%80%81%E5%AF%86%E5%BA%A6%E5%88%86%E8%A7%A3%E5%AE%9A%E7%90%86" class="headerlink" title="五、密度分解定理"></a>五、密度分解定理</h3><h4 id="定理"><a href="#%E5%AE%9A%E7%90%86" class="headerlink" title="定理"></a>定理</h4><p>连续型随机变量 <span class="note-math-inline">\(X,Y\)</span> 独立的充要条件是联合密度几乎处处可写为</p>
+<div class="note-math-display">\[\boxed{f(x,y)=m(x)n(y),}\]</div>
+<p>其中 <span class="note-math-inline">\(m\)</span> 只依赖 <span class="note-math-inline">\(x\)</span>，<span class="note-math-inline">\(n\)</span> 只依赖 <span class="note-math-inline">\(y\)</span>，且联合密度满足归一化条件。</p>
+<h4 id="使用定理时最容易漏掉的一点：定义域也要能分开"><a href="#%E4%BD%BF%E7%94%A8%E5%AE%9A%E7%90%86%E6%97%B6%E6%9C%80%E5%AE%B9%E6%98%93%E6%BC%8F%E6%8E%89%E7%9A%84%E4%B8%80%E7%82%B9%EF%BC%9A%E5%AE%9A%E4%B9%89%E5%9F%9F%E4%B9%9F%E8%A6%81%E8%83%BD%E5%88%86%E5%BC%80" class="headerlink" title="使用定理时最容易漏掉的一点：定义域也要能分开"></a>使用定理时最容易漏掉的一点：定义域也要能分开</h4><p>判断 <span class="note-math-inline">\(f(x,y)=m(x)n(y)\)</span> 时，不能只看密度表达式的代数部分。分段定义里的“在哪些 <span class="note-math-inline">\((x,y)\)</span> 上非零”也是联合密度的一部分。</p>
+<ul>
+<li>若支持集是矩形 <span class="note-math-inline">\(A\times B\)</span>，常常可以写成“只与 <span class="note-math-inline">\(x\)</span> 有关的部分”乘以“只与 <span class="note-math-inline">\(y\)</span> 有关的部分”。</li>
+<li>若支持集是三角形，例如 <span class="note-math-inline">\(0&lt;x&lt;y&lt;2\)</span>，固定 <span class="note-math-inline">\(x\)</span> 后 <span class="note-math-inline">\(y\)</span> 的范围是 <span class="note-math-inline">\(x&lt;y&lt;2\)</span>，会随 <span class="note-math-inline">\(x\)</span> 改变；这种支持条件通常无法拆成单独的 <span class="note-math-inline">\(x\)</span> 条件和 <span class="note-math-inline">\(y\)</span> 条件。</li>
+</ul>
+<h4 id="证明"><a href="#%E8%AF%81%E6%98%8E" class="headerlink" title="证明"></a>证明</h4><p><strong>必要性：</strong> 若 <span class="note-math-inline">\(X,Y\)</span> 独立，则</p>
+<div class="note-math-display">\[f(x,y)=f_X(x)f_Y(y).\]</div>
+<p>令 <span class="note-math-inline">\(m(x)=f_X(x)\)</span>、<span class="note-math-inline">\(n(y)=f_Y(y)\)</span>，便有 <span class="note-math-inline">\(f(x,y)=m(x)n(y)\)</span>。</p>
+<p><strong>充分性：</strong> 假设 <span class="note-math-inline">\(f(x,y)=m(x)n(y)\)</span>。令</p>
+<div class="note-math-display">\[a=\int_{-\infty}^{+\infty}m(x)\,dx,\qquad
+b=\int_{-\infty}^{+\infty}n(y)\,dy.\]</div>
+<p>由联合密度积分为 1：</p>
+<div class="note-math-display">\[1=\iint f(x,y)\,dx\,dy=ab.\]</div>
+<p>边际密度为</p>
+<div class="note-math-display">\[f_X(x)=\int f(x,y)\,dy=bm(x),\]</div>
+<div class="note-math-display">\[f_Y(y)=\int f(x,y)\,dx=an(y).\]</div>
+<p>所以</p>
+<div class="note-math-display">\[f_X(x)f_Y(y)=bm(x)\cdot an(y)
+=ab\,m(x)n(y)=f(x,y).\]</div>
+<p>由连续型独立性判别条件，<span class="note-math-inline">\(X,Y\)</span> 独立。</p>
+<details class="notes-example"><summary>PPT 例 4.1：指数型联合密度</summary><div class="notes-example-body">
+
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+6e^{-(2x+3y)},&amp;x&gt;0,y&gt;0,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<p>求边际密度：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_X(x)&amp;=\int_0^\infty6e^{-(2x+3y)}\,dy
+=2e^{-2x},\\
+f_Y(y)&amp;=\int_0^\infty6e^{-(2x+3y)}\,dx
+=3e^{-3y}.
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[f_X(x)f_Y(y)=6e^{-(2x+3y)}=f(x,y),\]</div>
+<p>所以 <span class="note-math-inline">\(X,Y\)</span> 独立。</p>
+</div></details>
+<details class="notes-example"><summary>PPT 第 77 页思考题：四种密度的判别</summary><div class="notes-example-body">
+
+<p>（1）</p>
+<div class="note-math-display">\[f(x,y)=e^{-2x},\quad x&gt;0,\ 0&lt;y&lt;2.\]</div>
+<p>可分解为 <span class="note-math-inline">\(e^{-2x}\cdot1\)</span>，且定义域是矩形，所以独立。其归一化也成立，因为</p>
+<div class="note-math-display">\[\int_0^\infty\int_0^2e^{-2x}\,dy\,dx=1.\]</div>
+<p>（2）PPT 原页的公式是</p>
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+xy/2,&amp;0&lt;x&lt;y&lt;2,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<p>先检查归一化：</p>
+<div class="note-math-display">\[\int_0^2\int_0^y\frac{xy}{2}\,dx\,dy
+=\int_0^2\frac{y^3}{4}\,dy=1.\]</div>
+<p>因此它是合法的联合密度。但 <span class="note-math-inline">\(X,Y\)</span> <strong>不独立</strong>。虽然代数部分 <span class="note-math-inline">\(xy/2=x\cdot(y/2)\)</span> 看起来可以拆开，定义域 <span class="note-math-inline">\(0&lt;x&lt;y&lt;2\)</span> 却是三角形，而不是 <span class="note-math-inline">\(A\times B\)</span> 形式的矩形支持集。</p>
+<p>老师讲稿用条件取值范围解释这一点：若 <span class="note-math-inline">\(X=1\)</span>，则 <span class="note-math-inline">\(1&lt;Y&lt;2\)</span>；若 <span class="note-math-inline">\(X=1.5\)</span>，则 <span class="note-math-inline">\(1.5&lt;Y&lt;2\)</span>。已知 <span class="note-math-inline">\(X\)</span> 的取值会改变 <span class="note-math-inline">\(Y\)</span> 的允许范围，因此不能把它当作独立情形。<strong>判断密度能否分解时，必须连同定义域一起判断。</strong></p>
+<p>（3）</p>
+<div class="note-math-display">\[f(x,y)=x+y,\quad 0&lt;x&lt;1,\ 0&lt;y&lt;1.\]</div>
+<p>边际密度为</p>
+<div class="note-math-display">\[f_X(x)=x+\frac12,\qquad
+f_Y(y)=y+\frac12.\]</div>
+<p>其乘积</p>
+<div class="note-math-display">\[\left(x+\frac12\right)\left(y+\frac12\right)\]</div>
+<p>一般不等于 <span class="note-math-inline">\(x+y\)</span>，所以不独立。</p>
+<p>（4）</p>
+<div class="note-math-display">\[f(x,y)=xy,\quad 0&lt;x&lt;2,\ 0&lt;y&lt;1.\]</div>
+<p>边际密度为</p>
+<div class="note-math-display">\[f_X(x)=\frac x2,\qquad f_Y(y)=2y.\]</div>
+<p>因此 <span class="note-math-inline">\(f_X(x)f_Y(y)=xy=f(x,y)\)</span>，所以独立。</p>
+<blockquote class="obsidian-callout obsidian-callout-success">
+<div class="obsidian-callout-header">结论</div><p>PPT 给出的答案为（1）、（4）。同时要记住，判断独立性既要看表达式，也要看定义域。</p>
+</blockquote>
+</div></details>
+<h3 id="六、二元正态分布的独立性"><a href="#%E5%85%AD%E3%80%81%E4%BA%8C%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7" class="headerlink" title="六、二元正态分布的独立性"></a>六、二元正态分布的独立性</h3><p>PPT 例 4.5：若 <span class="note-math-inline">\((X,Y)\)</span> 服从二元正态分布，则</p>
+<div class="note-math-display">\[\boxed{X,Y\text{ 独立}\iff\rho=0.}\]</div>
+<h4 id="证明：-rho-0-Rightarrow-独立"><a href="#%E8%AF%81%E6%98%8E%EF%BC%9A-rho-0-Rightarrow-%E7%8B%AC%E7%AB%8B" class="headerlink" title="证明：\(\rho=0\Rightarrow\) 独立"></a>证明：<span class="note-math-inline">\(\rho=0\Rightarrow\)</span> 独立</h4><p>二元正态联合密度中，当 <span class="note-math-inline">\(\rho=0\)</span> 时，交叉项消失：</p>
+<div class="note-math-display">\[\begin{aligned}
+f(x,y)
+&amp;=\frac1{2\pi\sigma_1\sigma_2}
+e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}
+e^{-\frac{(y-\mu_2)^2}{2\sigma_2^2}}\\
+&amp;=f_X(x)f_Y(y).
+\end{aligned}\]</div>
+<p>所以 <span class="note-math-inline">\(X,Y\)</span> 独立。</p>
+<h4 id="证明：独立-Rightarrow-rho-0"><a href="#%E8%AF%81%E6%98%8E%EF%BC%9A%E7%8B%AC%E7%AB%8B-Rightarrow-rho-0" class="headerlink" title="证明：独立 \(\Rightarrow\rho=0\)"></a>证明：独立 <span class="note-math-inline">\(\Rightarrow\rho=0\)</span></h4><p>若独立，则连续的密度满足</p>
+<div class="note-math-display">\[f(x,y)=f_X(x)f_Y(y).\]</div>
+<p>在 <span class="note-math-inline">\((\mu_1,\mu_2)\)</span> 处，</p>
+<div class="note-math-display">\[f(\mu_1,\mu_2)
+=\frac1{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}},\]</div>
+<p>而</p>
+<div class="note-math-display">\[f_X(\mu_1)f_Y(\mu_2)
+=\frac1{2\pi\sigma_1\sigma_2}.\]</div>
+<p>令两者相等：</p>
+<div class="note-math-display">\[\frac1{\sqrt{1-\rho^2}}=1
+\Rightarrow \rho^2=0
+\Rightarrow\boxed{\rho=0}.\]</div>
+<blockquote class="obsidian-callout obsidian-callout-warning">
+<div class="obsidian-callout-header">重要提醒</div><p>这是二元正态分布的特殊结论；一般随机变量相关系数为零并不必然独立。</p>
+</blockquote>
+<details class="notes-example"><summary>七、PPT 例 4.6：独立指数分布变量的概率</summary><div class="notes-example-body">
+
+<p><span class="note-math-inline">\(X,Y\)</span> 独立且同服从指数分布，密度为</p>
+<div class="note-math-display">\[f(x)=\frac12e^{-x/2},\quad x&gt;0.\]</div>
+<p>求 <span class="note-math-inline">\(P(X\le2Y)\)</span>。</p>
+<p>由独立性，联合密度为</p>
+<div class="note-math-display">\[f(x,y)=\frac14e^{-(x+y)/2},\quad x&gt;0,y&gt;0.\]</div>
+<p>区域 <span class="note-math-inline">\(X\le2Y\)</span> 等价于 <span class="note-math-inline">\(y\ge x/2\)</span>，所以</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X\le2Y)
+&amp;=\int_0^\infty\int_{x/2}^{\infty}
+\frac14e^{-(x+y)/2}\,dy\,dx\\
+&amp;=\int_0^\infty\frac12e^{-x/2}e^{-x/4}\,dx\\
+&amp;=\frac12\int_0^\infty e^{-3x/4}\,dx\\
+&amp;=\boxed{\frac23}.
+\end{aligned}\]</div>
+<h4 id="同分布不等于随机变量相等"><a href="#%E5%90%8C%E5%88%86%E5%B8%83%E4%B8%8D%E7%AD%89%E4%BA%8E%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9B%B8%E7%AD%89" class="headerlink" title="同分布不等于随机变量相等"></a>同分布不等于随机变量相等</h4><p>老师讲稿还提醒：两个随机变量<strong>同分布</strong>，是指它们的分布函数相同；这不表示它们每次试验的取值都相等。</p>
+<ul>
+<li>若 <span class="note-math-inline">\(X=Y\)</span>（几乎处处），则它们同分布。</li>
+<li>反过来，同分布一般不能推出 <span class="note-math-inline">\(X=Y\)</span>。</li>
+<li>例如，把 10 次独立抛硬币的前 5 次正面次数记为 <span class="note-math-inline">\(X\)</span>，后 5 次正面次数记为 <span class="note-math-inline">\(Y\)</span>。两者都服从 <span class="note-math-inline">\(B(5,1/2)\)</span>，所以同分布；但前 5 次与后 5 次的正面次数不一定相同。</li>
+</ul>
+<p>这也提醒我们：<strong>同分布、相等、独立是三个不同概念。</strong></p>
+</div></details>
+<h3 id="八、教材补充：3-4"><a href="#%E5%85%AB%E3%80%81%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BC%9A3-4" class="headerlink" title="八、教材补充：3.4"></a>八、教材补充：3.4</h3><h4 id="1-条件概率形式"><a href="#1-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%BD%A2%E5%BC%8F" class="headerlink" title="1. 条件概率形式"></a>1. 条件概率形式</h4><p>若 <span class="note-math-inline">\(X,Y\)</span> 独立且 <span class="note-math-inline">\(P(Y\in D_2)&gt;0\)</span>，则</p>
+<div class="note-math-display">\[\begin{aligned}
+P(X\in D_1\mid Y\in D_2)
+&amp;=\frac{P(X\in D_1,Y\in D_2)}{P(Y\in D_2)}\\
+&amp;=\frac{P(X\in D_1)P(Y\in D_2)}{P(Y\in D_2)}\\
+&amp;=\boxed{P(X\in D_1)}.
+\end{aligned}\]</div>
+<h4 id="2-多元独立性"><a href="#2-%E5%A4%9A%E5%85%83%E7%8B%AC%E7%AB%8B%E6%80%A7" class="headerlink" title="2. 多元独立性"></a>2. 多元独立性</h4><p><span class="note-math-inline">\(X_1,\ldots,X_n\)</span> 相互独立的分布函数判别条件为</p>
+<div class="note-math-display">\[\boxed{
+F(x_1,\ldots,x_n)=\prod_{i=1}^nF_{X_i}(x_i).
+}\]</div>
+<p>若连续型，则联合密度可分解为各边际密度的乘积；若离散型，则联合概率等于各边际概率的乘积。</p>
+<h4 id="3-独立随机向量的性质"><a href="#3-%E7%8B%AC%E7%AB%8B%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F%E7%9A%84%E6%80%A7%E8%B4%A8" class="headerlink" title="3. 独立随机向量的性质"></a>3. 独立随机向量的性质</h4><p>若随机向量 <span class="note-math-inline">\((X_1,\ldots,X_m)\)</span> 与 <span class="note-math-inline">\((Y_1,\ldots,Y_n)\)</span> 相互独立，则任意 <span class="note-math-inline">\(X_i\)</span> 与任意 <span class="note-math-inline">\(Y_j\)</span> 也独立。分别对两组变量施加相应的连续函数，所得两个函数随机变量仍独立。</p>
+<hr>
+<h2 id="3-5-二元随机变量函数的分布"><a href="#3-5-%E4%BA%8C%E5%85%83%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83" class="headerlink" title="3.5 二元随机变量函数的分布"></a>3.5 二元随机变量函数的分布</h2><blockquote class="obsidian-callout obsidian-callout-abstract">
+<div class="obsidian-callout-header">本节导读</div><p><strong>PPT 顺序：</strong> 离散型函数分布 → 和 <span class="note-math-inline">\(Z=X+Y\)</span> 的分布 → 连续型卷积 → 混合型例题 → 最大值与最小值 → 应用题。<br>PPT 主要对应第 93—133 页；教材对应第 106—113 页。<br><strong>老师讲稿开头的回顾（约 00:04—00:07）：</strong> 求函数分布时，关键不是直接猜新变量的分布，而是先把“新变量取某个值”或“新变量不超过某个值”转换成原变量的事件。二维情形沿用同一思想，只是事件区域可能位于平面上。</p>
+</blockquote>
+<h3 id="一、基本思想：从-X-Y-到-Z-g-X-Y"><a href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%EF%BC%9A%E4%BB%8E-X-Y-%E5%88%B0-Z-g-X-Y" class="headerlink" title="一、基本思想：从 \((X,Y)\) 到 \(Z=g(X,Y)\)"></a>一、基本思想：从 <span class="note-math-inline">\((X,Y)\)</span> 到 <span class="note-math-inline">\(Z=g(X,Y)\)</span></h3><p>已知二元随机变量 <span class="note-math-inline">\((X,Y)\)</span>，定义</p>
+<div class="note-math-display">\[Z=g(X,Y).\]</div>
+<p>求 <span class="note-math-inline">\(Z\)</span> 的分布，实质上是把事件 <span class="note-math-inline">\(\{Z=z\}\)</span> 或 <span class="note-math-inline">\(\{Z\le z\}\)</span> 改写成关于原变量 <span class="note-math-inline">\(X,Y\)</span> 的事件，再利用已知的联合分布计算。</p>
+<h3 id="二、离散型随机变量函数的分布"><a href="#%E4%BA%8C%E3%80%81%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83" class="headerlink" title="二、离散型随机变量函数的分布"></a>二、离散型随机变量函数的分布</h3><h4 id="1-单个函数-Z-g-X-Y"><a href="#1-%E5%8D%95%E4%B8%AA%E5%87%BD%E6%95%B0-Z-g-X-Y" class="headerlink" title="1. 单个函数 \(Z=g(X,Y)\)"></a>1. 单个函数 <span class="note-math-inline">\(Z=g(X,Y)\)</span></h4><p>若</p>
+<div class="note-math-display">\[P(X=x_i,Y=y_j)=p_{ij},\]</div>
+<p>则</p>
+<div class="note-math-display">\[\boxed{
+P(Z=z)=
+\sum_{(i,j):\,g(x_i,y_j)=z}p_{ij}.
+}\]</div>
+<h4 id="推导-2"><a href="#%E6%8E%A8%E5%AF%BC-2" class="headerlink" title="推导"></a>推导</h4><p>事件 <span class="note-math-inline">\(\{Z=z\}\)</span> 是所有满足 <span class="note-math-inline">\(g(x_i,y_j)=z\)</span> 的取值组合的并。不同的联合取值事件互斥，所以</p>
+<div class="note-math-display">\[P(Z=z)=\sum_{(i,j):g(x_i,y_j)=z}P(X=x_i,Y=y_j).\]</div>
+<h4 id="2-两个函数-U-V"><a href="#2-%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0-U-V" class="headerlink" title="2. 两个函数 \((U,V)\)"></a>2. 两个函数 <span class="note-math-inline">\((U,V)\)</span></h4><p>若</p>
+<div class="note-math-display">\[U=u(X,Y),\qquad V=v(X,Y),\]</div>
+<p>则</p>
+<div class="note-math-display">\[\boxed{
+P(U=u,V=v)=
+\sum_{\substack{u(x_i,y_j)=u\\v(x_i,y_j)=v}}p_{ij}.
+}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">做题步骤</div><p>列出原始取值 → 计算函数值 → 将映射到同一结果的概率相加 → 求边际分布。</p>
+</blockquote>
+<details class="notes-example"><summary>3. PPT 例 5.1：<span class="note-math-inline">\(U=X+Y,\ V=\max(X,Y)\)</span></summary><div class="notes-example-body">
+
+<p>联合分布律：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(X\backslash Y\)</span></th>
+<th align="right">1</th>
+<th align="right">2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td align="right">0.2</td>
+<td align="right">0.1</td>
+</tr>
+<tr>
+<td>2</td>
+<td align="right">0.3</td>
+<td align="right">0.4</td>
+</tr>
+</tbody></table></div>
+<p>逐项计算：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>原始取值</th>
+<th align="right">概率</th>
+<th>新取值 <span class="note-math-inline">\((U,V)\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="note-math-inline">\((1,1)\)</span></td>
+<td align="right">0.2</td>
+<td><span class="note-math-inline">\((2,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\((1,2)\)</span></td>
+<td align="right">0.1</td>
+<td><span class="note-math-inline">\((3,2)\)</span></td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\((2,1)\)</span></td>
+<td align="right">0.3</td>
+<td><span class="note-math-inline">\((3,2)\)</span></td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\((2,2)\)</span></td>
+<td align="right">0.4</td>
+<td><span class="note-math-inline">\((4,2)\)</span></td>
+</tr>
+</tbody></table></div>
+<p>因此</p>
+<div class="note-math-display">\[P(U=3,V=2)=0.1+0.3=0.4.\]</div>
+<p>联合分布律：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th><span class="note-math-inline">\(U\backslash V\)</span></th>
+<th align="right">1</th>
+<th align="right">2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td align="right">0.2</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>3</td>
+<td align="right">0</td>
+<td align="right">0.4</td>
+</tr>
+<tr>
+<td>4</td>
+<td align="right">0</td>
+<td align="right">0.4</td>
+</tr>
+</tbody></table></div>
+<p>边际分布为</p>
+<div class="note-math-display">\[P(U=2,3,4)=(0.2,0.4,0.4),\]</div>
+<div class="note-math-display">\[P(V=1,2)=(0.2,0.8).\]</div>
+</div></details>
+<details class="notes-example"><summary>4. PPT 例 5.2：同一个 <span class="note-math-inline">\(X\)</span> 构造两个指示变量</summary><div class="notes-example-body">
+
+<p><span class="note-math-inline">\(X\sim E(1)\)</span>，密度 <span class="note-math-inline">\(f_X(x)=e^{-x}\)</span>（<span class="note-math-inline">\(x&gt;0\)</span>）。定义</p>
+<div class="note-math-display">\[U=\mathbf1_{\{X&gt;1\}},\qquad V=\mathbf1_{\{X&gt;2\}}.\]</div>
+<p>由于 <span class="note-math-inline">\(X&gt;2\)</span> 必然推出 <span class="note-math-inline">\(X&gt;1\)</span>，所以 <span class="note-math-inline">\((U,V)=(0,1)\)</span> 不可能发生。</p>
+<div class="note-math-display">\[P(U=1,V=1)=P(X&gt;2)=e^{-2},\]</div>
+<div class="note-math-display">\[P(U=1,V=0)=P(1&lt;X\le2)=e^{-1}-e^{-2},\]</div>
+<div class="note-math-display">\[P(U=0,V=1)=0,\]</div>
+<div class="note-math-display">\[P(U=0,V=0)=P(X\le1)=1-e^{-1}.\]</div>
+<p>先把函数事件翻译回 <span class="note-math-inline">\(X\)</span> 的取值范围，再用 <span class="note-math-inline">\(X\)</span> 的分布计算。</p>
+</div></details>
+<h3 id="三、和-Z-X-Y-的分布：离散型情形"><a href="#%E4%B8%89%E3%80%81%E5%92%8C-Z-X-Y-%E7%9A%84%E5%88%86%E5%B8%83%EF%BC%9A%E7%A6%BB%E6%95%A3%E5%9E%8B%E6%83%85%E5%BD%A2" class="headerlink" title="三、和 \(Z=X+Y\) 的分布：离散型情形"></a>三、和 <span class="note-math-inline">\(Z=X+Y\)</span> 的分布：离散型情形</h3><h4 id="1-一般公式"><a href="#1-%E4%B8%80%E8%88%AC%E5%85%AC%E5%BC%8F" class="headerlink" title="1. 一般公式"></a>1. 一般公式</h4><div class="note-math-display">\[\boxed{
+P(Z=z_k)=\sum_iP(X=x_i,Y=z_k-x_i).
+}\]</div>
+<p>等价地，</p>
+<div class="note-math-display">\[\boxed{
+P(Z=z_k)=\sum_jP(X=z_k-y_j,Y=y_j).
+}\]</div>
+<h4 id="推导-3"><a href="#%E6%8E%A8%E5%AF%BC-3" class="headerlink" title="推导"></a>推导</h4><p>由 <span class="note-math-inline">\(Z=X+Y\)</span>，</p>
+<div class="note-math-display">\[\{Z=z_k\}=\{X+Y=z_k\}.\]</div>
+<p>固定 <span class="note-math-inline">\(X=x_i\)</span> 后，必须有 <span class="note-math-inline">\(Y=z_k-x_i\)</span>，所以</p>
+<div class="note-math-display">\[\{Z=z_k\}=\bigcup_i\{X=x_i,Y=z_k-x_i\}.\]</div>
+<p>这些事件互斥，对它们求和即可得到公式。</p>
+<p>若 <span class="note-math-inline">\(X,Y\)</span> 独立，则进一步有</p>
+<div class="note-math-display">\[\boxed{
+P(Z=z_k)=\sum_iP(X=x_i)P(Y=z_k-x_i).
+}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-warning">
+<div class="obsidian-callout-header">注意</div><p>只有独立时，才可把联合概率拆成边际概率的乘积。</p>
+</blockquote>
+<details class="notes-example"><summary>2. PPT 例 5.3：独立泊松随机变量之和</summary><div class="notes-example-body">
+
+<p>设</p>
+<div class="note-math-display">\[X\sim P(\lambda_1),\qquad Y\sim P(\lambda_2),\]</div>
+<p>且独立。令 <span class="note-math-inline">\(Z=X+Y\)</span>。</p>
+<div class="note-math-display">\[\begin{aligned}
+P(Z=k)
+&amp;=\sum_{i=0}^{k}P(X=i)P(Y=k-i)\\
+&amp;=\sum_{i=0}^{k}
+e^{-\lambda_1}\frac{\lambda_1^i}{i!}
+e^{-\lambda_2}\frac{\lambda_2^{k-i}}{(k-i)!}\\
+&amp;=\frac{e^{-(\lambda_1+\lambda_2)}}{k!}
+\sum_{i=0}^{k}\binom ki\lambda_1^i\lambda_2^{k-i}.
+\end{aligned}\]</div>
+<p>由二项式定理，</p>
+<div class="note-math-display">\[\sum_{i=0}^{k}\binom ki\lambda_1^i\lambda_2^{k-i}
+=(\lambda_1+\lambda_2)^k.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[P(Z=k)=e^{-(\lambda_1+\lambda_2)}
+\frac{(\lambda_1+\lambda_2)^k}{k!},\]</div>
+<p>即</p>
+<div class="note-math-display">\[\boxed{X+Y\sim P(\lambda_1+\lambda_2).}\]</div>
+<p>两个独立泊松随机变量的和仍服从泊松分布，参数相加。</p>
+</div></details>
+<h3 id="四、连续型情形：卷积公式"><a href="#%E5%9B%9B%E3%80%81%E8%BF%9E%E7%BB%AD%E5%9E%8B%E6%83%85%E5%BD%A2%EF%BC%9A%E5%8D%B7%E7%A7%AF%E5%85%AC%E5%BC%8F" class="headerlink" title="四、连续型情形：卷积公式"></a>四、连续型情形：卷积公式</h3><h4 id="1-从分布函数出发"><a href="#1-%E4%BB%8E%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E5%87%BA%E5%8F%91" class="headerlink" title="1. 从分布函数出发"></a>1. 从分布函数出发</h4><p>设 <span class="note-math-inline">\((X,Y)\)</span> 的联合密度为 <span class="note-math-inline">\(f(x,y)\)</span>，令 <span class="note-math-inline">\(Z=X+Y\)</span>。</p>
+<div class="note-math-display">\[\begin{aligned}
+F_Z(z)
+&amp;=P(Z\le z)\\
+&amp;=P(X+Y\le z)\\
+&amp;=\iint_{x+y\le z}f(x,y)\,dx\,dy.
+\end{aligned}\]</div>
+<p>改写积分次序：</p>
+<div class="note-math-display">\[F_Z(z)=
+\int_{-\infty}^{+\infty}
+\int_{-\infty}^{z-y}f(x,y)\,dx\,dy.\]</div>
+<h4 id="2-对分布函数求导"><a href="#2-%E5%AF%B9%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E6%B1%82%E5%AF%BC" class="headerlink" title="2. 对分布函数求导"></a>2. 对分布函数求导</h4><p>根据变上限积分求导公式，</p>
+<div class="note-math-display">\[\frac{d}{dz}\int_{-\infty}^{z-y}f(x,y)\,dx=f(z-y,y).\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{
+f_Z(z)=\int_{-\infty}^{+\infty}f(z-y,y)\,dy.
+}\]</div>
+<p>令 <span class="note-math-inline">\(x=z-y\)</span>，可写成</p>
+<div class="note-math-display">\[\boxed{
+f_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)\,dx.
+}\]</div>
+<h4 id="3-独立时的卷积公式"><a href="#3-%E7%8B%AC%E7%AB%8B%E6%97%B6%E7%9A%84%E5%8D%B7%E7%A7%AF%E5%85%AC%E5%BC%8F" class="headerlink" title="3. 独立时的卷积公式"></a>3. 独立时的卷积公式</h4><p>若 <span class="note-math-inline">\(X,Y\)</span> 独立，则 <span class="note-math-inline">\(f(x,y)=f_X(x)f_Y(y)\)</span>。代入：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_Z(z)
+&amp;=\int_{-\infty}^{+\infty}f(x,z-x)\,dx\\
+&amp;=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)\,dx.
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{
+f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)\,dx.
+}\]</div>
+<p>这就是卷积公式；等价形式为</p>
+<div class="note-math-display">\[f_Z(z)=\int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)\,dy.\]</div>
+<p>实际计算时，只需在两个密度都非零的范围内积分。积分上下限必须由原始定义域决定。</p>
+<h4 id="老师讲稿对应的做题步骤"><a href="#%E8%80%81%E5%B8%88%E8%AE%B2%E7%A8%BF%E5%AF%B9%E5%BA%94%E7%9A%84%E5%81%9A%E9%A2%98%E6%AD%A5%E9%AA%A4" class="headerlink" title="老师讲稿对应的做题步骤"></a>老师讲稿对应的做题步骤</h4><p>求 <span class="note-math-inline">\(Z=X+Y\)</span> 的密度时，固定一个 <span class="note-math-inline">\(z\)</span>，令 <span class="note-math-inline">\(y=z-x\)</span>。然后同时满足：</p>
+<div class="note-math-display">\[x\in \operatorname{supp}(X),\qquad z-x\in\operatorname{supp}(Y).\]</div>
+<p>把这两个条件都改写成关于 <span class="note-math-inline">\(x\)</span> 的不等式，再取交集，就是积分范围。不要直接把积分上下限写成 <span class="note-math-inline">\(-\infty,+\infty\)</span> 后就不再检查：<strong>真正有效的积分区间来自两个变量的支持集相交。</strong></p>
+<details class="notes-example"><summary>4. PPT 例 5.4：两个独立标准正态变量之和</summary><div class="notes-example-body">
+
+<p>若 <span class="note-math-inline">\(X,Y\overset{\text{独立}}{\sim}N(0,1)\)</span>，<span class="note-math-inline">\(Z=X+Y\)</span>，则</p>
+<div class="note-math-display">\[f_Z(z)=\frac1{2\pi}\int_{-\infty}^{+\infty}
+e^{-\frac{x^2+(z-x)^2}{2}}\,dx.\]</div>
+<p>配方：</p>
+<div class="note-math-display">\[x^2+(z-x)^2=2\left(x-\frac z2\right)^2+\frac{z^2}{2}.\]</div>
+<p>于是</p>
+<div class="note-math-display">\[f_Z(z)=\frac{e^{-z^2/4}}{2\pi}
+\int_{-\infty}^{+\infty}e^{-(x-z/2)^2}\,dx.\]</div>
+<p>利用</p>
+<div class="note-math-display">\[\int_{-\infty}^{+\infty}e^{-u^2}\,du=\sqrt\pi,\]</div>
+<p>得到</p>
+<div class="note-math-display">\[f_Z(z)=\frac1{2\sqrt\pi}e^{-z^2/4}.\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{Z\sim N(0,2).}\]</div>
+<p>一般地，若 <span class="note-math-inline">\(X,Y\)</span> 独立且分别服从 <span class="note-math-inline">\(N(\mu_1,\sigma_1^2)\)</span>、<span class="note-math-inline">\(N(\mu_2,\sigma_2^2)\)</span>，则</p>
+<div class="note-math-display">\[\boxed{
+aX+bY+c\sim
+N(a\mu_1+b\mu_2+c,\ a^2\sigma_1^2+b^2\sigma_2^2).
+}\]</div>
+</div></details>
+<details class="notes-example"><summary>5. PPT 例 5.5：两个独立 <span class="note-math-inline">\(U(0,1)\)</span> 之和</summary><div class="notes-example-body">
+
+<p>设 <span class="note-math-inline">\(X,Y\overset{\text{独立}}{\sim}U(0,1)\)</span>，<span class="note-math-inline">\(Z=X+Y\)</span>。卷积积分的被积函数非零要求</p>
+<div class="note-math-display">\[0&lt;x&lt;1,\qquad0&lt;z-x&lt;1.\]</div>
+<p>第二个条件等价于 <span class="note-math-inline">\(z-1&lt;x&lt;z\)</span>，所以有效区间是 <span class="note-math-inline">\((0,1)\cap(z-1,z)\)</span>。</p>
+<ul>
+<li>当 <span class="note-math-inline">\(0&lt;z\le1\)</span>，区间为 <span class="note-math-inline">\((0,z)\)</span>，长度为 <span class="note-math-inline">\(z\)</span>；</li>
+<li>当 <span class="note-math-inline">\(1&lt;z&lt;2\)</span>，区间为 <span class="note-math-inline">\((z-1,1)\)</span>，长度为 <span class="note-math-inline">\(2-z\)</span>。</li>
+</ul>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{
+f_Z(z)=
+\begin{cases}
+z,&amp;0&lt;z\le1,\\
+2-z,&amp;1&lt;z&lt;2,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<p>密度呈三角形：和接近 0 或 2 时，可行组合较少；和在 1 附近时，可行组合较多。</p>
+</div></details>
+<details class="notes-example"><summary>6. PPT 例 5.6：三角形区域上的联合密度</summary><div class="notes-example-body">
+
+<div class="note-math-display">\[f(x,y)=
+\begin{cases}
+3x,&amp;0&lt;y&lt;x&lt;1,\\
+0,&amp;\text{其他}.
+\end{cases}\]</div>
+<p>令 <span class="note-math-inline">\(Z=X+Y\)</span>，则</p>
+<div class="note-math-display">\[f_Z(z)=\int_{-\infty}^{+\infty}f(x,z-x)\,dx.\]</div>
+<p>非零条件为</p>
+<div class="note-math-display">\[0&lt;z-x&lt;x&lt;1.\]</div>
+<p>分别整理：</p>
+<div class="note-math-display">\[x&lt;z,\qquad x&gt;\frac z2,\qquad x&lt;1.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\frac z2&lt;x&lt;\min(z,1),\quad 0&lt;z&lt;2.\]</div>
+<p>当 <span class="note-math-inline">\(0&lt;z\le1\)</span>：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_Z(z)&amp;=\int_{z/2}^{z}3x\,dx\\
+&amp;=\frac98z^2.
+\end{aligned}\]</div>
+<p>当 <span class="note-math-inline">\(1&lt;z&lt;2\)</span>：</p>
+<div class="note-math-display">\[\begin{aligned}
+f_Z(z)&amp;=\int_{z/2}^{1}3x\,dx\\
+&amp;=\frac38(4-z^2).
+\end{aligned}\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{
+f_Z(z)=
+\begin{cases}
+\dfrac98z^2,&amp;0&lt;z\le1,\\[3pt]
+\dfrac38(4-z^2),&amp;1&lt;z&lt;2,\\
+0,&amp;\text{其他}.
+\end{cases}}\]</div>
+<p><strong>本题重点不是积分技巧，而是把 <span class="note-math-inline">\(y\)</span> 替换成 <span class="note-math-inline">\(z-x\)</span> 后，重新解不等式确定上下限。</strong></p>
+</div></details>
+<h3 id="五、一个离散型、一个连续型：全概率公式"><a href="#%E4%BA%94%E3%80%81%E4%B8%80%E4%B8%AA%E7%A6%BB%E6%95%A3%E5%9E%8B%E3%80%81%E4%B8%80%E4%B8%AA%E8%BF%9E%E7%BB%AD%E5%9E%8B%EF%BC%9A%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F" class="headerlink" title="五、一个离散型、一个连续型：全概率公式"></a>五、一个离散型、一个连续型：全概率公式</h3><p>PPT 例 5.7：<span class="note-math-inline">\(X\)</span> 取 100、150、200 三个值，各自概率 <span class="note-math-inline">\(1/3\)</span>；<span class="note-math-inline">\(Y\sim N(150,400)\)</span>，且 <span class="note-math-inline">\(X,Y\)</span> 独立。令 <span class="note-math-inline">\(Z=X+Y\)</span>。</p>
+<p>先按 <span class="note-math-inline">\(X\)</span> 的取值分类：</p>
+<div class="note-math-display">\[\begin{aligned}
+F_Z(t)
+&amp;=P(X+Y\le t)\\
+&amp;=\frac13\left[
+F_Y(t-100)+F_Y(t-150)+F_Y(t-200)
+\right].
+\end{aligned}\]</div>
+<p>对 <span class="note-math-inline">\(t\)</span> 求导：</p>
+<div class="note-math-display">\[\boxed{
+f_Z(t)=\frac13\left[
+f_Y(t-100)+f_Y(t-150)+f_Y(t-200)
+\right].
+}\]</div>
+<p>此处 <span class="note-math-inline">\(Y\sim N(150,400)\)</span>，标准差为 20。于是</p>
+<div class="note-math-display">\[\begin{aligned}
+P(Z&gt;300)
+&amp;=\frac13\left[
+P(Y&gt;200)+P(Y&gt;150)+P(Y&gt;100)
+\right]\\
+&amp;=\frac13\left[
+1-\Phi(2.5)+\frac12+\Phi(2.5)
+\right]\\
+&amp;=\boxed{\frac12}.
+\end{aligned}\]</div>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">方法</div><p>一个变量离散、另一个连续时，按离散变量的可能取值分类，利用全概率公式。</p>
+</blockquote>
+<h3 id="六、最大值与最小值的分布"><a href="#%E5%85%AD%E3%80%81%E6%9C%80%E5%A4%A7%E5%80%BC%E4%B8%8E%E6%9C%80%E5%B0%8F%E5%80%BC%E7%9A%84%E5%88%86%E5%B8%83" class="headerlink" title="六、最大值与最小值的分布"></a>六、最大值与最小值的分布</h3><p>设 <span class="note-math-inline">\(X,Y\)</span> 独立，分布函数分别为 <span class="note-math-inline">\(F_X,F_Y\)</span>，定义</p>
+<div class="note-math-display">\[M=\max(X,Y),\qquad N=\min(X,Y).\]</div>
+<h4 id="1-最大值"><a href="#1-%E6%9C%80%E5%A4%A7%E5%80%BC" class="headerlink" title="1. 最大值"></a>1. 最大值</h4><div class="note-math-display">\[\{M\le z\}=\{X\le z,Y\le z\}.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\begin{aligned}
+F_M(z)&amp;=P(M\le z)\\
+&amp;=P(X\le z,Y\le z)\\
+&amp;=P(X\le z)P(Y\le z).
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{F_M(z)=F_X(z)F_Y(z).}\]</div>
+<h4 id="2-最小值"><a href="#2-%E6%9C%80%E5%B0%8F%E5%80%BC" class="headerlink" title="2. 最小值"></a>2. 最小值</h4><p>利用补事件：</p>
+<div class="note-math-display">\[\begin{aligned}
+F_N(z)&amp;=P(N\le z)\\
+&amp;=1-P(N&gt;z)\\
+&amp;=1-P(X&gt;z,Y&gt;z).
+\end{aligned}\]</div>
+<p>由独立性，</p>
+<div class="note-math-display">\[P(X&gt;z,Y&gt;z)=[1-F_X(z)][1-F_Y(z)].\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{F_N(z)=1-[1-F_X(z)][1-F_Y(z)].}\]</div>
+<h4 id="3-对应密度"><a href="#3-%E5%AF%B9%E5%BA%94%E5%AF%86%E5%BA%A6" class="headerlink" title="3. 对应密度"></a>3. 对应密度</h4><p>若分布函数可导，则</p>
+<div class="note-math-display">\[\boxed{f_M(z)=f_X(z)F_Y(z)+F_X(z)f_Y(z),}\]</div>
+<div class="note-math-display">\[\boxed{f_N(z)=f_X(z)[1-F_Y(z)]+f_Y(z)[1-F_X(z)].}\]</div>
+<details class="notes-example"><summary>4. PPT 例 5.8：两个独立 <span class="note-math-inline">\(U(0,1)\)</span> 的最大值与最小值</summary><div class="notes-example-body">
+
+<p>当 <span class="note-math-inline">\(0\le z\le1\)</span> 时，<span class="note-math-inline">\(F_X(z)=F_Y(z)=z\)</span>。</p>
+<p>最大值：</p>
+<div class="note-math-display">\[F_M(z)=z^2
+\quad\Longrightarrow\quad
+\boxed{f_M(z)=2z,\ 0&lt;z&lt;1.}\]</div>
+<p>最小值：</p>
+<div class="note-math-display">\[F_N(z)=1-(1-z)^2
+\quad\Longrightarrow\quad
+\boxed{f_N(z)=2(1-z),\ 0&lt;z&lt;1.}\]</div>
+</div></details>
+<h4 id="5-推广到-n-个独立随机变量"><a href="#5-%E6%8E%A8%E5%B9%BF%E5%88%B0-n-%E4%B8%AA%E7%8B%AC%E7%AB%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F" class="headerlink" title="5. 推广到 \(n\) 个独立随机变量"></a>5. 推广到 <span class="note-math-inline">\(n\)</span> 个独立随机变量</h4><p>若 <span class="note-math-inline">\(X_1,\ldots,X_n\)</span> 相互独立，分布函数分别为 <span class="note-math-inline">\(F_i\)</span>，则</p>
+<div class="note-math-display">\[\boxed{
+F_{\max_i X_i}(z)=\prod_{i=1}^{n}F_i(z),
+}\]</div>
+<div class="note-math-display">\[\boxed{
+F_{\min_i X_i}(z)=1-\prod_{i=1}^{n}[1-F_i(z)].
+}\]</div>
+<p>若它们同分布，公共分布函数为 <span class="note-math-inline">\(F\)</span>，则分别简化为 <span class="note-math-inline">\(F(z)^n\)</span> 与 <span class="note-math-inline">\(1-[1-F(z)]^n\)</span>。</p>
+<details class="notes-example"><summary>6. PPT 例 5.9：系统寿命</summary><div class="notes-example-body">
+
+<p>两个独立子系统的寿命分别为</p>
+<div class="note-math-display">\[X\sim E(\alpha),\qquad Y\sim E(\beta),\qquad \alpha\ne\beta.\]</div>
+<p>指数分布的生存函数为</p>
+<div class="note-math-display">\[P(X&gt;z)=e^{-\alpha z},\quad z&gt;0.\]</div>
+<h5 id="（1）串联：-Z-min-X-Y"><a href="#%EF%BC%881%EF%BC%89%E4%B8%B2%E8%81%94%EF%BC%9A-Z-min-X-Y" class="headerlink" title="（1）串联：\(Z=\min(X,Y)\)"></a>（1）串联：<span class="note-math-inline">\(Z=\min(X,Y)\)</span></h5><p>任何一个子系统损坏，整个系统停止工作。</p>
+<div class="note-math-display">\[P(Z&gt;z)=P(X&gt;z)P(Y&gt;z)=e^{-(\alpha+\beta)z}.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[F_Z(z)=1-e^{-(\alpha+\beta)z},\]</div>
+<p>求导得</p>
+<div class="note-math-display">\[\boxed{f_Z(z)=(\alpha+\beta)e^{-(\alpha+\beta)z},\quad z&gt;0.}\]</div>
+<p>即 <span class="note-math-inline">\(Z\sim E(\alpha+\beta)\)</span>。</p>
+<h5 id="（2）并联：-Z-max-X-Y"><a href="#%EF%BC%882%EF%BC%89%E5%B9%B6%E8%81%94%EF%BC%9A-Z-max-X-Y" class="headerlink" title="（2）并联：\(Z=\max(X,Y)\)"></a>（2）并联：<span class="note-math-inline">\(Z=\max(X,Y)\)</span></h5><p>只有两个子系统都损坏，系统才停止工作。</p>
+<div class="note-math-display">\[F_Z(z)=F_X(z)F_Y(z)
+=(1-e^{-\alpha z})(1-e^{-\beta z}).\]</div>
+<p>求导得</p>
+<div class="note-math-display">\[\boxed{
+f_Z(z)=\alpha e^{-\alpha z}+\beta e^{-\beta z}
+-(\alpha+\beta)e^{-(\alpha+\beta)z},\quad z&gt;0.
+}\]</div>
+<h5 id="（3）备用：-Z-X-Y"><a href="#%EF%BC%883%EF%BC%89%E5%A4%87%E7%94%A8%EF%BC%9A-Z-X-Y" class="headerlink" title="（3）备用：\(Z=X+Y\)"></a>（3）备用：<span class="note-math-inline">\(Z=X+Y\)</span></h5><p>第一个子系统损坏后，第二个才开始工作，总寿命为两者之和。</p>
+<div class="note-math-display">\[\begin{aligned}
+f_Z(z)
+&amp;=\int_0^z\alpha e^{-\alpha(z-y)}\beta e^{-\beta y}\,dy\\
+&amp;=\boxed{
+\frac{\alpha\beta}{\beta-\alpha}
+(e^{-\alpha z}-e^{-\beta z})
+},\quad z&gt;0.
+\end{aligned}\]</div>
+<p>三种结构分别对应最小值、最大值、和。先写清楚系统寿命与 <span class="note-math-inline">\(X,Y\)</span> 的关系，再选择公式。</p>
+</div></details>
+<details class="notes-example"><summary>七、PPT 例 5.10：带噪声的信号判断</summary><div class="notes-example-body">
+
+<p>发送信号 <span class="note-math-inline">\(X\)</span> 取 <span class="note-math-inline">\(1\)</span> 或 <span class="note-math-inline">\(-1\)</span>：</p>
+<div class="note-math-display">\[P(X=1)=p,\qquad P(X=-1)=1-p.\]</div>
+<p>噪声 <span class="note-math-inline">\(N\sim N(0,\sigma^2)\)</span>，且与 <span class="note-math-inline">\(X\)</span> 独立；接收信号为</p>
+<div class="note-math-display">\[Y=X+N.\]</div>
+<p>判断规则：<span class="note-math-inline">\(Y\ge0\)</span> 时判为 <span class="note-math-inline">\(X=1\)</span>，否则判为 <span class="note-math-inline">\(X=-1\)</span>。</p>
+<p>若 <span class="note-math-inline">\(X=1\)</span>，则</p>
+<div class="note-math-display">\[\begin{aligned}
+P(Y\ge0\mid X=1)
+&amp;=P(N\ge-1)\\
+&amp;=1-\Phi(-1/\sigma)\\
+&amp;=\boxed{\Phi(1/\sigma)}.
+\end{aligned}\]</div>
+<p>若已知 <span class="note-math-inline">\(Y\ge0\)</span>，根据贝叶斯公式：</p>
+<div class="note-math-display">\[\boxed{
+P(X=1\mid Y\ge0)=
+\frac{p\Phi(1/\sigma)}
+{p\Phi(1/\sigma)+(1-p)[1-\Phi(1/\sigma)]}.
+}\]</div>
+<p>同理，</p>
+<div class="note-math-display">\[\boxed{
+P(X=-1\mid Y&lt;0)=
+\frac{(1-p)\Phi(1/\sigma)}
+{(1-p)\Phi(1/\sigma)+p[1-\Phi(1/\sigma)]}.
+}\]</div>
+<p>当 <span class="note-math-inline">\(p=1/2\)</span> 时，两种方向的条件判断正确率相同，均为 <span class="note-math-inline">\(\Phi(1/\sigma)\)</span>。噪声标准差越小，信号被误判的概率通常越小。</p>
+</div></details>
+<details class="notes-example"><summary>八、PPT 例 5.11：随机选择 <span class="note-math-inline">\(X\)</span> 或 <span class="note-math-inline">\(Y\)</span></summary><div class="notes-example-body">
+
+<p>设</p>
+<div class="note-math-display">\[Z=AX+(1-A)Y,\]</div>
+<p>其中 <span class="note-math-inline">\(A\sim B(1,p)\)</span>，且 <span class="note-math-inline">\(A,X,Y\)</span> 相互独立。</p>
+<ul>
+<li><span class="note-math-inline">\(A=1\)</span> 时 <span class="note-math-inline">\(Z=X\)</span>；</li>
+<li><span class="note-math-inline">\(A=0\)</span> 时 <span class="note-math-inline">\(Z=Y\)</span>。</li>
+</ul>
+<p>利用全概率公式：</p>
+<div class="note-math-display">\[\begin{aligned}
+F_Z(z)
+&amp;=P(Z\le z)\\
+&amp;=P(A=1)P(X\le z)+P(A=0)P(Y\le z).
+\end{aligned}\]</div>
+<p>因此</p>
+<div class="note-math-display">\[\boxed{F_Z(z)=pF_X(z)+(1-p)F_Y(z).}\]</div>
+<p>若 <span class="note-math-inline">\(p=1/2\)</span>、<span class="note-math-inline">\(X\equiv2\)</span>、<span class="note-math-inline">\(Y\sim U(0,1)\)</span>，则</p>
+<div class="note-math-display">\[F_Z(z)=
+\begin{cases}
+0,&amp;z&lt;0,\\
+z/2,&amp;0\le z&lt;1,\\
+1/2,&amp;1\le z&lt;2,\\
+1,&amp;z\ge2.
+\end{cases}\]</div>
+<p>在 <span class="note-math-inline">\(z=2\)</span> 处分布函数跳跃 <span class="note-math-inline">\(1/2\)</span>，即 <span class="note-math-inline">\(P(Z=2)=1/2\)</span>；同时 <span class="note-math-inline">\(0&lt;z&lt;1\)</span> 上有连续部分。因此 <span class="note-math-inline">\(Z\)</span> 是<strong>混合型随机变量</strong>，既非纯离散型，也非纯连续型。</p>
+</div></details>
+<h3 id="九、教材补充：3-5"><a href="#%E4%B9%9D%E3%80%81%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BC%9A3-5" class="headerlink" title="九、教材补充：3.5"></a>九、教材补充：3.5</h3><details class="notes-example"><summary>1. 等待时间与服务时间之和</summary><div class="notes-example-body">
+
+<p>教材例 3.5.3：等待时间 <span class="note-math-inline">\(X\sim E(\lambda)\)</span>，服务时间 <span class="note-math-inline">\(Y\sim U(0,20)\)</span>，二者独立。令 <span class="note-math-inline">\(Z=X+Y\)</span>。</p>
+<div class="note-math-display">\[f_X(x)=\lambda e^{-\lambda x},\quad x&gt;0,
+\qquad f_Y(y)=\frac1{20},\quad0&lt;y&lt;20.\]</div>
+<p>由卷积公式</p>
+<div class="note-math-display">\[f_Z(t)=\int_{-\infty}^{+\infty}f_X(x)f_Y(t-x)\,dx.\]</div>
+<p>非零条件为 <span class="note-math-inline">\(x&gt;0\)</span> 且 <span class="note-math-inline">\(0&lt;t-x&lt;20\)</span>，即 <span class="note-math-inline">\(t-20&lt;x&lt;t\)</span>。因此：</p>
+<ul>
+<li><span class="note-math-inline">\(t\le0\)</span>：没有有效区间，<span class="note-math-inline">\(f_Z(t)=0\)</span>；</li>
+<li><span class="note-math-inline">\(0&lt;t&lt;20\)</span>：有效区间为 <span class="note-math-inline">\(0&lt;x&lt;t\)</span>；</li>
+<li><span class="note-math-inline">\(t\ge20\)</span>：有效区间为 <span class="note-math-inline">\(t-20&lt;x&lt;t\)</span>。</li>
+</ul>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{
+f_Z(t)=
+\begin{cases}
+0,&amp;t\le0,\\[2pt]
+\dfrac{1-e^{-\lambda t}}{20},&amp;0&lt;t&lt;20,\\[6pt]
+\dfrac{e^{-\lambda(t-20)}-e^{-\lambda t}}{20},&amp;t\ge20.
+\end{cases}}\]</div>
+<p>当 <span class="note-math-inline">\(\lambda=1/20\)</span> 时，</p>
+<div class="note-math-display">\[P(Z\le45)=1-e^{-45/20}(e-1)\approx\boxed{0.8189}.\]</div>
+<p>教材这题的重点是：卷积公式一样，但支持集的交集决定了分段积分范围。</p>
+</div></details>
+<h4 id="2-正态变量之和的推广"><a href="#2-%E6%AD%A3%E6%80%81%E5%8F%98%E9%87%8F%E4%B9%8B%E5%92%8C%E7%9A%84%E6%8E%A8%E5%B9%BF" class="headerlink" title="2. 正态变量之和的推广"></a>2. 正态变量之和的推广</h4><p>若 <span class="note-math-inline">\(X_1,\ldots,X_n\)</span> 相互独立，且 <span class="note-math-inline">\(X_i\sim N(\mu_i,\sigma_i^2)\)</span>，则</p>
+<div class="note-math-display">\[\boxed{
+\sum_{i=1}^nX_i\sim
+N\left(\sum_{i=1}^n\mu_i,\sum_{i=1}^n\sigma_i^2\right).
+}\]</div>
+<p>独立正态随机变量的线性组合仍服从正态分布。</p>
+<details class="notes-example"><summary>3. 教材版本的酬金例题</summary><div class="notes-example-body">
+
+<p>教材例 3.5.5 与 PPT 例 5.7 思路相同，但参数不同：教材版本取 <span class="note-math-inline">\(Y\sim N(150,36)\)</span>，标准差为 6；PPT 版本取 <span class="note-math-inline">\(Y\sim N(150,400)\)</span>，标准差为 20。两者不要混为一题。</p>
+<p>如果 <span class="note-math-inline">\(X\)</span> 取 <span class="note-math-inline">\(100,150,200\)</span>，各自概率 <span class="note-math-inline">\(1/3\)</span>，且与正态变量 <span class="note-math-inline">\(Y\)</span> 独立，则通用结论为</p>
+<div class="note-math-display">\[F_Z(t)=\frac13\left[F_Y(t-100)+F_Y(t-150)+F_Y(t-200)\right],\]</div>
+<div class="note-math-display">\[f_Z(t)=\frac13\left[f_Y(t-100)+f_Y(t-150)+f_Y(t-200)\right].\]</div>
+</div></details>
+<details class="notes-example"><summary>4. 四个独立指数寿命的最大值、最小值</summary><div class="notes-example-body">
+
+<p>教材例 3.5.6：<span class="note-math-inline">\(X_1,\ldots,X_4\)</span> 独立且服从 <span class="note-math-inline">\(E(\lambda)\)</span>。令</p>
+<div class="note-math-display">\[N=\min(X_1,X_2,X_3,X_4),\qquad
+M=\max(X_1,X_2,X_3,X_4).\]</div>
+<p>当 <span class="note-math-inline">\(t&gt;0\)</span> 时，</p>
+<div class="note-math-display">\[F_N(t)=1-P(X_1&gt;t,\ldots,X_4&gt;t)
+=1-e^{-4\lambda t}.\]</div>
+<p>所以</p>
+<div class="note-math-display">\[\boxed{f_N(t)=4\lambda e^{-4\lambda t},\quad t&gt;0.}\]</div>
+<p>最大值的分布函数为</p>
+<div class="note-math-display">\[F_M(t)=\prod_{i=1}^4F_{X_i}(t)
+=(1-e^{-\lambda t})^4.\]</div>
+<p>求导：</p>
+<div class="note-math-display">\[\boxed{
+f_M(t)=4\lambda e^{-\lambda t}(1-e^{-\lambda t})^3,\quad t&gt;0.
+}\]</div>
+<p>教材还给出混合结构的系统寿命</p>
+<div class="note-math-display">\[T=\min\{\max(X_1,X_2),X_3,X_4\}.\]</div>
+<p>当 <span class="note-math-inline">\(t&gt;0\)</span> 时，</p>
+<div class="note-math-display">\[\begin{aligned}
+P(T&gt;t)
+&amp;=P(\max(X_1,X_2)&gt;t)P(X_3&gt;t)P(X_4&gt;t)\\
+&amp;=[1-(1-e^{-\lambda t})^2]e^{-2\lambda t}\\
+&amp;=\boxed{e^{-3\lambda t}(2-e^{-\lambda t})}.
+\end{aligned}\]</div>
+<hr>
+</div></details>
+<h2 id="考前易错点总整理"><a href="#%E8%80%83%E5%89%8D%E6%98%93%E9%94%99%E7%82%B9%E6%80%BB%E6%95%B4%E7%90%86" class="headerlink" title="考前易错点总整理"></a>考前易错点总整理</h2><ol>
+<li><strong>边际分布不是联合分布。</strong> 联合分布可以求出边际分布；只知道边际分布，通常无法唯一恢复联合分布。</li>
+<li><strong>条件概率分母别放错。</strong> <span class="note-math-inline">\(P(X=x\mid Y=y)\)</span> 的分母是 <span class="note-math-inline">\(P(Y=y)\)</span>；<span class="note-math-inline">\(f_{X\mid Y}(x\mid y)\)</span> 的分母是 <span class="note-math-inline">\(f_Y(y)\)</span>。</li>
+<li><strong>密度不是概率。</strong> <span class="note-math-inline">\(f(x,y)\)</span> 不是 <span class="note-math-inline">\(P(X=x,Y=y)\)</span>；二维连续型变量落在一条直线上的概率为 0。</li>
+<li><strong>积分范围由定义域决定。</strong> 求 <span class="note-math-inline">\(f_X(x)\)</span> 时固定 <span class="note-math-inline">\(x\)</span>，求 <span class="note-math-inline">\(f_Y(y)\)</span> 时固定 <span class="note-math-inline">\(y\)</span>；遇到弯曲区域要先画图或解不等式。</li>
+<li><strong>独立性分解要包含支持集。</strong> 不能只把 <span class="note-math-inline">\(xy/2\)</span> 这种代数部分拆成 <span class="note-math-inline">\(x\cdot y/2\)</span>，还要检查 <span class="note-math-inline">\(0&lt;x&lt;y&lt;2\)</span> 这样的区域条件能否拆开。</li>
+<li><strong>证明不独立只需要一个反例。</strong> 离散型找一个格子不满足乘积关系；一般定义下也可以找两个集合，使联合概率不等于边际概率乘积。</li>
+<li><strong>零相关不等于独立。</strong> 只有二元正态分布中，才有独立当且仅当 <span class="note-math-inline">\(\rho=0\)</span> 的结论。</li>
+<li><strong>卷积先找支持集交集。</strong> 先写 <span class="note-math-inline">\(x\)</span> 的取值条件与 <span class="note-math-inline">\(z-x\)</span> 的取值条件，再确定分段积分范围。</li>
+<li><strong>最大值和最小值从事件出发。</strong> <span class="note-math-inline">\(\max(X,Y)\le z\)</span> 等价于 <span class="note-math-inline">\(X\le z,Y\le z\)</span>；<span class="note-math-inline">\(\min(X,Y)&gt;z\)</span> 等价于 <span class="note-math-inline">\(X&gt;z,Y&gt;z\)</span>。</li>
+<li><strong>同分布不等于相等。</strong> 同分布只说明分布函数相同，不说明每次试验的取值相同。</li>
+</ol>
+<h2 id="第三章公式速查"><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E5%85%AC%E5%BC%8F%E9%80%9F%E6%9F%A5" class="headerlink" title="第三章公式速查"></a>第三章公式速查</h2><blockquote class="obsidian-callout obsidian-callout-summary">
+<div class="obsidian-callout-header">展开公式速查</div>
+<h3 id="3-1-离散型"><a href="#3-1-%E7%A6%BB%E6%95%A3%E5%9E%8B" class="headerlink" title="3.1 离散型"></a>3.1 离散型</h3><p>联合分布律：</p>
+<div class="note-math-display">\[p_{ij}=P(X=x_i,Y=y_j),\quad
+p_{ij}\ge0,\quad\sum_i\sum_jp_{ij}=1.\]</div>
+<p>边际分布律：</p>
+<div class="note-math-display">\[P(X=x_i)=\sum_jp_{ij},\qquad
+P(Y=y_j)=\sum_ip_{ij}.\]</div>
+<p>条件分布律：</p>
+<div class="note-math-display">\[P(X=x_i\mid Y=y_j)=\frac{p_{ij}}{p_{\cdot j}},\]</div>
+<div class="note-math-display">\[P(Y=y_j\mid X=x_i)=\frac{p_{ij}}{p_{i\cdot}}.\]</div>
+<h3 id="3-2-分布函数"><a href="#3-2-%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0" class="headerlink" title="3.2 分布函数"></a>3.2 分布函数</h3><div class="note-math-display">\[F(x,y)=P(X\le x,Y\le y).\]</div>
+<div class="note-math-display">\[F_X(x)=F(x,+\infty),\qquad F_Y(y)=F(+\infty,y).\]</div>
+<p>矩形概率：</p>
+<div class="note-math-display">\[\begin{aligned}
+&amp;P(x_1&lt;X\le x_2,\ y_1&lt;Y\le y_2)\\
+&amp;=F(x_2,y_2)-F(x_1,y_2)-F(x_2,y_1)+F(x_1,y_1).
+\end{aligned}\]</div>
+<h3 id="3-3-连续型"><a href="#3-3-%E8%BF%9E%E7%BB%AD%E5%9E%8B" class="headerlink" title="3.3 连续型"></a>3.3 连续型</h3><p>联合密度归一化：</p>
+<div class="note-math-display">\[\iint_{\mathbb R^2}f(x,y)\,dx\,dy=1.\]</div>
+<p>区域概率：</p>
+<div class="note-math-display">\[P((X,Y)\in G)=\iint_Gf(x,y)\,dx\,dy.\]</div>
+<p>边际密度：</p>
+<div class="note-math-display">\[f_X(x)=\int_{-\infty}^{+\infty}f(x,y)\,dy,\qquad
+f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)\,dx.\]</div>
+<p>条件密度：</p>
+<div class="note-math-display">\[f_{X\mid Y}(x\mid y)=\frac{f(x,y)}{f_Y(y)},\qquad
+f_{Y\mid X}(y\mid x)=\frac{f(x,y)}{f_X(x)}.\]</div>
+<p>二元均匀分布：</p>
+<div class="note-math-display">\[f(x,y)=\frac1{S_D}\quad((x,y)\in D).\]</div>
+<p>二元正态条件分布：</p>
+<div class="note-math-display">\[Y\mid X=x\sim
+N\left(\mu_2+\rho\frac{\sigma_2}{\sigma_1}(x-\mu_1),
+(1-\rho^2)\sigma_2^2\right).\]</div>
+<h3 id="3-4-独立性"><a href="#3-4-%E7%8B%AC%E7%AB%8B%E6%80%A7" class="headerlink" title="3.4 独立性"></a>3.4 独立性</h3><p>一般定义：</p>
+<div class="note-math-display">\[P(X\in D_1,Y\in D_2)=P(X\in D_1)P(Y\in D_2).\]</div>
+<p>分布函数判别：</p>
+<div class="note-math-display">\[F(x,y)=F_X(x)F_Y(y).\]</div>
+<p>离散型判别：</p>
+<div class="note-math-display">\[p_{ij}=p_{i\cdot}p_{\cdot j}.\]</div>
+<p>连续型判别：</p>
+<div class="note-math-display">\[f(x,y)=f_X(x)f_Y(y)\quad\text{几乎处处}.\]</div>
+<p>二元正态特殊结论：</p>
+<div class="note-math-display">\[X,Y\text{ 独立}\iff\rho=0.\]</div>
+<h3 id="3-5-函数分布"><a href="#3-5-%E5%87%BD%E6%95%B0%E5%88%86%E5%B8%83" class="headerlink" title="3.5 函数分布"></a>3.5 函数分布</h3><p>离散型函数：</p>
+<div class="note-math-display">\[P(Z=z)=\sum_{(i,j):g(x_i,y_j)=z}p_{ij}.\]</div>
+<p>离散型和：</p>
+<div class="note-math-display">\[P(X+Y=z_k)=\sum_iP(X=x_i,Y=z_k-x_i).\]</div>
+<p>独立连续型和（卷积）：</p>
+<div class="note-math-display">\[f_{X+Y}(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)\,dx.\]</div>
+<p>最大值：</p>
+<div class="note-math-display">\[F_{\max(X,Y)}(z)=F_X(z)F_Y(z)\quad(X,Y\text{ 独立}).\]</div>
+<p>最小值：</p>
+<div class="note-math-display">\[F_{\min(X,Y)}(z)=1-[1-F_X(z)][1-F_Y(z)]
+\quad(X,Y\text{ 独立}).\]</div>
+<p>随机选择变量：</p>
+<div class="note-math-display">\[F_{AX+(1-A)Y}(z)=pF_X(z)+(1-p)F_Y(z),
+\quad A\sim B(1,p),\ A\perp(X,Y).\]</div>
+</blockquote>
+<hr>
+<h2 id="整章自检"><a href="#%E6%95%B4%E7%AB%A0%E8%87%AA%E6%A3%80" class="headerlink" title="整章自检"></a>整章自检</h2><blockquote class="obsidian-callout obsidian-callout-question">
+<div class="obsidian-callout-header">展开整章自检</div><p>建议先独立作答，再对照本章相应部分复习。</p>
+<h3 id="3-1-联合、边际、条件分布"><a href="#3-1-%E8%81%94%E5%90%88%E3%80%81%E8%BE%B9%E9%99%85%E3%80%81%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83" class="headerlink" title="3.1 联合、边际、条件分布"></a>3.1 联合、边际、条件分布</h3><ol>
+<li>已知联合分布表，如何求 <span class="note-math-inline">\(X\)</span> 的边际分布律？</li>
+<li>为什么 <span class="note-math-inline">\(P(X=x_i\mid Y=y_j)\)</span> 的分母是 <span class="note-math-inline">\(P(Y=y_j)\)</span>？</li>
+<li>“患病人群中吸烟的概率”与“吸烟人群中患病的概率”为什么不同？</li>
+</ol>
+<h3 id="3-2-分布函数-1"><a href="#3-2-%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0-1" class="headerlink" title="3.2 分布函数"></a>3.2 分布函数</h3><ol start="4">
+<li>写出联合分布函数的定义。</li>
+<li>如何通过联合分布函数求边际分布函数？</li>
+<li>写出矩形 <span class="note-math-inline">\((x_1,x_2]\times(y_1,y_2]\)</span> 的概率公式。</li>
+<li>为什么连续型随机变量需要用邻域极限定义条件分布函数？</li>
+</ol>
+<h3 id="3-3-密度"><a href="#3-3-%E5%AF%86%E5%BA%A6" class="headerlink" title="3.3 密度"></a>3.3 密度</h3><ol start="8">
+<li>写出联合密度的归一化条件与区域概率公式。</li>
+<li>求 <span class="note-math-inline">\(f_X(x)\)</span> 时，应对哪个变量积分？为什么？</li>
+<li>条件密度公式的分母如何确定？</li>
+<li>二元均匀分布中，为什么区域概率等于面积比？</li>
+<li>二元正态分布的边际分布是什么？条件分布的均值、方差是什么？</li>
+</ol>
+<h3 id="3-4-独立性-1"><a href="#3-4-%E7%8B%AC%E7%AB%8B%E6%80%A7-1" class="headerlink" title="3.4 独立性"></a>3.4 独立性</h3><ol start="13">
+<li>写出离散型随机变量独立的充要条件。</li>
+<li>连续型随机变量独立时，联合密度与边际密度之间满足什么关系？</li>
+<li>为什么证明不独立只需一个反例？</li>
+<li>二元正态分布中，独立性与 <span class="note-math-inline">\(\rho\)</span> 有什么关系？该结论能否推广到所有随机变量？</li>
+</ol>
+<h3 id="3-5-函数分布-1"><a href="#3-5-%E5%87%BD%E6%95%B0%E5%88%86%E5%B8%83-1" class="headerlink" title="3.5 函数分布"></a>3.5 函数分布</h3><ol start="17">
+<li>离散型 <span class="note-math-inline">\(Z=g(X,Y)\)</span> 的分布如何求？</li>
+<li>卷积公式的积分上下限从哪里来？</li>
+<li>两个独立 <span class="note-math-inline">\(U(0,1)\)</span> 随机变量之和的密度为什么是三角形？</li>
+<li>如何求独立随机变量最大值与最小值的分布函数？</li>
+<li>为什么 <span class="note-math-inline">\(AX+(1-A)Y\)</span> 可能是混合型随机变量？</li>
+<li>PPT 思考题中，为什么 <span class="note-math-inline">\(f(x,y)=xy/2\)</span> 在 <span class="note-math-inline">\(0&lt;x&lt;y&lt;2\)</span> 上虽然代数上可拆分，仍然不独立？</li>
+<li>若 <span class="note-math-inline">\(X,Y\)</span> 独立，条件分布 <span class="note-math-inline">\(Y\mid X=x\)</span> 与边际分布 <span class="note-math-inline">\(Y\)</span> 有什么关系？</li>
+<li>若 <span class="note-math-inline">\((X,Y)\)</span> 具有联合密度，为什么 <span class="note-math-inline">\(P(Y=2X+4)=0\)</span>？</li>
+</ol>
+<h3 id="自检答案要点"><a href="#%E8%87%AA%E6%A3%80%E7%AD%94%E6%A1%88%E8%A6%81%E7%82%B9" class="headerlink" title="自检答案要点"></a>自检答案要点</h3><ol>
+<li>对联合分布律按另一个变量求和。</li>
+<li>条件概率分母是条件事件的概率。</li>
+<li>条件事件不同，分母不同。</li>
+<li><span class="note-math-inline">\(F(x,y)=P(X\le x,Y\le y)\)</span>。</li>
+<li><span class="note-math-inline">\(F_X(x)=F(x,+\infty)\)</span>，<span class="note-math-inline">\(F_Y(y)=F(+\infty,y)\)</span>。</li>
+<li>用四个联合分布函数值作增量差。</li>
+<li>连续型点事件概率通常为 0。</li>
+<li><span class="note-math-inline">\(f\ge0\)</span>、全平面二重积分为 1；区域概率是密度在区域上的积分。</li>
+<li>求 <span class="note-math-inline">\(f_X\)</span> 对 <span class="note-math-inline">\(y\)</span> 积分；求 <span class="note-math-inline">\(f_Y\)</span> 对 <span class="note-math-inline">\(x\)</span> 积分。</li>
+<li>分母是已知条件变量的边际密度。</li>
+<li>因区域内密度恒为总区域面积的倒数。</li>
+<li>边际仍是一元正态；条件均值与条件方差见 3.3 节公式。</li>
+<li><span class="note-math-inline">\(p_{ij}=p_{i\cdot}p_{\cdot j}\)</span> 对所有 <span class="note-math-inline">\(i,j\)</span> 成立。</li>
+<li><span class="note-math-inline">\(f(x,y)=f_X(x)f_Y(y)\)</span> 几乎处处。</li>
+<li>一个联合概率或密度值不符合乘积关系，就足以否定独立。</li>
+<li>二元正态时独立当且仅当 <span class="note-math-inline">\(\rho=0\)</span>；一般情形不成立。</li>
+<li>找出所有映射到同一 <span class="note-math-inline">\(z\)</span> 的原始取值组合，并将概率相加。</li>
+<li>由原始变量的支持集与 <span class="note-math-inline">\(y=z-x\)</span> 确定。</li>
+<li>因为有效积分区间长度随 <span class="note-math-inline">\(z\)</span> 先增后减。</li>
+<li>从事件 <span class="note-math-inline">\(\{\max\le z\}\)</span> 与补事件 <span class="note-math-inline">\(\{\min&gt;z\}\)</span> 出发。</li>
+<li>一个分量可能带来离散点概率，另一个分量可能带来连续部分。</li>
+<li>定义域是三角形 <span class="note-math-inline">\(0&lt;x&lt;y&lt;2\)</span>，给定 <span class="note-math-inline">\(X=x\)</span> 后，<span class="note-math-inline">\(Y\)</span> 的允许范围会随 <span class="note-math-inline">\(x\)</span> 改变，联合密度的完整定义不能拆成只依赖 <span class="note-math-inline">\(x\)</span> 与只依赖 <span class="note-math-inline">\(y\)</span> 的两个部分。</li>
+<li>独立时，<span class="note-math-inline">\(P(Y=y\mid X=x)=P(Y=y)\)</span>（离散型）；连续型对应 <span class="note-math-inline">\(f_{Y\mid X}(y\mid x)=f_Y(y)\)</span>。</li>
+<li>直线 <span class="note-math-inline">\(y=2x+4\)</span> 在平面上的面积为零，二维连续型分布对零面积集合赋予的概率为零。</li>
+</ol>
+</blockquote>
+</div>
+    <section class="notes-article-comments" aria-label="Comments">
+      <script src="https://giscus.app/client.js"
+        data-repo="YidanPan/YidanPan.github.io"
+        data-repo-id="R_kgDOTtkhPw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTtkhP84DC1wo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+    
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+})();
+</script>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: true
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+    var nav = document.getElementById('nav');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    var pageKind = nav ? (nav.getAttribute('data-page-kind') || '') : '';
+    var activeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+      if (link.getAttribute('data-nav-kind') === pageKind) {
+        activeLink = link;
+      }
+    });
+
+    if (activeLink) {
+      activeLink.classList.add('active');
+      activeLink.setAttribute('aria-current', 'page');
+      updatePill(activeLink);
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) {
+          l.classList.remove('active');
+          l.removeAttribute('aria-current');
+        });
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

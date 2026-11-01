@@ -513,7 +513,11 @@
 
 <script>
 window.MathJax = {
+  loader: {
+    load: ['[tex]/boldsymbol']
+  },
   tex: {
+    packages: { '[+]': ['boldsymbol'] },
     inlineMath: [['\\(', '\\)'], ['$', '$']],
     displayMath: [['\\[', '\\]'], ['$$', '$$']],
     processEscapes: true,
@@ -528,6 +532,29 @@ window.MathJax = {
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+(function() {
+  var codeBlocks = Array.prototype.slice.call(document.querySelectorAll('#notesArticleContent pre > code.language-mermaid, #notesArticleContent pre > code.mermaid'));
+  if (!codeBlocks.length) return;
+
+  var diagrams = codeBlocks.map(function(code) {
+    var container = document.createElement('div');
+    container.className = 'mermaid notes-mermaid';
+    container.textContent = code.textContent;
+    code.parentNode.replaceWith(container);
+    return container;
+  });
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.4/dist/mermaid.min.js';
+  script.onload = function() {
+    window.mermaid.initialize({ startOnLoad: false, theme: document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? 'dark' : 'default' });
+    window.mermaid.run({ nodes: diagrams });
+  };
+  document.head.appendChild(script);
+})();
+</script>
 
     
 

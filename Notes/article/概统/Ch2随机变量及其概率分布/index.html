@@ -381,6 +381,43 @@
     <div class="notes-article-content" id="notesArticleContent"><blockquote>
 <p><strong>使用说明</strong>：按此前六轮复习的讲解顺序组织：<strong>概念 → 定义与公式 → 适用条件/推导 → PPT 典型例题 → 易错点</strong>。术语保留中文及英文名称，便于查阅。<br><strong>覆盖范围</strong>：PPT §1—§5 全部知识点，包括 0–1、二项、泊松、超几何、几何、巴斯卡分布，分布函数，密度函数，均匀、指数、正态分布，指数分布无记忆性，标准正态标准化，随机变量函数的分布。教材的其他分布放在拓展附录。<br><strong>符号约定</strong>：<span class="note-math-inline">\(X\sim B(n,p)\)</span> 表示二项分布；<span class="note-math-inline">\(X\sim P(\lambda)\)</span> 表示泊松分布；<span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span> 表示正态分布，其中第二个参数是<strong>方差</strong>而非标准差。<span class="note-math-inline">\(F_X\)</span> 是分布函数（CDF），<span class="note-math-inline">\(f_X\)</span> 是概率密度函数（PDF）。下文数学表达式采用标准 LaTeX 形式。</p>
 </blockquote>
+<h2 id="章节思维导图"><a href="#%E7%AB%A0%E8%8A%82%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE" class="headerlink" title="章节思维导图"></a>章节思维导图</h2><pre><code class="mermaid">mindmap
+  root((第二章&lt;br/&gt;随机变量及其概率分布))
+    §1 随机变量
+      定义：样本空间到实数的映射
+      离散型随机变量
+      连续型随机变量
+      例：三次抛硬币的正面数
+    §2 离散型随机变量及其分布
+      概率分布律 PMF
+      0-1 分布与二项分布
+      泊松分布与二项分布的泊松近似
+      超几何分布
+      几何分布与巴斯卡分布
+      五种常见分布的模型辨析
+    §3 随机变量的分布函数
+      CDF 的定义与性质
+      区间概率与端点处理
+      离散型 CDF 与分布律互求
+      含参数的分布函数
+    §4 连续型随机变量及其密度函数
+      PDF 的定义与性质
+      均匀分布
+      指数分布与无记忆性
+      正态分布、标准化与 3σ 法则
+      非纯离散也非连续的混合情形
+    §5 随机变量函数的分布
+      离散型函数：合并同值概率
+      连续型函数：分布函数法
+      常见变换：绝对值与平方
+      单调函数的密度变换公式
+      非单调函数：找全所有原像
+      概率积分变换
+    全章复习与拓展
+      解题速查、易错点与固定模板
+      伽马、威布尔与贝塔分布
+      全章综合自测
+</code></pre>
 <h2 id="阅读路线"><a href="#%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF" class="headerlink" title="阅读路线"></a>阅读路线</h2><div class="notes-table-scroll"><table>
 <thead>
 <tr>
@@ -440,7 +477,7 @@
 <blockquote>
 <p>“能在区间里取无限多个数”并<strong>不单独保证</strong>随机变量是连续型的；存在既非离散型、又非连续型的混合情形（PPT 例 4.9）。</p>
 </blockquote>
-<h2 id="1-3-PPT-例-1-1：抛三次硬币"><a href="#1-3-PPT-%E4%BE%8B-1-1%EF%BC%9A%E6%8A%9B%E4%B8%89%E6%AC%A1%E7%A1%AC%E5%B8%81" class="headerlink" title="1.3 PPT 例 1.1：抛三次硬币"></a>1.3 PPT 例 1.1：抛三次硬币</h2><p>令 <span class="note-math-inline">\(X=\)</span> 三次抛掷中出现正面的次数。对公平、独立的硬币，8 种基本结果等可能：</p>
+<details class="notes-example"><summary><h2 id="1-3-PPT-例-1-1：抛三次硬币"><a href="#1-3-PPT-%E4%BE%8B-1-1%EF%BC%9A%E6%8A%9B%E4%B8%89%E6%AC%A1%E7%A1%AC%E5%B8%81" class="headerlink" title="1.3 PPT 例 1.1：抛三次硬币"></a>1.3 PPT 例 1.1：抛三次硬币</h2></summary><div class="notes-example-body"><p>令 <span class="note-math-inline">\(X=\)</span> 三次抛掷中出现正面的次数。对公平、独立的硬币，8 种基本结果等可能：</p>
 <div class="notes-table-scroll"><table>
 <thead>
 <tr>
@@ -472,7 +509,7 @@
 </tbody></table></div>
 <p>注意：<strong>取值集合</strong> <span class="note-math-inline">\(\{0,1,2,3\}\)</span> 与<strong>样本空间</strong>（8 种有次序的抛掷结果）不是一回事。</p>
 <hr>
-<h1 id="§2-离散型随机变量及其分布（Discrete-Distributions）"><a href="#%C2%A72-%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%EF%BC%88Discrete-Distributions%EF%BC%89" class="headerlink" title="§2 离散型随机变量及其分布（Discrete Distributions）"></a>§2 离散型随机变量及其分布（Discrete Distributions）</h1><h2 id="2-1-概率分布律（Probability-Mass-Function-PMF）"><a href="#2-1-%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E5%BE%8B%EF%BC%88Probability-Mass-Function-PMF%EF%BC%89" class="headerlink" title="2.1 概率分布律（Probability Mass Function, PMF）"></a>2.1 概率分布律（Probability Mass Function, PMF）</h2><p>设离散型随机变量 <span class="note-math-inline">\(X\)</span> 的取值为 <span class="note-math-inline">\(x_1,x_2,\ldots\)</span>，对应概率为：</p>
+</div></details><h1 id="§2-离散型随机变量及其分布（Discrete-Distributions）"><a href="#%C2%A72-%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%EF%BC%88Discrete-Distributions%EF%BC%89" class="headerlink" title="§2 离散型随机变量及其分布（Discrete Distributions）"></a>§2 离散型随机变量及其分布（Discrete Distributions）</h1><h2 id="2-1-概率分布律（Probability-Mass-Function-PMF）"><a href="#2-1-%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E5%BE%8B%EF%BC%88Probability-Mass-Function-PMF%EF%BC%89" class="headerlink" title="2.1 概率分布律（Probability Mass Function, PMF）"></a>2.1 概率分布律（Probability Mass Function, PMF）</h2><p>设离散型随机变量 <span class="note-math-inline">\(X\)</span> 的取值为 <span class="note-math-inline">\(x_1,x_2,\ldots\)</span>，对应概率为：</p>
 <div class="note-math-display">\[p_i=P(X=x_i).\]</div>
 <p>其<strong>概率分布律</strong>（简称分布律）可用下表表示：</p>
 <div class="notes-table-scroll"><table>
@@ -498,7 +535,7 @@
 <p>必须满足两个条件：</p>
 <div class="note-math-display">\[\boxed{p_i\ge0},\qquad\boxed{\sum_i p_i=1}.\]</div>
 <p><strong>求分布律的通用步骤</strong>：确定随机变量的含义和所有可能取值 → 将每个取值转化为事件 → 计算各事件概率 → 检验总概率为 1。</p>
-<h3 id="PPT-例-2-1：三个独立交通灯"><a href="#PPT-%E4%BE%8B-2-1%EF%BC%9A%E4%B8%89%E4%B8%AA%E7%8B%AC%E7%AB%8B%E4%BA%A4%E9%80%9A%E7%81%AF" class="headerlink" title="PPT 例 2.1：三个独立交通灯"></a>PPT 例 2.1：三个独立交通灯</h3><p>经过三个相互独立的交通灯，每个灯为红灯的概率为 <span class="note-math-inline">\(p\)</span>。令 <span class="note-math-inline">\(X=\)</span> 首次停车前通过的交通灯数量；如果三个灯都不停车，定义 <span class="note-math-inline">\(X=3\)</span>。</p>
+<details class="notes-example"><summary><h3 id="PPT-例-2-1：三个独立交通灯"><a href="#PPT-%E4%BE%8B-2-1%EF%BC%9A%E4%B8%89%E4%B8%AA%E7%8B%AC%E7%AB%8B%E4%BA%A4%E9%80%9A%E7%81%AF" class="headerlink" title="PPT 例 2.1：三个独立交通灯"></a>PPT 例 2.1：三个独立交通灯</h3></summary><div class="notes-example-body"><p>经过三个相互独立的交通灯，每个灯为红灯的概率为 <span class="note-math-inline">\(p\)</span>。令 <span class="note-math-inline">\(X=\)</span> 首次停车前通过的交通灯数量；如果三个灯都不停车，定义 <span class="note-math-inline">\(X=3\)</span>。</p>
 <div class="note-math-display">\[\begin{aligned}
 P(X=0)&amp;=p,\\
 P(X=1)&amp;=(1-p)p,\\
@@ -506,7 +543,7 @@ P(X=2)&amp;=(1-p)^2p,\\
 P(X=3)&amp;=(1-p)^3.
 \end{aligned}\]</div>
 <p>最后一种情况没有乘 <span class="note-math-inline">\(p\)</span>，因为<strong>三个灯全绿就结束了</strong>，不再要求第四个灯为红灯。这是“最多尝试若干次”和标准几何分布不同之处。</p>
-<h3 id="PPT-例-2-2：根据归一化求未知常数"><a href="#PPT-%E4%BE%8B-2-2%EF%BC%9A%E6%A0%B9%E6%8D%AE%E5%BD%92%E4%B8%80%E5%8C%96%E6%B1%82%E6%9C%AA%E7%9F%A5%E5%B8%B8%E6%95%B0" class="headerlink" title="PPT 例 2.2：根据归一化求未知常数"></a>PPT 例 2.2：根据归一化求未知常数</h3><p>设 <span class="note-math-inline">\(\lambda&gt;0\)</span>，</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-2-2：根据归一化求未知常数"><a href="#PPT-%E4%BE%8B-2-2%EF%BC%9A%E6%A0%B9%E6%8D%AE%E5%BD%92%E4%B8%80%E5%8C%96%E6%B1%82%E6%9C%AA%E7%9F%A5%E5%B8%B8%E6%95%B0" class="headerlink" title="PPT 例 2.2：根据归一化求未知常数"></a>PPT 例 2.2：根据归一化求未知常数</h3></summary><div class="notes-example-body"><p>设 <span class="note-math-inline">\(\lambda&gt;0\)</span>，</p>
 <div class="note-math-display">\[P(X=k)=\frac{c\lambda^k}{k!},\qquad k=0,1,2,\ldots.\]</div>
 <p>由 <span class="note-math-inline">\(\sum_{k=0}^{\infty}P(X=k)=1\)</span>：</p>
 <div class="note-math-display">\[1=c\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}
@@ -514,7 +551,7 @@ P(X=3)&amp;=(1-p)^3.
 \quad\Longrightarrow\quad
 \boxed{c=e^{-\lambda}}.\]</div>
 <p>这实际上得到了后面泊松分布的形式。</p>
-<h2 id="2-2-0–1-分布（Bernoulli-Distribution-Two-point-Distribution）"><a href="#2-2-0%E2%80%931-%E5%88%86%E5%B8%83%EF%BC%88Bernoulli-Distribution-Two-point-Distribution%EF%BC%89" class="headerlink" title="2.2 0–1 分布（Bernoulli Distribution / Two-point Distribution）"></a>2.2 0–1 分布（Bernoulli Distribution / Two-point Distribution）</h2><p><strong>适用情形</strong>：一次试验，只有“事件 <span class="note-math-inline">\(A\)</span> 发生/不发生”两种类别。令 <span class="note-math-inline">\(P(A)=p\)</span>，定义：</p>
+</div></details><h2 id="2-2-0–1-分布（Bernoulli-Distribution-Two-point-Distribution）"><a href="#2-2-0%E2%80%931-%E5%88%86%E5%B8%83%EF%BC%88Bernoulli-Distribution-Two-point-Distribution%EF%BC%89" class="headerlink" title="2.2 0–1 分布（Bernoulli Distribution / Two-point Distribution）"></a>2.2 0–1 分布（Bernoulli Distribution / Two-point Distribution）</h2><p><strong>适用情形</strong>：一次试验，只有“事件 <span class="note-math-inline">\(A\)</span> 发生/不发生”两种类别。令 <span class="note-math-inline">\(P(A)=p\)</span>，定义：</p>
 <div class="note-math-display">\[X=\begin{cases}
 1,&amp;A\text{ 发生},\\
 0,&amp;A\text{ 不发生}.
@@ -580,7 +617,7 @@ P(X=3)&amp;=(1-p)^3.
 </tbody></table></div>
 <p>特别常用：</p>
 <div class="note-math-display">\[\boxed{P(X\ge3)=1-P(X=0)-P(X=1)-P(X=2)}.\]</div>
-<h3 id="PPT-例-2-3：两阶段产品验收"><a href="#PPT-%E4%BE%8B-2-3%EF%BC%9A%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%A7%E5%93%81%E9%AA%8C%E6%94%B6" class="headerlink" title="PPT 例 2.3：两阶段产品验收"></a>PPT 例 2.3：两阶段产品验收</h3><p>某大批产品次品率为 <span class="note-math-inline">\(p\)</span>。第一次抽检 10 件：无次品立即接收；超过 2 件次品拒收；若发现 1 或 2 件次品，则第二次抽检 5 件，且只有这 5 件<strong>全合格</strong>才接收。</p>
+<details class="notes-example"><summary><h3 id="PPT-例-2-3：两阶段产品验收"><a href="#PPT-%E4%BE%8B-2-3%EF%BC%9A%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%A7%E5%93%81%E9%AA%8C%E6%94%B6" class="headerlink" title="PPT 例 2.3：两阶段产品验收"></a>PPT 例 2.3：两阶段产品验收</h3></summary><div class="notes-example-body"><p>某大批产品次品率为 <span class="note-math-inline">\(p\)</span>。第一次抽检 10 件：无次品立即接收；超过 2 件次品拒收；若发现 1 或 2 件次品，则第二次抽检 5 件，且只有这 5 件<strong>全合格</strong>才接收。</p>
 <p>依照 PPT 对大批产品的独立抽样近似，令：</p>
 <div class="note-math-display">\[X\sim B(10,p),\qquad Y\sim B(5,p),\]</div>
 <p>两次抽样计数视为独立。接收事件为：</p>
@@ -593,13 +630,13 @@ P(A)
 \big[10p(1-p)^9+45p^2(1-p)^8\big](1-p)^5}.
 \end{aligned}\]</div>
 <p><strong>重点不是展开式，而是先把复杂接收规则写成事件的并与交，再利用独立性。</strong> 严格不放回且总体规模不大时，不能不加说明地使用独立二项模型。</p>
-<h3 id="PPT-例-2-4：比赛局数越多越有利吗？"><a href="#PPT-%E4%BE%8B-2-4%EF%BC%9A%E6%AF%94%E8%B5%9B%E5%B1%80%E6%95%B0%E8%B6%8A%E5%A4%9A%E8%B6%8A%E6%9C%89%E5%88%A9%E5%90%97%EF%BC%9F" class="headerlink" title="PPT 例 2.4：比赛局数越多越有利吗？"></a>PPT 例 2.4：比赛局数越多越有利吗？</h3><p>甲单局获胜概率 <span class="note-math-inline">\(p&gt;1/2\)</span>，各局独立。比较 <span class="note-math-inline">\(2k-1\)</span> 局先胜 <span class="note-math-inline">\(k\)</span> 局与 <span class="note-math-inline">\(2k+1\)</span> 局先胜 <span class="note-math-inline">\(k+1\)</span> 局的最终胜率。</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-2-4：比赛局数越多越有利吗？"><a href="#PPT-%E4%BE%8B-2-4%EF%BC%9A%E6%AF%94%E8%B5%9B%E5%B1%80%E6%95%B0%E8%B6%8A%E5%A4%9A%E8%B6%8A%E6%9C%89%E5%88%A9%E5%90%97%EF%BC%9F" class="headerlink" title="PPT 例 2.4：比赛局数越多越有利吗？"></a>PPT 例 2.4：比赛局数越多越有利吗？</h3></summary><div class="notes-example-body"><p>甲单局获胜概率 <span class="note-math-inline">\(p&gt;1/2\)</span>，各局独立。比较 <span class="note-math-inline">\(2k-1\)</span> 局先胜 <span class="note-math-inline">\(k\)</span> 局与 <span class="note-math-inline">\(2k+1\)</span> 局先胜 <span class="note-math-inline">\(k+1\)</span> 局的最终胜率。</p>
 <p>设：</p>
 <div class="note-math-display">\[w_k=P\big(B(2k-1,p)\ge k\big),\qquad q=1-p.\]</div>
 <p>PPT 推导得到：</p>
 <div class="note-math-display">\[w_{k+1}-w_k=\binom{2k-1}{k-1}p^kq^k(p-q)&gt;0.\]</div>
 <p>因此当甲单局实力更强（<span class="note-math-inline">\(p&gt;1/2\)</span>）时，<strong>较长的奇数局赛制更有利于甲</strong>。式中胜利条件与“至少赢过半数局”对应。</p>
-<h3 id="PPT-例-2-5：直接计算与-Excel"><a href="#PPT-%E4%BE%8B-2-5%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%AE%A1%E7%AE%97%E4%B8%8E-Excel" class="headerlink" title="PPT 例 2.5：直接计算与 Excel"></a>PPT 例 2.5：直接计算与 Excel</h3><p>若 <span class="note-math-inline">\(X\sim B(100,0.05)\)</span>：</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-2-5：直接计算与-Excel"><a href="#PPT-%E4%BE%8B-2-5%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%AE%A1%E7%AE%97%E4%B8%8E-Excel" class="headerlink" title="PPT 例 2.5：直接计算与 Excel"></a>PPT 例 2.5：直接计算与 Excel</h3></summary><div class="notes-example-body"><p>若 <span class="note-math-inline">\(X\sim B(100,0.05)\)</span>：</p>
 <div class="note-math-display">\[P(X\le10)=\sum_{k=0}^{10}\binom{100}{k}(0.05)^k(0.95)^{100-k}\approx0.988528,\]</div>
 <div class="note-math-display">\[P(X=10)=\binom{100}{10}(0.05)^{10}(0.95)^{90}\approx0.016716.\]</div>
 <p>Excel：</p>
@@ -609,13 +646,13 @@ P(A)
 <blockquote>
 <p><strong>识别口诀</strong>：次数固定、两类结果、相互独立、成功概率相同、统计成功次数。</p>
 </blockquote>
-<h2 id="2-4-泊松分布（Poisson-Distribution）"><a href="#2-4-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83%EF%BC%88Poisson-Distribution%EF%BC%89" class="headerlink" title="2.4 泊松分布（Poisson Distribution）"></a>2.4 泊松分布（Poisson Distribution）</h2><h3 id="2-4-1-定义"><a href="#2-4-1-%E5%AE%9A%E4%B9%89" class="headerlink" title="2.4.1 定义"></a>2.4.1 定义</h3><p>若随机变量 <span class="note-math-inline">\(X\)</span> 的分布律为：</p>
+</div></details><h2 id="2-4-泊松分布（Poisson-Distribution）"><a href="#2-4-%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83%EF%BC%88Poisson-Distribution%EF%BC%89" class="headerlink" title="2.4 泊松分布（Poisson Distribution）"></a>2.4 泊松分布（Poisson Distribution）</h2><h3 id="2-4-1-定义"><a href="#2-4-1-%E5%AE%9A%E4%B9%89" class="headerlink" title="2.4.1 定义"></a>2.4.1 定义</h3><p>若随机变量 <span class="note-math-inline">\(X\)</span> 的分布律为：</p>
 <div class="note-math-display">\[\boxed{P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}},\quad k=0,1,2,\ldots,\quad \lambda&gt;0,\]</div>
 <p>则 <span class="note-math-inline">\(X\)</span> 服从参数为 <span class="note-math-inline">\(\lambda\)</span> 的泊松分布，记为 <span class="note-math-inline">\(X\sim P(\lambda)\)</span>。</p>
 <p>泊松分布常用于描述<strong>固定时间/区域内事件出现的次数</strong>，例如某时段的到站人数、印刷错误个数、服务器访问次数等，但必须以适当的随机事件计数模型为前提。</p>
 <p>其中 <span class="note-math-inline">\(\lambda\)</span> 对应指定时间或区域内的平均发生次数参数。分布律的有效性来源于指数级数：</p>
 <div class="note-math-display">\[\sum_{k=0}^{\infty}\frac{\lambda^ke^{-\lambda}}{k!}=e^{-\lambda}e^\lambda=1.\]</div>
-<h3 id="PPT-例-2-6：服务器容量不足"><a href="#PPT-%E4%BE%8B-2-6%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E9%87%8F%E4%B8%8D%E8%B6%B3" class="headerlink" title="PPT 例 2.6：服务器容量不足"></a>PPT 例 2.6：服务器容量不足</h3><p>用户数 <span class="note-math-inline">\(X\sim P(2)\)</span>，服务器只有 3 个调制解调器，每个用户占用 1 个。</p>
+<details class="notes-example"><summary><h3 id="PPT-例-2-6：服务器容量不足"><a href="#PPT-%E4%BE%8B-2-6%EF%BC%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%B9%E9%87%8F%E4%B8%8D%E8%B6%B3" class="headerlink" title="PPT 例 2.6：服务器容量不足"></a>PPT 例 2.6：服务器容量不足</h3></summary><div class="notes-example-body"><p>用户数 <span class="note-math-inline">\(X\sim P(2)\)</span>，服务器只有 3 个调制解调器，每个用户占用 1 个。</p>
 <p><strong>（1）容量不足的概率</strong>：</p>
 <div class="note-math-display">\[\begin{aligned}
 P(X&gt;3)
@@ -626,7 +663,7 @@ P(X&gt;3)
 <p><strong>（2）至少配备多少个调制解调器，才能有 <span class="note-math-inline">\(\ge0.98\)</span> 的概率够用？</strong></p>
 <p>求最小整数 <span class="note-math-inline">\(m\)</span>，使 <span class="note-math-inline">\(P(X\le m)\ge0.98\)</span>。PPT 给出 <span class="note-math-inline">\(F(4)\approx0.9473&lt;0.98\)</span>，<span class="note-math-inline">\(F(5)\approx0.9834\ge0.98\)</span>，所以：</p>
 <div class="note-math-display">\[\boxed{m=5}.\]</div>
-<h3 id="PPT-例-2-7：一层泊松、外层二项"><a href="#PPT-%E4%BE%8B-2-7%EF%BC%9A%E4%B8%80%E5%B1%82%E6%B3%8A%E6%9D%BE%E3%80%81%E5%A4%96%E5%B1%82%E4%BA%8C%E9%A1%B9" class="headerlink" title="PPT 例 2.7：一层泊松、外层二项"></a>PPT 例 2.7：一层泊松、外层二项</h3><p>设某车站一个单位时间内候车人数 <span class="note-math-inline">\(X\sim P(4.8)\)</span>。</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-2-7：一层泊松、外层二项"><a href="#PPT-%E4%BE%8B-2-7%EF%BC%9A%E4%B8%80%E5%B1%82%E6%B3%8A%E6%9D%BE%E3%80%81%E5%A4%96%E5%B1%82%E4%BA%8C%E9%A1%B9" class="headerlink" title="PPT 例 2.7：一层泊松、外层二项"></a>PPT 例 2.7：一层泊松、外层二项</h3></summary><div class="notes-example-body"><p>设某车站一个单位时间内候车人数 <span class="note-math-inline">\(X\sim P(4.8)\)</span>。</p>
 <p>第一问：至少 3 人候车的概率：</p>
 <div class="note-math-display">\[\begin{aligned}
 p&amp;=P(X\ge3)\\
@@ -637,13 +674,13 @@ p&amp;=P(X\ge3)\\
 <div class="note-math-display">\[Y\sim B(5,p),\qquad
 P(Y=4)=\binom54p^4(1-p)\approx\boxed{0.38527}.\]</div>
 <p>这里体现<strong>分布套分布</strong>：先用泊松分布计算单个时段成功概率，再用二项分布计算多个独立时段的成功次数。PPT 在第二问印有 <strong>0.7696</strong>，与该公式不符；按公式正确计算约为 <strong>0.3853</strong>（见文末勘误）。</p>
-<h3 id="2-4-2-二项分布的泊松近似（Poisson-Approximation）"><a href="#2-4-2-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E7%9A%84%E6%B3%8A%E6%9D%BE%E8%BF%91%E4%BC%BC%EF%BC%88Poisson-Approximation%EF%BC%89" class="headerlink" title="2.4.2 二项分布的泊松近似（Poisson Approximation）"></a>2.4.2 二项分布的泊松近似（Poisson Approximation）</h3><p>如果 <span class="note-math-inline">\(X\sim B(n,p)\)</span>，当 <span class="note-math-inline">\(n\)</span> 很大、<span class="note-math-inline">\(p\)</span> 很小且 <span class="note-math-inline">\(np\)</span> 处于适当规模时，可近似为：</p>
+</div></details><h3 id="2-4-2-二项分布的泊松近似（Poisson-Approximation）"><a href="#2-4-2-%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E7%9A%84%E6%B3%8A%E6%9D%BE%E8%BF%91%E4%BC%BC%EF%BC%88Poisson-Approximation%EF%BC%89" class="headerlink" title="2.4.2 二项分布的泊松近似（Poisson Approximation）"></a>2.4.2 二项分布的泊松近似（Poisson Approximation）</h3><p>如果 <span class="note-math-inline">\(X\sim B(n,p)\)</span>，当 <span class="note-math-inline">\(n\)</span> 很大、<span class="note-math-inline">\(p\)</span> 很小且 <span class="note-math-inline">\(np\)</span> 处于适当规模时，可近似为：</p>
 <div class="note-math-display">\[\boxed{B(n,p)\approx P(\lambda)},\qquad\boxed{\lambda=np}.\]</div>
 <p>逐项近似为：</p>
 <div class="note-math-display">\[\binom nkp^k(1-p)^{n-k}
 \approx\frac{(np)^ke^{-np}}{k!}.\]</div>
 <p>PPT 给出 <span class="note-math-inline">\(n&gt;10,p&lt;0.1\)</span> 的经验提示，但它<strong>不是对所有精度要求都可靠的充分条件</strong>；使用前仍须判断 <span class="note-math-inline">\(n\)</span> 是否足够大、<span class="note-math-inline">\(p\)</span> 是否足够小，且 <span class="note-math-inline">\(np\)</span> 是否合适。教材用分布律图比较了不同参数下近似的好坏。</p>
-<h3 id="PPT-例-2-8：1000-人的患病人数"><a href="#PPT-%E4%BE%8B-2-8%EF%BC%9A1000-%E4%BA%BA%E7%9A%84%E6%82%A3%E7%97%85%E4%BA%BA%E6%95%B0" class="headerlink" title="PPT 例 2.8：1000 人的患病人数"></a>PPT 例 2.8：1000 人的患病人数</h3><p>每人某月患病概率 <span class="note-math-inline">\(p=1/200=0.005\)</span>，各人独立。设 <span class="note-math-inline">\(X=\)</span> 1000 人中的患病人数：</p>
+<details class="notes-example"><summary><h3 id="PPT-例-2-8：1000-人的患病人数"><a href="#PPT-%E4%BE%8B-2-8%EF%BC%9A1000-%E4%BA%BA%E7%9A%84%E6%82%A3%E7%97%85%E4%BA%BA%E6%95%B0" class="headerlink" title="PPT 例 2.8：1000 人的患病人数"></a>PPT 例 2.8：1000 人的患病人数</h3></summary><div class="notes-example-body"><p>每人某月患病概率 <span class="note-math-inline">\(p=1/200=0.005\)</span>，各人独立。设 <span class="note-math-inline">\(X=\)</span> 1000 人中的患病人数：</p>
 <div class="note-math-display">\[X\sim B(1000,0.005).\]</div>
 <p>因为 <span class="note-math-inline">\(np=5\)</span>，用泊松分布 <span class="note-math-inline">\(P(5)\)</span> 近似：</p>
 <div class="note-math-display">\[\begin{aligned}
@@ -656,7 +693,7 @@ P(X\ge3)
 <pre><code class="excel">=1-POISSON.DIST(2,5,TRUE)
 =POISSON.DIST(2,5,FALSE)
 </code></pre>
-<h2 id="2-5-超几何分布（Hypergeometric-Distribution）"><a href="#2-5-%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83%EF%BC%88Hypergeometric-Distribution%EF%BC%89" class="headerlink" title="2.5 超几何分布（Hypergeometric Distribution）"></a>2.5 超几何分布（Hypergeometric Distribution）</h2><p>设总体有 <span class="note-math-inline">\(N=a+b\)</span> 个物品，其中目标类型有 <span class="note-math-inline">\(a\)</span> 个、其他类型有 <span class="note-math-inline">\(b\)</span> 个。<strong>不放回</strong>抽取 <span class="note-math-inline">\(n\)</span> 个，令 <span class="note-math-inline">\(X=\)</span> 抽到的目标类型个数。</p>
+</div></details><h2 id="2-5-超几何分布（Hypergeometric-Distribution）"><a href="#2-5-%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83%EF%BC%88Hypergeometric-Distribution%EF%BC%89" class="headerlink" title="2.5 超几何分布（Hypergeometric Distribution）"></a>2.5 超几何分布（Hypergeometric Distribution）</h2><p>设总体有 <span class="note-math-inline">\(N=a+b\)</span> 个物品，其中目标类型有 <span class="note-math-inline">\(a\)</span> 个、其他类型有 <span class="note-math-inline">\(b\)</span> 个。<strong>不放回</strong>抽取 <span class="note-math-inline">\(n\)</span> 个，令 <span class="note-math-inline">\(X=\)</span> 抽到的目标类型个数。</p>
 <p>则 <span class="note-math-inline">\(X\)</span> 服从超几何分布（教材记作 <span class="note-math-inline">\(H(n,a,N)\)</span>），其分布律为：</p>
 <div class="note-math-display">\[\boxed{
 P(X=k)=\frac{\binom ak\binom b{n-k}}{\binom Nn}
@@ -847,7 +884,7 @@ P\left(0\le X\le\frac12\right)
 <p>同时，在 <span class="note-math-inline">\(x=2\)</span> 处有跳跃：</p>
 <div class="note-math-display">\[P(X=2)=1-\frac{2^2}{5}=\frac15.\]</div>
 <p><strong>这个例题同时考查 CDF 的两端极限、右连续、点概率和端点处理，是该节非常典型的综合题。</strong></p>
-<h2 id="3-6-PPT-例-3-3：一段线段上随机落点"><a href="#3-6-PPT-%E4%BE%8B-3-3%EF%BC%9A%E4%B8%80%E6%AE%B5%E7%BA%BF%E6%AE%B5%E4%B8%8A%E9%9A%8F%E6%9C%BA%E8%90%BD%E7%82%B9" class="headerlink" title="3.6 PPT 例 3.3：一段线段上随机落点"></a>3.6 PPT 例 3.3：一段线段上随机落点</h2><p>在 <span class="note-math-inline">\(A,B\)</span> 之间长度为 3 的线段上随机落点，且落在任意子区间的概率与长度成正比。令 <span class="note-math-inline">\(X=\)</span> 到 <span class="note-math-inline">\(A\)</span> 的距离。</p>
+<details class="notes-example"><summary><h2 id="3-6-PPT-例-3-3：一段线段上随机落点"><a href="#3-6-PPT-%E4%BE%8B-3-3%EF%BC%9A%E4%B8%80%E6%AE%B5%E7%BA%BF%E6%AE%B5%E4%B8%8A%E9%9A%8F%E6%9C%BA%E8%90%BD%E7%82%B9" class="headerlink" title="3.6 PPT 例 3.3：一段线段上随机落点"></a>3.6 PPT 例 3.3：一段线段上随机落点</h2></summary><div class="notes-example-body"><p>在 <span class="note-math-inline">\(A,B\)</span> 之间长度为 3 的线段上随机落点，且落在任意子区间的概率与长度成正比。令 <span class="note-math-inline">\(X=\)</span> 到 <span class="note-math-inline">\(A\)</span> 的距离。</p>
 <p>由于整个线段长度为 3、概率为 1，比例系数为 <span class="note-math-inline">\(1/3\)</span>。因此：</p>
 <div class="note-math-display">\[F_X(x)=
 \begin{cases}
@@ -857,7 +894,7 @@ P\left(0\le X\le\frac12\right)
 \end{cases}\]</div>
 <p>这个 CDF 在 <span class="note-math-inline">\((0,3)\)</span> 内连续增长，不是阶梯函数。它实际上对应后面要学的均匀分布 <span class="note-math-inline">\(U(0,3)\)</span>。</p>
 <hr>
-<h1 id="§4-连续型随机变量及其密度函数（Continuous-Random-Variables-and-PDF）"><a href="#%C2%A74-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%EF%BC%88Continuous-Random-Variables-and-PDF%EF%BC%89" class="headerlink" title="§4 连续型随机变量及其密度函数（Continuous Random Variables and PDF）"></a>§4 连续型随机变量及其密度函数（Continuous Random Variables and PDF）</h1><h2 id="4-1-概率密度函数的定义"><a href="#4-1-%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89" class="headerlink" title="4.1 概率密度函数的定义"></a>4.1 概率密度函数的定义</h2><p>若存在非负函数 <span class="note-math-inline">\(f_X(t)\)</span>，使得 <span class="note-math-inline">\(X\)</span> 的分布函数满足：</p>
+</div></details><h1 id="§4-连续型随机变量及其密度函数（Continuous-Random-Variables-and-PDF）"><a href="#%C2%A74-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%8F%8A%E5%85%B6%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%EF%BC%88Continuous-Random-Variables-and-PDF%EF%BC%89" class="headerlink" title="§4 连续型随机变量及其密度函数（Continuous Random Variables and PDF）"></a>§4 连续型随机变量及其密度函数（Continuous Random Variables and PDF）</h1><h2 id="4-1-概率密度函数的定义"><a href="#4-1-%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89" class="headerlink" title="4.1 概率密度函数的定义"></a>4.1 概率密度函数的定义</h2><p>若存在非负函数 <span class="note-math-inline">\(f_X(t)\)</span>，使得 <span class="note-math-inline">\(X\)</span> 的分布函数满足：</p>
 <div class="note-math-display">\[\boxed{F_X(x)=\int_{-\infty}^{x}f_X(t)\,dt},\]</div>
 <p>则称 <span class="note-math-inline">\(X\)</span> 为<strong>连续型随机变量</strong>，<span class="note-math-inline">\(f_X\)</span> 为它的<strong>概率密度函数</strong>（Probability Density Function, PDF）。</p>
 <h3 id="密度函数的四个重要性质（PPT-第-67—68-页）"><a href="#%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E4%B8%AA%E9%87%8D%E8%A6%81%E6%80%A7%E8%B4%A8%EF%BC%88PPT-%E7%AC%AC-67%E2%80%9468-%E9%A1%B5%EF%BC%89" class="headerlink" title="密度函数的四个重要性质（PPT 第 67—68 页）"></a>密度函数的四个重要性质（PPT 第 67—68 页）</h3><ol>
@@ -876,7 +913,7 @@ P\left(0\le X\le\frac12\right)
 <p>在很窄的小区间内，若 <span class="note-math-inline">\(f_X\)</span> 在 <span class="note-math-inline">\(x\)</span> 附近连续：</p>
 <div class="note-math-display">\[P(x&lt;X\le x+\Delta x)\approx f_X(x)\Delta x.\]</div>
 <p>这类似物理中的线密度概念，也是“概率密度”这一名称的来源。</p>
-<h2 id="4-2-PPT-例-4-1：由密度函数求参数、CDF-和分位点"><a href="#4-2-PPT-%E4%BE%8B-4-1%EF%BC%9A%E7%94%B1%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%E6%B1%82%E5%8F%82%E6%95%B0%E3%80%81CDF-%E5%92%8C%E5%88%86%E4%BD%8D%E7%82%B9" class="headerlink" title="4.2 PPT 例 4.1：由密度函数求参数、CDF 和分位点"></a>4.2 PPT 例 4.1：由密度函数求参数、CDF 和分位点</h2><p>已知：</p>
+<details class="notes-example"><summary><h2 id="4-2-PPT-例-4-1：由密度函数求参数、CDF-和分位点"><a href="#4-2-PPT-%E4%BE%8B-4-1%EF%BC%9A%E7%94%B1%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0%E6%B1%82%E5%8F%82%E6%95%B0%E3%80%81CDF-%E5%92%8C%E5%88%86%E4%BD%8D%E7%82%B9" class="headerlink" title="4.2 PPT 例 4.1：由密度函数求参数、CDF 和分位点"></a>4.2 PPT 例 4.1：由密度函数求参数、CDF 和分位点</h2></summary><div class="notes-example-body"><p>已知：</p>
 <div class="note-math-display">\[f_X(x)=
 \begin{cases}
 c,&amp;0&lt;x&lt;1,\\
@@ -899,7 +936,7 @@ F_X(x)=
 <p><strong>（3）若 <span class="note-math-inline">\(P(X&lt;k)=2/3\)</span>，求 <span class="note-math-inline">\(k\)</span></strong>：连续型变量可写 <span class="note-math-inline">\(F_X(k)=2/3\)</span>。因 <span class="note-math-inline">\(F_X(3)=1/3\)</span>、<span class="note-math-inline">\(F_X(6)=1\)</span>，故 <span class="note-math-inline">\(3&lt;k&lt;6\)</span>，代入：</p>
 <div class="note-math-display">\[\frac{2k-3}{9}=\frac23\quad\Longrightarrow\quad\boxed{k=4.5}.\]</div>
 <p><strong>方法归纳</strong>：先根据 <span class="note-math-inline">\(\int f=1\)</span> 求常数 → 分段积分求 CDF → 判断未知界限在哪个分段 → 代入求解。</p>
-<h2 id="4-3-均匀分布（Uniform-Distribution）"><a href="#4-3-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%EF%BC%88Uniform-Distribution%EF%BC%89" class="headerlink" title="4.3 均匀分布（Uniform Distribution）"></a>4.3 均匀分布（Uniform Distribution）</h2><p>若 <span class="note-math-inline">\(X\)</span> 在 <span class="note-math-inline">\((a,b)\)</span> 上服从均匀分布，记为 <span class="note-math-inline">\(X\sim U(a,b)\)</span>，则：</p>
+</div></details><h2 id="4-3-均匀分布（Uniform-Distribution）"><a href="#4-3-%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83%EF%BC%88Uniform-Distribution%EF%BC%89" class="headerlink" title="4.3 均匀分布（Uniform Distribution）"></a>4.3 均匀分布（Uniform Distribution）</h2><p>若 <span class="note-math-inline">\(X\)</span> 在 <span class="note-math-inline">\((a,b)\)</span> 上服从均匀分布，记为 <span class="note-math-inline">\(X\sim U(a,b)\)</span>，则：</p>
 <p><strong>密度函数</strong>：</p>
 <div class="note-math-display">\[\boxed{
 f_X(x)=
@@ -918,7 +955,7 @@ F_X(x)=
 <p><strong>计算区间概率</strong>：当 <span class="note-math-inline">\(a\le c&lt;d\le b\)</span>，</p>
 <div class="note-math-display">\[\boxed{P(c&lt;X&lt;d)=\frac{d-c}{b-a}}.\]</div>
 <p>即“<strong>目标区间长度 / 总区间长度</strong>”。如果目标区间有超出 <span class="note-math-inline">\((a,b)\)</span> 的部分，只计算交集的长度。</p>
-<h3 id="PPT-例-4-2：在-1-2-上均匀随机取数"><a href="#PPT-%E4%BE%8B-4-2%EF%BC%9A%E5%9C%A8-1-2-%E4%B8%8A%E5%9D%87%E5%8C%80%E9%9A%8F%E6%9C%BA%E5%8F%96%E6%95%B0" class="headerlink" title="PPT 例 4.2：在 \((-1,2)\) 上均匀随机取数"></a>PPT 例 4.2：在 <span class="note-math-inline">\((-1,2)\)</span> 上均匀随机取数</h3><p>设 <span class="note-math-inline">\(X\sim U(-1,2)\)</span>，则：</p>
+<details class="notes-example"><summary><h3 id="PPT-例-4-2：在-1-2-上均匀随机取数"><a href="#PPT-%E4%BE%8B-4-2%EF%BC%9A%E5%9C%A8-1-2-%E4%B8%8A%E5%9D%87%E5%8C%80%E9%9A%8F%E6%9C%BA%E5%8F%96%E6%95%B0" class="headerlink" title="PPT 例 4.2：在 \((-1,2)\) 上均匀随机取数"></a>PPT 例 4.2：在 <span class="note-math-inline">\((-1,2)\)</span> 上均匀随机取数</h3></summary><div class="notes-example-body"><p>设 <span class="note-math-inline">\(X\sim U(-1,2)\)</span>，则：</p>
 <div class="note-math-display">\[f_X(x)=\begin{cases}1/3,&amp;-1&lt;x&lt;2,\\0,&amp;\text{其他}.
 \end{cases}\]</div>
 <div class="note-math-display">\[\boxed{P(X&gt;0)=\frac{2-0}{2-(-1)}=\frac23}.\]</div>
@@ -927,7 +964,7 @@ F_X(x)=
 <p>恰好两个数大于 0 的概率：</p>
 <div class="note-math-display">\[\boxed{P(Y=2)=\binom{10}{2}\left(\frac23\right)^2\left(\frac13\right)^8\approx0.0030483}.\]</div>
 <p>这是<strong>均匀分布求单次成功概率 + 二项分布计数</strong>的综合题。注意末尾数值应为 <span class="note-math-inline">\(0.0030483\)</span>，不是此前对话中出现的 <span class="note-math-inline">\(0.2601\)</span>。</p>
-<h3 id="PPT-例-4-3：公交车候车时间（区间与事件的转化）"><a href="#PPT-%E4%BE%8B-4-3%EF%BC%9A%E5%85%AC%E4%BA%A4%E8%BD%A6%E5%80%99%E8%BD%A6%E6%97%B6%E9%97%B4%EF%BC%88%E5%8C%BA%E9%97%B4%E4%B8%8E%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BD%AC%E5%8C%96%EF%BC%89" class="headerlink" title="PPT 例 4.3：公交车候车时间（区间与事件的转化）"></a>PPT 例 4.3：公交车候车时间（区间与事件的转化）</h3><p>公交车每隔 30 min 一班（6:00、6:30、7:00、7:30、……）。乘客在 6:20 之后 <span class="note-math-inline">\(X\)</span> 分钟到达车站，其中 <span class="note-math-inline">\(X\sim U(0,50)\)</span>；即到站范围是 6:20—7:10。</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-4-3：公交车候车时间（区间与事件的转化）"><a href="#PPT-%E4%BE%8B-4-3%EF%BC%9A%E5%85%AC%E4%BA%A4%E8%BD%A6%E5%80%99%E8%BD%A6%E6%97%B6%E9%97%B4%EF%BC%88%E5%8C%BA%E9%97%B4%E4%B8%8E%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BD%AC%E5%8C%96%EF%BC%89" class="headerlink" title="PPT 例 4.3：公交车候车时间（区间与事件的转化）"></a>PPT 例 4.3：公交车候车时间（区间与事件的转化）</h3></summary><div class="notes-example-body"><p>公交车每隔 30 min 一班（6:00、6:30、7:00、7:30、……）。乘客在 6:20 之后 <span class="note-math-inline">\(X\)</span> 分钟到达车站，其中 <span class="note-math-inline">\(X\sim U(0,50)\)</span>；即到站范围是 6:20—7:10。</p>
 <p><strong>（1）候车时间不超过 15 min</strong>：符合条件的到站时间段是 6:20—6:30（10 min）和 6:45—7:00（15 min），合计 25 min：</p>
 <div class="note-math-display">\[\boxed{P(\text{候车}\le15)=\frac{25}{50}=0.5}.\]</div>
 <p><strong>（2）独立候车两次，一次候车不超过 15 min，另一次大于 10 min</strong>：</p>
@@ -940,7 +977,7 @@ P&amp;=P(A_1B_2)+P(B_1A_2)-P(A_1B_1A_2B_2)\\
 &amp;=\boxed{0.59}.
 \end{aligned}\]</div>
 <p>此题易错点是：<strong>“一次满足 A、另一次满足 B”这两个事件不一定互斥</strong>，所以不能直接将两项相加而不减交集。</p>
-<h3 id="PPT-第-73-页：概率-0-1-不代表逻辑上的不可能-必然"><a href="#PPT-%E7%AC%AC-73-%E9%A1%B5%EF%BC%9A%E6%A6%82%E7%8E%87-0-1-%E4%B8%8D%E4%BB%A3%E8%A1%A8%E9%80%BB%E8%BE%91%E4%B8%8A%E7%9A%84%E4%B8%8D%E5%8F%AF%E8%83%BD-%E5%BF%85%E7%84%B6" class="headerlink" title="PPT 第 73 页：概率 0/1 不代表逻辑上的不可能/必然"></a>PPT 第 73 页：概率 0/1 不代表逻辑上的不可能/必然</h3><p>以 <span class="note-math-inline">\(X\sim U(0,1)\)</span> 为例：</p>
+</div></details><h3 id="PPT-第-73-页：概率-0-1-不代表逻辑上的不可能-必然"><a href="#PPT-%E7%AC%AC-73-%E9%A1%B5%EF%BC%9A%E6%A6%82%E7%8E%87-0-1-%E4%B8%8D%E4%BB%A3%E8%A1%A8%E9%80%BB%E8%BE%91%E4%B8%8A%E7%9A%84%E4%B8%8D%E5%8F%AF%E8%83%BD-%E5%BF%85%E7%84%B6" class="headerlink" title="PPT 第 73 页：概率 0/1 不代表逻辑上的不可能/必然"></a>PPT 第 73 页：概率 0/1 不代表逻辑上的不可能/必然</h3><p>以 <span class="note-math-inline">\(X\sim U(0,1)\)</span> 为例：</p>
 <div class="note-math-display">\[P(X=0.5)=0,\qquad P(X\ne0.4)=1.\]</div>
 <p>但“<span class="note-math-inline">\(X=0.5\)</span>”并非样本空间之外的事件，“<span class="note-math-inline">\(X\ne0.4\)</span>”也不等于整个样本空间。</p>
 <p>因此：</p>
@@ -978,20 +1015,20 @@ P(X&gt;t_0+t\mid X&gt;t_0)
 &amp;=e^{-\lambda t}.
 \end{aligned}\]</div>
 <p><strong>直观含义</strong>：在已经等待 <span class="note-math-inline">\(t_0\)</span> 且事件尚未发生的条件下，剩余等待时间的分布仍与刚开始等待时一样；前面等过多少时间不改变之后的“继续等待 <span class="note-math-inline">\(t\)</span>”概率。</p>
-<h3 id="PPT-例-4-4：泊松故障计数与指数等待时间"><a href="#PPT-%E4%BE%8B-4-4%EF%BC%9A%E6%B3%8A%E6%9D%BE%E6%95%85%E9%9A%9C%E8%AE%A1%E6%95%B0%E4%B8%8E%E6%8C%87%E6%95%B0%E7%AD%89%E5%BE%85%E6%97%B6%E9%97%B4" class="headerlink" title="PPT 例 4.4：泊松故障计数与指数等待时间"></a>PPT 例 4.4：泊松故障计数与指数等待时间</h3><p>设设备在长度为 <span class="note-math-inline">\(t\)</span> 的时间内故障次数 <span class="note-math-inline">\(N(t)\sim P(\lambda t)\)</span>，令 <span class="note-math-inline">\(T=\)</span> 首次故障发生前的运行时间：</p>
+<details class="notes-example"><summary><h3 id="PPT-例-4-4：泊松故障计数与指数等待时间"><a href="#PPT-%E4%BE%8B-4-4%EF%BC%9A%E6%B3%8A%E6%9D%BE%E6%95%85%E9%9A%9C%E8%AE%A1%E6%95%B0%E4%B8%8E%E6%8C%87%E6%95%B0%E7%AD%89%E5%BE%85%E6%97%B6%E9%97%B4" class="headerlink" title="PPT 例 4.4：泊松故障计数与指数等待时间"></a>PPT 例 4.4：泊松故障计数与指数等待时间</h3></summary><div class="notes-example-body"><p>设设备在长度为 <span class="note-math-inline">\(t\)</span> 的时间内故障次数 <span class="note-math-inline">\(N(t)\sim P(\lambda t)\)</span>，令 <span class="note-math-inline">\(T=\)</span> 首次故障发生前的运行时间：</p>
 <div class="note-math-display">\[P(T&gt;t)=P(N(t)=0)=e^{-\lambda t}.\]</div>
 <p>所以：</p>
 <div class="note-math-display">\[F_T(t)=1-e^{-\lambda t}\quad(t\ge0),\qquad\boxed{T\sim Exp(\lambda)}.\]</div>
 <p>已经无故障运行 10 小时，再无故障运行至少 8 小时的条件概率为：</p>
 <div class="note-math-display">\[\boxed{P(T&gt;18\mid T&gt;10)=P(T&gt;8)=e^{-8\lambda}}.\]</div>
-<h3 id="教材例-2-4-8：交通事故间隔时间"><a href="#%E6%95%99%E6%9D%90%E4%BE%8B-2-4-8%EF%BC%9A%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%E9%97%B4%E9%9A%94%E6%97%B6%E9%97%B4" class="headerlink" title="教材例 2.4.8：交通事故间隔时间"></a>教材例 2.4.8：交通事故间隔时间</h3><p>若两次交通事故间隔时间 <span class="note-math-inline">\(X\sim Exp(1/6.5)\)</span>，则：</p>
+</div></details><details class="notes-example"><summary><h3 id="教材例-2-4-8：交通事故间隔时间"><a href="#%E6%95%99%E6%9D%90%E4%BE%8B-2-4-8%EF%BC%9A%E4%BA%A4%E9%80%9A%E4%BA%8B%E6%95%85%E9%97%B4%E9%9A%94%E6%97%B6%E9%97%B4" class="headerlink" title="教材例 2.4.8：交通事故间隔时间"></a>教材例 2.4.8：交通事故间隔时间</h3></summary><div class="notes-example-body"><p>若两次交通事故间隔时间 <span class="note-math-inline">\(X\sim Exp(1/6.5)\)</span>，则：</p>
 <div class="note-math-display">\[P(X&gt;8)=e^{-8/6.5}\approx0.292,\]</div>
 <div class="note-math-display">\[P(X&gt;10\mid X&gt;8)=P(X&gt;2)=e^{-2/6.5}\approx0.735.\]</div>
 <p>Excel：</p>
 <pre><code class="excel">=EXPON.DIST(8,1/6.5,TRUE)
 =EXPON.DIST(8,1/6.5,FALSE)
 </code></pre>
-<h2 id="4-5-正态分布（Normal-Gaussian-Distribution）"><a href="#4-5-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%EF%BC%88Normal-Gaussian-Distribution%EF%BC%89" class="headerlink" title="4.5 正态分布（Normal / Gaussian Distribution）"></a>4.5 正态分布（Normal / Gaussian Distribution）</h2><h3 id="4-5-1-定义与密度函数"><a href="#4-5-1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0" class="headerlink" title="4.5.1 定义与密度函数"></a>4.5.1 定义与密度函数</h3><p>若 <span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span>，其中 <span class="note-math-inline">\(\mu\in\mathbb R\)</span>、<span class="note-math-inline">\(\sigma&gt;0\)</span>，其密度函数为：</p>
+</div></details><h2 id="4-5-正态分布（Normal-Gaussian-Distribution）"><a href="#4-5-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%EF%BC%88Normal-Gaussian-Distribution%EF%BC%89" class="headerlink" title="4.5 正态分布（Normal / Gaussian Distribution）"></a>4.5 正态分布（Normal / Gaussian Distribution）</h2><h3 id="4-5-1-定义与密度函数"><a href="#4-5-1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%AF%86%E5%BA%A6%E5%87%BD%E6%95%B0" class="headerlink" title="4.5.1 定义与密度函数"></a>4.5.1 定义与密度函数</h3><p>若 <span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span>，其中 <span class="note-math-inline">\(\mu\in\mathbb R\)</span>、<span class="note-math-inline">\(\sigma&gt;0\)</span>，其密度函数为：</p>
 <div class="note-math-display">\[\boxed{
 f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}
 \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
@@ -1069,7 +1106,7 @@ f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}
 <td align="right">0.9974</td>
 </tr>
 </tbody></table></div>
-<h3 id="PPT-例-4-6：天平测量误差"><a href="#PPT-%E4%BE%8B-4-6%EF%BC%9A%E5%A4%A9%E5%B9%B3%E6%B5%8B%E9%87%8F%E8%AF%AF%E5%B7%AE" class="headerlink" title="PPT 例 4.6：天平测量误差"></a>PPT 例 4.6：天平测量误差</h3><p>设实物重量 <span class="note-math-inline">\(a\)</span>，天平读数 <span class="note-math-inline">\(X\sim N(a,0.01^2)\)</span>。</p>
+<details class="notes-example"><summary><h3 id="PPT-例-4-6：天平测量误差"><a href="#PPT-%E4%BE%8B-4-6%EF%BC%9A%E5%A4%A9%E5%B9%B3%E6%B5%8B%E9%87%8F%E8%AF%AF%E5%B7%AE" class="headerlink" title="PPT 例 4.6：天平测量误差"></a>PPT 例 4.6：天平测量误差</h3></summary><div class="notes-example-body"><p>设实物重量 <span class="note-math-inline">\(a\)</span>，天平读数 <span class="note-math-inline">\(X\sim N(a,0.01^2)\)</span>。</p>
 <p><strong>（1）误差小于 0.005</strong>：</p>
 <div class="note-math-display">\[\begin{aligned}
 P(|X-a|&lt;0.005)
@@ -1079,7 +1116,7 @@ P(|X-a|&lt;0.005)
 \end{aligned}\]</div>
 <p><strong>（2）读数至少比真实重量多 0.0085</strong>：</p>
 <div class="note-math-display">\[P(X-a\ge0.0085)=1-\Phi(0.85)\approx\boxed{0.1977}.\]</div>
-<h3 id="PPT-例-4-7：钢材长度——已知概率反求-sigma"><a href="#PPT-%E4%BE%8B-4-7%EF%BC%9A%E9%92%A2%E6%9D%90%E9%95%BF%E5%BA%A6%E2%80%94%E2%80%94%E5%B7%B2%E7%9F%A5%E6%A6%82%E7%8E%87%E5%8F%8D%E6%B1%82-sigma" class="headerlink" title="PPT 例 4.7：钢材长度——已知概率反求 \(\sigma\)"></a>PPT 例 4.7：钢材长度——已知概率反求 <span class="note-math-inline">\(\sigma\)</span></h3><p>设 <span class="note-math-inline">\(X\sim N(100,\sigma^2)\)</span>，希望至少 90% 的长度落在 <span class="note-math-inline">\((97,103)\)</span>：</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-4-7：钢材长度——已知概率反求-sigma"><a href="#PPT-%E4%BE%8B-4-7%EF%BC%9A%E9%92%A2%E6%9D%90%E9%95%BF%E5%BA%A6%E2%80%94%E2%80%94%E5%B7%B2%E7%9F%A5%E6%A6%82%E7%8E%87%E5%8F%8D%E6%B1%82-sigma" class="headerlink" title="PPT 例 4.7：钢材长度——已知概率反求 \(\sigma\)"></a>PPT 例 4.7：钢材长度——已知概率反求 <span class="note-math-inline">\(\sigma\)</span></h3></summary><div class="notes-example-body"><p>设 <span class="note-math-inline">\(X\sim N(100,\sigma^2)\)</span>，希望至少 90% 的长度落在 <span class="note-math-inline">\((97,103)\)</span>：</p>
 <div class="note-math-display">\[\begin{aligned}
 P(97&lt;X&lt;103)&amp;\ge0.90\\
 \Longleftrightarrow\quad 2\Phi(3/\sigma)-1&amp;\ge0.90\\
@@ -1090,7 +1127,7 @@ P(97&lt;X&lt;103)&amp;\ge0.90\\
 \quad\Longrightarrow\quad
 \boxed{\sigma\le1.8237}.\]</div>
 <p><strong>反向求参数的套路</strong>：题设概率条件 <span class="note-math-inline">\(\to\)</span> 标准化 <span class="note-math-inline">\(\to\)</span> 反查 <span class="note-math-inline">\(\Phi\)</span>（分位数）<span class="note-math-inline">\(\to\)</span> 解不等式。</p>
-<h3 id="PPT-例-4-8：由两个概率条件反求-mu-sigma"><a href="#PPT-%E4%BE%8B-4-8%EF%BC%9A%E7%94%B1%E4%B8%A4%E4%B8%AA%E6%A6%82%E7%8E%87%E6%9D%A1%E4%BB%B6%E5%8F%8D%E6%B1%82-mu-sigma" class="headerlink" title="PPT 例 4.8：由两个概率条件反求 \(\mu,\sigma\)"></a>PPT 例 4.8：由两个概率条件反求 <span class="note-math-inline">\(\mu,\sigma\)</span></h3><p>设 <span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span>，且：</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-4-8：由两个概率条件反求-mu-sigma"><a href="#PPT-%E4%BE%8B-4-8%EF%BC%9A%E7%94%B1%E4%B8%A4%E4%B8%AA%E6%A6%82%E7%8E%87%E6%9D%A1%E4%BB%B6%E5%8F%8D%E6%B1%82-mu-sigma" class="headerlink" title="PPT 例 4.8：由两个概率条件反求 \(\mu,\sigma\)"></a>PPT 例 4.8：由两个概率条件反求 <span class="note-math-inline">\(\mu,\sigma\)</span></h3></summary><div class="notes-example-body"><p>设 <span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span>，且：</p>
 <div class="note-math-display">\[P(X&gt;400)=0.25,\qquad P(X&lt;350)=0.33.\]</div>
 <p>标准化后：</p>
 <div class="note-math-display">\[\Phi\left(\frac{400-\mu}{\sigma}\right)=0.75,
@@ -1104,7 +1141,7 @@ P(97&lt;X&lt;103)&amp;\ge0.90\\
 <p>两式相减得到 <span class="note-math-inline">\(50=1.115\sigma\)</span>，所以：</p>
 <div class="note-math-display">\[\boxed{\sigma\approx44.8,\qquad\mu\approx369.7}.\]</div>
 <p>这是“<strong>已知两点概率，列两个方程，反求两个未知参数</strong>”的典型题型。</p>
-<h3 id="正态分布的分位数（Quantile）"><a href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%88%86%E4%BD%8D%E6%95%B0%EF%BC%88Quantile%EF%BC%89" class="headerlink" title="正态分布的分位数（Quantile）"></a>正态分布的分位数（Quantile）</h3><p>若 <span class="note-math-inline">\(\Phi(z_p)=p\)</span>，则称 <span class="note-math-inline">\(z_p\)</span> 为标准正态分布的 <span class="note-math-inline">\(p\)</span> 分位点。PPT/教材使用“上侧 <span class="note-math-inline">\(\alpha\)</span> 分位数”的记法时，通常满足：</p>
+</div></details><h3 id="正态分布的分位数（Quantile）"><a href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%88%86%E4%BD%8D%E6%95%B0%EF%BC%88Quantile%EF%BC%89" class="headerlink" title="正态分布的分位数（Quantile）"></a>正态分布的分位数（Quantile）</h3><p>若 <span class="note-math-inline">\(\Phi(z_p)=p\)</span>，则称 <span class="note-math-inline">\(z_p\)</span> 为标准正态分布的 <span class="note-math-inline">\(p\)</span> 分位点。PPT/教材使用“上侧 <span class="note-math-inline">\(\alpha\)</span> 分位数”的记法时，通常满足：</p>
 <div class="note-math-display">\[\Phi(z_\alpha)=1-\alpha.\]</div>
 <p>例如：</p>
 <div class="note-math-display">\[\boxed{\Phi(1.645)\approx0.95},\quad\boxed{z_{0.05}\approx1.645}.\]</div>
@@ -1113,7 +1150,7 @@ P(97&lt;X&lt;103)&amp;\ge0.90\\
 =NORM.DIST(3,1,2,TRUE)
 =NORM.S.INV(0.95)
 </code></pre>
-<h2 id="4-6-PPT-例-4-9：既非纯离散型也非连续型的随机变量"><a href="#4-6-PPT-%E4%BE%8B-4-9%EF%BC%9A%E6%97%A2%E9%9D%9E%E7%BA%AF%E7%A6%BB%E6%95%A3%E5%9E%8B%E4%B9%9F%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%9E%8B%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F" class="headerlink" title="4.6 PPT 例 4.9：既非纯离散型也非连续型的随机变量"></a>4.6 PPT 例 4.9：既非纯离散型也非连续型的随机变量</h2><p>银行中，当前顾客的剩余服务时间 <span class="note-math-inline">\(Z\sim Exp(0.1)\)</span>（单位：分钟），小王最多等待 15 min，令实际等待时间：</p>
+<details class="notes-example"><summary><h2 id="4-6-PPT-例-4-9：既非纯离散型也非连续型的随机变量"><a href="#4-6-PPT-%E4%BE%8B-4-9%EF%BC%9A%E6%97%A2%E9%9D%9E%E7%BA%AF%E7%A6%BB%E6%95%A3%E5%9E%8B%E4%B9%9F%E9%9D%9E%E8%BF%9E%E7%BB%AD%E5%9E%8B%E7%9A%84%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F" class="headerlink" title="4.6 PPT 例 4.9：既非纯离散型也非连续型的随机变量"></a>4.6 PPT 例 4.9：既非纯离散型也非连续型的随机变量</h2></summary><div class="notes-example-body"><p>银行中，当前顾客的剩余服务时间 <span class="note-math-inline">\(Z\sim Exp(0.1)\)</span>（单位：分钟），小王最多等待 15 min，令实际等待时间：</p>
 <div class="note-math-display">\[Y=\min(Z,15).\]</div>
 <p>当 <span class="note-math-inline">\(y&lt;0\)</span>，<span class="note-math-inline">\(F_Y(y)=0\)</span>；当 <span class="note-math-inline">\(0\le y&lt;15\)</span>：</p>
 <div class="note-math-display">\[F_Y(y)=P(Z\le y)=1-e^{-0.1y};\]</div>
@@ -1132,7 +1169,7 @@ F_Y(y)=
 <p>这也再次说明：<strong>有区间型取值</strong>不保证是连续型；要看能否由纯密度积分表示整个分布函数。</p>
 </blockquote>
 <hr>
-<h1 id="§5-随机变量函数的分布（Distribution-of-a-Function-of-a-Random-Variable）"><a href="#%C2%A75-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83%EF%BC%88Distribution-of-a-Function-of-a-Random-Variable%EF%BC%89" class="headerlink" title="§5 随机变量函数的分布（Distribution of a Function of a Random Variable）"></a>§5 随机变量函数的分布（Distribution of a Function of a Random Variable）</h1><h2 id="5-1-核心问题和总原则"><a href="#5-1-%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98%E5%92%8C%E6%80%BB%E5%8E%9F%E5%88%99" class="headerlink" title="5.1 核心问题和总原则"></a>5.1 核心问题和总原则</h2><p>已知随机变量 <span class="note-math-inline">\(X\)</span> 的概率分布，给定变换关系：</p>
+</div></details><h1 id="§5-随机变量函数的分布（Distribution-of-a-Function-of-a-Random-Variable）"><a href="#%C2%A75-%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83%EF%BC%88Distribution-of-a-Function-of-a-Random-Variable%EF%BC%89" class="headerlink" title="§5 随机变量函数的分布（Distribution of a Function of a Random Variable）"></a>§5 随机变量函数的分布（Distribution of a Function of a Random Variable）</h1><h2 id="5-1-核心问题和总原则"><a href="#5-1-%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98%E5%92%8C%E6%80%BB%E5%8E%9F%E5%88%99" class="headerlink" title="5.1 核心问题和总原则"></a>5.1 核心问题和总原则</h2><p>已知随机变量 <span class="note-math-inline">\(X\)</span> 的概率分布，给定变换关系：</p>
 <div class="note-math-display">\[\boxed{Y=g(X)},\]</div>
 <p>求新的随机变量 <span class="note-math-inline">\(Y\)</span> 的分布。常见例子：<span class="note-math-inline">\(Y=2X+1\)</span>、<span class="note-math-inline">\(Y=X^2\)</span>、<span class="note-math-inline">\(Y=|X|\)</span>、<span class="note-math-inline">\(Y=\sin X\)</span>、<span class="note-math-inline">\(Y=F_X(X)\)</span>。</p>
 <p>本节最核心的不是死记公式，而是：</p>
@@ -1142,7 +1179,7 @@ F_Y(y)=
 <li>连续型：先求 <span class="note-math-inline">\(F_Y(y)=P(g(X)\le y)\)</span>，再对 <span class="note-math-inline">\(y\)</span> 求导得到 <span class="note-math-inline">\(f_Y(y)\)</span>。</li>
 <li>若 <span class="note-math-inline">\(g\)</span> 在 <span class="note-math-inline">\(X\)</span> 的支持区间内单调且可逆，也可以直接使用密度变换公式。</li>
 </ul>
-<h2 id="5-2-离散型随机变量的函数"><a href="#5-2-%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0" class="headerlink" title="5.2 离散型随机变量的函数"></a>5.2 离散型随机变量的函数</h2><h3 id="PPT-例-5-1：-Y-X-2"><a href="#PPT-%E4%BE%8B-5-1%EF%BC%9A-Y-X-2" class="headerlink" title="PPT 例 5.1：\(Y=X^2\)"></a>PPT 例 5.1：<span class="note-math-inline">\(Y=X^2\)</span></h3><p>给定：</p>
+<h2 id="5-2-离散型随机变量的函数"><a href="#5-2-%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%87%BD%E6%95%B0" class="headerlink" title="5.2 离散型随机变量的函数"></a>5.2 离散型随机变量的函数</h2><details class="notes-example"><summary><h3 id="PPT-例-5-1：-Y-X-2"><a href="#PPT-%E4%BE%8B-5-1%EF%BC%9A-Y-X-2" class="headerlink" title="PPT 例 5.1：\(Y=X^2\)"></a>PPT 例 5.1：<span class="note-math-inline">\(Y=X^2\)</span></h3></summary><div class="notes-example-body"><p>给定：</p>
 <div class="notes-table-scroll"><table>
 <thead>
 <tr>
@@ -1178,7 +1215,7 @@ F_Y(y)=
 </tr>
 </tbody></table></div>
 <p><strong>易错点</strong>：<span class="note-math-inline">\(X=-1\)</span> 与 <span class="note-math-inline">\(X=1\)</span> 都变为 <span class="note-math-inline">\(Y=1\)</span>，两部分概率必须相加。</p>
-<h3 id="PPT-例-5-2：-Y-2X-1-和-Z-X-2"><a href="#PPT-%E4%BE%8B-5-2%EF%BC%9A-Y-2X-1-%E5%92%8C-Z-X-2" class="headerlink" title="PPT 例 5.2：\(Y=2X+1\) 和 \(Z=X^2\)"></a>PPT 例 5.2：<span class="note-math-inline">\(Y=2X+1\)</span> 和 <span class="note-math-inline">\(Z=X^2\)</span></h3><p>原分布律：</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-5-2：-Y-2X-1-和-Z-X-2"><a href="#PPT-%E4%BE%8B-5-2%EF%BC%9A-Y-2X-1-%E5%92%8C-Z-X-2" class="headerlink" title="PPT 例 5.2：\(Y=2X+1\) 和 \(Z=X^2\)"></a>PPT 例 5.2：<span class="note-math-inline">\(Y=2X+1\)</span> 和 <span class="note-math-inline">\(Z=X^2\)</span></h3></summary><div class="notes-example-body"><p>原分布律：</p>
 <div class="notes-table-scroll"><table>
 <thead>
 <tr>
@@ -1235,14 +1272,14 @@ F_Y(y)=
 </tbody></table></div>
 <p>同理，<span class="note-math-inline">\(P(Z=1)=P(X=-1)+P(X=1)=1/3+1/6=1/2\)</span>。</p>
 <p><strong>离散型的标准流程</strong>：列 <span class="note-math-inline">\(X\)</span> 取值 → 代入 <span class="note-math-inline">\(g\)</span> 得到 <span class="note-math-inline">\(Y\)</span> → 去重排列 → 对同一 <span class="note-math-inline">\(Y\)</span> 合并概率 → 检验和为 1。</p>
-<h2 id="5-3-连续型变换：分布函数法（CDF-Method）"><a href="#5-3-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%8F%98%E6%8D%A2%EF%BC%9A%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E6%B3%95%EF%BC%88CDF-Method%EF%BC%89" class="headerlink" title="5.3 连续型变换：分布函数法（CDF Method）"></a>5.3 连续型变换：分布函数法（CDF Method）</h2><p>当 <span class="note-math-inline">\(X\)</span> 连续、<span class="note-math-inline">\(Y=g(X)\)</span> 时：</p>
+</div></details><h2 id="5-3-连续型变换：分布函数法（CDF-Method）"><a href="#5-3-%E8%BF%9E%E7%BB%AD%E5%9E%8B%E5%8F%98%E6%8D%A2%EF%BC%9A%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E6%B3%95%EF%BC%88CDF-Method%EF%BC%89" class="headerlink" title="5.3 连续型变换：分布函数法（CDF Method）"></a>5.3 连续型变换：分布函数法（CDF Method）</h2><p>当 <span class="note-math-inline">\(X\)</span> 连续、<span class="note-math-inline">\(Y=g(X)\)</span> 时：</p>
 <p><strong>第一步：确定 <span class="note-math-inline">\(Y\)</span> 的取值范围（支持集）</strong>。</p>
 <p><strong>第二步：根据定义写：</strong></p>
 <div class="note-math-display">\[\boxed{F_Y(y)=P(Y\le y)=P(g(X)\le y)}.\]</div>
 <p><strong>第三步：转化不等式</strong>，化为 <span class="note-math-inline">\(X\)</span> 落在某个集合 <span class="note-math-inline">\(D_y\)</span> 中的概率，并利用 <span class="note-math-inline">\(f_X\)</span> 积分或 <span class="note-math-inline">\(F_X\)</span> 计算。</p>
 <p><strong>第四步：求导</strong>：在相应可导位置上，</p>
 <div class="note-math-display">\[\boxed{f_Y(y)=\frac{d}{dy}F_Y(y)}.\]</div>
-<h3 id="PPT-例-5-3：-Y-X-2-意外得到均匀分布"><a href="#PPT-%E4%BE%8B-5-3%EF%BC%9A-Y-X-2-%E6%84%8F%E5%A4%96%E5%BE%97%E5%88%B0%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83" class="headerlink" title="PPT 例 5.3：\(Y=X^2\) 意外得到均匀分布"></a>PPT 例 5.3：<span class="note-math-inline">\(Y=X^2\)</span> 意外得到均匀分布</h3><p>设：</p>
+<details class="notes-example"><summary><h3 id="PPT-例-5-3：-Y-X-2-意外得到均匀分布"><a href="#PPT-%E4%BE%8B-5-3%EF%BC%9A-Y-X-2-%E6%84%8F%E5%A4%96%E5%BE%97%E5%88%B0%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83" class="headerlink" title="PPT 例 5.3：\(Y=X^2\) 意外得到均匀分布"></a>PPT 例 5.3：<span class="note-math-inline">\(Y=X^2\)</span> 意外得到均匀分布</h3></summary><div class="notes-example-body"><p>设：</p>
 <div class="note-math-display">\[f_X(x)=\begin{cases}\dfrac{x}{8},&amp;0&lt;x&lt;4,\\0,&amp;\text{其他},\end{cases}
 \qquad Y=X^2.\]</div>
 <p><strong>支持区间</strong>：因 <span class="note-math-inline">\(0&lt;X&lt;4\)</span>，所以 <span class="note-math-inline">\(0&lt;Y&lt;16\)</span>。</p>
@@ -1266,7 +1303,7 @@ y/16,&amp;0&lt;y&lt;16,\\
 f_Y(y)=\begin{cases}1/16,&amp;0&lt;y&lt;16,\\0,&amp;\text{其他},\end{cases}
 }\]</div>
 <p>因此 <span class="note-math-inline">\(\boxed{Y\sim U(0,16)}\)</span>。虽然 <span class="note-math-inline">\(X\)</span> 本身不是均匀分布，但平方之后的 <span class="note-math-inline">\(Y\)</span> 可以是均匀分布。</p>
-<h2 id="5-4-常见变换一：-Y-X"><a href="#5-4-%E5%B8%B8%E8%A7%81%E5%8F%98%E6%8D%A2%E4%B8%80%EF%BC%9A-Y-X" class="headerlink" title="5.4 常见变换一：\(Y=|X|\)"></a>5.4 常见变换一：<span class="note-math-inline">\(Y=|X|\)</span></h2><p>设 <span class="note-math-inline">\(X\)</span> 为连续型随机变量，<span class="note-math-inline">\(Y=|X|\)</span>。由于 <span class="note-math-inline">\(Y\ge0\)</span>，当 <span class="note-math-inline">\(y&gt;0\)</span>：</p>
+</div></details><h2 id="5-4-常见变换一：-Y-X"><a href="#5-4-%E5%B8%B8%E8%A7%81%E5%8F%98%E6%8D%A2%E4%B8%80%EF%BC%9A-Y-X" class="headerlink" title="5.4 常见变换一：\(Y=|X|\)"></a>5.4 常见变换一：<span class="note-math-inline">\(Y=|X|\)</span></h2><p>设 <span class="note-math-inline">\(X\)</span> 为连续型随机变量，<span class="note-math-inline">\(Y=|X|\)</span>。由于 <span class="note-math-inline">\(Y\ge0\)</span>，当 <span class="note-math-inline">\(y&gt;0\)</span>：</p>
 <div class="note-math-display">\[\begin{aligned}
 F_Y(y)
 &amp;=P(|X|\le y)\\
@@ -1278,7 +1315,7 @@ F_Y(y)
 f_Y(y)=f_X(y)+f_X(-y),\quad y&gt;0.
 }\]</div>
 <p><span class="note-math-inline">\(y&lt;0\)</span> 时 <span class="note-math-inline">\(f_Y(y)=0\)</span>。<span class="note-math-inline">\(y=0\)</span> 的密度取值本身不影响概率。</p>
-<h3 id="PPT-例-5-5：-X-sim-U-1-2-Y-X"><a href="#PPT-%E4%BE%8B-5-5%EF%BC%9A-X-sim-U-1-2-Y-X" class="headerlink" title="PPT 例 5.5：\(X\sim U(-1,2),Y=|X|\)"></a>PPT 例 5.5：<span class="note-math-inline">\(X\sim U(-1,2),Y=|X|\)</span></h3><div class="note-math-display">\[f_X(x)=\begin{cases}
+<details class="notes-example"><summary><h3 id="PPT-例-5-5：-X-sim-U-1-2-Y-X"><a href="#PPT-%E4%BE%8B-5-5%EF%BC%9A-X-sim-U-1-2-Y-X" class="headerlink" title="PPT 例 5.5：\(X\sim U(-1,2),Y=|X|\)"></a>PPT 例 5.5：<span class="note-math-inline">\(X\sim U(-1,2),Y=|X|\)</span></h3></summary><div class="notes-example-body"><div class="note-math-display">\[f_X(x)=\begin{cases}
 1/3,&amp;-1&lt;x&lt;2,\\0,&amp;\text{其他}.
 \end{cases}\]</div>
 <p>对于 <span class="note-math-inline">\(0&lt;y&lt;1\)</span>，<span class="note-math-inline">\(y\)</span>、<span class="note-math-inline">\(-y\)</span> 都在 <span class="note-math-inline">\((-1,2)\)</span> 内：</p>
@@ -1294,7 +1331,7 @@ f_Y(y)=\begin{cases}
 \end{cases}
 }\]</div>
 <p><strong>理解</strong>：正负两侧都能折叠到正轴的地方，密度需要相加；超出原来负侧支持区间后，只剩正侧贡献。</p>
-<h2 id="5-5-常见变换二：-Z-X-2"><a href="#5-5-%E5%B8%B8%E8%A7%81%E5%8F%98%E6%8D%A2%E4%BA%8C%EF%BC%9A-Z-X-2" class="headerlink" title="5.5 常见变换二：\(Z=X^2\)"></a>5.5 常见变换二：<span class="note-math-inline">\(Z=X^2\)</span></h2><p>设 <span class="note-math-inline">\(X\)</span> 连续，<span class="note-math-inline">\(Z=X^2\)</span>。对于 <span class="note-math-inline">\(z&gt;0\)</span>：</p>
+</div></details><h2 id="5-5-常见变换二：-Z-X-2"><a href="#5-5-%E5%B8%B8%E8%A7%81%E5%8F%98%E6%8D%A2%E4%BA%8C%EF%BC%9A-Z-X-2" class="headerlink" title="5.5 常见变换二：\(Z=X^2\)"></a>5.5 常见变换二：<span class="note-math-inline">\(Z=X^2\)</span></h2><p>设 <span class="note-math-inline">\(X\)</span> 连续，<span class="note-math-inline">\(Z=X^2\)</span>。对于 <span class="note-math-inline">\(z&gt;0\)</span>：</p>
 <div class="note-math-display">\[\begin{aligned}
 F_Z(z)
 &amp;=P(X^2\le z)\\
@@ -1306,14 +1343,14 @@ F_Z(z)
 f_Z(z)=\frac{f_X(\sqrt z)+f_X(-\sqrt z)}{2\sqrt z}
 },\qquad z&gt;0.\]</div>
 <p><strong>易错点</strong>：既不能漏掉 <span class="note-math-inline">\(-\sqrt z\)</span> 一支，也不能漏掉分母中的 <span class="note-math-inline">\(2\sqrt z\)</span>。如果 <span class="note-math-inline">\(X\)</span> 只在正数区间取值，负支密度自然为 0。</p>
-<h3 id="PPT-例-5-6：标准正态变量平方与卡方分布"><a href="#PPT-%E4%BE%8B-5-6%EF%BC%9A%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%8F%98%E9%87%8F%E5%B9%B3%E6%96%B9%E4%B8%8E%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83" class="headerlink" title="PPT 例 5.6：标准正态变量平方与卡方分布"></a>PPT 例 5.6：标准正态变量平方与卡方分布</h3><p>若 <span class="note-math-inline">\(X\sim N(0,1)\)</span>，令 <span class="note-math-inline">\(Z=X^2\)</span>，则：</p>
+<details class="notes-example"><summary><h3 id="PPT-例-5-6：标准正态变量平方与卡方分布"><a href="#PPT-%E4%BE%8B-5-6%EF%BC%9A%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%8F%98%E9%87%8F%E5%B9%B3%E6%96%B9%E4%B8%8E%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83" class="headerlink" title="PPT 例 5.6：标准正态变量平方与卡方分布"></a>PPT 例 5.6：标准正态变量平方与卡方分布</h3></summary><div class="notes-example-body"><p>若 <span class="note-math-inline">\(X\sim N(0,1)\)</span>，令 <span class="note-math-inline">\(Z=X^2\)</span>，则：</p>
 <div class="note-math-display">\[\begin{aligned}
 f_Z(z)
 &amp;=\frac{\varphi(\sqrt z)+\varphi(-\sqrt z)}{2\sqrt z}\\
 &amp;=\boxed{\frac{e^{-z/2}}{\sqrt{2\pi z}}},\qquad z&gt;0.
 \end{aligned}\]</div>
 <p>该分布称为<strong>自由度为 1 的卡方分布</strong>（Chi-square Distribution），记 <span class="note-math-inline">\(Z\sim\chi^2(1)\)</span>。这是后续数理统计学习中会再次遇到的知识点。</p>
-<h2 id="5-6-单调函数的密度变换公式（PPT-定理-2-5-1）"><a href="#5-6-%E5%8D%95%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%86%E5%BA%A6%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F%EF%BC%88PPT-%E5%AE%9A%E7%90%86-2-5-1%EF%BC%89" class="headerlink" title="5.6 单调函数的密度变换公式（PPT 定理 2.5.1）"></a>5.6 单调函数的密度变换公式（PPT 定理 2.5.1）</h2><p>假设 <span class="note-math-inline">\(Y=g(X)\)</span>，<span class="note-math-inline">\(g\)</span> 在 <span class="note-math-inline">\(X\)</span> 的取值范围内严格单调并可逆，记其反函数为 <span class="note-math-inline">\(x=h(y)\)</span>。在满足相应可导、导数非零等条件的区间内：</p>
+</div></details><h2 id="5-6-单调函数的密度变换公式（PPT-定理-2-5-1）"><a href="#5-6-%E5%8D%95%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%AF%86%E5%BA%A6%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F%EF%BC%88PPT-%E5%AE%9A%E7%90%86-2-5-1%EF%BC%89" class="headerlink" title="5.6 单调函数的密度变换公式（PPT 定理 2.5.1）"></a>5.6 单调函数的密度变换公式（PPT 定理 2.5.1）</h2><p>假设 <span class="note-math-inline">\(Y=g(X)\)</span>，<span class="note-math-inline">\(g\)</span> 在 <span class="note-math-inline">\(X\)</span> 的取值范围内严格单调并可逆，记其反函数为 <span class="note-math-inline">\(x=h(y)\)</span>。在满足相应可导、导数非零等条件的区间内：</p>
 <div class="note-math-display">\[\boxed{f_Y(y)=f_X(h(y))\,|h'(y)|},\]</div>
 <p><span class="note-math-inline">\(y\)</span> 在 <span class="note-math-inline">\(Y\)</span> 的取值范围以外时，<span class="note-math-inline">\(f_Y(y)=0\)</span>。</p>
 <p>由单调性可证明：</p>
@@ -1323,12 +1360,12 @@ f_Z(z)
 <li>合并两种情况为绝对值形式 <span class="note-math-inline">\(|h'(y)|\)</span>，保证密度非负。</li>
 </ul>
 <p><strong>操作四步</strong>：判断单调性与 <span class="note-math-inline">\(Y\)</span> 的支持区间 → 求反函数 <span class="note-math-inline">\(x=h(y)\)</span> → 求 <span class="note-math-inline">\(h'(y)\)</span> → 代入密度并乘绝对值。</p>
-<h3 id="PPT-例-5-7：正态随机变量的线性变换"><a href="#PPT-%E4%BE%8B-5-7%EF%BC%9A%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2" class="headerlink" title="PPT 例 5.7：正态随机变量的线性变换"></a>PPT 例 5.7：正态随机变量的线性变换</h3><p>若 <span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span>，<span class="note-math-inline">\(Y=aX+b\)</span>，<span class="note-math-inline">\(a\ne0\)</span>，则：</p>
+<details class="notes-example"><summary><h3 id="PPT-例-5-7：正态随机变量的线性变换"><a href="#PPT-%E4%BE%8B-5-7%EF%BC%9A%E6%AD%A3%E6%80%81%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2" class="headerlink" title="PPT 例 5.7：正态随机变量的线性变换"></a>PPT 例 5.7：正态随机变量的线性变换</h3></summary><div class="notes-example-body"><p>若 <span class="note-math-inline">\(X\sim N(\mu,\sigma^2)\)</span>，<span class="note-math-inline">\(Y=aX+b\)</span>，<span class="note-math-inline">\(a\ne0\)</span>，则：</p>
 <div class="note-math-display">\[\boxed{Y\sim N(a\mu+b,a^2\sigma^2)}.\]</div>
 <p>例如 <span class="note-math-inline">\(X\sim N(2,9)\)</span>，<span class="note-math-inline">\(Y=3X-1\)</span>：</p>
 <div class="note-math-display">\[\boxed{Y\sim N(5,81)}.\]</div>
 <p>这是常用的闭包性质。<strong>第二个参数依然是方差</strong>，所以要乘 <span class="note-math-inline">\(a^2\)</span>，而非 <span class="note-math-inline">\(a\)</span>。</p>
-<h3 id="PPT-例-5-8：单调的正弦变换"><a href="#PPT-%E4%BE%8B-5-8%EF%BC%9A%E5%8D%95%E8%B0%83%E7%9A%84%E6%AD%A3%E5%BC%A6%E5%8F%98%E6%8D%A2" class="headerlink" title="PPT 例 5.8：单调的正弦变换"></a>PPT 例 5.8：单调的正弦变换</h3><p>若：</p>
+</div></details><details class="notes-example"><summary><h3 id="PPT-例-5-8：单调的正弦变换"><a href="#PPT-%E4%BE%8B-5-8%EF%BC%9A%E5%8D%95%E8%B0%83%E7%9A%84%E6%AD%A3%E5%BC%A6%E5%8F%98%E6%8D%A2" class="headerlink" title="PPT 例 5.8：单调的正弦变换"></a>PPT 例 5.8：单调的正弦变换</h3></summary><div class="notes-example-body"><p>若：</p>
 <div class="note-math-display">\[X\sim U(-\pi/2,\pi/2),\qquad Y=\sin X,\]</div>
 <p>由于 <span class="note-math-inline">\(\sin x\)</span> 在 <span class="note-math-inline">\((-\pi/2,\pi/2)\)</span> 上严格递增，反函数为 <span class="note-math-inline">\(h(y)=\arcsin y\)</span>，其导数为：</p>
 <div class="note-math-display">\[h'(y)=\frac1{\sqrt{1-y^2}},\quad -1&lt;y&lt;1.\]</div>
@@ -1338,11 +1375,11 @@ f_Y(y)=\begin{cases}
 \dfrac1{\pi\sqrt{1-y^2}},&amp;-1&lt;y&lt;1,\\
 0,&amp;\text{其他}.
 \end{cases}}\]</div>
-<h2 id="5-7-非单调函数：分段、找全所有原像"><a href="#5-7-%E9%9D%9E%E5%8D%95%E8%B0%83%E5%87%BD%E6%95%B0%EF%BC%9A%E5%88%86%E6%AE%B5%E3%80%81%E6%89%BE%E5%85%A8%E6%89%80%E6%9C%89%E5%8E%9F%E5%83%8F" class="headerlink" title="5.7 非单调函数：分段、找全所有原像"></a>5.7 非单调函数：分段、找全所有原像</h2><p>如果 <span class="note-math-inline">\(g\)</span> 在 <span class="note-math-inline">\(X\)</span> 的支持区间上<strong>不单调</strong>，不可以机械地代入单个反函数。通常使用<strong>CDF 法</strong>，也可以把支持区间分成若干单调段，分别计算密度贡献后求和。</p>
+</div></details><h2 id="5-7-非单调函数：分段、找全所有原像"><a href="#5-7-%E9%9D%9E%E5%8D%95%E8%B0%83%E5%87%BD%E6%95%B0%EF%BC%9A%E5%88%86%E6%AE%B5%E3%80%81%E6%89%BE%E5%85%A8%E6%89%80%E6%9C%89%E5%8E%9F%E5%83%8F" class="headerlink" title="5.7 非单调函数：分段、找全所有原像"></a>5.7 非单调函数：分段、找全所有原像</h2><p>如果 <span class="note-math-inline">\(g\)</span> 在 <span class="note-math-inline">\(X\)</span> 的支持区间上<strong>不单调</strong>，不可以机械地代入单个反函数。通常使用<strong>CDF 法</strong>，也可以把支持区间分成若干单调段，分别计算密度贡献后求和。</p>
 <p>在多个可导反函数分支且 <span class="note-math-inline">\(g'(x_i)\ne0\)</span> 的一般情形下：</p>
 <div class="note-math-display">\[f_Y(y)=\sum_{x_i:\,g(x_i)=y}\frac{f_X(x_i)}{|g'(x_i)|},\]</div>
 <p>求和只针对 <span class="note-math-inline">\(X\)</span> 原支持区间内的有效原像 <span class="note-math-inline">\(x_i\)</span>。</p>
-<h3 id="PPT-例-5-9：-X-sim-U-0-pi-，-Y-sin-X"><a href="#PPT-%E4%BE%8B-5-9%EF%BC%9A-X-sim-U-0-pi-%EF%BC%8C-Y-sin-X" class="headerlink" title="PPT 例 5.9：\(X\sim U(0,\pi)\)，\(Y=\sin X\)"></a>PPT 例 5.9：<span class="note-math-inline">\(X\sim U(0,\pi)\)</span>，<span class="note-math-inline">\(Y=\sin X\)</span></h3><p><span class="note-math-inline">\(\sin x\)</span> 在 <span class="note-math-inline">\((0,\pi)\)</span> 上先增后减，不单调，而且 <span class="note-math-inline">\(Y\in(0,1]\)</span>。</p>
+<details class="notes-example"><summary><h3 id="PPT-例-5-9：-X-sim-U-0-pi-，-Y-sin-X"><a href="#PPT-%E4%BE%8B-5-9%EF%BC%9A-X-sim-U-0-pi-%EF%BC%8C-Y-sin-X" class="headerlink" title="PPT 例 5.9：\(X\sim U(0,\pi)\)，\(Y=\sin X\)"></a>PPT 例 5.9：<span class="note-math-inline">\(X\sim U(0,\pi)\)</span>，<span class="note-math-inline">\(Y=\sin X\)</span></h3></summary><div class="notes-example-body"><p><span class="note-math-inline">\(\sin x\)</span> 在 <span class="note-math-inline">\((0,\pi)\)</span> 上先增后减，不单调，而且 <span class="note-math-inline">\(Y\in(0,1]\)</span>。</p>
 <p>当 <span class="note-math-inline">\(0&lt;y&lt;1\)</span>，满足 <span class="note-math-inline">\(\sin X\le y\)</span> 的区间为：</p>
 <div class="note-math-display">\[X\in(0,\arcsin y]\ \cup\ [\pi-\arcsin y,\pi).\]</div>
 <p>利用原来均匀分布“长度比”的性质：</p>
@@ -1359,7 +1396,7 @@ f_Y(y)=\begin{cases}
 0,&amp;\text{其他}.
 \end{cases}}\]</div>
 <p>与前一个例子比较，密度前面的系数由 1 变成 2，因为 <span class="note-math-inline">\((0,\pi)\)</span> 上同一个 <span class="note-math-inline">\(y\in(0,1)\)</span> 对应两个 <span class="note-math-inline">\(x\)</span>。<strong>函数式一样，支持区间不同，变换后分布就可能不同。</strong></p>
-<h2 id="5-8-PPT-例-5-10：概率积分变换（Probability-Integral-Transform）"><a href="#5-8-PPT-%E4%BE%8B-5-10%EF%BC%9A%E6%A6%82%E7%8E%87%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2%EF%BC%88Probability-Integral-Transform%EF%BC%89" class="headerlink" title="5.8 PPT 例 5.10：概率积分变换（Probability Integral Transform）"></a>5.8 PPT 例 5.10：概率积分变换（Probability Integral Transform）</h2><p>若 <span class="note-math-inline">\(X\)</span> 的分布函数 <span class="note-math-inline">\(F_X\)</span> 连续，定义：</p>
+</div></details><details class="notes-example"><summary><h2 id="5-8-PPT-例-5-10：概率积分变换（Probability-Integral-Transform）"><a href="#5-8-PPT-%E4%BE%8B-5-10%EF%BC%9A%E6%A6%82%E7%8E%87%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2%EF%BC%88Probability-Integral-Transform%EF%BC%89" class="headerlink" title="5.8 PPT 例 5.10：概率积分变换（Probability Integral Transform）"></a>5.8 PPT 例 5.10：概率积分变换（Probability Integral Transform）</h2></summary><div class="notes-example-body"><p>若 <span class="note-math-inline">\(X\)</span> 的分布函数 <span class="note-math-inline">\(F_X\)</span> 连续，定义：</p>
 <div class="note-math-display">\[Y=F_X(X),\]</div>
 <p>则 <span class="note-math-inline">\(Y\)</span> 服从 <span class="note-math-inline">\((0,1)\)</span> 上的均匀分布：</p>
 <div class="note-math-display">\[\boxed{Y\sim U(0,1)}.\]</div>
@@ -1381,7 +1418,7 @@ y,&amp;0&lt;y&lt;1,\\
 \end{cases}\]</div>
 <p>正是 <span class="note-math-inline">\(U(0,1)\)</span> 的 CDF。更一般的结论见教材相应例题。</p>
 <hr>
-<h1 id="全章解题速查与易错点"><a href="#%E5%85%A8%E7%AB%A0%E8%A7%A3%E9%A2%98%E9%80%9F%E6%9F%A5%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9" class="headerlink" title="全章解题速查与易错点"></a>全章解题速查与易错点</h1><h2 id="A-先判断分布类型，再选公式"><a href="#A-%E5%85%88%E5%88%A4%E6%96%AD%E5%88%86%E5%B8%83%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%86%8D%E9%80%89%E5%85%AC%E5%BC%8F" class="headerlink" title="A. 先判断分布类型，再选公式"></a>A. 先判断分布类型，再选公式</h2><div class="notes-table-scroll"><table>
+</div></details><h1 id="全章解题速查与易错点"><a href="#%E5%85%A8%E7%AB%A0%E8%A7%A3%E9%A2%98%E9%80%9F%E6%9F%A5%E4%B8%8E%E6%98%93%E9%94%99%E7%82%B9" class="headerlink" title="全章解题速查与易错点"></a>全章解题速查与易错点</h1><h2 id="A-先判断分布类型，再选公式"><a href="#A-%E5%85%88%E5%88%A4%E6%96%AD%E5%88%86%E5%B8%83%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%86%8D%E9%80%89%E5%85%AC%E5%BC%8F" class="headerlink" title="A. 先判断分布类型，再选公式"></a>A. 先判断分布类型，再选公式</h2><div class="notes-table-scroll"><table>
 <thead>
 <tr>
 <th>题目特征</th>
@@ -1558,8 +1595,11 @@ y,&amp;0&lt;y&lt;1,\\
 <li><strong>无记忆性</strong>：<span class="note-math-inline">\(P(X&gt;4\mid X&gt;2)=P(X&gt;2)=e^{-0.5\times2}=\boxed{e^{-1}}\)</span>。</li>
 <li><strong>正态标准化</strong>：标准差 <span class="note-math-inline">\(\sigma=2\)</span>，<span class="note-math-inline">\(P(8&lt;X&lt;12)=\Phi(1)-\Phi(-1)=2\Phi(1)-1=\boxed{0.6826}\)</span>。</li>
 <li><strong>离散变换</strong>：<span class="note-math-inline">\(P(Y=0)=\boxed{0.5}\)</span>，<span class="note-math-inline">\(P(Y=4)=0.2+0.3=\boxed{0.5}\)</span>。</li>
-<li><strong>CDF 法</strong>：当 <span class="note-math-inline">\(0&lt;y&lt;1\)</span>，<span class="note-math-inline">\(F_Y(y)=P(X^2\le y)=P(X\le\sqrt y)=\sqrt y\)</span>；完整表示为：<br>&nbsp; &nbsp; $$<br>&nbsp; &nbsp; F_Y(y)=\begin{cases}0,&amp;y\le0,\\sqrt y,&amp;0&lt;y&lt;1,\1,&amp;y\ge1,\end{cases}<br>&nbsp; &nbsp; \quad<br>&nbsp; &nbsp; f_Y(y)=\begin{cases}\dfrac{1}{2\sqrt y},&amp;0&lt;y&lt;1,\0,&amp;\text{其他}.\end{cases}<br>&nbsp; &nbsp; $$</li>
+<li><strong>CDF 法</strong>：当 <span class="note-math-inline">\(0&lt;y&lt;1\)</span>，<span class="note-math-inline">\(F_Y(y)=P(X^2\le y)=P(X\le\sqrt y)=\sqrt y\)</span>；完整表示为：</li>
 </ol>
+<div class="note-math-display">\[F_Y(y)=\begin{cases}0,&amp;y\le0,\\\sqrt y,&amp;0&lt;y&lt;1,\\1,&amp;y\ge1,\end{cases}
+\quad
+f_Y(y)=\begin{cases}\dfrac{1}{2\sqrt y},&amp;0&lt;y&lt;1,\\0,&amp;\text{其他}.\end{cases}\]</div>
 </div>
     <section class="notes-article-comments" aria-label="Comments">
       <script src="https://giscus.app/client.js"
@@ -1676,7 +1716,11 @@ y,&amp;0&lt;y&lt;1,\\
 
 <script>
 window.MathJax = {
+  loader: {
+    load: ['[tex]/boldsymbol']
+  },
   tex: {
+    packages: { '[+]': ['boldsymbol'] },
     inlineMath: [['\\(', '\\)'], ['$', '$']],
     displayMath: [['\\[', '\\]'], ['$$', '$$']],
     processEscapes: true,
@@ -1691,6 +1735,29 @@ window.MathJax = {
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+(function() {
+  var codeBlocks = Array.prototype.slice.call(document.querySelectorAll('#notesArticleContent pre > code.language-mermaid, #notesArticleContent pre > code.mermaid'));
+  if (!codeBlocks.length) return;
+
+  var diagrams = codeBlocks.map(function(code) {
+    var container = document.createElement('div');
+    container.className = 'mermaid notes-mermaid';
+    container.textContent = code.textContent;
+    code.parentNode.replaceWith(container);
+    return container;
+  });
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.4/dist/mermaid.min.js';
+  script.onload = function() {
+    window.mermaid.initialize({ startOnLoad: false, theme: document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? 'dark' : 'default' });
+    window.mermaid.run({ nodes: diagrams });
+  };
+  document.head.appendChild(script);
+})();
+</script>
 
     
 

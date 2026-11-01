@@ -1,0 +1,1338 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Computer Science,Agents,Software,Blog,LLM">
+  
+    <meta name="description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ch18带电粒子在电场和磁场中的运动 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch18%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%9C%A8%E7%94%B5%E5%9C%BA%E5%92%8C%E7%A3%81%E5%9C%BA%E4%B8%AD%E7%9A%84%E8%BF%90%E5%8A%A8/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Agents">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Ch18带电粒子在电场和磁场中的运动 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Ch18带电粒子在电场和磁场中的运动 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  
+
+<!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav" data-page-kind="notes">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/" data-nav-kind="home">Home</a>
+      <a class="nav-link" href="/About/" data-nav-kind="about">About</a>
+      <a class="nav-link" href="/Projects/" data-nav-kind="projects">Projects</a>
+      <a class="nav-link" href="/Notes/" data-nav-kind="notes">Notes</a>
+      <a class="nav-link" href="/archives/" data-nav-kind="blog" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/physics/physics-b/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>大物乙二</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/physics/">大学物理</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/physics/physics-b/">大物乙二</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">Ch18带电粒子在电场和磁场中的运动</span>
+    </nav>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">大学物理</span>
+      <h1>Ch18带电粒子在电场和磁场中的运动</h1>
+      <span class="notes-source-path">大物乙二/Ch18带电粒子在电场和磁场中的运动.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><blockquote class="obsidian-callout obsidian-callout-info">
+<div class="obsidian-callout-header">复习范围与符号约定</div>
+<ul>
+<li><strong>重点掌握</strong>：§18-1、§18-4 中课件展开的回旋加速器与同步回旋加速器、§18-5。保留受力分析、关键公式及推导。</li>
+<li><strong>一般了解，定性理解</strong>：§18-2、§18-3、§18-6。能解释现象、装置作用和物理过程即可，本笔记不列偏转量、比荷测量、磁控管运动方程等计算推导。</li>
+<li><strong>电子感应加速器</strong>：属于 §18-4 的教材补充，课件未展开；以原理为主，另列轨道条件供查阅，不据此推定额外考试要求。</li>
+<li><span class="note-math-inline">\(q\)</span> 表示带符号的电荷量，<span class="note-math-inline">\(e&gt;0\)</span> 是元电荷，电子带电量为 <span class="note-math-inline">\(-e\)</span>；<span class="note-math-inline">\(m\)</span> 在非相对论公式中表示不变的粒子质量，<span class="note-math-inline">\(m_0\)</span> 表示静止质量；<span class="note-math-inline">\(B\)</span> 默认表示磁感应强度的大小。</li>
+<li>下文“课件页码”指幻灯片上印出的编号；“教材页码”指书内印刷页码，与 PDF 页序不同。章节编号统一采用教材编号。</li>
+</ul>
+</blockquote>
+<h2 id="章节思维导图"><a href="#%E7%AB%A0%E8%8A%82%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE" class="headerlink" title="章节思维导图"></a>章节思维导图</h2><pre><code class="mermaid">mindmap
+  root((第十八章 带电粒子运动))
+    均匀磁场中的运动
+      洛伦兹力与方向判断
+      平行入射为直线
+      垂直入射为圆周
+      斜入射为螺旋线
+      半径与周期及螺距
+    电磁偏转 一般了解
+      电场内为抛物线
+      磁场内为圆弧
+      电子射线管和示波器
+    电子比荷 一般了解
+      电偏转提供测量信息
+      正交场平衡确定速度
+    加速器
+      电场增能与磁场控轨
+      回旋加速器的同步条件
+      相对论限制与调频
+      电子感应加速器 教材补充
+    霍尔效应
+      横向电荷积累
+      霍尔电场与平衡
+      电压大小和极性
+      载流子浓度及类型
+    磁控管 一般了解
+      正交场控制电子运动
+      电子向高频场供能
+      谐振腔与微波输出
+</code></pre>
+<h2 id="目录"><a href="#%E7%9B%AE%E5%BD%95" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#%E6%9C%AC%E7%AB%A0%E4%B8%BB%E7%BA%BF">本章主线</a></li>
+<li><a href="#%C2%A718-1-%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%9C%A8%E5%9D%87%E5%8C%80%E7%A3%81%E5%9C%BA%E4%B8%AD%E7%9A%84%E8%BF%90%E5%8A%A8">§18-1 带电粒子在均匀磁场中的运动</a></li>
+<li><a href="#%C2%A718-2-%E7%94%B5%E5%9C%BA%E5%92%8C%E7%A3%81%E5%9C%BA%E4%B8%AD%E7%9A%84%E5%81%8F%E8%BD%AC%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89">§18-2 电场和磁场中的偏转（一般了解）</a></li>
+<li><a href="#%C2%A718-3-%E7%94%B5%E5%AD%90%E6%AF%94%E8%8D%B7%E7%9A%84%E6%B5%8B%E5%AE%9A%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89">§18-3 电子比荷的测定（一般了解）</a></li>
+<li><a href="#%C2%A718-4-%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%8A%A0%E9%80%9F%E5%99%A8">§18-4 带电粒子加速器</a></li>
+<li><a href="#%C2%A718-5-%E9%9C%8D%E5%B0%94%E6%95%88%E5%BA%94">§18-5 霍尔效应</a></li>
+<li><a href="#%C2%A718-6-%E7%A3%81%E6%8E%A7%E7%AE%A1%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89">§18-6 磁控管（一般了解）</a></li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F%E9%80%9F%E6%9F%A5%EF%BC%88%E9%87%8D%E7%82%B9%E9%83%A8%E5%88%86%EF%BC%89">核心公式速查（重点部分）</a></li>
+<li><a href="#%E6%98%93%E9%94%99%E7%82%B9%E4%B8%8E%E8%A7%A3%E9%A2%98%E9%A1%BA%E5%BA%8F">易错点与解题顺序</a></li>
+<li><a href="#%E6%95%B4%E7%AB%A0%E8%87%AA%E6%A3%80">整章自检</a></li>
+<li><a href="#%E8%B5%84%E6%96%99%E4%BE%9D%E6%8D%AE%E4%B8%8E%E9%A1%B5%E7%A0%81%E5%AF%B9%E7%85%A7">资料依据与页码对照</a></li>
+</ul>
+<h2 id="本章主线"><a href="#%E6%9C%AC%E7%AB%A0%E4%B8%BB%E7%BA%BF" class="headerlink" title="本章主线"></a>本章主线</h2><p><strong>先判断受力，再判断能量是否改变，最后确定轨迹。</strong></p>
+<ul>
+<li>电场力可以做功，能够改变动能，也可能改变运动方向。</li>
+<li>磁场力始终垂直于粒子的瞬时速度，本身不做功。只有磁场力作用时，粒子的速率和动能不变。</li>
+<li>加速器和磁控管中的能量来自电场；磁场控制轨迹。变化磁场还能产生感生电场，但对粒子做功的仍是电场。</li>
+</ul>
+<p>本章采用理想粒子模型，通常忽略重力、碰撞、辐射损失和场区边缘效应；电子感应加速器的能量限制另作定性说明。</p>
+<h1 id="§18-1-带电粒子在均匀磁场中的运动"><a href="#%C2%A718-1-%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%9C%A8%E5%9D%87%E5%8C%80%E7%A3%81%E5%9C%BA%E4%B8%AD%E7%9A%84%E8%BF%90%E5%8A%A8" class="headerlink" title="§18-1 带电粒子在均匀磁场中的运动"></a>§18-1 带电粒子在均匀磁场中的运动</h1><p>来源：课件第 91—93 页；教材第 437—439 页（本节例题延续至第 439 页）。</p>
+<h3 id="1-受力、方向与运动方程"><a href="#1-%E5%8F%97%E5%8A%9B%E3%80%81%E6%96%B9%E5%90%91%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%96%B9%E7%A8%8B" class="headerlink" title="1. 受力、方向与运动方程"></a>1. 受力、方向与运动方程</h3><p>电场力与磁场力分别为</p>
+<div class="note-math-display">\[\mathbf F_E=q\mathbf E,\qquad
+\mathbf F_B=q\mathbf v\times\mathbf B.\]</div>
+<p>因此，非相对论运动方程为</p>
+<div class="note-math-display">\[\boxed{m\frac{\mathrm d\mathbf v}{\mathrm dt}
+=q(\mathbf E+\mathbf v\times\mathbf B)}.\]</div>
+<p>“洛伦兹力”有时专指磁场力，有时指上式中的总电磁力，使用时应看清语境。磁场力大小为</p>
+<div class="note-math-display">\[\boxed{F_B=\lvert q\rvert vB\sin\theta},\]</div>
+<p>其中 <span class="note-math-inline">\(\theta\)</span> 是 <span class="note-math-inline">\(\mathbf v\)</span> 与 <span class="note-math-inline">\(\mathbf B\)</span> 的夹角。</p>
+<p><strong>方向判断</strong>：先按右手定则确定 <span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span>；正电荷受力同向，负电荷受力反向。磁场垂直纸面向里通常记为 <span class="note-math-inline">\(\otimes\)</span>，向外记为 <span class="note-math-inline">\(\odot\)</span>。</p>
+<p>磁力不做功可以直接由功率判断：</p>
+<div class="note-math-display">\[P_B=\mathbf F_B\cdot\mathbf v
+=q(\mathbf v\times\mathbf B)\cdot\mathbf v=0.\]</div>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">高速粒子的运动方程</div><p>课件第 91 页同时给出相对论形式。用动量表示最清楚：</p>
+<div class="note-math-display">\[\frac{\mathrm d\mathbf p}{\mathrm dt}
+=q(\mathbf E+\mathbf v\times\mathbf B),\qquad
+\mathbf p=\gamma m_0\mathbf v,\qquad
+\gamma=\frac1{\sqrt{1-v^2/c^2}}.\]</div>
+<p>教材和课件中的“相对论质量”对应 <span class="note-math-inline">\(m_{\mathrm{rel}}=\gamma m_0\)</span>；静止质量 <span class="note-math-inline">\(m_0\)</span> 不随速率变化。高速情况下不能把总运动方程简单写成 <span class="note-math-inline">\(\gamma m_0\mathbf a=\mathbf F\)</span>。</p>
+</blockquote>
+<h3 id="2-平行入射与静止情形"><a href="#2-%E5%B9%B3%E8%A1%8C%E5%85%A5%E5%B0%84%E4%B8%8E%E9%9D%99%E6%AD%A2%E6%83%85%E5%BD%A2" class="headerlink" title="2. 平行入射与静止情形"></a>2. 平行入射与静止情形</h3><p>当初速度与磁场平行或反平行时，叉积为零，粒子沿原方向做匀速直线运动。若粒子原来静止，单独的磁场不能使它开始运动。</p>
+<h3 id="3-垂直入射：匀速圆周运动"><a href="#3-%E5%9E%82%E7%9B%B4%E5%85%A5%E5%B0%84%EF%BC%9A%E5%8C%80%E9%80%9F%E5%9C%86%E5%91%A8%E8%BF%90%E5%8A%A8" class="headerlink" title="3. 垂直入射：匀速圆周运动"></a>3. 垂直入射：匀速圆周运动</h3><p>当 <span class="note-math-inline">\(\mathbf v\perp\mathbf B\)</span>，磁场力始终垂直于速度且大小不变，提供向心力。圆周轨道位于垂直于磁场的平面内。</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">推导：半径、周期与频率</div><p>由向心力方程</p>
+<div class="note-math-display">\[\lvert q\rvert vB=\frac{mv^2}{R}
+\quad\Longrightarrow\quad
+\boxed{R=\frac{mv}{\lvert q\rvert B}}.\]</div>
+<p>再由一周的路程除以速率，得到</p>
+<div class="note-math-display">\[T=\frac{2\pi R}{v}
+=\boxed{\frac{2\pi m}{\lvert q\rvert B}}.\]</div>
+<p>因而回旋频率与角频率分别为</p>
+<div class="note-math-display">\[\boxed{\nu=\frac{\lvert q\rvert B}{2\pi m}},\qquad
+\boxed{\omega_c=\frac{\lvert q\rvert B}{m}}.\]</div>
+</blockquote>
+<p><strong>关键结论</strong>：在非相对论、匀强磁场条件下，周期和频率与速率及轨道半径无关。这是普通回旋加速器保持同步的基础。</p>
+<p>荷质比（比荷）是 <span class="note-math-inline">\(q/m\)</span>，可以带符号；比较偏转强弱时通常使用其大小 <span class="note-math-inline">\(\lvert q\rvert/m\)</span>。同样的 <span class="note-math-inline">\(v\)</span> 和 <span class="note-math-inline">\(B\)</span> 下，荷质比的绝对值越大，轨道半径越小。</p>
+<p>给定同一速度方向和磁场方向，电荷符号相反时偏转方向相反；只有在 <span class="note-math-inline">\(\lvert q\rvert/m\)</span> 也相同时，半径和周期才相同。</p>
+<h3 id="4-斜入射：等螺距螺旋运动"><a href="#4-%E6%96%9C%E5%85%A5%E5%B0%84%EF%BC%9A%E7%AD%89%E8%9E%BA%E8%B7%9D%E8%9E%BA%E6%97%8B%E8%BF%90%E5%8A%A8" class="headerlink" title="4. 斜入射：等螺距螺旋运动"></a>4. 斜入射：等螺距螺旋运动</h3><p>取沿 <span class="note-math-inline">\(\mathbf B\)</span> 的方向为轴向正方向，将初速度分解为</p>
+<div class="note-math-display">\[v_\parallel=v_0\cos\theta,\qquad
+v_\perp=v_0\sin\theta,\qquad 0\leq\theta\leq\pi.\]</div>
+<ul>
+<li>平行分量不受磁力影响，保持不变。</li>
+<li>垂直分量在垂直于磁场的平面内做匀速圆周运动。</li>
+<li>两种运动叠加，得到轴线平行于磁场的等螺距螺旋线。</li>
+</ul>
+<p>回旋半径由<strong>垂直分量</strong>决定：</p>
+<div class="note-math-display">\[\boxed{R=\frac{mv_\perp}{\lvert q\rvert B}
+=\frac{mv_0\sin\theta}{\lvert q\rvert B}}.\]</div>
+<p>周期仍为 <span class="note-math-inline">\(T=2\pi m/(\lvert q\rvert B)\)</span>。一周内的轴向位移与螺距应区分：</p>
+<div class="note-math-display">\[\Delta s_\parallel=v_\parallel T,\qquad
+\boxed{h=\lvert v_\parallel\rvert T
+=\frac{2\pi mv_0\lvert\cos\theta\rvert}{\lvert q\rvert B}}.\]</div>
+<p>这里 <span class="note-math-inline">\(h\)</span> 表示相邻两圈的轴向<strong>距离</strong>，应非负；<span class="note-math-inline">\(\Delta s_\parallel\)</span> 可以为负，表示沿磁场反方向前进。课件的 <span class="note-math-inline">\(h=v_0\cos\theta\,T\)</span> 对应图中沿磁场前进的情形，或把 <span class="note-math-inline">\(h\)</span> 当作有向位移。</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>初始条件</th>
+<th>运动轨迹</th>
+<th>需要注意</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><span class="note-math-inline">\(v_0=0\)</span></td>
+<td>保持静止</td>
+<td>磁场不能把静止电荷加速</td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(\theta=0\)</span> 或 <span class="note-math-inline">\(\pi\)</span></td>
+<td>匀速直线</td>
+<td>不存在实际回旋运动</td>
+</tr>
+<tr>
+<td><span class="note-math-inline">\(\theta=\pi/2\)</span></td>
+<td>匀速圆周</td>
+<td>轴向速度为零，<span class="note-math-inline">\(h=0\)</span></td>
+</tr>
+<tr>
+<td>其余夹角</td>
+<td>等螺距螺旋线</td>
+<td><span class="note-math-inline">\(v_\perp\)</span> 决定半径，<span class="note-math-inline">\(v_\parallel\)</span> 决定轴向运动</td>
+</tr>
+</tbody></table></div>
+<h3 id="5-计算题常用连接"><a href="#5-%E8%AE%A1%E7%AE%97%E9%A2%98%E5%B8%B8%E7%94%A8%E8%BF%9E%E6%8E%A5" class="headerlink" title="5. 计算题常用连接"></a>5. 计算题常用连接</h3><p>以下关系是由上述定律直接得到的解题工具，不是另立的新定律。</p>
+<ul>
+<li>粒子从静止经过加速电压 <span class="note-math-inline">\(U_a&gt;0\)</span>，若电场做正功，则 <span class="note-math-inline">\(K=\lvert q\rvert U_a\)</span>。在非相对论条件下再垂直进入磁场：</li>
+</ul>
+<div class="note-math-display">\[v=\sqrt{\frac{2\lvert q\rvert U_a}{m}},\qquad
+R=\frac1B\sqrt{\frac{2mU_a}{\lvert q\rvert}}.\]</div>
+<ul>
+<li>若只在磁场中走过一段圆弧，先由几何关系求实际转过的圆心角 <span class="note-math-inline">\(\varphi\)</span>，再求运动时间：</li>
+</ul>
+<div class="note-math-display">\[\boxed{t=\frac{\varphi}{\omega_c}=\frac{\varphi}{2\pi}T}
+\qquad(\varphi\text{ 用弧度}).\]</div>
+<ul>
+<li>离开场区且不受其他力后，粒子沿出口处的切线做匀速直线运动。</li>
+</ul>
+<h1 id="§18-2-电场和磁场中的偏转（一般了解）"><a href="#%C2%A718-2-%E7%94%B5%E5%9C%BA%E5%92%8C%E7%A3%81%E5%9C%BA%E4%B8%AD%E7%9A%84%E5%81%8F%E8%BD%AC%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89" class="headerlink" title="§18-2 电场和磁场中的偏转（一般了解）"></a>§18-2 电场和磁场中的偏转（一般了解）</h1><p>来源：教材第 439—441 页。理解轨迹与装置作用，不要求在本笔记中记忆偏转量公式。</p>
+<h3 id="1-电偏转与磁偏转"><a href="#1-%E7%94%B5%E5%81%8F%E8%BD%AC%E4%B8%8E%E7%A3%81%E5%81%8F%E8%BD%AC" class="headerlink" title="1. 电偏转与磁偏转"></a>1. 电偏转与磁偏转</h3><p>设电子束以初速度垂直进入均匀电场或均匀磁场，按非相对论模型分析：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>比较内容</th>
+<th>电场偏转</th>
+<th>磁场偏转</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>受力方向</td>
+<td>电子受力与电场反向，方向固定</td>
+<td>电子受力与 <span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span> 反向，随速度方向改变</td>
+</tr>
+<tr>
+<td>场内运动</td>
+<td>原入射方向匀速，横向匀加速，轨迹为抛物线</td>
+<td>速率不变，轨迹为圆弧</td>
+</tr>
+<tr>
+<td>能量变化</td>
+<td>本情形中电场做正功，速率增大</td>
+<td>磁场力不做功，速率不变</td>
+</tr>
+<tr>
+<td>离开场区后</td>
+<td>沿出口切线匀速运动</td>
+<td>沿出口切线匀速运动</td>
+</tr>
+</tbody></table></div>
+<p>在其他条件不变时，场越强，偏转通常越明显；入射速度越大，偏转通常越小。教材把磁偏转近似为固定方向的横向加速，只适用于<strong>偏转角很小</strong>的情况；准确轨迹仍是圆弧。</p>
+<h3 id="2-电子射线管、示波器与显像管"><a href="#2-%E7%94%B5%E5%AD%90%E5%B0%84%E7%BA%BF%E7%AE%A1%E3%80%81%E7%A4%BA%E6%B3%A2%E5%99%A8%E4%B8%8E%E6%98%BE%E5%83%8F%E7%AE%A1" class="headerlink" title="2. 电子射线管、示波器与显像管"></a>2. 电子射线管、示波器与显像管</h3><p>电子射线管由电子枪、偏转系统和荧光屏等组成。电子枪发射、加速并形成细电子束；偏转系统改变落点；荧光屏把电子束的落点显示为光点。</p>
+<p>传统电子射线示波器用两组相互垂直的偏转板控制光点：</p>
+<ul>
+<li>水平方向施加扫描电压，使光点在有效扫描期间随时间近似匀速移动。</li>
+<li>竖直方向施加待测电压，使竖直位移反映该电压的大小和正负。</li>
+<li>两者结合，屏上显示电压随时间变化的曲线；扫描随后快速回扫并重复。</li>
+</ul>
+<p>教材还介绍了用外部线圈产生磁场、控制电子束的显像管。<strong>电偏转用偏转板，磁偏转用线圈</strong>；改变板间电压或线圈电流，都能改变屏上的光点位置。这里描述的是传统电子射线管装置的原理。</p>
+<h1 id="§18-3-电子比荷的测定（一般了解）"><a href="#%C2%A718-3-%E7%94%B5%E5%AD%90%E6%AF%94%E8%8D%B7%E7%9A%84%E6%B5%8B%E5%AE%9A%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89" class="headerlink" title="§18-3 电子比荷的测定（一般了解）"></a>§18-3 电子比荷的测定（一般了解）</h1><p>来源：教材第 441—442 页。重点是实验怎样把未知速度与未知比荷区分开。</p>
+<h3 id="1-测的是什么"><a href="#1-%E6%B5%8B%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88" class="headerlink" title="1. 测的是什么"></a>1. 测的是什么</h3><p>电子比荷是电子电荷量与质量之比。电子带负电，所以有符号的比荷为负；其静止质量对应的比荷约为 <span class="note-math-inline">\(-1.76\times10^{11}\ \mathrm{C/kg}\)</span>，知道数量级即可。</p>
+<p>测出比荷，并不等于分别测出了电子电荷量和质量。汤姆孙实验为认识电子提供了重要实验依据。</p>
+<h3 id="2-汤姆孙实验的思路"><a href="#2-%E6%B1%A4%E5%A7%86%E5%AD%99%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%80%9D%E8%B7%AF" class="headerlink" title="2. 汤姆孙实验的思路"></a>2. 汤姆孙实验的思路</h3><p>电子枪在真空中产生电子束，荧光屏显示它的落点。电场、磁场与入射速度互相垂直，并安排电场力与磁场力方向相反。</p>
+<p>按照教材的实验顺序：</p>
+<ol>
+<li><strong>两场都关闭</strong>：记录电子束无偏转时的基准落点。</li>
+<li><strong>只加电场</strong>：观察并测量电子束的偏转。偏转程度同时受电子速度与比荷影响，单靠这一步不能把两者分开。</li>
+<li><strong>保持电场，再加磁场</strong>：调节磁场，直到光点回到基准位置。此时两种力抵消，由已知场强确定电子速度。</li>
+<li><strong>结合前面的电偏转测量</strong>：速度已知后，就能求出电子比荷。</li>
+</ol>
+<p>不偏转的物理条件是电场力和磁场力<strong>大小相等、方向相反</strong>。在上述互相垂直的几何条件下，它对应常见的速度选择关系 <span class="note-math-inline">\(v=E/B\)</span>；此处理解“用力的抵消确定速度”即可。</p>
+<h3 id="3-高速电子的补充说明"><a href="#3-%E9%AB%98%E9%80%9F%E7%94%B5%E5%AD%90%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E" class="headerlink" title="3. 高速电子的补充说明"></a>3. 高速电子的补充说明</h3><p>高速电子需要用相对论动量分析。教材所说的“比荷绝对值随速度增大而减小”，采用的是电荷与<strong>相对论质量</strong>之比；电子的电荷和静止质量并没有因此改变。不要把它理解成电子固有的电荷或静止质量随速度变化。</p>
+<h1 id="§18-4-带电粒子加速器"><a href="#%C2%A718-4-%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%8A%A0%E9%80%9F%E5%99%A8" class="headerlink" title="§18-4 带电粒子加速器"></a>§18-4 带电粒子加速器</h1><p>来源：课件第 97—101 页；教材第 443—446 页。</p>
+<h3 id="1-回旋加速器的结构与过程"><a href="#1-%E5%9B%9E%E6%97%8B%E5%8A%A0%E9%80%9F%E5%99%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E8%BF%87%E7%A8%8B" class="headerlink" title="1. 回旋加速器的结构与过程"></a>1. 回旋加速器的结构与过程</h3><p>两个 D 形金属盒放在真空室内，匀强磁场垂直于盒所在平面；两盒之间接高频交变电压。盒内因电屏蔽近似没有电场，狭缝内存在加速电场，中心附近放置粒子源。</p>
+<p>粒子经历的过程为：</p>
+<ol>
+<li>通过狭缝时受到电场加速，动能增大。</li>
+<li>进入 D 形盒后，磁力提供向心力，粒子以当前速率走半圆。</li>
+<li>再次到达狭缝时电场恰好反向，继续对粒子做正功。</li>
+<li>速率不断增加，后续半圆的半径不断增大，最后从边缘引出。</li>
+</ol>
+<p><strong>电场增能，磁场控轨。</strong> 各段半圆的半径不同，整条轨迹向外展开；不要把它与匀强磁场中半径恒定的空间螺旋线混淆。教材主要以质子、氘核等离子为例。</p>
+<h3 id="2-为什么能连续加速：同步条件"><a href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E8%BF%9E%E7%BB%AD%E5%8A%A0%E9%80%9F%EF%BC%9A%E5%90%8C%E6%AD%A5%E6%9D%A1%E4%BB%B6" class="headerlink" title="2. 为什么能连续加速：同步条件"></a>2. 为什么能连续加速：同步条件</h3><blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">推导：半圈时间与电压频率</div><p>D 形盒内的轨道半径为 <span class="note-math-inline">\(R=mv/(\lvert q\rvert B)\)</span>，走过半圈的时间为</p>
+<div class="note-math-display">\[t_{\mathrm{half}}=\frac{\pi R}{v}
+=\frac{\pi m}{\lvert q\rvert B}=\frac T2.\]</div>
+<p>在非相对论条件下，这个时间不随速率增加而改变。按照课件的基本同步方式，电压也在这段时间内经历半个周期，恰好反向：</p>
+<div class="note-math-display">\[\boxed{T_{\mathrm{RF}}=T},\qquad
+\boxed{\nu_{\mathrm{RF}}=\nu_c=\frac{\lvert q\rvert B}{2\pi m}}.\]</div>
+</blockquote>
+<p>忽略过缝时间时，一周通过狭缝两次，获得两次加速；<strong>相邻两次加速相隔半个周期</strong>。</p>
+<p>若每次过缝时的有效加速电压大小均为 <span class="note-math-inline">\(U_a\)</span>，则</p>
+<div class="note-math-display">\[\Delta K_{\text{每次}}=\lvert q\rvert U_a,\qquad
+\Delta K_{\text{每周}}=2\lvert q\rvert U_a.\]</div>
+<p>这里 <span class="note-math-inline">\(U_a\)</span> 是粒子实际过缝时所经历的加速电压，只有在合适相位过缝时才可取电压峰值。</p>
+<h3 id="3-最大速率与最大动能"><a href="#3-%E6%9C%80%E5%A4%A7%E9%80%9F%E7%8E%87%E4%B8%8E%E6%9C%80%E5%A4%A7%E5%8A%A8%E8%83%BD" class="headerlink" title="3. 最大速率与最大动能"></a>3. 最大速率与最大动能</h3><blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">推导：由引出半径求最大动能</div><p>设最大有效轨道半径为 <span class="note-math-inline">\(R_{\max}\)</span>，由半径公式得到</p>
+<div class="note-math-display">\[\boxed{v_{\max}=\frac{\lvert q\rvert BR_{\max}}m}.\]</div>
+<p>在非相对论条件下，</p>
+<div class="note-math-display">\[K_{\max}=\frac12mv_{\max}^2
+=\boxed{\frac{q^2B^2R_{\max}^2}{2m}}.\]</div>
+</blockquote>
+<p>给定粒子后，理想模型中的最大动能由 <span class="note-math-inline">\(B\)</span> 与 <span class="note-math-inline">\(R_{\max}\)</span> 决定。加速电压主要影响每次增能和达到引出能量所需的圈数，并不直接出现在上述最大动能公式中。</p>
+<p><strong>适用边界</strong>：不能把“增大半径就能提高动能”无限外推。粒子进入相对论速度范围后，普通回旋加速器会失去同步，上述非相对论动能公式也不再适用。</p>
+<h3 id="4-同步回旋加速器：随粒子状态调频"><a href="#4-%E5%90%8C%E6%AD%A5%E5%9B%9E%E6%97%8B%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%9A%E9%9A%8F%E7%B2%92%E5%AD%90%E7%8A%B6%E6%80%81%E8%B0%83%E9%A2%91" class="headerlink" title="4. 同步回旋加速器：随粒子状态调频"></a>4. 同步回旋加速器：随粒子状态调频</h3><p>在速率较高时，粒子动量为 <span class="note-math-inline">\(p=\gamma m_0v\)</span>。每段磁场内的圆周运动满足</p>
+<div class="note-math-display">\[R=\frac p{\lvert q\rvert B},\qquad
+T=\frac{2\pi R}{v}
+=\frac{2\pi\gamma m_0}{\lvert q\rvert B}.\]</div>
+<p>磁场保持不变时，速率增加使 <span class="note-math-inline">\(\gamma\)</span> 增大，因此回旋周期变长、回旋频率降低。固定频率的加速电压不再能保证粒子每次过缝都获得加速。</p>
+<p>保持同步的方法是相应<strong>降低高频电压频率</strong>：</p>
+<div class="note-math-display">\[\boxed{\nu_{\mathrm{RF}}=
+\frac{\lvert q\rvert B}{2\pi\gamma m_0}}.\]</div>
+<p>课件第 100 页称其为“同步回旋加速器”，第 101 页简称“同步加速器”。本节具体指<strong>固定磁场、调整高频电压频率</strong>的方案，不要把所有名称中带“同步”的加速器都当作相同装置。</p>
+<h3 id="5-电子感应加速器（教材补充）"><a href="#5-%E7%94%B5%E5%AD%90%E6%84%9F%E5%BA%94%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%88%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BC%89" class="headerlink" title="5. 电子感应加速器（教材补充）"></a>5. 电子感应加速器（教材补充）</h3><p>教材第 444—446 页介绍电子感应加速器（Betatron）。它利用变化磁通量产生的环形感生电场，对电子持续做功；轨道处的磁场提供向心力。</p>
+<p>需要理解的三点：</p>
+<ul>
+<li><strong>加速来自感生电场</strong>：不是磁场力直接对电子做功，也不依赖反复穿过 D 形盒狭缝。</li>
+<li><strong>轨道可以保持固定半径</strong>：随着电子动量增大，轨道处的磁场也相应增强，从而继续把电子约束在同一圆形轨道上。</li>
+<li><strong>以脉冲方式工作</strong>：教材图示的交流磁场中，只有部分时段同时满足电场加速方向与磁力指向圆心的条件。辐射损失和电磁铁尺寸又限制了可获得的能量；可用于产生硬 X 射线等。</li>
+</ul>
+<p>供查阅的固定轨道条件为</p>
+<div class="note-math-display">\[\boxed{\overline B=2B_R}.\]</div>
+<p><span class="note-math-inline">\(B_R\)</span> 是电子轨道处的磁感应强度，<span class="note-math-inline">\(\overline B\)</span> 是轨道所围圆面积内的平均磁感应强度。两者不是同一个量；为满足这个条件，磁场需有合适的径向分布。</p>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">轨道条件的适用说明</div><p>固定半径要求动量与轨道处磁场同步增长。教材从加速开始时动量和磁通量均为零的理想条件出发，得到上式；若只由变化率关系积分，不能无条件丢掉积分常数。这里保留物理含义与结论，不展开教材补充推导。</p>
+</blockquote>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>装置</th>
+<th>提供能量的电场</th>
+<th>需要把握的区别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通回旋加速器</td>
+<td>狭缝中的固定频率交变电场</td>
+<td>非相对论回旋周期不变，轨道向外扩展</td>
+</tr>
+<tr>
+<td>同步回旋加速器</td>
+<td>狭缝中的调频交变电场</td>
+<td>固定磁场时随 <span class="note-math-inline">\(\gamma\)</span> 增大降低电压频率</td>
+</tr>
+<tr>
+<td>电子感应加速器</td>
+<td>变化磁通量产生的感生电场</td>
+<td>磁场按要求变化，可保持固定轨道半径</td>
+</tr>
+</tbody></table></div>
+<h1 id="§18-5-霍尔效应"><a href="#%C2%A718-5-%E9%9C%8D%E5%B0%94%E6%95%88%E5%BA%94" class="headerlink" title="§18-5 霍尔效应"></a>§18-5 霍尔效应</h1><p>来源：课件第 103—106 页；教材第 446—448 页。</p>
+<h3 id="1-定义与几何关系"><a href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%87%A0%E4%BD%95%E5%85%B3%E7%B3%BB" class="headerlink" title="1. 定义与几何关系"></a>1. 定义与几何关系</h3><p>载流导体或半导体薄板置于磁场中，当磁场垂直于电流时，在<strong>同时垂直于电流和磁场的横向两侧</strong>出现电势差，这就是霍尔效应。</p>
+<p>为使正负号明确，本笔记采用与课件正负关系一致的一组坐标约定：</p>
+<ul>
+<li>电流沿 <span class="note-math-inline">\(+x\)</span> 方向，<span class="note-math-inline">\(I&gt;0\)</span>。</li>
+<li>磁场沿 <span class="note-math-inline">\(+z\)</span> 方向，<span class="note-math-inline">\(B&gt;0\)</span>。</li>
+<li>薄板横向宽度为 <span class="note-math-inline">\(b\)</span>，沿 <span class="note-math-inline">\(y\)</span> 方向；沿磁场方向的厚度为 <span class="note-math-inline">\(d\)</span>。</li>
+<li>规定霍尔电压为 <span class="note-math-inline">\(U_H=V(y=0)-V(y=b)\)</span>。</li>
+</ul>
+<p><strong><span class="note-math-inline">\(b\)</span> 是两霍尔电极的间距，<span class="note-math-inline">\(d\)</span> 是沿磁场方向的厚度。</strong> 两者不能混淆。</p>
+<h3 id="2-霍尔电场怎样形成"><a href="#2-%E9%9C%8D%E5%B0%94%E7%94%B5%E5%9C%BA%E6%80%8E%E6%A0%B7%E5%BD%A2%E6%88%90" class="headerlink" title="2. 霍尔电场怎样形成"></a>2. 霍尔电场怎样形成</h3><ol>
+<li>电流存在时，载流子具有平均定向运动速度 <span class="note-math-inline">\(\mathbf v_d\)</span>。</li>
+<li>磁场使载流子受横向洛伦兹力，向薄板一侧偏移。</li>
+<li>两侧出现异号电荷积累，形成横向霍尔电场 <span class="note-math-inline">\(\mathbf E_H\)</span>。</li>
+<li>电场力逐渐抵消磁场力，直到横向达到稳态，不再有持续的净横向电流。</li>
+</ol>
+<p>横向平衡条件为</p>
+<div class="note-math-display">\[q(\mathbf E_H+\mathbf v_d\times\mathbf B)=0
+\quad\Longrightarrow\quad
+\boxed{\mathbf E_H=-\mathbf v_d\times\mathbf B}.\]</div>
+<p>在漂移速度垂直于磁场时，大小关系为 <span class="note-math-inline">\(E_H=v_dB\)</span>。达到平衡并不表示纵向电流消失，也不表示电子停止热运动。</p>
+<h3 id="3-霍尔电压大小的推导"><a href="#3-%E9%9C%8D%E5%B0%94%E7%94%B5%E5%8E%8B%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%8E%A8%E5%AF%BC" class="headerlink" title="3. 霍尔电压大小的推导"></a>3. 霍尔电压大小的推导</h3><blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">推导：从漂移速度到电流</div><p>先只计算大小。设单一类型载流子的数密度为 <span class="note-math-inline">\(n\)</span>，其电荷量大小为 <span class="note-math-inline">\(\lvert q\rvert\)</span>，则</p>
+<div class="note-math-display">\[\lvert U_H\rvert=E_Hb=v_dBb.\]</div>
+<p>电流通过的横截面积为 <span class="note-math-inline">\(bd\)</span>，所以</p>
+<div class="note-math-display">\[I=n\lvert q\rvert v_dbd
+\quad\Longrightarrow\quad
+v_d=\frac I{n\lvert q\rvert bd}.\]</div>
+<p>代入得到</p>
+<div class="note-math-display">\[\boxed{\lvert U_H\rvert=\frac{IB}{n\lvert q\rvert d}}.\]</div>
+</blockquote>
+<p>因此，固定材料及几何条件时，霍尔电压大小与 <span class="note-math-inline">\(I\)</span>、<span class="note-math-inline">\(B\)</span> 成正比，与 <span class="note-math-inline">\(d\)</span> 成反比。宽度 <span class="note-math-inline">\(b\)</span> 在代入电流关系后消去；<strong>在电流 <span class="note-math-inline">\(I\)</span> 固定时</strong>，霍尔电压大小不直接依赖 <span class="note-math-inline">\(b\)</span>。</p>
+<h3 id="4-电压正负与霍尔系数"><a href="#4-%E7%94%B5%E5%8E%8B%E6%AD%A3%E8%B4%9F%E4%B8%8E%E9%9C%8D%E5%B0%94%E7%B3%BB%E6%95%B0" class="headerlink" title="4. 电压正负与霍尔系数"></a>4. 电压正负与霍尔系数</h3><p>按照前述坐标及电压约定，<span class="note-math-inline">\(j_x=nqv_{d,x}\)</span>，并且</p>
+<div class="note-math-display">\[E_{H,y}=v_{d,x}B=\frac{j_xB}{nq}.\]</div>
+<p>由 <span class="note-math-inline">\(U_H=V(0)-V(b)=E_{H,y}b\)</span>，得到</p>
+<div class="note-math-display">\[\boxed{U_H=R_H\frac{IB}{d}},\qquad
+\boxed{R_H=\frac1{nq}}.\]</div>
+<p>这里 <span class="note-math-inline">\(q\)</span> <strong>必须带符号</strong>，<span class="note-math-inline">\(R_H\)</span> 的 SI 单位为 <span class="note-math-inline">\(\mathrm{m^3/C}\)</span>。</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>载流子</th>
+<th>漂移方向与电流的关系</th>
+<th>霍尔系数</th>
+<th>本文约定下的电压</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>电子，<span class="note-math-inline">\(q=-e\)</span></td>
+<td>相反</td>
+<td><span class="note-math-inline">\(R_H=-1/(ne)\)</span></td>
+<td><span class="note-math-inline">\(U_H&lt;0\)</span></td>
+</tr>
+<tr>
+<td>空穴，等效电荷 <span class="note-math-inline">\(q=+e\)</span></td>
+<td>相同</td>
+<td><span class="note-math-inline">\(R_H=+1/(ne)\)</span></td>
+<td><span class="note-math-inline">\(U_H&gt;0\)</span></td>
+</tr>
+</tbody></table></div>
+<p>在本文几何约定下，两种载流子的磁力都指向 <span class="note-math-inline">\(-y\)</span>，但该侧积累的电荷符号不同，所以霍尔电场和霍尔电压极性相反。</p>
+<blockquote class="obsidian-callout obsidian-callout-tip">
+<div class="obsidian-callout-header">判断极性的可靠顺序</div><p>电流方向 → 载流子漂移方向 → <span class="note-math-inline">\(q\mathbf v_d\times\mathbf B\)</span> 的方向 → 哪侧积累正／负电荷 → 哪侧电势高 → 按规定次序作电势差。</p>
+<p>交换电压表两端，读数会反号；只反转电流或只反转磁场，霍尔电压也反号；同时反转电流与磁场则保持原符号。不要只凭电压表上的一个正负号判断导电类型。</p>
+</blockquote>
+<h3 id="5-物理意义、应用与模型边界"><a href="#5-%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89%E3%80%81%E5%BA%94%E7%94%A8%E4%B8%8E%E6%A8%A1%E5%9E%8B%E8%BE%B9%E7%95%8C" class="headerlink" title="5. 物理意义、应用与模型边界"></a>5. 物理意义、应用与模型边界</h3><p>单一载流子模型下，载流子电荷量确定时，</p>
+<div class="note-math-display">\[\lvert R_H\rvert=\frac1{n\lvert q\rvert},\qquad
+\boxed{n=\frac1{e\lvert R_H\rvert}}
+\quad(q=\pm e).\]</div>
+<ul>
+<li><strong>测浓度</strong>：由霍尔系数大小反求载流子浓度。</li>
+<li><strong>判类型</strong>：在单一类型载流子占主导的半导体中，负霍尔系数对应电子导电（n 型），正霍尔系数对应空穴导电（p 型）。</li>
+<li><strong>测磁场等</strong>：霍尔元件可用于磁场、电流、位置和转速检测。</li>
+<li><strong>为什么常用半导体</strong>：其载流子浓度通常比金属低，霍尔系数绝对值更大，在同样的 <span class="note-math-inline">\(I\)</span>、<span class="note-math-inline">\(B\)</span>、<span class="note-math-inline">\(d\)</span> 下更容易得到明显的霍尔电压。</li>
+</ul>
+<p>上述 <span class="note-math-inline">\(R_H=1/(nq)\)</span> 是简单单一载流子模型的结果。教材提醒，有些材料不能用这种简单模型解释；多种载流子或复杂材料的结果不能直接按该式反推浓度和类型。</p>
+<h1 id="§18-6-磁控管（一般了解）"><a href="#%C2%A718-6-%E7%A3%81%E6%8E%A7%E7%AE%A1%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89" class="headerlink" title="§18-6 磁控管（一般了解）"></a>§18-6 磁控管（一般了解）</h1><p>来源：教材第 448—451 页。理解结构、轨迹变化、能量流向与电子聚集，不记运动参数方程、临界磁场公式或谐振频率计算式。</p>
+<h3 id="1-装置与用途"><a href="#1-%E8%A3%85%E7%BD%AE%E4%B8%8E%E7%94%A8%E9%80%94" class="headerlink" title="1. 装置与用途"></a>1. 装置与用途</h3><p>磁控管是一种产生微波的自激振荡器，把直流电能转化为高频电磁能。可用于雷达、微波加热等。</p>
+<p>教材所说的约 <span class="note-math-inline">\(300\ \mathrm{MHz}\)</span> 至 <span class="note-math-inline">\(300\ \mathrm{GHz}\)</span>、波长约 <span class="note-math-inline">\(1\ \mathrm m\)</span> 至 <span class="note-math-inline">\(1\ \mathrm{mm}\)</span>，是<strong>微波的一般范围</strong>，不是单个磁控管能够覆盖的全部工作频率。</p>
+<p>主要结构及作用：</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>部分</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中心阴极</td>
+<td>发射电子</td>
+</tr>
+<tr>
+<td>外围阳极及直流电压</td>
+<td>建立径向电场，为电子提供能量</td>
+</tr>
+<tr>
+<td>轴向磁场</td>
+<td>与径向电场正交，使电子轨迹弯曲</td>
+</tr>
+<tr>
+<td>阳极上的谐振腔</td>
+<td>类似电感、电容储能系统，选择并支持高频振荡</td>
+</tr>
+<tr>
+<td>输出耦合结构</td>
+<td>把高频电磁能量引出</td>
+</tr>
+</tbody></table></div>
+<p>阳极电势高于阴极，静电场从外侧阳极指向中心阴极；电子带负电，受到的静电力指向阳极。</p>
+<h3 id="2-正交场怎样控制电子"><a href="#2-%E6%AD%A3%E4%BA%A4%E5%9C%BA%E6%80%8E%E6%A0%B7%E6%8E%A7%E5%88%B6%E7%94%B5%E5%AD%90" class="headerlink" title="2. 正交场怎样控制电子"></a>2. 正交场怎样控制电子</h3><p>先不考虑高频场：电子离开阴极后，电场使它获得动能，磁场使其运动方向改变。</p>
+<ul>
+<li>磁场较弱时，电子能够到达阳极，形成阳极电流。</li>
+<li>磁场增强时，电子轨迹弯曲得更明显；超过相应临界条件后，电子可能无法到达阳极，出现磁截止。</li>
+<li>教材把很窄的阴、阳极间隙近似为平行板，在均匀正交静电场和静磁场中，从静止出发的电子呈摆线（旋轮线）轨迹。这是特定近似模型，不能说实际磁控管中的所有电子轨迹都是摆线。</li>
+</ul>
+<p>这一过程中电子的动能可以变化，因为电场在做功；磁场力仍然不做功。加入高频场后，电子轨迹和是否能到达阳极还会改变。</p>
+<h3 id="3-电子怎样把能量交给微波"><a href="#3-%E7%94%B5%E5%AD%90%E6%80%8E%E6%A0%B7%E6%8A%8A%E8%83%BD%E9%87%8F%E4%BA%A4%E7%BB%99%E5%BE%AE%E6%B3%A2" class="headerlink" title="3. 电子怎样把能量交给微波"></a>3. 电子怎样把能量交给微波</h3><p>谐振腔中存在高频场后，电子与它交换能量：</p>
+<ul>
+<li>高频电场对电子做正功时，电子吸收高频场能量，振荡受到削弱。</li>
+<li>高频电场对电子做负功时，电子把能量交给高频场，振荡得到增强。</li>
+</ul>
+<p>选择合适的电压、磁场与运行相位，使参与有效作用的电子总体持续向高频场供能，才能维持振荡。教材讨论相邻腔高频场相位相反的 <span class="note-math-inline">\(\pi\)</span> 模式；电子到达下一腔时，场也适时反向，使其继续向高频场交能。</p>
+<p>高频场还会使电子逐渐聚集成旋转的“辐条”，有利于持续、协调地向振荡供能。教材的八腔 <span class="note-math-inline">\(\pi\)</span> 模式示例形成四条电子辐条，这只是定性示例，不需要推导其转速。</p>
+<p>能量传递顺序为：<strong>直流电源 → 电子 → 谐振腔中的高频场 → 输出微波</strong>。谐振腔负责储能和选择振荡频率，维持输出所需的能量来自直流电源。</p>
+<h2 id="核心公式速查（重点部分）"><a href="#%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F%E9%80%9F%E6%9F%A5%EF%BC%88%E9%87%8D%E7%82%B9%E9%83%A8%E5%88%86%EF%BC%89" class="headerlink" title="核心公式速查（重点部分）"></a>核心公式速查（重点部分）</h2><p>下表以非相对论、理想粒子模型为默认条件；相对论公式单独标出。一般了解部分的定量公式不混入本表。</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>公式</th>
+<th>条件或提醒</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总电磁力</td>
+<td><span class="note-math-inline">\(\mathbf F=q(\mathbf E+\mathbf v\times\mathbf B)\)</span></td>
+<td><span class="note-math-inline">\(q\)</span> 带符号</td>
+</tr>
+<tr>
+<td>磁场力大小</td>
+<td><span class="note-math-inline">\(F_B=\lvert q\rvert vB\sin\theta\)</span></td>
+<td>静止或平行入射时为零</td>
+</tr>
+<tr>
+<td>回旋半径</td>
+<td><span class="note-math-inline">\(R=mv_\perp/(\lvert q\rvert B)\)</span></td>
+<td>用垂直速度分量</td>
+</tr>
+<tr>
+<td>回旋周期</td>
+<td><span class="note-math-inline">\(T=2\pi m/(\lvert q\rvert B)\)</span></td>
+<td>与速率无关仅限非相对论</td>
+</tr>
+<tr>
+<td>回旋频率</td>
+<td><span class="note-math-inline">\(\nu=\lvert q\rvert B/(2\pi m)\)</span></td>
+<td>注意与角频率的区别</td>
+</tr>
+<tr>
+<td>回旋角频率</td>
+<td><span class="note-math-inline">\(\omega_c=\lvert q\rvert B/m\)</span></td>
+<td><span class="note-math-inline">\(\omega_c=2\pi\nu\)</span></td>
+</tr>
+<tr>
+<td>螺距</td>
+<td><span class="note-math-inline">\(h=\lvert v_\parallel\rvert T\)</span></td>
+<td>距离非负；轴向位移可带符号</td>
+</tr>
+<tr>
+<td>圆弧运动时间</td>
+<td><span class="note-math-inline">\(t=\varphi T/(2\pi)\)</span></td>
+<td>实际转角 <span class="note-math-inline">\(\varphi\)</span> 用弧度</td>
+</tr>
+<tr>
+<td>普通回旋加速器同步</td>
+<td><span class="note-math-inline">\(\nu_{\mathrm{RF}}=\nu_c\)</span></td>
+<td>相邻两次过缝相隔 <span class="note-math-inline">\(T/2\)</span></td>
+</tr>
+<tr>
+<td>每次过缝增能</td>
+<td><span class="note-math-inline">\(\Delta K=\lvert q\rvert U_a\)</span></td>
+<td><span class="note-math-inline">\(U_a\)</span> 是有效加速电压</td>
+</tr>
+<tr>
+<td>最大引出速率</td>
+<td><span class="note-math-inline">\(v_{\max}=\lvert q\rvert BR_{\max}/m\)</span></td>
+<td>普通回旋加速器理想模型</td>
+</tr>
+<tr>
+<td>最大引出动能</td>
+<td><span class="note-math-inline">\(K_{\max}=q^2B^2R_{\max}^2/(2m)\)</span></td>
+<td>非相对论</td>
+</tr>
+<tr>
+<td>相对论回旋周期</td>
+<td><span class="note-math-inline">\(T=2\pi\gamma m_0/(\lvert q\rvert B)\)</span></td>
+<td><span class="note-math-inline">\(\gamma=(1-v^2/c^2)^{-1/2}\)</span></td>
+</tr>
+<tr>
+<td>同步回旋加速器调频</td>
+<td><span class="note-math-inline">\(\nu_{\mathrm{RF}}=\lvert q\rvert B/(2\pi\gamma m_0)\)</span></td>
+<td>固定 <span class="note-math-inline">\(B\)</span> 时随 <span class="note-math-inline">\(\gamma\)</span> 增大而降低</td>
+</tr>
+<tr>
+<td>霍尔横向平衡</td>
+<td><span class="note-math-inline">\(\mathbf E_H=-\mathbf v_d\times\mathbf B\)</span></td>
+<td>横向稳态</td>
+</tr>
+<tr>
+<td>电流大小</td>
+<td><span class="note-math-inline">\(I=n\lvert q\rvert v_dbd\)</span></td>
+<td>单一载流子，横截面为 <span class="note-math-inline">\(bd\)</span></td>
+</tr>
+<tr>
+<td>霍尔电压大小</td>
+<td><span class="note-math-inline">\(\lvert U_H\rvert=IB/(n\lvert q\rvert d)\)</span></td>
+<td><span class="note-math-inline">\(d\)</span> 沿磁场方向</td>
+</tr>
+<tr>
+<td>有符号霍尔电压</td>
+<td><span class="note-math-inline">\(U_H=R_HIB/d\)</span></td>
+<td>使用正文的电流、磁场及测量方向约定</td>
+</tr>
+<tr>
+<td>霍尔系数</td>
+<td><span class="note-math-inline">\(R_H=1/(nq)\)</span></td>
+<td>简单单一载流子模型</td>
+</tr>
+<tr>
+<td>载流子浓度</td>
+<td><span class="note-math-inline">\(n=1/(e\lvert R_H\rvert)\)</span></td>
+<td>载流子电荷为 <span class="note-math-inline">\(\pm e\)</span></td>
+</tr>
+</tbody></table></div>
+<p>教材补充的 Betatron 条件另记为 <span class="note-math-inline">\(\overline B=2B_R\)</span>，其物理含义及理想初始条件见 <a href="#5-%E7%94%B5%E5%AD%90%E6%84%9F%E5%BA%94%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%88%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BC%89">5. 电子感应加速器（教材补充）</a>。</p>
+<h2 id="易错点与解题顺序"><a href="#%E6%98%93%E9%94%99%E7%82%B9%E4%B8%8E%E8%A7%A3%E9%A2%98%E9%A1%BA%E5%BA%8F" class="headerlink" title="易错点与解题顺序"></a>易错点与解题顺序</h2><h3 id="易错点"><a href="#%E6%98%93%E9%94%99%E7%82%B9" class="headerlink" title="易错点"></a>易错点</h3><ol>
+<li><strong>磁力不做功不等于粒子永远不加速</strong>：圆周运动有向心加速度，只是速率不变；同时存在电场时，速率也可以改变。</li>
+<li><strong>速度分量不可混用</strong>：回旋半径用 <span class="note-math-inline">\(v_\perp\)</span>，螺距用 <span class="note-math-inline">\(\lvert v_\parallel\rvert\)</span>。</li>
+<li><strong>符号与大小分开</strong>：方向判断用带符号的 <span class="note-math-inline">\(q\)</span>；半径、周期和电压大小用绝对值。</li>
+<li><strong>相对论条件不可遗漏</strong>：高速粒子仍有磁力不做功的结论，但回旋周期不再与速率无关。</li>
+<li><strong>正交场不一定平衡</strong>：只有电、磁力方向相反且大小相等时，才有不偏转；<span class="note-math-inline">\(v=E/B\)</span> 还依赖规定的入射方向。</li>
+<li><strong>回旋加速器的半周期容易弄错</strong>：半圈后电压反向，一整圈加速两次。</li>
+<li><strong>霍尔厚度不能取成宽度</strong>：分母中的 <span class="note-math-inline">\(d\)</span> 沿磁场方向，<span class="note-math-inline">\(b\)</span> 沿霍尔电压方向。</li>
+<li><strong>霍尔系数不是任意材料都等于 <span class="note-math-inline">\(1/(nq)\)</span></strong>：判断浓度和类型时需满足模型条件。</li>
+<li><strong>不要把微波范围当作器件调频范围</strong>，也不要把磁控管的平行板近似轨迹当作所有工作状态下的精确轨迹。</li>
+</ol>
+<h3 id="解题顺序"><a href="#%E8%A7%A3%E9%A2%98%E9%A1%BA%E5%BA%8F" class="headerlink" title="解题顺序"></a>解题顺序</h3><ol>
+<li>画出电场、磁场、初速度方向，标明电荷正负。</li>
+<li>判断哪些力做功，能否使用动能关系。</li>
+<li>纯磁场运动先分解速度，再写半径、周期和螺距。</li>
+<li>有限场区结合圆弧几何求出口位置、方向及转角。</li>
+<li>加速器核对过缝次数与同步条件；霍尔题先标清 <span class="note-math-inline">\(I\)</span>、<span class="note-math-inline">\(B\)</span>、<span class="note-math-inline">\(b\)</span>、<span class="note-math-inline">\(d\)</span> 及电压方向。</li>
+<li>最后检查单位、符号、数量级和公式适用条件。</li>
+</ol>
+<h2 id="整章自检"><a href="#%E6%95%B4%E7%AB%A0%E8%87%AA%E6%A3%80" class="headerlink" title="整章自检"></a>整章自检</h2><blockquote class="obsidian-callout obsidian-callout-question">
+<div class="obsidian-callout-header">自检题与答案（点击展开）</div>
+<ol>
+<li><strong>为什么磁场力不改变速率，却能产生加速度？</strong> 受力垂直于瞬时速度，功率为零；速度方向仍可改变，因此有加速度。</li>
+<li><strong>粒子平行、垂直、斜向进入匀强磁场时分别怎样运动？</strong> 非零速度下分别为直线、圆周和螺旋线；静止粒子保持静止。</li>
+<li><strong>螺旋半径与螺距分别取哪个速度分量？</strong> <span class="note-math-inline">\(R=mv_\perp/(\lvert q\rvert B)\)</span>，<span class="note-math-inline">\(h=\lvert v_\parallel\rvert T\)</span>。</li>
+<li><strong>正负电荷的轨道一定一样大吗？</strong> 不一定。只有速率、入射角、磁场以及 <span class="note-math-inline">\(\lvert q\rvert/m\)</span> 相同时，半径与周期才相同；偏转方向相反。</li>
+<li><strong>电偏转与磁偏转有什么关键区别？</strong> 在本节的垂直入射模型中，电场内为抛物线且速率增加；磁场内为圆弧且速率不变。离场后均沿切线运动。</li>
+<li><strong>汤姆孙实验为什么还需要磁场？</strong> 仅由电偏转不能分开速度和比荷；调磁场使两力抵消，就能先确定速度，再结合电偏转求比荷。</li>
+<li><strong>回旋加速器中半圈需要多久？一周加速几次？</strong> 半圈为 <span class="note-math-inline">\(T/2=\pi m/(\lvert q\rvert B)\)</span>；忽略过缝时间时一周加速两次。</li>
+<li><strong>理想回旋加速器的最大动能由什么决定？</strong> 给定粒子后，由 <span class="note-math-inline">\(B\)</span> 和 <span class="note-math-inline">\(R_{\max}\)</span> 决定：<span class="note-math-inline">\(K_{\max}=q^2B^2R_{\max}^2/(2m)\)</span>；加速电压影响每次增能和圈数。</li>
+<li><strong>同步回旋加速器为什么降低电压频率？</strong> 固定磁场下，<span class="note-math-inline">\(\gamma\)</span> 增大使回旋周期变长，必须降低频率才能保持同步。</li>
+<li><strong>电子感应加速器中的磁场直接给电子能量吗？</strong> 不直接给。变化磁通量产生的感生电场做功，磁力控制轨迹。</li>
+<li><strong>霍尔电压怎样建立？</strong> 磁力横向偏转载流子，边缘电荷积累形成霍尔电场，最终电场力与磁场力在横向平衡。</li>
+<li><strong>霍尔电压反号一定表示换了载流子吗？</strong> 不一定，反转电流、磁场或电压测量方向也会反号。</li>
+<li><strong>单一载流子模型下，怎样由霍尔系数求浓度？</strong> 当 <span class="note-math-inline">\(q=\pm e\)</span>，有 <span class="note-math-inline">\(n=1/(e\lvert R_H\rvert)\)</span>；<span class="note-math-inline">\(n\)</span> 的单位为 <span class="note-math-inline">\(\mathrm{m^{-3}}\)</span>。</li>
+<li><strong>磁控管的高频场怎样得到能量？</strong> 电子从直流电场获得能量，再在适当相位向高频场交能；谐振腔支持振荡，耦合结构输出微波。</li>
+</ol>
+</blockquote>
+<h2 id="资料依据与页码对照"><a href="#%E8%B5%84%E6%96%99%E4%BE%9D%E6%8D%AE%E4%B8%8E%E9%A1%B5%E7%A0%81%E5%AF%B9%E7%85%A7" class="headerlink" title="资料依据与页码对照"></a>资料依据与页码对照</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>资料</th>
+<th>对应位置</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>014稳恒磁场-week5.pdf</code></td>
+<td>PDF 第 1 页，幻灯片第 71 页</td>
+<td>课程范围；§18.2、§18.3、§18.6 标为一般了解</td>
+</tr>
+<tr>
+<td>同上</td>
+<td>PDF 第 4 页，幻灯片第 91—93 页</td>
+<td>均匀磁场中的粒子运动</td>
+</tr>
+<tr>
+<td>同上</td>
+<td>PDF 第 4—5 页，幻灯片第 97—101 页</td>
+<td>回旋加速器与同步回旋加速器</td>
+</tr>
+<tr>
+<td>同上</td>
+<td>PDF 第 5—6 页，幻灯片第 103—106 页</td>
+<td>霍尔效应、系数、意义与应用</td>
+</tr>
+<tr>
+<td><code>工程物理学(第三版) 440-477.pdf</code></td>
+<td>PDF 第 20—35 页，书内第 437—452 页</td>
+<td>第十八章正文与摘要；扫描文件名不代表书内印刷页码</td>
+</tr>
+<tr>
+<td><code>015物质中磁场-week5.pdf</code></td>
+<td>第十五章磁介质内容</td>
+<td>已核查；不属于本章遗漏内容，不混入第十八章</td>
+</tr>
+</tbody></table></div>
+</div>
+    <section class="notes-article-comments" aria-label="Comments">
+      <script src="https://giscus.app/client.js"
+        data-repo="YidanPan/YidanPan.github.io"
+        data-repo-id="R_kgDOTtkhPw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTtkhP84DC1wo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch16%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94/"><span>← Previous</span><strong>Ch16电磁感应</strong></a>
+      
+    </nav>
+    
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+})();
+</script>
+
+<script>
+window.MathJax = {
+  loader: {
+    load: ['[tex]/boldsymbol']
+  },
+  tex: {
+    packages: { '[+]': ['boldsymbol'] },
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: true
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+(function() {
+  var codeBlocks = Array.prototype.slice.call(document.querySelectorAll('#notesArticleContent pre > code.language-mermaid, #notesArticleContent pre > code.mermaid'));
+  if (!codeBlocks.length) return;
+
+  var diagrams = codeBlocks.map(function(code) {
+    var container = document.createElement('div');
+    container.className = 'mermaid notes-mermaid';
+    container.textContent = code.textContent;
+    code.parentNode.replaceWith(container);
+    return container;
+  });
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.4/dist/mermaid.min.js';
+  script.onload = function() {
+    window.mermaid.initialize({ startOnLoad: false, theme: document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? 'dark' : 'default' });
+    window.mermaid.run({ nodes: diagrams });
+  };
+  document.head.appendChild(script);
+})();
+</script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+    var nav = document.getElementById('nav');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    var pageKind = nav ? (nav.getAttribute('data-page-kind') || '') : '';
+    var activeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+      if (link.getAttribute('data-nav-kind') === pageKind) {
+        activeLink = link;
+      }
+    });
+
+    if (activeLink) {
+      activeLink.classList.add('active');
+      activeLink.setAttribute('aria-current', 'page');
+      updatePill(activeLink);
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) {
+          l.classList.remove('active');
+          l.removeAttribute('aria-current');
+        });
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

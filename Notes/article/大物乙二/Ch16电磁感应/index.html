@@ -1,0 +1,1902 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.8)">
+  <meta name="author" content="Yidan Pan">
+  <meta name="keywords" content="AI,Computer Science,Agents,Software,Blog,LLM">
+  
+    <meta name="description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ch16电磁感应 · Notes">
+<meta property="og:url" content="https://yidanpan.github.io/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch16%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94/index.html">
+<meta property="og:site_name" content="Dan&#39;s Blog">
+<meta property="og:description" content="Computer Science undergraduate Yidan Pan exploring AI, LLMs, agents, and intelligent software systems at Zhejiang University.">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Yidan Pan">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Computer Science">
+<meta property="article:tag" content="Agents">
+<meta property="article:tag" content="Software">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Ch16电磁感应 · Notes - Dan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+  
+    
+<link rel="stylesheet" href="/css/mem-style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/notes-archive.css">
+
+  
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yidanpan.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body class="">
+  
+
+  
+    <header>
+      
+
+<div class="header-inner" style="height: 0vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/About/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Projects/" target="_self">
+                <i class="iconfont icon-project-fill"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Notes/" target="_self">
+                <i class="iconfont icon-edit-fill"></i>
+                <span>Notes</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Blog</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/About/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Projects/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-project-fill"></i>
+                  <span>Projects</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/Notes/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-edit-fill"></i>
+                  <span>Notes</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Blog</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Ch16电磁感应 · Notes"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+    </header>
+  
+
+  <!-- Shared mem.ac-style navbar -->
+  
+
+<!-- ============== MEM-STYLE NAVIGATION ============== -->
+<nav class="nav" id="nav" data-page-kind="notes">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-mark">D</div> <!-- 左上角圆形字母标志 -->
+      Dan's Space<!-- 网站名称 -->
+    </a>
+    <div class="nav-links" id="navLinks">
+      <div class="nav-pill" id="navPill"></div>
+      <a class="nav-link" href="/" data-nav-kind="home">Home</a>
+      <a class="nav-link" href="/About/" data-nav-kind="about">About</a>
+      <a class="nav-link" href="/Projects/" data-nav-kind="projects">Projects</a>
+      <a class="nav-link" href="/Notes/" data-nav-kind="notes">Notes</a>
+      <a class="nav-link" href="/archives/" data-nav-kind="blog" target="_self" aria-label="Open Blog archive">Blog</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg id="darkIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <main>
+    
+      <div class="notes-archive-container notes-article-shell">
+  <article class="notes-article-page">
+    <a class="notes-breadcrumb" href="/Notes/category/physics/physics-b/"><span class="notes-breadcrumb-arrow" aria-hidden="true">&larr;</span><span>大物乙二</span></a>
+    <nav class="notes-article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/Notes/">Notes</a><span aria-hidden="true">/</span>
+      <a href="/Notes/collection/science/">数学与物理</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/physics/">大学物理</a><span aria-hidden="true">/</span>
+      <a href="/Notes/category/physics/physics-b/">大物乙二</a><span aria-hidden="true">/</span>
+      
+      <span aria-current="page">Ch16电磁感应</span>
+    </nav>
+    <header class="notes-article-header">
+      <span class="notes-category-kicker">大学物理</span>
+      <h1>Ch16电磁感应</h1>
+      <span class="notes-source-path">大物乙二/Ch16电磁感应.md</span>
+    </header>
+    <div class="notes-article-content" id="notesArticleContent"><blockquote class="obsidian-callout obsidian-callout-info">
+<div class="obsidian-callout-header">使用与整理说明</div>
+<ul>
+<li><strong>PPT 主线</strong>：《016 电磁感应 week6-2》第 1—47 页，覆盖 §16-1～§16-5。</li>
+<li><strong>教材补充</strong>：《工程物理学（第三版）》第十六章，第 386—400 页。</li>
+<li><strong>§16-6 涡电流</strong>：PPT 未展开，依据教材整理，按“一般了解”掌握。</li>
+<li><strong>来源标记</strong>：【PPT】表示课件内容；【教材补充】表示课件未单独展开；【PPT + 教材】表示两者共同涉及；【整理推导】表示依据已给公式补全的中间步骤。</li>
+<li><strong>整理原则</strong>：按“物理图像 → 适用条件 → 公式与方向 → 推导 → 例题 → 易错点”组织。</li>
+</ul>
+</blockquote>
+<h2 id="章节思维导图"><a href="#%E7%AB%A0%E8%8A%82%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE" class="headerlink" title="章节思维导图"></a>章节思维导图</h2><pre><code class="mermaid">mindmap
+  root((第十六章&lt;br/&gt;电磁感应))
+    16-1 法拉第实验
+      磁通量是核心量
+      磁通变化产生感应电动势
+      闭合回路中形成感应电流
+    16-2 基本定律
+      法拉第电磁感应定律
+        单匝电动势
+        多匝磁通匝链数
+      楞次定律
+        感应效应反抗磁通变化
+        正方向与负号
+      感生电荷
+    16-3 动生电动势
+      洛伦兹力分离电荷
+      v×B 沿导体积分
+      直棒与旋转棒
+    16-4 发电机与电动机
+      转动线圈产生交流电
+      机械能与电能相互转化
+      反电动势
+    16-5 感生电动势
+      变化磁场激发涡旋电场
+      感生电场为非保守场
+      圆柱形变化磁场
+      动生与感生同时存在
+      电子感应加速器
+    16-6 涡电流
+      热效应与感应加热
+      电磁阻尼
+      叠片抑制损耗
+      趋肤效应
+    解题主线
+      选定回路与正方向
+      写出磁通并判断变化来源
+      对时间求导得到电动势
+      结合电路关系判断电流与能量
+</code></pre>
+<h2 id="目录"><a href="#%E7%9B%AE%E5%BD%95" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0%E6%80%BB%E8%A7%88">第十六章总览</a></li>
+<li><a href="#%C2%A716-1-%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9E%E9%AA%8C%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%E3%80%91">§16-1 法拉第实验</a><ul>
+<li><a href="#4-%E7%A3%81%E9%80%9A%E9%87%8F%E6%98%AF%E8%B4%AF%E7%A9%BF%E6%9C%AC%E7%AB%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E9%87%8F%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">磁通量</a></li>
+</ul>
+</li>
+<li><a href="#%C2%A716-2-%E6%B3%95%E6%8B%89%E7%AC%AC%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E5%AE%9A%E5%BE%8B%E4%B8%8E%E6%A5%9E%E6%AC%A1%E5%AE%9A%E5%BE%8B%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%E3%80%91">§16-2 法拉第定律与楞次定律</a><ul>
+<li><a href="#1-%E6%B3%95%E6%8B%89%E7%AC%AC%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E5%AE%9A%E5%BE%8B%EF%BC%88Faraday%E2%80%99s-Law%EF%BC%89%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">法拉第电磁感应定律</a></li>
+<li><a href="#2-%E6%A5%9E%E6%AC%A1%E5%AE%9A%E5%BE%8B%EF%BC%88Lenz%E2%80%99s-Law%EF%BC%89%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">楞次定律</a></li>
+<li><a href="#3-%E6%84%9F%E5%BA%94%E7%94%B5%E6%B5%81%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E8%8D%B7%E3%80%90PPT%E3%80%91">感应电流与感生电荷</a></li>
+</ul>
+</li>
+<li><a href="#%C2%A716-3-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%E3%80%91">§16-3 动生电动势</a><ul>
+<li><a href="#3-%E9%9D%9E%E9%9D%99%E7%94%B5%E5%9C%BA%E4%B8%8E%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">动生电动势的一般公式</a></li>
+<li><a href="#6-%E6%B4%9B%E4%BC%A6%E5%85%B9%E5%8A%9B%E5%81%9A%E5%8A%9F%E9%97%AE%E9%A2%98%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">洛伦兹力做功问题</a></li>
+</ul>
+</li>
+<li><a href="#%C2%A716-4-%E5%8F%91%E7%94%B5%E6%9C%BA%E5%92%8C%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%8E%9F%E7%90%86%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%EF%BC%9B%E7%94%B5%E5%8A%A8%E6%9C%BA%E8%AF%A6%E8%A7%A3%E4%B8%BA%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91">§16-4 发电机和电动机</a><ul>
+<li><a href="#1-%E4%BA%A4%E6%B5%81%E5%8F%91%E7%94%B5%E6%9C%BA%EF%BC%88AC-Generator%EF%BC%89%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">交流发电机</a></li>
+<li><a href="#4-%E7%94%B5%E5%8A%A8%E6%9C%BA%EF%BC%88Motor%EF%BC%89%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91">电动机</a></li>
+</ul>
+</li>
+<li><a href="#%C2%A716-5-%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%EF%BC%9B%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E8%A7%81%E6%A0%87%E8%AE%B0%E3%80%91">§16-5 感生电动势</a><ul>
+<li><a href="#2-%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E7%9A%84%E7%8E%AF%E8%B7%AF%E5%AE%9A%E5%BE%8B%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">感生电场环路定律</a></li>
+<li><a href="#3-%E9%9D%99%E7%94%B5%E5%9C%BA%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E7%9A%84%E6%AF%94%E8%BE%83">静电场与感生电场比较</a></li>
+<li><a href="#4-%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E3%80%90PPT%E3%80%91">两种计算方法</a></li>
+<li><a href="#5-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E5%88%92%E5%88%86%E5%B9%B6%E9%9D%9E%E7%BB%9D%E5%AF%B9%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91">参考系与两类电动势</a></li>
+<li><a href="#6-%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%AE%9A%E4%B9%89%E6%99%AE%E9%80%9A%E7%94%B5%E5%8A%BF%EF%BC%9F%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91">感生电场与电势</a></li>
+<li><a href="#7-%E7%94%B5%E5%AD%90%E6%84%9F%E5%BA%94%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%88Betatron%EF%BC%89%E3%80%90PPT%E3%80%91">电子感应加速器</a></li>
+</ul>
+</li>
+<li><a href="#%C2%A716-6-%E6%B6%A1%E7%94%B5%E6%B5%81%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BD%9CPPT-%E6%9C%AA%E5%B1%95%E5%BC%80%E3%80%91">§16-6 涡电流</a></li>
+<li><a href="#%E6%9C%AC%E7%AB%A0%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F%E6%80%BB%E8%A1%A8">本章核心公式总表</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E6%98%93%E9%94%99%E7%82%B9%E4%B8%8E%E8%A7%A3%E9%A2%98%E5%88%A4%E6%96%AD%E3%80%90PPT-%E6%95%99%E6%9D%90%E5%BD%92%E7%BA%B3%E3%80%91">常见易错点与解题判断</a></li>
+<li><a href="#%E6%95%B4%E7%AB%A0%E8%87%AA%E6%A3%80">整章自检</a></li>
+</ul>
+<hr>
+<h1 id="第十六章总览"><a href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0%E6%80%BB%E8%A7%88" class="headerlink" title="第十六章总览"></a>第十六章总览</h1><p>电磁感应研究的是：<strong>当穿过回路的磁通量发生变化时，为什么会产生感应电动势，以及如何判断、计算感应电动势。</strong></p>
+<p>本章的逻辑主线：</p>
+<ol>
+<li><strong>§16-1 法拉第实验</strong>：从实验现象归纳“磁通量变化”这一共同条件。</li>
+<li><strong>§16-2 法拉第定律与楞次定律</strong>：定量计算感应电动势，并判断方向。</li>
+<li><strong>§16-3 动生电动势</strong>：解释运动导体中洛伦兹力造成的电荷分离。</li>
+<li><strong>§16-4 发电机和电动机</strong>：理解机械能与电能的相互转化。</li>
+<li><strong>§16-5 感生电动势</strong>：研究变化磁场激发的感生电场及其计算。</li>
+<li><strong>§16-6 涡电流</strong>：理解大块导体内部的感应电流及其效应。</li>
+</ol>
+<h2 id="两类感应电动势"><a href="#%E4%B8%A4%E7%B1%BB%E6%84%9F%E5%BA%94%E7%94%B5%E5%8A%A8%E5%8A%BF" class="headerlink" title="两类感应电动势"></a>两类感应电动势</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>产生原因</th>
+<th>非静电力来源</th>
+<th>典型情形</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>感生电动势（induced emf）</td>
+<td>磁场随时间变化</td>
+<td>感生电场力</td>
+<td>导体不动、磁场变化</td>
+</tr>
+<tr>
+<td>动生电动势（motional emf）</td>
+<td>导体运动或回路形状、位置变化</td>
+<td>洛伦兹力</td>
+<td>导体切割磁感线</td>
+</tr>
+</tbody></table></div>
+<p>实际问题中，两种机制可以同时存在；最稳妥的统一入口仍是磁通量变化率。</p>
+<hr>
+<h1 id="§16-1-法拉第实验【PPT-主线】"><a href="#%C2%A716-1-%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9E%E9%AA%8C%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%E3%80%91" class="headerlink" title="§16-1 法拉第实验【PPT 主线】"></a>§16-1 法拉第实验【PPT 主线】</h1><h2 id="1-电磁感应现象的发现【PPT-教材】"><a href="#1-%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E7%8E%B0%E8%B1%A1%E7%9A%84%E5%8F%91%E7%8E%B0%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="1. 电磁感应现象的发现【PPT + 教材】"></a>1. 电磁感应现象的发现【PPT + 教材】</h2><p>奥斯特发现电流能够产生磁场后，法拉第开始研究磁场能否反过来产生电流。1831 年，他发现：<strong>产生感应电流的关键不是磁场本身存在，而是穿过回路的磁通量发生变化。</strong></p>
+<h2 id="2-法拉第实验：四种典型情形【PPT-教材补充】"><a href="#2-%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9E%E9%AA%8C%EF%BC%9A%E5%9B%9B%E7%A7%8D%E5%85%B8%E5%9E%8B%E6%83%85%E5%BD%A2%E3%80%90PPT-%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="2. 法拉第实验：四种典型情形【PPT + 教材补充】"></a>2. 法拉第实验：四种典型情形【PPT + 教材补充】</h2><p>教材第387—388页把实验过程分为以下四类；PPT 则用其中最典型的三类作课堂展示。</p>
+<ol>
+<li><p><strong>【PPT】磁铁与线圈相对运动</strong>：将条形磁铁插入线圈，电流计偏转；保持相对静止时，指针不偏转；把磁铁抽出时，指针再次偏转，且方向相反。磁铁运动越快，指针偏转越明显。</p>
+</li>
+<li><p><strong>【教材补充】两个线圈相对运动</strong>：用通电线圈代替条形磁铁，两个线圈相互靠近或远离时，另一线圈中产生感应电流；相对运动越快，感应电流越大。</p>
+</li>
+<li><p><strong>【PPT】两个线圈相对静止，其中一个线圈的电流变化</strong>：在一个线圈的电路中接入开关，接通或断开瞬间，另一个线圈中的电流计发生短暂偏转；开关状态保持不变时，感应电流消失。</p>
+</li>
+<li><p><strong>【PPT】导线框在恒定均匀磁场中运动</strong>：导线框的一条边在均匀、稳定的磁场中滑动，回路面积随之变化，仍会产生感应电流。这个实验说明，即使磁场本身不随时间变化，也可能发生电磁感应。</p>
+</li>
+</ol>
+<p>前面三类实验可通过改变磁场使回路磁通量变化；第四类则通过改变回路面积使磁通量变化。</p>
+<h2 id="3-电磁感应现象的共同特征【PPT-教材】"><a href="#3-%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E7%8E%B0%E8%B1%A1%E7%9A%84%E5%85%B1%E5%90%8C%E7%89%B9%E5%BE%81%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="3. 电磁感应现象的共同特征【PPT + 教材】"></a>3. 电磁感应现象的共同特征【PPT + 教材】</h2><p>四类实验共同说明：</p>
+<blockquote>
+<p>当穿过闭合导体回路的磁通量发生变化时，回路中就产生感应电流。</p>
+</blockquote>
+<p>但更本质的物理量是<strong>感应电动势</strong>：</p>
+<ul>
+<li><p><strong>感应电动势（induced electromotive force）</strong>：由磁通量变化引起的电动势。</p>
+</li>
+<li><p><strong>感应电流（induced current）</strong>：闭合回路中在感应电动势作用下形成的电流。</p>
+</li>
+</ul>
+<p>需要区分：</p>
+<ul>
+<li><p>回路闭合且存在感应电动势时，才形成感应电流；</p>
+</li>
+<li><p><strong>【教材补充】</strong> 回路断开时，虽然没有感应电流，感应电动势仍然可以存在；</p>
+</li>
+<li><p><strong>【教材补充】</strong> 感应电流的大小会随回路电阻改变，而感应电动势的大小不由回路电阻决定。</p>
+</li>
+</ul>
+<p>因此，判断电磁感应是否发生，核心是判断穿过回路的磁通量是否变化，而不是只判断回路中有没有电流。</p>
+<h2 id="4-磁通量是贯穿本章的核心量【PPT-教材】"><a href="#4-%E7%A3%81%E9%80%9A%E9%87%8F%E6%98%AF%E8%B4%AF%E7%A9%BF%E6%9C%AC%E7%AB%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E9%87%8F%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="4. 磁通量是贯穿本章的核心量【PPT + 教材】"></a>4. 磁通量是贯穿本章的核心量【PPT + 教材】</h2><p>均匀磁场穿过平面面积 <span class="note-math-inline">\(S\)</span>，磁场与面积法线夹角为 <span class="note-math-inline">\(\theta\)</span> 时：</p>
+<div class="note-math-display">\[\boxed{\Phi_B=BS\cos\theta}\]</div>
+<p>一般情况下：</p>
+<div class="note-math-display">\[\boxed{\Phi_B=\int_S\mathbf B\cdot\mathrm d\mathbf S}\]</div>
+<p>磁通量变化可能来自三个方面：</p>
+<ul>
+<li><p>磁感应强度 <span class="note-math-inline">\(B\)</span> 变化；</p>
+</li>
+<li><p>回路面积 <span class="note-math-inline">\(S\)</span> 变化；</p>
+</li>
+<li><p>磁场方向与面积法线之间的夹角 <span class="note-math-inline">\(\theta\)</span> 变化。</p>
+</li>
+</ul>
+<p><strong>判断是否发生电磁感应，先看穿过回路的磁通量是否变化，不要只盯着磁场本身是否存在。</strong></p>
+<h2 id="5-磁共振成像中的感应电流【PPT】"><a href="#5-%E7%A3%81%E5%85%B1%E6%8C%AF%E6%88%90%E5%83%8F%E4%B8%AD%E7%9A%84%E6%84%9F%E5%BA%94%E7%94%B5%E6%B5%81%E3%80%90PPT%E3%80%91" class="headerlink" title="5. 磁共振成像中的感应电流【PPT】"></a>5. 磁共振成像中的感应电流【PPT】</h2><p>PPT 用 MRI</p>
+<p>梯度磁场切换作为应用背景：随时间和空间变化的磁场可能在人体或设备中的导电回路内产生感应电流，也可能带来噪声和发热。</p>
+<p>这说明电磁感应不只发生在实验室线圈中；只要有变化磁场和合适的导电路径，就可能产生感应效应。</p>
+<hr>
+<h1 id="§16-2-法拉第电磁感应定律与楞次定律【PPT-主线】"><a href="#%C2%A716-2-%E6%B3%95%E6%8B%89%E7%AC%AC%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E5%AE%9A%E5%BE%8B%E4%B8%8E%E6%A5%9E%E6%AC%A1%E5%AE%9A%E5%BE%8B%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%E3%80%91" class="headerlink" title="§16-2 法拉第电磁感应定律与楞次定律【PPT 主线】"></a>§16-2 法拉第电磁感应定律与楞次定律【PPT 主线】</h1><h2 id="1-法拉第电磁感应定律（Faraday’s-Law）【PPT-教材】"><a href="#1-%E6%B3%95%E6%8B%89%E7%AC%AC%E7%94%B5%E7%A3%81%E6%84%9F%E5%BA%94%E5%AE%9A%E5%BE%8B%EF%BC%88Faraday%E2%80%99s-Law%EF%BC%89%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="1. 法拉第电磁感应定律（Faraday’s Law）【PPT + 教材】"></a>1. 法拉第电磁感应定律（Faraday’s Law）【PPT + 教材】</h2><p>法拉第定律给出了感应电动势与磁通量变化率之间的定量关系：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_i=-\frac{\mathrm d\Phi_B}{\mathrm dt}}\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="note-math-inline">\(\mathcal E_i\)</span>：感应电动势，单位 V；</li>
+<li><span class="note-math-inline">\(\Phi_B\)</span>：穿过回路的磁通量，单位 Wb；</li>
+<li>负号：体现感应电动势的方向遵循楞次定律。</li>
+</ul>
+<blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">公式推导｜平均感应电动势</div><p>若磁通量在时间间隔 <span class="note-math-inline">\(\Delta t\)</span> 内均匀变化，把瞬时变化率改写为差商：</p>
+<div class="note-math-display">\[\boxed{\overline{\mathcal E_i}=-\frac{\Delta\Phi_B}{\Delta t}}\]</div>
+</blockquote>
+<h3 id="N-匝线圈：全磁通与磁通匝链数【PPT】"><a href="#N-%E5%8C%9D%E7%BA%BF%E5%9C%88%EF%BC%9A%E5%85%A8%E7%A3%81%E9%80%9A%E4%B8%8E%E7%A3%81%E9%80%9A%E5%8C%9D%E9%93%BE%E6%95%B0%E3%80%90PPT%E3%80%91" class="headerlink" title="N 匝线圈：全磁通与磁通匝链数【PPT】"></a>N 匝线圈：全磁通与磁通匝链数【PPT】</h3><p>如果线圈有 <span class="note-math-inline">\(N\)</span> 匝，且每匝磁通量相同：</p>
+<div class="note-math-display">\[\Psi=N\Phi_B\]</div>
+<p><span class="note-math-inline">\(\Psi\)</span> 称为磁通匝链数（或全磁通）。于是：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_i=-\frac{\mathrm d\Psi}{\mathrm dt}
+=-N\frac{\mathrm d\Phi_B}{\mathrm dt}}\]</div>
+<p>如果各匝所穿过的磁通量不相等，则应写成：</p>
+<div class="note-math-display">\[\Psi=\sum_{j=1}^{N}\Phi_j,\qquad
+\boxed{\mathcal E_i=-\frac{\mathrm d}{\mathrm dt}\sum_{j=1}^{N}\Phi_j}\]</div>
+<p>不能在各匝磁通量不相等时，直接把总磁通写成 <span class="note-math-inline">\(N\Phi\)</span>。</p>
+<h2 id="2-楞次定律（Lenz’s-Law）【PPT-教材】"><a href="#2-%E6%A5%9E%E6%AC%A1%E5%AE%9A%E5%BE%8B%EF%BC%88Lenz%E2%80%99s-Law%EF%BC%89%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="2. 楞次定律（Lenz’s Law）【PPT + 教材】"></a>2. 楞次定律（Lenz’s Law）【PPT + 教材】</h2><p><strong>感应电流的方向，总是使它所激发的磁场阻碍引起感应电流的磁通量变化。</strong></p>
+<p>注意关键词是”阻碍磁通量的变化”，不是简单地”阻碍原磁场”。</p>
+<div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>原磁通量的变化</th>
+<th>感应磁场的作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原磁通量增加</td>
+<td>感应磁场反抗其增加</td>
+</tr>
+<tr>
+<td>原磁通量减小</td>
+<td>感应磁场试图补偿其减小</td>
+</tr>
+</tbody></table></div>
+<p>楞次定律是能量守恒定律的体现。例如磁铁靠近线圈时，感应电流产生的磁场会阻碍磁铁靠近。外力必须克服这种阻碍做功，外力所做的功转化为电能。</p>
+<h3 id="感应电动势正负号的判断步骤【PPT-教材】"><a href="#%E6%84%9F%E5%BA%94%E7%94%B5%E5%8A%A8%E5%8A%BF%E6%AD%A3%E8%B4%9F%E5%8F%B7%E7%9A%84%E5%88%A4%E6%96%AD%E6%AD%A5%E9%AA%A4%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="感应电动势正负号的判断步骤【PPT + 教材】"></a>感应电动势正负号的判断步骤【PPT + 教材】</h3><ol>
+<li><p>先规定闭合回路的正绕行方向。</p>
+</li>
+<li><p>用右手螺旋定则确定正面积法线方向。</p>
+</li>
+<li><p>根据磁场方向确定磁通量 <span class="note-math-inline">\(\Phi_B\)</span> 的正负。</p>
+</li>
+<li><p>判断 <span class="note-math-inline">\(\mathrm d\Phi_B/\mathrm dt\)</span> 的正负。</p>
+</li>
+<li><p>使用 <span class="note-math-inline">\(\mathcal E_i=-\mathrm d\Phi_B/\mathrm dt\)</span> 判断电动势正负。</p>
+</li>
+</ol>
+<p>若 <span class="note-math-inline">\(\mathcal E_i&gt;0\)</span>，实际方向与规定的正绕行方向相同；若</p>
+<p><span class="note-math-inline">\(\mathcal E_i&lt;0\)</span>，实际方向相反。</p>
+<p><strong>【教材补充｜适用范围】</strong> 楞次定律直接用于判断闭合回路中感应电流的方向。若回路不闭合，可假想补成闭合回路，先判断假想感应电流方向，再据此确定原导体段上感应电动势的方向。</p>
+<h2 id="3-感应电流与感生电荷【PPT】"><a href="#3-%E6%84%9F%E5%BA%94%E7%94%B5%E6%B5%81%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E8%8D%B7%E3%80%90PPT%E3%80%91" class="headerlink" title="3. 感应电流与感生电荷【PPT】"></a>3. 感应电流与感生电荷【PPT】</h2><p>对于电阻为 <span class="note-math-inline">\(R\)</span> 的闭合回路：</p>
+<div class="note-math-display">\[I=\frac{\mathcal E_i}{R}\]</div>
+<p>通过回路的感生电荷：</p>
+<div class="note-math-display">\[q=\int I\,\mathrm dt
+=\frac{1}{R}\int\mathcal E_i\,\mathrm dt\]</div>
+<p>若 <span class="note-math-inline">\(R\)</span> 不变，且为单匝回路：</p>
+<div class="note-math-display">\[q=-\frac{1}{R}\int\frac{\mathrm d\Phi_B}{\mathrm dt}\,\mathrm dt\]</div>
+<p>因此：</p>
+<div class="note-math-display">\[\boxed{q=-\frac{\Delta\Phi_B}{R}}\]</div>
+<p>对于 <span class="note-math-inline">\(N\)</span> 匝且各匝磁通量相同的线圈：</p>
+<div class="note-math-display">\[\boxed{q=-\frac{N\Delta\Phi_B}{R}}\]</div>
+<p>这说明：在电阻不变的条件下，通过回路的感生电荷与磁通量的总变化量有关，而不取决于磁通量变化得快还是慢。</p>
+<details class="notes-example"><summary>教材例 1：圆形线圈中的感应电动势</summary><div class="notes-example-body">
+
+<p>【教材补充｜例1】圆形线圈半径为 <span class="note-math-inline">\(R=0.1\,\mathrm m\)</span>，线圈内均匀磁场垂直纸面向里，磁感应强度大小为：</p>
+<div class="note-math-display">\[B=6-1.5t\qquad(\mathrm{SI})\]</div>
+<p>求线圈中的感应电动势。</p>
+<p>磁通量：</p>
+<div class="note-math-display">\[\Phi_B=B\pi R^2=(6-1.5t)\pi R^2\]</div>
+<p>法拉第定律：</p>
+<div class="note-math-display">\[\mathcal E_i=-\frac{\mathrm d\Phi_B}{\mathrm dt}
+=1.5\pi R^2\]</div>
+<p>代入 <span class="note-math-inline">\(R=0.1\,\mathrm m\)</span>：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_i=4.7\times10^{-2}\,\mathrm V}\]</div>
+<p>由于垂直纸面向里的磁通量正在减小，感应磁场应维持原来的向里磁通量，因此感应电流方向为<strong>顺时针</strong>。</p>
+</div></details>
+<details class="notes-example"><summary>教材例 2：多匝线圈的正弦感应电动势</summary><div class="notes-example-body">
+
+<p>【教材补充｜例2】铁芯上绕有 <span class="note-math-inline">\(N=50\)</span> 匝线圈，每匝线圈中的磁通量为：</p>
+<div class="note-math-display">\[\Phi_B=4\times10^{-5}\cos(100\pi t)\quad(\mathrm{Wb})\]</div>
+<p>总感应电动势：</p>
+<div class="note-math-display">\[\mathcal E_i=-N\frac{\mathrm d\Phi_B}{\mathrm dt}\]</div>
+<div class="note-math-display">\[=50\times4\times10^{-5}\times100\pi
+\sin(100\pi t)\]</div>
+<p>因此：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_i=0.2\pi\sin(100\pi t)\,\mathrm V}\]</div>
+<p>可见，感应电动势的大小和方向都随时间按正弦规律变化。</p>
+</div></details>
+<details class="notes-example"><summary>PPT 例题 1：磁场按指数规律衰减</summary><div class="notes-example-body">
+
+<p>长直螺线管中放置一个同轴小线圈，已知：</p>
+<ul>
+<li>小线圈面积 <span class="note-math-inline">\(S=6\,\mathrm{cm^2}=6\times10^{-4}\,\mathrm{m^2}\)</span>；</li>
+<li>匝数 <span class="note-math-inline">\(N=10\)</span>；</li>
+<li>总电阻 <span class="note-math-inline">\(R=2\,\Omega\)</span>；</li>
+<li>初始磁场 <span class="note-math-inline">\(B_0=0.05\,\mathrm T\)</span>；</li>
+<li>磁场衰减规律 <span class="note-math-inline">\(B=B_0e^{-t/\tau}\)</span>，<span class="note-math-inline">\(\tau=0.01\,\mathrm s\)</span>。</li>
+</ul>
+<p>每匝磁通量：</p>
+<div class="note-math-display">\[\Phi_B=SB_0e^{-t/\tau}\]</div>
+<p>总感应电动势：</p>
+<div class="note-math-display">\[\mathcal E_i=-N\frac{\mathrm d\Phi_B}{\mathrm dt}
+=\frac{NSB_0}{\tau}e^{-t/\tau}\]</div>
+<p>在 <span class="note-math-inline">\(t=0\)</span> 时最大：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_{\max}=\frac{NSB_0}{\tau}=0.03\,\mathrm V}\]</div>
+<p>从 <span class="note-math-inline">\(0\)</span> 到 <span class="note-math-inline">\(\infty\)</span> 的感生电荷大小：</p>
+<div class="note-math-display">\[q=\frac{N SB_0}{R}\]</div>
+<div class="note-math-display">\[\boxed{q=1.5\times10^{-4}\,\mathrm C}\]</div>
+<p><strong>理解重点：</strong></p>
+<p>最大电动势取决于初始变化率；总感生电荷取决于总磁通量变化。</p>
+</div></details>
+<details class="notes-example"><summary>PPT 例题 2：长直导线旁的矩形线圈</summary><div class="notes-example-body">
+
+<p>长直导线中通有交变电流：</p>
+<div class="note-math-display">\[I=I_0\sin\omega t\]</div>
+<p>导线旁放置矩形线圈，线圈长度为 <span class="note-math-inline">\(l\)</span>，近边距导线为 <span class="note-math-inline">\(d\)</span>，宽度为 <span class="note-math-inline">\(b\)</span>。</p>
+<p>距长直导线 <span class="note-math-inline">\(x\)</span> 处的磁感应强度：</p>
+<div class="note-math-display">\[B(x)=\frac{\mu_0 I}{2\pi x}\]</div>
+<p>取面积微元 <span class="note-math-inline">\(\mathrm dS=l\,\mathrm dx\)</span>，则磁通量：</p>
+<div class="note-math-display">\[\Phi_B=\int_d^{d+b}B(x)l\,\mathrm dx\]</div>
+<div class="note-math-display">\[\Phi_B=\frac{\mu_0 lI}{2\pi}
+\ln\frac{d+b}{d}\]</div>
+<p>代入 <span class="note-math-inline">\(I=I_0\sin\omega t\)</span>，得到：</p>
+<div class="note-math-display">\[\boxed{
+\mathcal E_i
+=-\frac{\mu_0 lI_0\omega}{2\pi}
+\ln\frac{d+b}{d}\cos\omega t
+}\]</div>
+<p>具体正负号取决于规定的回路绕行方向。</p>
+<p><strong>本题方法：</strong></p>
+<p>先写出导线产生的非均匀磁场，再对整个线圈面积积分求磁通量，最后对时间求导。不能把矩形线圈内的磁场当成处处相同。</p>
+<hr>
+</div></details>
+<h1 id="§16-3-动生电动势【PPT-主线】"><a href="#%C2%A716-3-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%E3%80%91" class="headerlink" title="§16-3 动生电动势【PPT 主线】"></a>§16-3 动生电动势【PPT 主线】</h1><h2 id="1-感应电动势的两种来源【PPT-教材】"><a href="#1-%E6%84%9F%E5%BA%94%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%9D%A5%E6%BA%90%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="1. 感应电动势的两种来源【PPT + 教材】"></a>1. 感应电动势的两种来源【PPT + 教材】</h2><p>由磁通量变化产生的感应电动势，可按产生原因分为：</p>
+<ul>
+<li><p><strong>感生电动势</strong>：由磁感应强度随时间变化引起。</p>
+</li>
+<li><p><strong>动生电动势</strong>：由导体在磁场中运动，或回路的形状、位置发生变化引起。</p>
+</li>
+</ul>
+<p>本节重点是动生电动势。</p>
+<h2 id="2-导体棒运动时，为什么会产生电动势？【PPT-教材】"><a href="#2-%E5%AF%BC%E4%BD%93%E6%A3%92%E8%BF%90%E5%8A%A8%E6%97%B6%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E4%BA%A7%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%EF%BC%9F%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="2. 导体棒运动时，为什么会产生电动势？【PPT + 教材】"></a>2. 导体棒运动时，为什么会产生电动势？【PPT + 教材】</h2><p>设导体棒在磁场中运动，棒内自由电子随棒一起运动。电子受到洛伦兹力：</p>
+<div class="note-math-display">\[\mathbf F_L=q\mathbf v\times\mathbf B\]</div>
+<p>由于电子带负电，受力方向与 <span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span></p>
+<p>相反。电子向棒的一端聚集，造成棒两端电荷分离，形成电场。</p>
+<p>随着电荷分离，静电场力逐渐增大。当静电场力与洛伦兹力平衡时，电荷不再继续发生宏观定向移动。</p>
+<p>因此，运动导体棒相当于一个电源。</p>
+<h2 id="3-非静电场与动生电动势【PPT-教材】"><a href="#3-%E9%9D%9E%E9%9D%99%E7%94%B5%E5%9C%BA%E4%B8%8E%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="3. 非静电场与动生电动势【PPT + 教材】"></a>3. 非静电场与动生电动势【PPT + 教材】</h2><p>电动势的本质是单位正电荷所受非静电力沿路径所做的功。对运动导体，非静电力来自洛伦兹力，因此可定义非静电场：</p>
+<div class="note-math-display">\[\boxed{\mathbf E_K=\mathbf v\times\mathbf B}\]</div>
+<p>这里 <span class="note-math-inline">\(\mathbf v\)</span> 是导体线元的速度，<span class="note-math-inline">\(\mathbf B\)</span> 是该处磁场。</p>
+<p>对导体棒上一小段线元：</p>
+<div class="note-math-display">\[\boxed{\mathrm d\mathcal E_i
+=(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l}\]</div>
+<p>整根运动导体棒上的动生电动势：</p>
+<div class="note-math-display">\[\boxed{
+\mathcal E_i=\int_a^b(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l
+}\]</div>
+<p>若整个闭合回路都在运动：</p>
+<div class="note-math-display">\[\boxed{
+\mathcal E_i=\oint_L(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l
+}\]</div>
+<p><strong>教材补充：动生电动势只存在于运动的导线段上。</strong> 静止导线段上的动生电动势为零，它们只是提供电流流动的通路。即使只有一段导线在磁场中运动、没有闭合回路，该段导线仍可能存在动生电动势，只是不会形成感应电流。是否产生动生电动势，关键还要看导线相对于磁场的运动方式，不能认为只要导线在磁场中运动就一定有电动势。</p>
+<h3 id="特殊情况：直导体棒垂直切割匀强磁场【PPT-教材】"><a href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5%EF%BC%9A%E7%9B%B4%E5%AF%BC%E4%BD%93%E6%A3%92%E5%9E%82%E7%9B%B4%E5%88%87%E5%89%B2%E5%8C%80%E5%BC%BA%E7%A3%81%E5%9C%BA%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="特殊情况：直导体棒垂直切割匀强磁场【PPT + 教材】"></a>特殊情况：直导体棒垂直切割匀强磁场【PPT + 教材】</h3><p>当棒长为 <span class="note-math-inline">\(l\)</span>，棒的速度 <span class="note-math-inline">\(v\)</span> 与磁场 <span class="note-math-inline">\(B\)</span> 垂直，且</p>
+<p><span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span> 与棒方向平行时：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_i=Blv}\]</div>
+<p>若速度、磁场和导体棒方向不满足上述特殊关系，不能直接套用</p>
+<p><span class="note-math-inline">\(Blv\)</span>，应使用线积分公式。</p>
+<h2 id="4-动生电动势的方向判断【PPT】"><a href="#4-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E6%96%B9%E5%90%91%E5%88%A4%E6%96%AD%E3%80%90PPT%E3%80%91" class="headerlink" title="4. 动生电动势的方向判断【PPT】"></a>4. 动生电动势的方向判断【PPT】</h2><p>计算前先沿导体棒假设一个正方向：</p>
+<ol>
+<li><p>沿运动导线假定电动势方向。</p>
+</li>
+<li><p>按假定方向选取线元 <span class="note-math-inline">\(\mathrm d\mathbf l\)</span>。</p>
+</li>
+<li><p>根据右手螺旋定则求 <span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span>。</p>
+</li>
+<li><p>计算 <span class="note-math-inline">\((\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l\)</span>。</p>
+</li>
+<li><p>沿导体棒积分。</p>
+</li>
+<li><p>若结果为正，实际方向与假定方向一致；若结果为负，实际方向相反。</p>
+</li>
+</ol>
+<h2 id="5-动生电动势也可以用法拉第定律计算【PPT】"><a href="#5-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E4%B9%9F%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9A%E5%BE%8B%E8%AE%A1%E7%AE%97%E3%80%90PPT%E3%80%91" class="headerlink" title="5. 动生电动势也可以用法拉第定律计算【PPT】"></a>5. 动生电动势也可以用法拉第定律计算【PPT】</h2><p>对于闭合回路，若回路运动导致所围面积或位置变化，可以通过磁通量变化率计算：</p>
+<div class="note-math-display">\[\mathcal E_i=-\frac{\mathrm d\Phi_B}{\mathrm dt}\]</div>
+<p>但若题目只给出一根不闭合导体棒，不能直接对它使用闭合回路的磁通量公式。可以在适当情况下添加辅助线，构成假想闭合回路。</p>
+<h2 id="6-洛伦兹力做功问题【PPT-教材】"><a href="#6-%E6%B4%9B%E4%BC%A6%E5%85%B9%E5%8A%9B%E5%81%9A%E5%8A%9F%E9%97%AE%E9%A2%98%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="6. 洛伦兹力做功问题【PPT + 教材】"></a>6. 洛伦兹力做功问题【PPT + 教材】</h2><p>容易产生的疑问：洛伦兹力始终与电荷运动方向垂直，为什么它又能产生动生电动势？</p>
+<p>PPT 的解释是：把电子相对于导体的运动与导体整体运动分开考虑。洛伦兹力的不同分量分别表现为：</p>
+<ul>
+<li>一个分量对电子做正功，使外界提供的机械能转化为电能；</li>
+<li>另一个分量对电子做负功，阻碍导体运动；为了维持导体运动，外界必须提供机械功。</li>
+</ul>
+<p>因此：</p>
+<ul>
+<li><p>洛伦兹力对电荷的总功为零；</p>
+</li>
+<li><p>动生电动势所对应的电能来自外界对导体所做的机械功；</p>
+</li>
+<li><p>动生电动势体现了机械能向电能的转化。</p>
+</li>
+</ul>
+<details class="notes-example"><summary>PPT 例题 3：匀强磁场中的旋转铜棒</summary><div class="notes-example-body">
+
+<p>已知：</p>
+<ul>
+<li>铜棒长度 <span class="note-math-inline">\(l_0=0.5\,\mathrm m\)</span>；</li>
+<li>匀强磁场 <span class="note-math-inline">\(B=1.0\times10^{-2}\,\mathrm T\)</span>；</li>
+<li>铜棒绕 <span class="note-math-inline">\(O\)</span> 轴转动，转速 <span class="note-math-inline">\(f=50\,\mathrm{r/s}\)</span>。</li>
+</ul>
+<p>角速度：</p>
+<div class="note-math-display">\[\omega=2\pi f=100\pi\,\mathrm{rad/s}\]</div>
+<p>距转轴 <span class="note-math-inline">\(l\)</span> 处的线速度：</p>
+<div class="note-math-display">\[v=\omega l\]</div>
+<p>取沿铜棒方向的线元 <span class="note-math-inline">\(\mathrm dl\)</span>，有：</p>
+<div class="note-math-display">\[\mathrm d\mathcal E=Bv\,\mathrm dl
+=B\omega l\,\mathrm dl\]</div>
+<p>从转轴积分到棒端：</p>
+<div class="note-math-display">\[\mathcal E=\int_0^{l_0}B\omega l\,\mathrm dl\]</div>
+<p>所以：</p>
+<div class="note-math-display">\[\boxed{\mathcal E=\frac12B\omega l_0^2}\]</div>
+<p>代入数值：</p>
+<div class="note-math-display">\[\boxed{\mathcal E\approx0.3927\,\mathrm V}\]</div>
+<p>PPT 中取电动势方向 <span class="note-math-inline">\(O\to A\)</span>，计算结果为正，故实际方向为</p>
+<p><span class="note-math-inline">\(O\to A\)</span>。断路时，电源两端的电势差等于电动势。</p>
+<p><strong>易错点：</strong></p>
+<p>旋转铜棒上各点线速度不同，不能直接使用棒端速度乘以整根棒长；必须对线元积分。</p>
+</div></details>
+<details class="notes-example"><summary>教材例 4：转动三角形金属框的各边电动势</summary><div class="notes-example-body">
+
+<p>教材第393页给出一个容易忽略的例题：三角形金属框 <span class="note-math-inline">\(ABC\)</span> 放在匀强磁场中，磁场方向平行于转轴 <span class="note-math-inline">\(AC\)</span>。金属框绕 <span class="note-math-inline">\(AC\)</span> 轴以角速度 <span class="note-math-inline">\(\omega\)</span> 转动，求各边的感应电动势和回路总电动势。</p>
+<p>设 <span class="note-math-inline">\(AB=a\)</span>、<span class="note-math-inline">\(BC=b\)</span>，且 <span class="note-math-inline">\(BC\)</span> 与转轴 <span class="note-math-inline">\(AC\)</span> 的夹角为 <span class="note-math-inline">\(\alpha\)</span>，因此：</p>
+<div class="note-math-display">\[a=b\sin\alpha\]</div>
+<p><strong>（1）边 <span class="note-math-inline">\(AB\)</span> 上的电动势</strong></p>
+<p>距转轴为 <span class="note-math-inline">\(l\)</span> 的线元速度为 <span class="note-math-inline">\(v=\omega l\)</span>，并且与磁场垂直：</p>
+<div class="note-math-display">\[\mathcal E_{AB}
+=\int_A^B(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l
+=\int_0^a \omega lB\,\mathrm dl\]</div>
+<div class="note-math-display">\[\boxed{\mathcal E_{AB}=\frac12\omega Ba^2}\]</div>
+<p><strong>（2）边 <span class="note-math-inline">\(BC\)</span> 上的电动势</strong></p>
+<p>沿 <span class="note-math-inline">\(BC\)</span> 取线元，只有 <span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span> 在导线方向上的分量贡献电动势：</p>
+<div class="note-math-display">\[\mathcal E_{CB}
+=\int_0^b\omega B\sin^2\alpha\,l\,\mathrm dl
+=\frac12\omega B b^2\sin^2\alpha\]</div>
+<p>利用 <span class="note-math-inline">\(a=b\sin\alpha\)</span>：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_{CB}=\frac12\omega Ba^2}\]</div>
+<p><strong>（3）边 <span class="note-math-inline">\(AC\)</span> 上的电动势</strong></p>
+<p><span class="note-math-inline">\(AC\)</span> 是转轴，轴上各点速度为零：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_{AC}=0}\]</div>
+<p><strong>（4）回路总电动势</strong></p>
+<p>沿闭合回路方向进行代数相加时，<span class="note-math-inline">\(AB\)</span> 与 <span class="note-math-inline">\(BC\)</span> 两段的电动势方向相反，且大小相等：</p>
+<div class="note-math-display">\[\mathcal E_{\mathrm{总}}
+=\mathcal E_{AB}-\mathcal E_{CB}-\mathcal E_{AC}\]</div>
+<div class="note-math-display">\[\boxed{\mathcal E_{\mathrm{总}}=0}\]</div>
+<p><strong>本题关键：</strong> 各段导线上的动生电动势不一定为零，但闭合回路总电动势是各段电动势的代数和。必须先确定每段的方向，不能把各段电动势的大小直接相加。</p>
+<hr>
+</div></details>
+<h1 id="§16-4-发电机和电动机的原理【PPT-主线；电动机详解为教材补充】"><a href="#%C2%A716-4-%E5%8F%91%E7%94%B5%E6%9C%BA%E5%92%8C%E7%94%B5%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%8E%9F%E7%90%86%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%EF%BC%9B%E7%94%B5%E5%8A%A8%E6%9C%BA%E8%AF%A6%E8%A7%A3%E4%B8%BA%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="§16-4 发电机和电动机的原理【PPT 主线；电动机详解为教材补充】"></a>§16-4 发电机和电动机的原理【PPT 主线；电动机详解为教材补充】</h1><h2 id="1-交流发电机（AC-Generator）的基本原理【PPT-教材】"><a href="#1-%E4%BA%A4%E6%B5%81%E5%8F%91%E7%94%B5%E6%9C%BA%EF%BC%88AC-Generator%EF%BC%89%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="1. 交流发电机（AC Generator）的基本原理【PPT + 教材】"></a>1. 交流发电机（AC Generator）的基本原理【PPT + 教材】</h2><p>发电机利用电磁感应原理，把机械能转化为电能。</p>
+<p>典型模型：矩形线圈在匀强磁场中绕固定轴转动。</p>
+<p>设：</p>
+<ul>
+<li>线圈面积为 <span class="note-math-inline">\(S\)</span>；</li>
+<li>磁感应强度为 <span class="note-math-inline">\(B\)</span>；</li>
+<li>线圈角速度为 <span class="note-math-inline">\(\omega\)</span>；</li>
+<li>线圈平面法线与磁场的夹角为 <span class="note-math-inline">\(\theta=\omega t\)</span>。</li>
+</ul>
+<p>线圈磁通量：</p>
+<div class="note-math-display">\[\Phi_B=BS\cos\theta=BS\cos\omega t\]</div>
+<p>根据法拉第定律：</p>
+<div class="note-math-display">\[\mathcal E=-\frac{\mathrm d\Phi_B}{\mathrm dt}\]</div>
+<p>得到：</p>
+<div class="note-math-display">\[\boxed{\mathcal E=BS\omega\sin\omega t}\]</div>
+<p>定义最大感应电动势：</p>
+<div class="note-math-display">\[\mathcal E_0=BS\omega\]</div>
+<p>所以：</p>
+<div class="note-math-display">\[\boxed{\mathcal E=\mathcal E_0\sin\omega t}\]</div>
+<p>若线圈有 <span class="note-math-inline">\(N\)</span> 匝且各匝磁通量相同：</p>
+<div class="note-math-display">\[\boxed{\mathcal E= NBS\omega\sin\omega t}\]</div>
+<p>这说明线圈匀速转动时，感应电动势随时间按正弦规律变化，称为交流电动势。</p>
+<p>周期与频率：</p>
+<div class="note-math-display">\[\boxed{T=\frac{2\pi}{\omega}=\frac1f}\]</div>
+<h2 id="2-用动生电动势计算发电机电动势【PPT-教材】"><a href="#2-%E7%94%A8%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E8%AE%A1%E7%AE%97%E5%8F%91%E7%94%B5%E6%9C%BA%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="2. 用动生电动势计算发电机电动势【PPT + 教材】"></a>2. 用动生电动势计算发电机电动势【PPT + 教材】</h2><blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">公式推导｜从动生电动势得到发电机公式</div>
+<p>教材还从线圈边切割磁感线的角度推导同一结果。</p>
+<p>设矩形线圈边长为 <span class="note-math-inline">\(l_1,l_2\)</span>，面积：</p>
+<div class="note-math-display">\[S=l_1l_2\]</div>
+<p>在某一时刻，线圈平面法线与磁场夹角为 <span class="note-math-inline">\(\theta\)</span>，线圈转动角速度为</p>
+<p><span class="note-math-inline">\(\omega\)</span>。</p>
+<p>线圈两条有效边的线速度大小：</p>
+<div class="note-math-display">\[v=\frac{l_2\omega}{2}\]</div>
+<p>每条有效边产生的动生电动势：</p>
+<div class="note-math-display">\[\mathcal E_{ab}=vBl_1\sin\theta\]</div>
+<div class="note-math-display">\[\mathcal E_{cd}=vBl_1\sin\theta\]</div>
+<p>两条有效边产生的电动势方向相同，另外两边不产生沿边方向的电动势。因此：</p>
+<div class="note-math-display">\[\mathcal E=2vBl_1\sin\theta\]</div>
+<p>代入 <span class="note-math-inline">\(v=l_2\omega/2\)</span>：</p>
+<div class="note-math-display">\[\mathcal E=Bl_1l_2\omega\sin\theta\]</div>
+<p>由于 <span class="note-math-inline">\(S=l_1l_2\)</span>、<span class="note-math-inline">\(\theta=\omega t\)</span>：</p>
+<div class="note-math-display">\[\boxed{\mathcal E=BS\omega\sin\omega t}\]</div>
+<p>与使用法拉第定律得到的结果一致。</p>
+</blockquote>
+<h3 id="实际交流发电机的结构【教材补充】"><a href="#%E5%AE%9E%E9%99%85%E4%BA%A4%E6%B5%81%E5%8F%91%E7%94%B5%E6%9C%BA%E7%9A%84%E7%BB%93%E6%9E%84%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="实际交流发电机的结构【教材补充】"></a>实际交流发电机的结构【教材补充】</h3><p>教材图16-9介绍了基本交流发电机：矩形线圈在均匀磁场中绕固定轴转动，线圈两端通过随线圈转动的铜环（滑环）和弹性金属触头（电刷）与外电路连接。线圈的两条有效边切割磁感线，产生方向相同的电动势。</p>
+<p>实际工程中的交流发电机通常采用<strong>线圈固定作为定子、磁场旋转作为转子</strong>的结构。教材还介绍了双水内冷发电机：用冷水通过线圈导线内部散热，以应对大电流造成的焦耳热。</p>
+<h2 id="3-发电机的能量转化【PPT-教材】"><a href="#3-%E5%8F%91%E7%94%B5%E6%9C%BA%E7%9A%84%E8%83%BD%E9%87%8F%E8%BD%AC%E5%8C%96%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="3. 发电机的能量转化【PPT + 教材】"></a>3. 发电机的能量转化【PPT + 教材】</h2><p>当线圈接入外电路并产生感应电流时，线圈在磁场中受到磁力矩，其方向阻碍线圈转动。</p>
+<p>因此，为了让发电机持续转动，需要外部动力机提供机械功。机械能最终转化为电能。</p>
+<h2 id="4-电动机（Motor）的基本原理【教材补充】"><a href="#4-%E7%94%B5%E5%8A%A8%E6%9C%BA%EF%BC%88Motor%EF%BC%89%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="4. 电动机（Motor）的基本原理【教材补充】"></a>4. 电动机（Motor）的基本原理【教材补充】</h2><p>PPT 第30页仅列出“电动机”主题，没有像发电机部分一样展开原理推导；下面内容依据教材第395页补充。</p>
+<p>电动机与发电机的能量转化方向相反：</p>
+<ul>
+<li><p>发电机：机械能 <span class="note-math-inline">\(\rightarrow\)</span> 电能；</p>
+</li>
+<li><p>电动机：电能 <span class="note-math-inline">\(\rightarrow\)</span> 机械能。</p>
+</li>
+</ul>
+<p>当线圈通入电流并放在磁场中时，线圈受到磁力矩：</p>
+<div class="note-math-display">\[\boxed{\mathbf M=\mathbf p_m\times\mathbf B}\]</div>
+<p>其中 <span class="note-math-inline">\(\mathbf p_m\)</span> 为线圈磁矩，方向由右手螺旋定则确定。沿用前面载流线圈的磁矩定义，对 <span class="note-math-inline">\(N\)</span> 匝线圈：</p>
+<div class="note-math-display">\[\mathbf p_m=NIS\mathbf n\]</div>
+<p>线圈在磁力矩作用下转动。</p>
+<p>线圈转动时，穿过线圈的磁通量发生变化，又会产生一个与原来电流方向相反的感应电动势（反电动势）。因此，电动机运行时既有电流产生的驱动力矩，也有感应电动势对电流的反作用。</p>
+<p><strong>发电机和电动机结构可以相似，区别主要在于能量转换方向和使用目的。</strong></p>
+<hr>
+<h1 id="§16-5-感生电动势【PPT-主线；教材补充见标记】"><a href="#%C2%A716-5-%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT-%E4%B8%BB%E7%BA%BF%EF%BC%9B%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E8%A7%81%E6%A0%87%E8%AE%B0%E3%80%91" class="headerlink" title="§16-5 感生电动势【PPT 主线；教材补充见标记】"></a>§16-5 感生电动势【PPT 主线；教材补充见标记】</h1><h2 id="1-麦克斯韦关于感生电场的假设【PPT-教材】"><a href="#1-%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E5%85%B3%E4%BA%8E%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E7%9A%84%E5%81%87%E8%AE%BE%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="1. 麦克斯韦关于感生电场的假设【PPT + 教材】"></a>1. 麦克斯韦关于感生电场的假设【PPT + 教材】</h2><p>前面学习动生电动势时，导体必须在磁场中运动。但如果导体静止，只要磁场发生变化，回路中仍然可能产生感应电动势。</p>
+<p>麦克斯韦提出：</p>
+<blockquote>
+<p>不论空间中有无导体存在，变化的磁场总会在周围激发一种电场。这种电场具有涡旋性，称为感生电场（induced electric field）或涡旋电场（vortex electric field）。</p>
+</blockquote>
+<p>因此：</p>
+<ul>
+<li>感生电场由变化的磁场激发；</li>
+<li>它可以在没有导体的空间中存在；</li>
+<li>有导体时，感生电场会驱动自由电荷，形成感应电流。</li>
+</ul>
+<h2 id="2-感生电场的环路定律【PPT-教材】"><a href="#2-%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E7%9A%84%E7%8E%AF%E8%B7%AF%E5%AE%9A%E5%BE%8B%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="2. 感生电场的环路定律【PPT + 教材】"></a>2. 感生电场的环路定律【PPT + 教材】</h2><p>感生电场的闭合线积分满足：</p>
+<div class="note-math-display">\[\boxed{
+\oint_L\mathbf E_K\cdot\mathrm d\mathbf l
+=-\frac{\mathrm d\Phi_B}{\mathrm dt}
+}\]</div>
+<p>它是法拉第电磁感应定律的场论表达。<strong>【教材补充】</strong> 按照教材中的麦克斯韦观点，这一定律可推广到空间中任意假想的闭合回路，不要求回路中一定存在导体。</p>
+<p>这条公式说明：感生电场沿闭合回路的环量，与穿过该回路的磁通量变化率有关。</p>
+<p>感生电场是有旋场，电力线为闭合曲线；PPT 指出，感生电场的环绕方向与</p>
+<p><span class="note-math-inline">\(\mathrm d\mathbf B/\mathrm dt\)</span> 的方向满足左手螺旋关系。</p>
+<h2 id="3-静电场与感生电场的比较"><a href="#3-%E9%9D%99%E7%94%B5%E5%9C%BA%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E7%9A%84%E6%AF%94%E8%BE%83" class="headerlink" title="3. 静电场与感生电场的比较"></a>3. 静电场与感生电场的比较</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>比较项目</th>
+<th>静电场 <span class="note-math-inline">\(\mathbf E\)</span></th>
+<th>感生电场 <span class="note-math-inline">\(\mathbf E_K\)</span></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>起源</td>
+<td>静止电荷</td>
+<td>变化的磁场</td>
+</tr>
+<tr>
+<td>是否需要导体</td>
+<td>不需要</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>场的性质</td>
+<td>保守场、无旋场</td>
+<td>非保守场、有旋场</td>
+</tr>
+<tr>
+<td>电力线</td>
+<td>非闭合曲线</td>
+<td>闭合曲线</td>
+</tr>
+<tr>
+<td>闭合路径线积分</td>
+<td><span class="note-math-inline">\(\oint\mathbf E\cdot\mathrm d\mathbf l=0\)</span></td>
+<td><span class="note-math-inline">\(\oint\mathbf E_K\cdot\mathrm d\mathbf l=-\mathrm d\Phi_B/\mathrm dt\)</span></td>
+</tr>
+<tr>
+<td>能否引入单值电势</td>
+<td>可以</td>
+<td>不能像静电场那样定义全局单值电势</td>
+</tr>
+<tr>
+<td>场源性质</td>
+<td>有源场</td>
+<td>PPT 将感生电场标为无源场</td>
+</tr>
+</tbody></table></div>
+<p>两种电场都能对电荷施加作用力，但场的来源和性质不同。</p>
+<h2 id="4-感生电动势的两种计算方法【PPT】"><a href="#4-%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E3%80%90PPT%E3%80%91" class="headerlink" title="4. 感生电动势的两种计算方法【PPT】"></a>4. 感生电动势的两种计算方法【PPT】</h2><h3 id="方法一：直接使用法拉第定律【PPT】"><a href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9A%E5%BE%8B%E3%80%90PPT%E3%80%91" class="headerlink" title="方法一：直接使用法拉第定律【PPT】"></a>方法一：直接使用法拉第定律【PPT】</h3><p>对于闭合回路：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_i=-\frac{\mathrm d\Phi_B}{\mathrm dt}}\]</div>
+<p>先求磁通量，再对时间求导。</p>
+<h3 id="方法二：先求感生电场，再沿导体积分【PPT】"><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%85%88%E6%B1%82%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%EF%BC%8C%E5%86%8D%E6%B2%BF%E5%AF%BC%E4%BD%93%E7%A7%AF%E5%88%86%E3%80%90PPT%E3%80%91" class="headerlink" title="方法二：先求感生电场，再沿导体积分【PPT】"></a>方法二：先求感生电场，再沿导体积分【PPT】</h3><p>如果磁场具有对称性，可以先通过：</p>
+<div class="note-math-display">\[\oint_L\mathbf E_K\cdot\mathrm d\mathbf l
+=-\frac{\mathrm d\Phi_B}{\mathrm dt}\]</div>
+<p>求出感生电场，再计算导体段 <span class="note-math-inline">\(ab\)</span> 上的感生电动势：</p>
+<div class="note-math-display">\[\boxed{\mathcal E_{ab}=\int_a^b\mathbf E_K\cdot\mathrm d\mathbf l}\]</div>
+<p>这种方法适合计算一段不闭合导体上的感生电动势。</p>
+<details class="notes-example"><summary>PPT 例题 5：圆柱形变化磁场中的感生电场</summary><div class="notes-example-body">
+
+<p>半径为 <span class="note-math-inline">\(R\)</span></p>
+<p>的圆柱形区域内存在均匀磁场，磁场随时间变化。利用轴对称性，感生电场沿以圆柱轴线为中心的同心圆切线方向。</p>
+<p>取半径为 <span class="note-math-inline">\(r\)</span> 的圆形积分回路，则：</p>
+<div class="note-math-display">\[\oint_L\mathbf E_K\cdot\mathrm d\mathbf l
+=E_K(2\pi r)\]</div>
+<h3 id="情况一：-r"><a href="#%E6%83%85%E5%86%B5%E4%B8%80%EF%BC%9A-r" class="headerlink" title="情况一：\(r<R\)，积分回路在磁场内部【PPT + 教材】"></a>情况一：<span class="note-math-inline">\(r&lt;R\)</span>，积分回路在磁场内部【PPT + 教材】</h3><p>磁通量面积为 <span class="note-math-inline">\(\pi r^2\)</span>：</p>
+<div class="note-math-display">\[\Phi_B=B\pi r^2\]</div>
+<p>代入法拉第定律：</p>
+<div class="note-math-display">\[E_K(2\pi r)=-\pi r^2\frac{\mathrm dB}{\mathrm dt}\]</div>
+<p>所以，沿规定正绕行方向的带符号切向分量为：</p>
+<div class="note-math-display">\[\boxed{E_K=-\frac r2\frac{\mathrm dB}{\mathrm dt}}\]</div>
+<p>大小为：</p>
+<div class="note-math-display">\[\boxed{|E_K|=\frac r2\lvert\frac{\mathrm dB}{\mathrm dt}\rvert}\]</div>
+<h3 id="情况二：-r-R-，积分回路在磁场区域外部【PPT-教材】"><a href="#%E6%83%85%E5%86%B5%E4%BA%8C%EF%BC%9A-r-R-%EF%BC%8C%E7%A7%AF%E5%88%86%E5%9B%9E%E8%B7%AF%E5%9C%A8%E7%A3%81%E5%9C%BA%E5%8C%BA%E5%9F%9F%E5%A4%96%E9%83%A8%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="情况二：\(r>R\)，积分回路在磁场区域外部【PPT + 教材】"></a>情况二：<span class="note-math-inline">\(r&gt;R\)</span>，积分回路在磁场区域外部【PPT + 教材】</h3><p>磁场只存在于半径 <span class="note-math-inline">\(R\)</span> 的圆柱形区域内，因此磁通量面积是 <span class="note-math-inline">\(\pi R^2\)</span>，不是</p>
+<p><span class="note-math-inline">\(\pi r^2\)</span>：</p>
+<div class="note-math-display">\[\Phi_B=B\pi R^2\]</div>
+<p>代入：</p>
+<div class="note-math-display">\[E_K(2\pi r)=-\pi R^2\frac{\mathrm dB}{\mathrm dt}\]</div>
+<p>得到：</p>
+<div class="note-math-display">\[\boxed{E_K=-\frac{R^2}{2r}\frac{\mathrm dB}{\mathrm dt}}\]</div>
+<p>大小为：</p>
+<div class="note-math-display">\[\boxed{|E_K|=\frac{R^2}{2r}\lvert\frac{\mathrm dB}{\mathrm dt}\rvert}\]</div>
+<h3 id="两种情况汇总【PPT-教材】"><a href="#%E4%B8%A4%E7%A7%8D%E6%83%85%E5%86%B5%E6%B1%87%E6%80%BB%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="两种情况汇总【PPT + 教材】"></a>两种情况汇总【PPT + 教材】</h3><div class="note-math-display">\[\boxed{
+|E_K(r)|=
+\begin{cases}
+\dfrac r2\lvert\dfrac{\mathrm dB}{\mathrm dt}\rvert,&amp;r&lt;R\\[6pt]
+\dfrac{R^2}{2r}\lvert\dfrac{\mathrm dB}{\mathrm dt}\rvert,&amp;r&gt;R
+\end{cases}
+}\]</div>
+<p>规律：</p>
+<ul>
+<li>磁场内部：<span class="note-math-inline">\(E_K\propto r\)</span>，离中心越远，场强越大；</li>
+<li>磁场外部：<span class="note-math-inline">\(E_K\propto 1/r\)</span>，离中心越远，场强越小；</li>
+<li>在 <span class="note-math-inline">\(r=R\)</span> 处，内外两侧结果连续，场强达到最大值。</li>
+</ul>
+<h3 id="教材例5的数值核对【教材补充】"><a href="#%E6%95%99%E6%9D%90%E4%BE%8B5%E7%9A%84%E6%95%B0%E5%80%BC%E6%A0%B8%E5%AF%B9%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="教材例5的数值核对【教材补充】"></a>教材例5的数值核对【教材补充】</h3><p>教材取：</p>
+<div class="note-math-display">\[R=0.10\,\mathrm m,\qquad
+\frac{\mathrm dB}{\mathrm dt}=0.10\,\mathrm{T/s}\]</div>
+<ul>
+<li>当 <span class="note-math-inline">\(r=0.05\,\mathrm m&lt;R\)</span> 时：</li>
+</ul>
+<div class="note-math-display">\[E_K=\frac12r\frac{\mathrm dB}{\mathrm dt}
+=\frac12\times0.05\times0.10
+=\boxed{2.5\times10^{-3}\,\mathrm{V/m}}\]</div>
+<ul>
+<li>当 <span class="note-math-inline">\(r=0.15\,\mathrm m&gt;R\)</span> 时：</li>
+</ul>
+<div class="note-math-display">\[E_K=\frac12\frac{R^2}{r}\frac{\mathrm dB}{\mathrm dt}
+=\frac12\frac{(0.10)^2}{0.15}\times0.10
+=\boxed{3.3\times10^{-3}\,\mathrm{V/m}}\]</div>
+<p>【教材补充｜教材图16-11】教材图16-11显示，<span class="note-math-inline">\(E_K\)</span> 在 <span class="note-math-inline">\(r&lt;R\)</span> 区域随 <span class="note-math-inline">\(r\)</span> 线性增大，在 <span class="note-math-inline">\(r&gt;R\)</span> 区域随 <span class="note-math-inline">\(1/r\)</span> 减小，在 <span class="note-math-inline">\(r=R\)</span> 处达到最大值。磁场垂直纸面向里且正在增强时，感生电场沿逆时针方向。还要注意：感生电场的大小取决于 <span class="note-math-inline">\(\mathrm dB/\mathrm dt\)</span>，而不是磁场 <span class="note-math-inline">\(B\)</span> 本身的大小。</p>
+<p><strong>重要理解：</strong></p>
+<p>某处磁场为零，不代表该处感生电场也为零。圆柱形磁场外部虽然没有磁场，但围绕它的闭合回路仍包围着变化的磁通量，所以外部仍可能存在感生电场。</p>
+</div></details>
+<details class="notes-example"><summary>PPT 例题 6：变化磁场中的直导体棒</summary><div class="notes-example-body">
+
+<p>在上述圆柱形变化磁场中放置一根长度为 <span class="note-math-inline">\(l\)</span></p>
+<p>的直导体棒，导体棒所在直线与圆心的垂直距离为 <span class="note-math-inline">\(h\)</span>。按照 PPT 的推导，棒上各点均取在磁场区域内（即使用 <span class="note-math-inline">\(r&lt;R\)</span> 的感生电场表达式），求棒上的感生电动势。</p>
+<p>几何关系可简化为：</p>
+<pre><code class="text">
+             b
+
+             |
+             |  P（棒上任意一点）
+             |  dy
+             |
+
+O------------H
+
+       h
+
+OP = r，HP = y，OH = h
+
+r² = h² + y²
+</code></pre>
+<p>由于感生电场沿同心圆切线方向，与半径 <span class="note-math-inline">\(OP\)</span></p>
+<p>垂直；棒沿竖直方向。因此感生电场在棒方向上的投影需要乘以几何因子：</p>
+<div class="note-math-display">\[\cos\alpha=\frac hr\]</div>
+<p>棒上微元的感生电动势：</p>
+<div class="note-math-display">\[\mathrm d\mathcal E=E_K\cos\alpha\,\mathrm dy\]</div>
+<p>在磁场内部：</p>
+<div class="note-math-display">\[E_K=\frac r2\lvert\frac{\mathrm dB}{\mathrm dt}\rvert\]</div>
+<p>于是：</p>
+<div class="note-math-display">\[\mathrm d\mathcal E
+=\frac r2\lvert\frac{\mathrm dB}{\mathrm dt}\rvert
+\frac hr\,\mathrm dy\]</div>
+<p>约去 <span class="note-math-inline">\(r\)</span>：</p>
+<div class="note-math-display">\[\mathrm d\mathcal E
+=\frac h2\lvert\frac{\mathrm dB}{\mathrm dt}\rvert\mathrm dy\]</div>
+<p>沿整根棒积分：</p>
+<div class="note-math-display">\[\boxed{
+|\mathcal E_{ab}|=
+\frac{hl}{2}\lvert\frac{\mathrm dB}{\mathrm dt}\rvert
+}\]</div>
+<p>PPT 图示给出的方向为 <span class="note-math-inline">\(a\to b\)</span>。</p>
+<h3 id="辅助闭合回路法【PPT】"><a href="#%E8%BE%85%E5%8A%A9%E9%97%AD%E5%90%88%E5%9B%9E%E8%B7%AF%E6%B3%95%E3%80%90PPT%E3%80%91" class="headerlink" title="辅助闭合回路法【PPT】"></a>辅助闭合回路法【PPT】</h3><p>也可以添加径向辅助线 <span class="note-math-inline">\(Oa\)</span>、<span class="note-math-inline">\(Ob\)</span>，构成三角形闭合回路。</p>
+<p>由于感生电场沿圆周切线方向，而 <span class="note-math-inline">\(Oa\)</span>、<span class="note-math-inline">\(Ob\)</span> 沿径向，所以：</p>
+<div class="note-math-display">\[\mathbf E_K\perp\mathrm d\mathbf l\]</div>
+<p>辅助线上的线积分为零，闭合回路的总感生电动势就等于导体棒上的感生电动势。</p>
+<p>三角形面积：</p>
+<div class="note-math-display">\[S_{\triangle Oab}=\frac12hl\]</div>
+<p>因此：</p>
+<div class="note-math-display">\[|\mathcal E_{ab}|=
+\lvert\frac{\mathrm d(BS)}{\mathrm dt}\rvert
+=\frac{hl}{2}\lvert\frac{\mathrm dB}{\mathrm dt}\rvert\]</div>
+<p><strong>使用辅助回路法的前提：</strong></p>
+<p>必须先证明辅助线上的感生电场线积分为零，不能任意补线后直接忽略辅助段。</p>
+</div></details>
+<details class="notes-example"><summary>教材例 6：等腰梯形导线框</summary><div class="notes-example-body">
+
+<p>教材第 398 页还给出一个磁场区域为圆形、导线框为等腰梯形的例题。</p>
+<p>已知：</p>
+<ul>
+<li>圆柱形磁场区域半径 <span class="note-math-inline">\(R=0.10\,\mathrm m\)</span>；</li>
+<li>磁场垂直纸面向里，且 <span class="note-math-inline">\(\mathrm dB/\mathrm dt=1.0\,\mathrm{T/s}\)</span>；</li>
+<li><span class="note-math-inline">\(\theta=\pi/3\)</span>；</li>
+<li><span class="note-math-inline">\(|Oa|=|Ob|=0.04\,\mathrm m\)</span>。</li>
+</ul>
+<p>由 <span class="note-math-inline">\(|Oa|=|Ob|=0.04\,\mathrm m\)</span>、夹角 <span class="note-math-inline">\(\theta=\pi/3\)</span>，弦长为：</p>
+<div class="note-math-display">\[|ab|=2|Oa|\sin\frac{\theta}{2}
+=2\times0.04\times\sin\frac{\pi}{6}
+=0.04\,\mathrm m\]</div>
+<p>导线框内部真正处于磁场区域的面积为“扇形 <span class="note-math-inline">\(Oab\)</span> 面积减去三角形 <span class="note-math-inline">\(Oab\)</span> 面积”：</p>
+<div class="note-math-display">\[S=\frac12R^2\theta-\frac12|ab|^2\sin\frac{\pi}{3}\]</div>
+<p>感生电动势：</p>
+<div class="note-math-display">\[\mathcal E=-\frac{\mathrm d\Phi_B}{\mathrm dt}
+=-S\frac{\mathrm dB}{\mathrm dt}\]</div>
+<p>教材计算结果：</p>
+<div class="note-math-display">\[\boxed{\mathcal E=-4.54\times10^{-3}\,\mathrm V}\]</div>
+<p>负号表示实际方向与规定绕行方向相反，实际方向为：</p>
+<div class="note-math-display">\[\boxed{c\to b\to a\to d}\]</div>
+<p><strong>本题提醒：</strong></p>
+<p>求磁通量时，必须求出导线框中真正处于磁场区域内的面积，不能直接使用整个导线框的面积。</p>
+</div></details>
+<h2 id="5-动生电动势与感生电动势的划分并非绝对【教材补充】"><a href="#5-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E7%9A%84%E5%88%92%E5%88%86%E5%B9%B6%E9%9D%9E%E7%BB%9D%E5%AF%B9%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="5. 动生电动势与感生电动势的划分并非绝对【教材补充】"></a>5. 动生电动势与感生电动势的划分并非绝对【教材补充】</h2><p>教材第398页指出，动生电动势和感生电动势的划分与参考系有关。</p>
+<p>例如，同一个电磁感应过程：</p>
+<ul>
+<li><p>在导线静止的参考系中，可以描述为磁场不变、线圈运动，因此表现为动生电动势；</p>
+</li>
+<li><p>在线圈静止的参考系中，可以描述为线圈不动、磁场发生变化，因此表现为感生电动势。</p>
+</li>
+</ul>
+<p>这说明两种电动势的分类是根据所选参考系中的物理描述作出的，并不是完全独立、绝对的两类现象。</p>
+<h2 id="6-感生电场为什么不能定义普通电势？【PPT-教材】"><a href="#6-%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%AE%9A%E4%B9%89%E6%99%AE%E9%80%9A%E7%94%B5%E5%8A%BF%EF%BC%9F%E3%80%90PPT-%E6%95%99%E6%9D%90%E3%80%91" class="headerlink" title="6. 感生电场为什么不能定义普通电势？【PPT + 教材】"></a>6. 感生电场为什么不能定义普通电势？【PPT + 教材】</h2><p>教材强调：感生电场是非保守场，电场线是闭合曲线。沿闭合路径的线积分一般不为零，因此不能像静电场那样用两个端点的电势差唯一描述任意路径上的做功。</p>
+<p>同一对端点之间，如果选择不同路径，感生电场的线积分可能不同。</p>
+<p>因此，计算感生电动势时必须明确积分路径。</p>
+<h3 id="图16-12：相同面积、不同位置的闭合回路【教材补充】"><a href="#%E5%9B%BE16-12%EF%BC%9A%E7%9B%B8%E5%90%8C%E9%9D%A2%E7%A7%AF%E3%80%81%E4%B8%8D%E5%90%8C%E4%BD%8D%E7%BD%AE%E7%9A%84%E9%97%AD%E5%90%88%E5%9B%9E%E8%B7%AF%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="图16-12：相同面积、不同位置的闭合回路【教材补充】"></a>图16-12：相同面积、不同位置的闭合回路【教材补充】</h3><p>教材用四个形状和面积相同、但位置不同的闭合回路说明：</p>
+<ul>
+<li><p>回路1和回路2都处在变化磁场区域内，所包围的变化磁通量相同，因此感生电动势相同；</p>
+</li>
+<li><p>两个回路周围的感生电场分布可以不同，不能由“电动势相同”推出“电场处处相同”；</p>
+</li>
+<li><p>回路3只有部分区域处在变化磁场中，所包围的变化磁通量较小，因此感生电动势较小；</p>
+</li>
+<li><p>回路4没有包围变化磁通量，因此感生电动势为零。</p>
+</li>
+</ul>
+<p>这说明感生电动势由闭合回路所包围的磁通量变化率决定，而局部感生电场的分布还与空间位置有关。</p>
+<details class="notes-example"><summary>PPT 例题 7：动生电动势与感生电动势同时存在</summary><div class="notes-example-body">
+
+<p>在均匀磁场中有金属框架 <span class="note-math-inline">\(OabO\)</span>，边 <span class="note-math-inline">\(ab\)</span> 以速度 <span class="note-math-inline">\(v\)</span> 平行于 <span class="note-math-inline">\(x\)</span></p>
+<p>轴匀速运动，<span class="note-math-inline">\(\angle aOb=\theta\)</span>，且 <span class="note-math-inline">\(ab\perp Ox\)</span>。磁场随时间变化：</p>
+<div class="note-math-display">\[B=\frac{t^2}{2}\]</div>
+<p>求任意时刻的总感应电动势。</p>
+<h3 id="第一步：几何关系【PPT】"><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%87%A0%E4%BD%95%E5%85%B3%E7%B3%BB%E3%80%90PPT%E3%80%91" class="headerlink" title="第一步：几何关系【PPT】"></a>第一步：几何关系【PPT】</h3><p>假设初始时 <span class="note-math-inline">\(x=0\)</span>，则：</p>
+<div class="note-math-display">\[x=vt\]</div>
+<p>由几何关系：</p>
+<div class="note-math-display">\[l=x\tan\theta=vt\tan\theta\]</div>
+<p>三角形面积：</p>
+<div class="note-math-display">\[S=\frac12xl
+=\frac12v^2t^2\tan\theta\]</div>
+<h3 id="第二步：直接使用法拉第定律【PPT】"><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9A%E5%BE%8B%E3%80%90PPT%E3%80%91" class="headerlink" title="第二步：直接使用法拉第定律【PPT】"></a>第二步：直接使用法拉第定律【PPT】</h3><p>取 PPT 规定的绕行方向 <span class="note-math-inline">\(O\to a\to b\to O\)</span>，磁场与正法线方向同向：</p>
+<div class="note-math-display">\[\Phi_B=BS\]</div>
+<div class="note-math-display">\[\mathcal E=-\frac{\mathrm d(BS)}{\mathrm dt}\]</div>
+<p>对乘积求导：</p>
+<div class="note-math-display">\[\mathcal E=-B\frac{\mathrm dS}{\mathrm dt}
+-S\frac{\mathrm dB}{\mathrm dt}\]</div>
+<p>代入：</p>
+<div class="note-math-display">\[B=\frac{t^2}{2},\quad
+\frac{\mathrm dB}{\mathrm dt}=t\]</div>
+<div class="note-math-display">\[S=\frac12v^2t^2\tan\theta,\quad
+\frac{\mathrm dS}{\mathrm dt}=v^2t\tan\theta\]</div>
+<p>得到：</p>
+<div class="note-math-display">\[\mathcal E
+=-\frac12v^2t^3\tan\theta
+-\frac12v^2t^3\tan\theta\]</div>
+<p>所以：</p>
+<div class="note-math-display">\[\boxed{\mathcal E=-v^2t^3\tan\theta}\]</div>
+<p>大小：</p>
+<div class="note-math-display">\[\boxed{|\mathcal E|=v^2t^3\tan\theta}\]</div>
+<p>负号表示实际方向与规定绕行方向相反；在滑动棒 <span class="note-math-inline">\(ab\)</span> 上，方向为 <span class="note-math-inline">\(b\to a\)</span>。</p>
+<h3 id="第三步：分解成两种电动势【PPT】"><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%88%86%E8%A7%A3%E6%88%90%E4%B8%A4%E7%A7%8D%E7%94%B5%E5%8A%A8%E5%8A%BF%E3%80%90PPT%E3%80%91" class="headerlink" title="第三步：分解成两种电动势【PPT】"></a>第三步：分解成两种电动势【PPT】</h3><p>动生电动势：</p>
+<div class="note-math-display">\[\boxed{
+\mathcal E_{\mathrm{动}}
+=-B\frac{\mathrm dS}{\mathrm dt}
+=-\frac12v^2t^3\tan\theta
+}\]</div>
+<p>感生电动势：</p>
+<div class="note-math-display">\[\boxed{
+\mathcal E_{\mathrm{感}}
+=-S\frac{\mathrm dB}{\mathrm dt}
+=-\frac12v^2t^3\tan\theta
+}\]</div>
+<p>总电动势：</p>
+<div class="note-math-display">\[\boxed{
+\mathcal E=\mathcal E_{\mathrm{动}}+\mathcal E_{\mathrm{感}}
+}\]</div>
+<p><strong>解题提醒：</strong></p>
+<p>两种电动势必须先统一参考方向，再进行代数相加，不能不判断方向就直接相加大小。</p>
+</div></details>
+<h2 id="7-电子感应加速器（Betatron）【PPT】"><a href="#7-%E7%94%B5%E5%AD%90%E6%84%9F%E5%BA%94%E5%8A%A0%E9%80%9F%E5%99%A8%EF%BC%88Betatron%EF%BC%89%E3%80%90PPT%E3%80%91" class="headerlink" title="7. 电子感应加速器（Betatron）【PPT】"></a>7. 电子感应加速器（Betatron）【PPT】</h2><h3 id="基本结构与原理【PPT】"><a href="#%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86%E3%80%90PPT%E3%80%91" class="headerlink" title="基本结构与原理【PPT】"></a>基本结构与原理【PPT】</h3><p>电子感应加速器由以下部分组成：</p>
+<ul>
+<li>圆柱形电磁铁；</li>
+<li>环形真空室；</li>
+<li>电子枪。</li>
+</ul>
+<p>低频交变电流激发变化磁场，变化磁场产生涡旋电场。电子沿切线方向进入真空室后，受到感生电场力而加速；同时，磁场对电子的洛伦兹力提供向心力，使电子沿环形轨道运动。</p>
+<p>两个作用要区分：</p>
+<ul>
+<li>感生电场：改变电子速度大小，负责加速；</li>
+<li>磁场的洛伦兹力：改变速度方向，负责维持圆周运动。</li>
+</ul>
+<h3 id="固定轨道半径的条件【PPT】"><a href="#%E5%9B%BA%E5%AE%9A%E8%BD%A8%E9%81%93%E5%8D%8A%E5%BE%84%E7%9A%84%E6%9D%A1%E4%BB%B6%E3%80%90PPT%E3%80%91" class="headerlink" title="固定轨道半径的条件【PPT】"></a>固定轨道半径的条件【PPT】</h3><blockquote class="obsidian-callout obsidian-callout-note">
+<div class="obsidian-callout-header">公式推导｜电子保持固定轨道半径的条件</div>
+<p>设：</p>
+<ul>
+<li>电子轨道半径为 <span class="note-math-inline">\(R\)</span>；</li>
+<li>轨道处磁感应强度为 <span class="note-math-inline">\(B_R\)</span>；</li>
+<li>轨道所围面积内的平均磁感应强度为 <span class="note-math-inline">\(\bar B\)</span>。</li>
+</ul>
+<p>轨道处感生电场满足：</p>
+<div class="note-math-display">\[2\pi R E_K
+=\pi R^2\frac{\mathrm d\bar B}{\mathrm dt}\]</div>
+<p>取大小：</p>
+<div class="note-math-display">\[\boxed{E_K=\frac R2\frac{\mathrm d\bar B}{\mathrm dt}}\]</div>
+<p>电子在磁场中做圆周运动：</p>
+<div class="note-math-display">\[evB_R=\frac{mv^2}{R}\]</div>
+<p>整理：</p>
+<div class="note-math-display">\[mv=eRB_R\]</div>
+<p>电子在感生电场作用下切向加速：</p>
+<div class="note-math-display">\[\frac{\mathrm d(mv)}{\mathrm dt}=eE_K\]</div>
+<p>代入：</p>
+<div class="note-math-display">\[\frac{\mathrm d(mv)}{\mathrm dt}
+=\frac{eR}{2}\frac{\mathrm d\bar B}{\mathrm dt}\]</div>
+<p>另一方面，对 <span class="note-math-inline">\(mv=eRB_R\)</span> 求导：</p>
+<div class="note-math-display">\[\frac{\mathrm d(mv)}{\mathrm dt}
+=eR\frac{\mathrm dB_R}{\mathrm dt}\]</div>
+<p>比较两式：</p>
+<div class="note-math-display">\[\frac{\mathrm dB_R}{\mathrm dt}
+=\frac12\frac{\mathrm d\bar B}{\mathrm dt}\]</div>
+<p>在磁场从零建立的条件下：</p>
+<div class="note-math-display">\[\boxed{B_R=\frac12\bar B}\]</div>
+<p>这就是电子感应加速器中电子保持固定半径并持续加速的条件。</p>
+<p><strong>特别注意：</strong> <span class="note-math-inline">\(B_R\)</span> 是轨道处的磁场，<span class="note-math-inline">\(\bar B\)</span> 是轨道所围面积内的平均磁场，二者不能混为一谈。</p>
+</blockquote>
+<h3 id="为什么只在第一个四分之一周期内加速？【PPT】"><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E5%9C%A8%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%9B%9B%E5%88%86%E4%B9%8B%E4%B8%80%E5%91%A8%E6%9C%9F%E5%86%85%E5%8A%A0%E9%80%9F%EF%BC%9F%E3%80%90PPT%E3%80%91" class="headerlink" title="为什么只在第一个四分之一周期内加速？【PPT】"></a>为什么只在第一个四分之一周期内加速？【PPT】</h3><p>对于正弦交变磁场，PPT</p>
+<p>指出第一和第四个四分之一周期内，感生电场的方向都可能使电子加速。</p>
+<p>但第四个四分之一周期中，磁场方向已经反转，洛伦兹力不能再提供原轨道所需的向心力。因此，只有第一个四分之一周期内，电子才能沿原来的固定轨道加速。</p>
+<p>PPT 的结论是：虽然可用于加速的时间只有一个四分之一周期，但电子仍能在这段时间内沿环形轨道运动几十万圈，最终使速度接近光速。<strong>PPT 没有给出用于重新计算圈数的完整数值条件，因此这里保留课堂结论，不额外假设轨道周长或交流频率。</strong></p>
+<hr>
+<h1 id="§16-6-涡电流（一般了解）【教材补充｜PPT-未展开】"><a href="#%C2%A716-6-%E6%B6%A1%E7%94%B5%E6%B5%81%EF%BC%88%E4%B8%80%E8%88%AC%E4%BA%86%E8%A7%A3%EF%BC%89%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%EF%BD%9CPPT-%E6%9C%AA%E5%B1%95%E5%BC%80%E3%80%91" class="headerlink" title="§16-6 涡电流（一般了解）【教材补充｜PPT 未展开】"></a>§16-6 涡电流（一般了解）【教材补充｜PPT 未展开】</h1><p><strong>【教材补充】资料说明：</strong> 本节不在本次 PPT 的主要讲授范围内，依据教材第 399—400 页整理。以理解概念、产生原因和应用为主，不要求复杂计算。</p>
+<h2 id="1-涡电流的定义【教材补充】"><a href="#1-%E6%B6%A1%E7%94%B5%E6%B5%81%E7%9A%84%E5%AE%9A%E4%B9%89%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="1. 涡电流的定义【教材补充】"></a>1. 涡电流的定义【教材补充】</h2><p>当大块导体处于变化磁场中，或导体在磁场中运动导致穿过导体内部回路的磁通量发生变化时，导体内部会产生闭合的感应电流。由于大块金属的电阻通常很小，涡电流可能很大。</p>
+<p>这种在大块导体内部形成的闭合感应电流称为：</p>
+<div class="note-math-display">\[\boxed{\text{涡电流（eddy current）}}\]</div>
+<p>涡电流不需要外接导线形成普通电路。大块导体内部本身就可以形成许多闭合电流回路。</p>
+<p>其方向仍遵循楞次定律：涡电流产生的磁场阻碍引起涡电流的磁通量变化。</p>
+<h2 id="2-涡电流的热效应【教材补充】"><a href="#2-%E6%B6%A1%E7%94%B5%E6%B5%81%E7%9A%84%E7%83%AD%E6%95%88%E5%BA%94%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="2. 涡电流的热效应【教材补充】"></a>2. 涡电流的热效应【教材补充】</h2><p>涡电流在有电阻的金属内部流动，会产生焦耳热：</p>
+<div class="note-math-display">\[Q=I^2Rt,\qquad P=I^2R\]</div>
+<h3 id="有利应用：高频感应电炉【教材补充】"><a href="#%E6%9C%89%E5%88%A9%E5%BA%94%E7%94%A8%EF%BC%9A%E9%AB%98%E9%A2%91%E6%84%9F%E5%BA%94%E7%94%B5%E7%82%89%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="有利应用：高频感应电炉【教材补充】"></a>有利应用：高频感应电炉【教材补充】</h3><ol>
+<li><p>线圈通入高频交变电流；</p>
+</li>
+<li><p>线圈产生高频交变磁场；</p>
+</li>
+<li><p>金属内部产生涡电流；</p>
+</li>
+<li><p>涡电流产生焦耳热，使金属升温甚至熔化。</p>
+</li>
+</ol>
+<p>这种方法可用于金属冶炼、加热和某些真空处理工艺。教材还举例说明，可隔着玻璃加热真空器件中的金属电极，使其释放吸附气体，再将气体抽出。金属不必直接接触电源，也可以在自身内部产生热量。</p>
+<h3 id="有害影响：变压器和电机铁芯损耗【教材补充】"><a href="#%E6%9C%89%E5%AE%B3%E5%BD%B1%E5%93%8D%EF%BC%9A%E5%8F%98%E5%8E%8B%E5%99%A8%E5%92%8C%E7%94%B5%E6%9C%BA%E9%93%81%E8%8A%AF%E6%8D%9F%E8%80%97%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="有害影响：变压器和电机铁芯损耗【教材补充】"></a>有害影响：变压器和电机铁芯损耗【教材补充】</h3><p>铁芯处于交变磁场中，会产生涡电流，引起发热和电能损耗；温度过高还可能损坏绝缘材料。</p>
+<p><strong>减小涡电流的方法：将整块铁芯改成许多相互绝缘的薄硅钢片叠合而成，并使硅钢片平面与磁感线平行。</strong></p>
+<p>原因：</p>
+<ul>
+<li>绝缘层限制涡电流跨越薄片流动；</li>
+<li>大的闭合电流回路被分割、限制；</li>
+<li>回路电阻增大，涡电流减小；</li>
+<li>铁芯中的电能损耗随之减小。</li>
+</ul>
+<h2 id="3-涡电流的机械效应：电磁阻尼【教材补充】"><a href="#3-%E6%B6%A1%E7%94%B5%E6%B5%81%E7%9A%84%E6%9C%BA%E6%A2%B0%E6%95%88%E5%BA%94%EF%BC%9A%E7%94%B5%E7%A3%81%E9%98%BB%E5%B0%BC%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="3. 涡电流的机械效应：电磁阻尼【教材补充】"></a>3. 涡电流的机械效应：电磁阻尼【教材补充】</h2><p>教材图 16-17 用一块扇形铝板悬挂在磁铁两极间摆动的装置说明电磁阻尼。</p>
+<ul>
+<li><p>铝板进入磁场区域时，穿过铝板的磁通量发生变化；</p>
+</li>
+<li><p>铝板内部产生涡电流；</p>
+</li>
+<li><p>涡电流的磁场根据楞次定律阻碍铝板的运动；</p>
+</li>
+<li><p>铝板受到阻尼，摆动逐渐减弱。</p>
+</li>
+</ul>
+<p>当铝板停止运动且外部磁场不变时，穿过它的磁通量不再变化，涡电流及其阻尼作用也随之消失。</p>
+<p><strong>应用：</strong></p>
+<p>电磁仪表中，指针转轴可连接铝片。指针摆动时铝片中产生涡电流，电磁阻尼使指针迅速稳定在平衡位置。</p>
+<h2 id="4-趋肤效应（skin-effect）【教材补充】"><a href="#4-%E8%B6%8B%E8%82%A4%E6%95%88%E5%BA%94%EF%BC%88skin-effect%EF%BC%89%E3%80%90%E6%95%99%E6%9D%90%E8%A1%A5%E5%85%85%E3%80%91" class="headerlink" title="4. 趋肤效应（skin effect）【教材补充】"></a>4. 趋肤效应（skin effect）【教材补充】</h2><p>在直流电路中，均匀导线横截面上的电流密度近似均匀。</p>
+<p>在交流电路中，随着频率增加，导线横截面上的电流越来越集中在导线表面附近，这种现象称为趋肤效应。</p>
+<p>产生原因：</p>
+<ol>
+<li>交变电流产生变化磁场；</li>
+<li>变化磁场在导线内部激发感生电场并形成涡电流；</li>
+<li>涡电流削弱导线内部的电流、增强靠近表面的电流；</li>
+<li>使交流电流分布向表面集中。</li>
+</ol>
+<p>影响：</p>
+<ul>
+<li>有效导电截面积减小；</li>
+<li>等效电阻增大；</li>
+<li>高频电路中的电阻损耗增加。</li>
+</ul>
+<p>减小趋肤效应的方法：</p>
+<ul>
+<li>在频率不太高时，可将相互绝缘的细导线编织成束，代替同截面积的实心导线；</li>
+<li>在高频电路中，可采用管状导线，因为电流主要分布在表面附近，导线内部材料利用率较低。</li>
+</ul>
+<p>应用：</p>
+<ul>
+<li>高频感应加热；</li>
+<li>金属表面淬火：利用高频电流使金属表面迅速升温，再快速冷却，使表面变硬而内部仍保持一定韧性。</li>
+</ul>
+<hr>
+<h1 id="本章核心公式总表"><a href="#%E6%9C%AC%E7%AB%A0%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F%E6%80%BB%E8%A1%A8" class="headerlink" title="本章核心公式总表"></a>本章核心公式总表</h1><blockquote class="obsidian-callout obsidian-callout-summary">
+<div class="obsidian-callout-header">公式速查</div>
+<p><strong>来源标记：</strong> 本表按公式在资料中的出现情况标注；【PPT + 教材】表示两份资料均出现或相互补足。</p>
+<h2 id="1-磁通量与法拉第定律"><a href="#1-%E7%A3%81%E9%80%9A%E9%87%8F%E4%B8%8E%E6%B3%95%E6%8B%89%E7%AC%AC%E5%AE%9A%E5%BE%8B" class="headerlink" title="1. 磁通量与法拉第定律"></a>1. 磁通量与法拉第定律</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>公式</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>均匀磁场中的磁通量</td>
+<td><span class="note-math-inline">\(\Phi_B=BS\cos\theta\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>一般磁通量</td>
+<td><span class="note-math-inline">\(\displaystyle\Phi_B=\int_S\mathbf B\cdot\mathrm d\mathbf S\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>单匝感应电动势</td>
+<td><span class="note-math-inline">\(\displaystyle\mathcal E_i=-\frac{\mathrm d\Phi_B}{\mathrm dt}\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>N 匝、各匝磁通相同</td>
+<td><span class="note-math-inline">\(\displaystyle\mathcal E_i=-N\frac{\mathrm d\Phi_B}{\mathrm dt}\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>全磁通</td>
+<td><span class="note-math-inline">\(\displaystyle\Psi=\sum_{j=1}^N\Phi_j\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>感应电流</td>
+<td><span class="note-math-inline">\(\displaystyle I=\mathcal E_i/R\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>感生电荷</td>
+<td><span class="note-math-inline">\(\displaystyle q=-\Delta\Psi/R\)</span></td>
+<td>【PPT】</td>
+</tr>
+</tbody></table></div>
+<h2 id="2-动生电动势"><a href="#2-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF" class="headerlink" title="2. 动生电动势"></a>2. 动生电动势</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>公式</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>洛伦兹力</td>
+<td><span class="note-math-inline">\(\mathbf F_L=q\mathbf v\times\mathbf B\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>非静电场</td>
+<td><span class="note-math-inline">\(\mathbf E_K=\mathbf v\times\mathbf B\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>微元动生电动势</td>
+<td><span class="note-math-inline">\(\mathrm d\mathcal E=(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>一般导体棒</td>
+<td><span class="note-math-inline">\(\displaystyle\mathcal E=\int_a^b(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>特殊情形</td>
+<td><span class="note-math-inline">\(\mathcal E=Blv\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>旋转铜棒</td>
+<td><span class="note-math-inline">\(\displaystyle\mathcal E=\frac12B\omega l_0^2\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+</tbody></table></div>
+<h2 id="3-发电机"><a href="#3-%E5%8F%91%E7%94%B5%E6%9C%BA" class="headerlink" title="3. 发电机"></a>3. 发电机</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>公式</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>转动线圈磁通量</td>
+<td><span class="note-math-inline">\(\Phi_B=BS\cos\omega t\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>单匝交流电动势</td>
+<td><span class="note-math-inline">\(\mathcal E=BS\omega\sin\omega t\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>N 匝线圈</td>
+<td><span class="note-math-inline">\(\mathcal E=NBS\omega\sin\omega t\)</span></td>
+<td>【整理推导】</td>
+</tr>
+<tr>
+<td>最大电动势</td>
+<td><span class="note-math-inline">\(\mathcal E_0=NBS\omega\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>周期与频率</td>
+<td><span class="note-math-inline">\(T=2\pi/\omega=1/f\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+</tbody></table></div>
+<h2 id="4-感生电场"><a href="#4-%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA" class="headerlink" title="4. 感生电场"></a>4. 感生电场</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>公式</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>感生电场环路定律</td>
+<td><span class="note-math-inline">\(\displaystyle\oint_L\mathbf E_K\cdot\mathrm d\mathbf l=-\frac{\mathrm d\Phi_B}{\mathrm dt}\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>感生电动势</td>
+<td><span class="note-math-inline">\(\displaystyle\mathcal E_{ab}=\int_a^b\mathbf E_K\cdot\mathrm d\mathbf l\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>圆柱磁场内 <span class="note-math-inline">\(r&lt;R\)</span></td>
+<td><span class="note-math-inline">\(\displaystyle \lvert E_K\rvert=\frac r2\lvert\frac{\mathrm dB}{\mathrm dt}\rvert\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>圆柱磁场外 <span class="note-math-inline">\(r&gt;R\)</span></td>
+<td><span class="note-math-inline">\(\displaystyle \lvert E_K\rvert=\frac{R^2}{2r}\lvert\frac{\mathrm dB}{\mathrm dt}\rvert\)</span></td>
+<td>【PPT + 教材】</td>
+</tr>
+<tr>
+<td>变化磁场中的直棒</td>
+<td><span class="note-math-inline">\(\displaystyle\lvert\mathcal E\rvert=\frac{hl}{2}\lvert\frac{\mathrm dB}{\mathrm dt}\rvert\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>动生与感生同时存在</td>
+<td><span class="note-math-inline">\(\displaystyle\mathcal E=-\frac{\mathrm d(BS)}{\mathrm dt}=-B\frac{\mathrm dS}{\mathrm dt}-S\frac{\mathrm dB}{\mathrm dt}\)</span></td>
+<td>【PPT】</td>
+</tr>
+</tbody></table></div>
+<h2 id="5-电子感应加速器"><a href="#5-%E7%94%B5%E5%AD%90%E6%84%9F%E5%BA%94%E5%8A%A0%E9%80%9F%E5%99%A8" class="headerlink" title="5. 电子感应加速器"></a>5. 电子感应加速器</h2><div class="notes-table-scroll"><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>公式</th>
+<th>来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轨道处感生电场</td>
+<td><span class="note-math-inline">\(\displaystyle E_K=\frac R2\frac{\mathrm d\bar B}{\mathrm dt}\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>电子圆周运动</td>
+<td><span class="note-math-inline">\(\displaystyle evB_R=\frac{mv^2}{R}\)</span></td>
+<td>【PPT】</td>
+</tr>
+<tr>
+<td>电子动量关系</td>
+<td><span class="note-math-inline">\(mv=eRB_R\)</span></td>
+<td>【整理推导】</td>
+</tr>
+<tr>
+<td>固定轨道条件</td>
+<td><span class="note-math-inline">\(\displaystyle B_R=\frac12\bar B\)</span></td>
+<td>【PPT】</td>
+</tr>
+</tbody></table></div>
+</blockquote>
+<h1 id="常见易错点与解题判断【PPT-教材归纳】"><a href="#%E5%B8%B8%E8%A7%81%E6%98%93%E9%94%99%E7%82%B9%E4%B8%8E%E8%A7%A3%E9%A2%98%E5%88%A4%E6%96%AD%E3%80%90PPT-%E6%95%99%E6%9D%90%E5%BD%92%E7%BA%B3%E3%80%91" class="headerlink" title="常见易错点与解题判断【PPT + 教材归纳】"></a>常见易错点与解题判断【PPT + 教材归纳】</h1><p><strong>来源：</strong> 本节为 PPT 与教材内容的归纳整理；其中涡电流部分对应教材补充。</p>
+<h2 id="1-磁通量变化的判断"><a href="#1-%E7%A3%81%E9%80%9A%E9%87%8F%E5%8F%98%E5%8C%96%E7%9A%84%E5%88%A4%E6%96%AD" class="headerlink" title="1. 磁通量变化的判断"></a>1. 磁通量变化的判断</h2><p>不要只看 <span class="note-math-inline">\(B\)</span> 是否变化。即使 <span class="note-math-inline">\(B\)</span> 不变，只要面积或夹角变化，磁通量也可能变化。</p>
+<div class="note-math-display">\[\Phi_B=BS\cos\theta\]</div>
+<h2 id="2-感应电动势方向"><a href="#2-%E6%84%9F%E5%BA%94%E7%94%B5%E5%8A%A8%E5%8A%BF%E6%96%B9%E5%90%91" class="headerlink" title="2. 感应电动势方向"></a>2. 感应电动势方向</h2><p>先规定正绕行方向，再用右手螺旋定则确定法线方向，最后结合磁通量变化率和法拉第定律判断符号。不要直接凭感觉判断电流方向。</p>
+<h2 id="3-动生电动势与感生电动势"><a href="#3-%E5%8A%A8%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF%E4%B8%8E%E6%84%9F%E7%94%9F%E7%94%B5%E5%8A%A8%E5%8A%BF" class="headerlink" title="3. 动生电动势与感生电动势"></a>3. 动生电动势与感生电动势</h2><ul>
+<li><p>磁场随时间变化：感生电动势；</p>
+</li>
+<li><p>导体运动或回路形状、位置变化：动生电动势；</p>
+</li>
+<li><p>两种情况同时出现：两种电动势可以同时存在。</p>
+</li>
+</ul>
+<h2 id="4-Blv-不能随便套用"><a href="#4-Blv-%E4%B8%8D%E8%83%BD%E9%9A%8F%E4%BE%BF%E5%A5%97%E7%94%A8" class="headerlink" title="4. \(Blv\) 不能随便套用"></a>4. <span class="note-math-inline">\(Blv\)</span> 不能随便套用</h2><p>只有在磁场均匀、棒长和运动方向等满足相应垂直关系时，才能直接使用：</p>
+<div class="note-math-display">\[\mathcal E=Blv\]</div>
+<p>一般情况使用：</p>
+<div class="note-math-display">\[\mathcal E=\int(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l\]</div>
+<h2 id="5-感生电场的积分路径"><a href="#5-%E6%84%9F%E7%94%9F%E7%94%B5%E5%9C%BA%E7%9A%84%E7%A7%AF%E5%88%86%E8%B7%AF%E5%BE%84" class="headerlink" title="5. 感生电场的积分路径"></a>5. 感生电场的积分路径</h2><p>感生电场是非保守场，线积分与路径有关。不能像静电场一样只根据起点、终点的电势差求任意路径上的做功。</p>
+<h2 id="6-圆柱形变化磁场的内外区域"><a href="#6-%E5%9C%86%E6%9F%B1%E5%BD%A2%E5%8F%98%E5%8C%96%E7%A3%81%E5%9C%BA%E7%9A%84%E5%86%85%E5%A4%96%E5%8C%BA%E5%9F%9F" class="headerlink" title="6. 圆柱形变化磁场的内外区域"></a>6. 圆柱形变化磁场的内外区域</h2><ul>
+<li><p><span class="note-math-inline">\(r&lt;R\)</span>：磁通量面积是 <span class="note-math-inline">\(\pi r^2\)</span>；</p>
+</li>
+<li><p><span class="note-math-inline">\(r&gt;R\)</span>：磁通量面积是 <span class="note-math-inline">\(\pi R^2\)</span>。</p>
+</li>
+</ul>
+<p>外部没有磁场，不代表外部没有感生电场。</p>
+<h2 id="7-电子感应加速器"><a href="#7-%E7%94%B5%E5%AD%90%E6%84%9F%E5%BA%94%E5%8A%A0%E9%80%9F%E5%99%A8" class="headerlink" title="7. 电子感应加速器"></a>7. 电子感应加速器</h2><p>必须区分：</p>
+<ul>
+<li><span class="note-math-inline">\(B_R\)</span>：轨道处的磁感应强度；</li>
+<li><span class="note-math-inline">\(\bar B\)</span>：轨道所围面积内的平均磁感应强度。</li>
+</ul>
+<p>固定轨道条件：</p>
+<div class="note-math-display">\[B_R=\frac12\bar B\]</div>
+<h2 id="8-涡电流"><a href="#8-%E6%B6%A1%E7%94%B5%E6%B5%81" class="headerlink" title="8. 涡电流"></a>8. 涡电流</h2><ul>
+<li><p>涡电流是大块导体内部形成的闭合感应电流；</p>
+</li>
+<li><p>叠片绝缘铁芯用于减小涡流损耗；</p>
+</li>
+<li><p>电磁阻尼总是阻碍导体运动；</p>
+</li>
+<li><p>趋肤效应使交流电流集中在导线表面，频率越高越明显。</p>
+</li>
+</ul>
+<hr>
+<h1 id="整章自检"><a href="#%E6%95%B4%E7%AB%A0%E8%87%AA%E6%A3%80" class="headerlink" title="整章自检"></a>整章自检</h1><blockquote class="obsidian-callout obsidian-callout-question">
+<div class="obsidian-callout-header">点击展开自检题与答案</div>
+<h2 id="自检题"><a href="#%E8%87%AA%E6%A3%80%E9%A2%98" class="headerlink" title="自检题"></a>自检题</h2><ol>
+<li>发生电磁感应的核心条件是什么？闭合回路与感应电流是什么关系？</li>
+<li>写出磁通量的一般式与匀强磁场中的简化式，并说明夹角 <span class="note-math-inline">\(\theta\)</span> 的含义。</li>
+<li>写出单匝与 <span class="note-math-inline">\(N\)</span> 匝线圈的法拉第电磁感应定律。</li>
+<li>用楞次定律判断方向时，应按什么顺序操作？</li>
+<li>总电阻为 <span class="note-math-inline">\(R\)</span> 的闭合线圈中，磁通匝链数改变 <span class="note-math-inline">\(\Delta\Psi\)</span> 时，通过导线截面的感生电荷是多少？</li>
+<li>写出动生电动势的一般积分式。公式 <span class="note-math-inline">\(\mathcal E=Blv\)</span> 需要哪些条件？</li>
+<li>洛伦兹力对电荷的总功为零，动生电动势输出的电能来自哪里？</li>
+<li>写出 <span class="note-math-inline">\(N\)</span> 匝线圈匀速转动时的交流电动势及最大值。</li>
+<li>写出感生电场的环路定律，并指出感生电场与静电场的本质差别。</li>
+<li>半径为 <span class="note-math-inline">\(R\)</span> 的圆柱形区域内有均匀变化磁场，分别写出 <span class="note-math-inline">\(r&lt;R\)</span> 与 <span class="note-math-inline">\(r&gt;R\)</span> 处感生电场大小。</li>
+<li>回路既运动、磁场又变化时，如何拆分总电动势？</li>
+<li>电子感应加速器中，感生电场与磁场分别起什么作用？固定轨道条件是什么？</li>
+<li>什么是涡电流？各举一个有利应用和一种减小损耗的方法。</li>
+</ol>
+<h2 id="答案要点"><a href="#%E7%AD%94%E6%A1%88%E8%A6%81%E7%82%B9" class="headerlink" title="答案要点"></a>答案要点</h2><ol>
+<li>穿过回路的磁通量发生变化就会产生感应电动势；回路闭合且具有导电性时才形成持续的感应电流。</li>
+<li><span class="note-math-inline">\(\Phi_B=\int_S\mathbf B\cdot\mathrm d\mathbf S\)</span>；匀强磁场且平面面积为 <span class="note-math-inline">\(S\)</span> 时，<span class="note-math-inline">\(\Phi_B=BS\cos\theta\)</span>，<span class="note-math-inline">\(\theta\)</span> 是 <span class="note-math-inline">\(\mathbf B\)</span> 与面积法向的夹角。</li>
+<li><span class="note-math-inline">\(\mathcal E=-\mathrm d\Phi_B/\mathrm dt\)</span>；各匝磁通相同时，<span class="note-math-inline">\(\mathcal E=-N\,\mathrm d\Phi_B/\mathrm dt=-\mathrm d\Psi/\mathrm dt\)</span>。</li>
+<li>先定回路正绕行方向，再用右手定则确定面积法向，判断磁通正负及其增减，最后由法拉第定律的负号确定电动势方向。</li>
+<li><span class="note-math-inline">\(q=-\Delta\Psi/R\)</span>；只问大小时取 <span class="note-math-inline">\(|q|=|\Delta\Psi|/R\)</span>。</li>
+<li><span class="note-math-inline">\(\mathcal E=\int_a^b(\mathbf v\times\mathbf B)\cdot\mathrm d\mathbf l\)</span>。<span class="note-math-inline">\(Blv\)</span> 只适用于匀强磁场、直棒整体同速运动，且 <span class="note-math-inline">\(\mathbf v\perp\mathbf B\)</span>、棒方向平行于 <span class="note-math-inline">\(\mathbf v\times\mathbf B\)</span> 的情形。</li>
+<li>来自维持导体运动的外力所做的机械功，即机械能转化为电能。</li>
+<li><span class="note-math-inline">\(\mathcal E=NBS\omega\sin\omega t\)</span>，<span class="note-math-inline">\(\mathcal E_0=NBS\omega\)</span>。</li>
+<li><span class="note-math-inline">\(\oint_L\mathbf E_K\cdot\mathrm d\mathbf l=-\mathrm d\Phi_B/\mathrm dt\)</span>。感生电场是非保守的涡旋场，闭合线积分一般不为零，不能定义单值的普通电势。</li>
+<li><span class="note-math-inline">\(r&lt;R\)</span> 时，<span class="note-math-inline">\(|E_K|=\frac r2|\mathrm dB/\mathrm dt|\)</span>；<span class="note-math-inline">\(r&gt;R\)</span> 时，<span class="note-math-inline">\(|E_K|=\frac{R^2}{2r}|\mathrm dB/\mathrm dt|\)</span>。</li>
+<li><span class="note-math-inline">\(\mathcal E=-\mathrm d(BS)/\mathrm dt=-B\,\mathrm dS/\mathrm dt-S\,\mathrm dB/\mathrm dt\)</span>；两项分别对应动生与感生贡献。</li>
+<li>感生电场沿切向加速电子，磁场提供向心力；固定轨道条件为 <span class="note-math-inline">\(B_R=\bar B/2\)</span>。</li>
+<li>涡电流是大块导体内部形成的闭合感应电流。有利应用如高频感应加热；用相互绝缘的薄硅钢片叠成铁芯可减小涡流损耗。</li>
+</ol>
+</blockquote>
+<hr>
+</div>
+    <section class="notes-article-comments" aria-label="Comments">
+      <script src="https://giscus.app/client.js"
+        data-repo="YidanPan/YidanPan.github.io"
+        data-repo-id="R_kgDOTtkhPw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOTtkhP84DC1wo"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+    
+    <nav class="notes-article-pagination" aria-label="Adjacent notes">
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch15%E7%89%A9%E8%B4%A8%E7%9A%84%E7%A3%81%E5%9C%BA/"><span>← Previous</span><strong>Ch15物质的磁场</strong></a>
+      <a class="notes-article-pagination-link is-next" href="/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch18%E5%B8%A6%E7%94%B5%E7%B2%92%E5%AD%90%E5%9C%A8%E7%94%B5%E5%9C%BA%E5%92%8C%E7%A3%81%E5%9C%BA%E4%B8%AD%E7%9A%84%E8%BF%90%E5%8A%A8/"><span>Next →</span><strong>Ch18带电粒子在电场和磁场中的运动</strong></a>
+    </nav>
+    
+  </article>
+
+  <aside class="notes-article-toc" aria-label="Article outline">
+    <span class="notes-article-toc-kicker">On this page</span>
+    <nav class="notes-article-toc-list" id="notesArticleToc"></nav>
+    <button class="notes-article-top" id="notesArticleTop" type="button" aria-label="Back to top">TOP</button>
+  </aside>
+</div>
+
+<script>
+(function() {
+  var content = document.getElementById('notesArticleContent');
+  var toc = document.getElementById('notesArticleToc');
+  var topButton = document.getElementById('notesArticleTop');
+  if (!content || !toc || !topButton) return;
+
+  var headerOffset = 110;
+
+  function revealExample(hash, scroll) {
+    var id;
+    try { id = decodeURIComponent(hash.replace(/^#/, '')); } catch (_) { return; }
+    var target = document.getElementById(id);
+    if (!target || !content.contains(target)) return;
+    var parent = target.parentElement;
+    while (parent && parent !== content) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+      parent = parent.parentElement;
+    }
+    if (scroll) window.requestAnimationFrame(function() { target.scrollIntoView({ block: 'start' }); });
+  }
+  document.addEventListener('click', function(event) {
+    var link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    var url = new URL(link.href, window.location.href);
+    if (url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash) revealExample(url.hash, false);
+  });
+  window.addEventListener('hashchange', function() { revealExample(window.location.hash, true); });
+  if (window.location.hash) revealExample(window.location.hash, true);
+
+  topButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2, h3'));
+  if (!headings.length) {
+    toc.innerHTML = '<span class="notes-empty-state">No headings found in this note.</span>';
+    return;
+  }
+
+  var items = headings.map(function(heading, index) {
+    var id = heading.id || ('section-' + (index + 1));
+    heading.id = id;
+    return {
+      id: id,
+      text: heading.textContent.trim(),
+      level: Number(heading.tagName.charAt(1))
+    };
+  });
+
+  items.forEach(function(item) {
+    var link = document.createElement('a');
+    link.className = 'notes-article-toc-link';
+    link.dataset.level = item.level;
+    link.href = '#' + encodeURIComponent(item.id);
+    link.textContent = item.text;
+    toc.appendChild(link);
+  });
+
+  var links = Array.prototype.slice.call(toc.querySelectorAll('.notes-article-toc-link'));
+
+  function setActive(id) {
+    links.forEach(function(link) {
+      link.classList.toggle('is-active', link.getAttribute('href') === '#' + encodeURIComponent(id));
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var visible = entries
+        .filter(function(entry) { return entry.isIntersecting; })
+        .sort(function(a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; })[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: ('-' + headerOffset + 'px 0px -65% 0px'), threshold: 0 });
+
+    headings.forEach(function(heading) { observer.observe(heading); });
+  }
+
+})();
+</script>
+
+<script>
+window.MathJax = {
+  loader: {
+    load: ['[tex]/boldsymbol']
+  },
+  tex: {
+    packages: { '[+]': ['boldsymbol'] },
+    inlineMath: [['\\(', '\\)'], ['$', '$']],
+    displayMath: [['\\[', '\\]'], ['$$', '$$']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  startup: {
+    typeset: true
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+(function() {
+  var codeBlocks = Array.prototype.slice.call(document.querySelectorAll('#notesArticleContent pre > code.language-mermaid, #notesArticleContent pre > code.mermaid'));
+  if (!codeBlocks.length) return;
+
+  var diagrams = codeBlocks.map(function(code) {
+    var container = document.createElement('div');
+    container.className = 'mermaid notes-mermaid';
+    container.textContent = code.textContent;
+    code.parentNode.replaceWith(container);
+    return container;
+  });
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.4/dist/mermaid.min.js';
+  script.onload = function() {
+    window.mermaid.initialize({ startOnLoad: false, theme: document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? 'dark' : 'default' });
+    window.mermaid.run({ nodes: diagrams });
+  };
+  document.head.appendChild(script);
+})();
+</script>
+
+    
+
+    
+      
+        <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+          <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+        </a>
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+      
+    
+  </main>
+
+  
+
+  
+    
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+    <noscript>
+      <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    </noscript>
+  
+
+  <!-- Shared scripts: dark mode + nav pill -->
+  <script>
+  (function() {
+    var STORAGE_KEY = 'user-color-scheme';
+    var dark = localStorage.getItem(STORAGE_KEY);
+
+    function applyDark(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-user-color-scheme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+      }
+    }
+
+    if (dark === null) {
+      dark = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    applyDark(dark === 'dark');
+
+    var darkToggle = document.getElementById('darkToggle');
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-user-color-scheme');
+        applyDark(current !== 'dark');
+        localStorage.setItem(STORAGE_KEY, current !== 'dark' ? 'dark' : 'light');
+      });
+    }
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (localStorage.getItem(STORAGE_KEY) === null) {
+        applyDark(e.matches);
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var navLinks = document.querySelectorAll('#navLinks .nav-link');
+    var navPill = document.getElementById('navPill');
+    var navLinksContainer = document.getElementById('navLinks');
+    var nav = document.getElementById('nav');
+
+    function updatePill(link) {
+      if (!link || !navPill || !navLinksContainer) return;
+      navPill.style.width = link.offsetWidth + 'px';
+      navPill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      navPill.style.opacity = '1';
+    }
+
+    var pageKind = nav ? (nav.getAttribute('data-page-kind') || '') : '';
+    var activeLink = null;
+
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+      if (link.getAttribute('data-nav-kind') === pageKind) {
+        activeLink = link;
+      }
+    });
+
+    if (activeLink) {
+      activeLink.classList.add('active');
+      activeLink.setAttribute('aria-current', 'page');
+      updatePill(activeLink);
+    }
+
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(l) {
+          l.classList.remove('active');
+          l.removeAttribute('aria-current');
+        });
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+        updatePill(link);
+      });
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        var activeLink = document.querySelector('#navLinks .nav-link.active');
+        if (activeLink) updatePill(activeLink);
+      }, 150);
+    });
+  })();
+  </script>
+
+  <!-- Background decorations -->
+  <div class="bg-layer">
+    <div class="bg-dots"></div>
+    <div class="bg-blob bg-blob-top"></div>
+    <div class="bg-blob bg-blob-bottom"></div>
+  </div>
+
+</body>
+</html>

@@ -1768,7 +1768,7 @@ P
     </section>
     
     <nav class="notes-article-pagination" aria-label="Adjacent notes">
-      <span></span>
+      <a class="notes-article-pagination-link is-previous" href="/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch12-13%E9%9D%99%E7%94%B5%E5%9C%BA/"><span>← Previous</span><strong>Ch12-13静电场</strong></a>
       <a class="notes-article-pagination-link is-next" href="/Notes/article/%E5%A4%A7%E7%89%A9%E4%B9%99%E4%BA%8C/Ch14%E7%94%B5%E6%B5%81%E5%92%8C%E7%A3%81%E5%9C%BA/"><span>Next →</span><strong>Ch14电流和磁场</strong></a>
     </nav>
     
@@ -1864,7 +1864,11 @@ P
 
 <script>
 window.MathJax = {
+  loader: {
+    load: ['[tex]/boldsymbol']
+  },
   tex: {
+    packages: { '[+]': ['boldsymbol'] },
     inlineMath: [['\\(', '\\)'], ['$', '$']],
     displayMath: [['\\[', '\\]'], ['$$', '$$']],
     processEscapes: true,
@@ -1879,6 +1883,29 @@ window.MathJax = {
 };
 </script>
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+(function() {
+  var codeBlocks = Array.prototype.slice.call(document.querySelectorAll('#notesArticleContent pre > code.language-mermaid, #notesArticleContent pre > code.mermaid'));
+  if (!codeBlocks.length) return;
+
+  var diagrams = codeBlocks.map(function(code) {
+    var container = document.createElement('div');
+    container.className = 'mermaid notes-mermaid';
+    container.textContent = code.textContent;
+    code.parentNode.replaceWith(container);
+    return container;
+  });
+
+  var script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.4/dist/mermaid.min.js';
+  script.onload = function() {
+    window.mermaid.initialize({ startOnLoad: false, theme: document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? 'dark' : 'default' });
+    window.mermaid.run({ nodes: diagrams });
+  };
+  document.head.appendChild(script);
+})();
+</script>
 
     
 

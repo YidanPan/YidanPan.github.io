@@ -724,3 +724,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 .notes-example-body > :first-child { margin-top: 0; }
 .notes-example-body > :last-child { margin-bottom: 0; }
 [data-user-color-scheme="dark"] .notes-article-content blockquote.obsidian-callout { background: var(--bg-tint); color: var(--ink); }
+.notes-article-content .notes-mermaid {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  text-align: center;
+}

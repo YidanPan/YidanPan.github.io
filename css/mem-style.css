@@ -3416,6 +3416,26 @@ body:not(.is-home) > main {
   color: var(--ink-2);
 }
 
+.proj-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 245px);
+  align-items: start;
+  gap: 24px;
+}
+
+.proj-preview {
+  margin: 0;
+  max-width: 320px;
+}
+
+.proj-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
 .proj-description p {
   display: block;
   color: var(--ink-2);
@@ -3492,6 +3512,9 @@ body:not(.is-home) > main {
   .projects-layout {
     grid-template-columns: 1fr;
     gap: 22px;
+  }
+  .proj-overview {
+    grid-template-columns: 1fr;
   }
   .projects-layout::after {
     display: none;

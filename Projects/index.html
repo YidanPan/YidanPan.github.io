@@ -19,15 +19,16 @@
   <meta name="author" content="Yidan Pan">
   <meta name="keywords" content="AI,Computer Science,Agents,Software,Blog,LLM">
   
-    <meta name="description" content="PROJECTS       1 &#x2F; 5 Projects                01HandwrittenDigit Recognition         02MovieAgent         03PersonalWebsite         04CS 61ACoursework         05AgenticMini RAG">
+    <meta name="description" content="Selected projects by Yidan Pan, including Kairos for Windows 11, Movie Agent, handwriting recognition, and Agentic Mini RAG.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Projects">
 <meta property="og:url" content="https://yidanpan.github.io/Projects/index.html">
 <meta property="og:site_name" content="Dan&#39;s Blog">
-<meta property="og:description" content="PROJECTS       1 &#x2F; 5 Projects                01HandwrittenDigit Recognition         02MovieAgent         03PersonalWebsite         04CS 61ACoursework         05AgenticMini RAG">
+<meta property="og:description" content="Selected projects by Yidan Pan, including Kairos for Windows 11, Movie Agent, handwriting recognition, and Agentic Mini RAG.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-10-22T01:25:06.951Z">
-<meta property="article:modified_time" content="2026-10-22T01:25:06.951Z">
+<meta property="og:image" content="https://yidanpan.github.io/img/projects/kairos-today.png">
+<meta property="article:published_time" content="2026-11-22T13:37:57.911Z">
+<meta property="article:modified_time" content="2026-11-22T13:37:57.911Z">
 <meta property="article:author" content="Yidan Pan">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Computer Science">
@@ -36,6 +37,7 @@
 <meta property="article:tag" content="Blog">
 <meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yidanpan.github.io/img/projects/kairos-today.png">
   
   
   
@@ -378,13 +380,14 @@
   <aside class="projects-nav" aria-label="Project navigation">
     <div class="projects-nav-inner">
       <div class="projects-nav-label">PROJECTS</div>
-      <div class="projects-progress"><span id="projectsProgress">1 / 5 Projects</span><i aria-hidden="true"><b id="projectsProgressBar"></b></i></div>
+      <div class="projects-progress"><span id="projectsProgress">1 / 6 Projects</span><i aria-hidden="true"><b id="projectsProgressBar"></b></i></div>
       <nav class="projects-nav-list">
         <a class="project-nav-link is-active" href="#handwritten-digit-recognition" data-project-nav="handwritten-digit-recognition"><span class="project-nav-index">01</span><span class="project-nav-dot"></span><span>Handwritten<br>Digit Recognition</span></a>
         <a class="project-nav-link" href="#movie-agent" data-project-nav="movie-agent"><span class="project-nav-index">02</span><span class="project-nav-dot"></span><span>Movie<br>Agent</span></a>
         <a class="project-nav-link" href="#personal-website" data-project-nav="personal-website"><span class="project-nav-index">03</span><span class="project-nav-dot"></span><span>Personal<br>Website</span></a>
         <a class="project-nav-link" href="#cs61a" data-project-nav="cs61a"><span class="project-nav-index">04</span><span class="project-nav-dot"></span><span>CS 61A<br>Coursework</span></a>
         <a class="project-nav-link" href="#agentic-mini-rag" data-project-nav="agentic-mini-rag"><span class="project-nav-index">05</span><span class="project-nav-dot"></span><span>Agentic<br>Mini RAG</span></a>
+        <a class="project-nav-link" href="#kairos" data-project-nav="kairos"><span class="project-nav-index">06</span><span class="project-nav-dot"></span><span>Kairos</span></a>
       </nav>
     </div>
   </aside>
@@ -514,6 +517,36 @@
 <a class="proj-link" href="https://github.com/YidanPan/Agentic-Mini-RAG" target="_blank" rel="noopener">GitHub →</a>
 </div>
 </article>
+
+<article class="proj-card" id="kairos" data-project-card>
+<header class="proj-card-head">
+<div>
+<h2>Kairos</h2>
+<div class="proj-label">Windows 11 · Tauri · React · Rust · SQLite</div>
+</div>
+<div class="proj-card-meta"><span class="proj-status proj-status-progress">Windows Preview</span><time datetime="2026-11">2026.11</time></div>
+</header>
+
+<div class="proj-overview">
+<div class="proj-description">
+<p>Kairos keeps your daily plan in a compact Windows 11 desktop panel.</p>
+<ul>
+<li>Set scheduled dates, deadlines, categories, and priorities</li>
+<li>Manage subtasks, recurring tasks, and Windows reminders</li>
+<li>Track progress and keep task data and backups on your PC</li>
+</ul>
+</div>
+<figure class="proj-preview">
+<img src="/img/projects/kairos-today.png" srcset="/img/loading.gif" lazyload width="765" height="818" alt="Kairos showing the day's progress and task lists for Today, Upcoming, and No Date" loading="lazy" decoding="async">
+</figure>
+</div>
+
+<div class="proj-links">
+<a class="proj-link" href="https://github.com/YidanPan/Kairos/releases/tag/v1.0.0-preview.1" target="_blank" rel="noopener">Download for Windows x64 →</a>
+<a class="proj-link" href="https://github.com/YidanPan/Kairos" target="_blank" rel="noopener">GitHub →</a>
+<a class="proj-link" href="https://github.com/YidanPan/Kairos/blob/main/README.zh-CN.md" target="_blank" rel="noopener" lang="zh-CN">中文使用说明 →</a>
+</div>
+</article>
 </div>
 </div>
 
@@ -524,10 +557,13 @@
   var progressLabel = document.getElementById('projectsProgress');
   var progressBar = document.getElementById('projectsProgressBar');
   if (!cards.length || !links.length || !progressLabel || !progressBar) return;
+  var activeId;
 
   function activate(id) {
+    if (id === activeId) return;
     var index = cards.findIndex(function(card) { return card.id === id; });
     if (index === -1) return;
+    activeId = id;
     links.forEach(function(link) {
       var isActive = link.getAttribute('data-project-nav') === id;
       link.classList.toggle('is-active', isActive);
@@ -537,16 +573,28 @@
     progressBar.style.height = ((index + 1) / cards.length * 100) + '%';
   }
 
-  var observer = new IntersectionObserver(function(entries) {
-    var visible = entries.filter(function(entry) { return entry.isIntersecting; });
-    if (visible.length) {
-      visible.sort(function(a, b) { return b.intersectionRatio - a.intersectionRatio; });
-      activate(visible[0].target.id);
+  function updateActiveProject() {
+    var readingLine = window.innerHeight * 0.45;
+    for (var index = cards.length - 1; index > 0; index--) {
+      if (cards[index].getBoundingClientRect().top <= readingLine) {
+        activate(cards[index].id);
+        return;
+      }
     }
-  }, { rootMargin: '-18% 0px -62% 0px', threshold: [0.1, 0.35, 0.65] });
+    activate(cards[0].id);
+  }
 
-  cards.forEach(function(card) { observer.observe(card); });
-
+  var framePending = false;
+  function scheduleProgressUpdate() {
+    if (framePending) return;
+    framePending = true;
+    window.requestAnimationFrame(function() {
+      framePending = false;
+      updateActiveProject();
+    });
+  }
+  window.addEventListener('scroll', scheduleProgressUpdate, { passive: true });
+  window.addEventListener('resize', scheduleProgressUpdate);
 
   var initialId = window.location.hash.slice(1);
   activate(cards.some(function(card) { return card.id === initialId; }) ? initialId : cards[0].id);
